@@ -1,0 +1,18 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+body{
+	background-color:#912947;
+}
+form{
+	background-color:#ffffff;
+}
+nav{
+	margin:auto;
+	width:90%;
+}
+h1{
+	text-align:center;
+	color:#ffffff;
+}
