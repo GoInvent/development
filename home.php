@@ -123,6 +123,9 @@ file_put_contents('UIDContainer.php',$Write);
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="lihat_data.php" aria-expanded="false"><i class="mdi mdi-file"></i><span
                                     class="hide-menu">Read RFID</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" 
+                                href="logout.php" onclick="return confirm('Ingin Logout?')"><i class="fa-solid fa-right-from-bracket"></i><span
+                                    class="hide-menu">Logout</span></i></a>
                     </ul>
 
                 </nav>
@@ -143,12 +146,6 @@ file_put_contents('UIDContainer.php',$Write);
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-6">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mb-0 d-flex align-items-center">
-                              <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                            </ol>
-                          </nav>
                         <h1 class="mb-0 fw-bold">Dashboard</h1> 
                     </div>
                 </div>

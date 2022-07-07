@@ -143,25 +143,6 @@ file_put_contents('UIDContainer.php',$Write);
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row align-items-center">
-                    <div class="col-6">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mb-0 d-flex align-items-center">
-                              <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Produk</li>
-                            </ol>
-                          </nav>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
@@ -179,7 +160,7 @@ file_put_contents('UIDContainer.php',$Write);
                                             <tr>
                                                 <th>Product ID</th>
                                                 <th>Nama Produk</th>
-                                                <th>Brand</th>
+                                                <th>Kategori</th>
                                                 <th>Harga</th>
                                                 <th>Stok</th>
                                                 <th>Aksi</th>
@@ -187,24 +168,29 @@ file_put_contents('UIDContainer.php',$Write);
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include 'database.php';
-                                            $pdo = Database::connect();
-                                            $sql = 'SELECT * FROM barang';
-                                            foreach ($pdo->query($sql) as $row) {
-                                                echo '<tr>';
-                                                echo '<td>'. $row['id_produk'] . '</td>';
-                                                echo '<td>'. $row['nama_produk'] . '</td>';
-                                                echo '<td>'. $row['jenis_produk'] . '</td>';
-                                                echo '<td>'. $row['harga_produk'] . '</td>';
-                                                echo '<td>'. $row['stok'] . '</td>';
-                                                echo '<td><a class="btn btn-success" href="user data edit page.php?id_produk='. $row['id_produk'] .'">Edit</a>';
-                                                echo ' ';
-                                                echo '<a class="btn btn-danger" href="user data delete page.php?id_produk='. $row['id_produk'] .'">Delete</a>';
-                                                echo '</td>';
-                                                echo '</tr>';
-                                        }
-                                        Database::disconnect();
-                                        ?>
+                                                include 'database.php';
+                                                $sql = mysqli_query($koneksi,'SELECT * FROM barang');
+                                                if (mysqli_num_rows($sql) > 0 ) {
+                                                while ($row = mysqli_fetch_array($sql)){
+                                            ?>
+                                               <tr>';
+                                               <td><?php echo $row['id_produk']?></td>;
+                                               <td><?php echo $row['nama_produk']?></td>;
+                                               <td><?php echo $row['jenis_produk']?></td>;
+                                               <td><?php echo $row['harga_produk']?></td>;
+                                               <td><?php echo $row['stok']?></td>;
+                                               <td><a class="btn btn-success" href="user data edit page.php?id_produk='. $row['id_produk'] .'">Edit</a>';
+                                                ';
+                                               <a class="btn btn-danger" href="user data delete page.php?id_produk='. $row['id_produk'] .'">Delete</a>';
+                                               </td>';
+                                               </tr>';
+                                                
+                                            <?php }
+                                            }else { ?>
+                                                <tr>
+                                                    <td colspan="9">Tidak ada data</td>
+                                                </tr>
+                                            <?php } ?>
                                     </tbody>
                                 </table>
                                 </div>
