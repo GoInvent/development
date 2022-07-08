@@ -2,21 +2,23 @@
      
     require 'database.php';
  
-    if ( !empty($_POST)) {
+    if (isset($_POST['submit'])) {
         // keep track post values
-		$ProductID = $_POST['id_barang']?? '';
-        $ProductName = $_POST['nama_barang'] ?? '';
-		$brand = $_POST['jenis_barang']?? '';
-        $price = $_POST['harga_barang']?? '';
-        $quantity = $_POST['jumlah_barang']?? '';
+		$idbarang = $_POST['id_barang']?? '';
+        $namabarang = $_POST['nama_barang'] ?? '';
+		$jenis = $_POST['jenis_barang']?? '';
+        $harga = $_POST['harga_barang']?? '';
+        $stok = $_POST['jumlah_barang']?? '';
         
 		// insert data
-        $pdo = Database::connect();
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "INSERT INTO barang (id_barang,nama_barang,jenis_barang,harga_barang,jumlah_barang) values(?, ?, ?, ?, ?)";
-		$q = $pdo->prepare($sql);
-		$q->execute(array($ProductID,$ProductName,$brand,$price,$quantity));
-		Database::disconnect();
+		$insert = "INSERT INTO 'barang' (id_barang,nama_barang,jenis_barang,harga_barang,jumlah_barang) values(?, ?, ?, ?, ?)";
+		if ($insert){
+			//jika data berhasil disimpan
+			echo '<script>alert("Simpan data Berhasil")</script>';
+			echo '<script>window.location="databarang.php"</script>';
+		}else{
+			echo 'gagal'.mysqli_error($koneksi);
+		}
 		header("Location: databarang.php");
     }
 ?>

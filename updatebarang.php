@@ -1,6 +1,19 @@
 <?php
 $Write="<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
 file_put_contents('UIDContainer.php',$Write);
+
+    error_reporting(0);
+	session_start();
+	require 'database.php';
+	// cek apakah yang mengakses halaman ini sudah login
+	if(!$_SESSION['role']=="disbekal"){
+	header("location:login.php?pesan=gagal");
+	}	
+	$produk = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_barang ='".$_GET['id']."' ");
+	if(mysqli_num_rows($produk)==0){
+		echo '<script>window.location="databarang.php"</script>';
+	}
+	$p = mysqli_fetch_object($produk);
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -149,47 +162,62 @@ file_put_contents('UIDContainer.php',$Write);
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-								<div class="table-responsive">
-                                    <h1 align="center">Data Produk</h1>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Product ID</th>
-                                                <th>Nama Produk</th>
-                                                <th>Jenis</th>
-                                                <th>Harga</th>
-                                                <th>Stok</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
                                         <tbody>
-                                            <?php
-                                                include 'database.php';
-                                                $sql = mysqli_query($koneksi,'SELECT * FROM barang ORDER BY id_barang DESC');
-                                                if (mysqli_num_rows($sql) > 0 ) {
-                                                while ($row = mysqli_fetch_array($sql)){
-                                            ?>
-                                               <tr>
-                                               <td><?php echo $row['id_barang']?></td>
-                                               <td><?php echo $row['nama_barang']?></td>
-                                               <td><?php echo $row['jenis_barang']?></td>
-                                               <td><?php echo $row['harga_barang']?></td>
-                                               <td><?php echo $row['jumlah_barang']?></td>
-                                               <td><a class="btn btn-success" href="updatebarang.php?id=<?php echo $row['id_barang'] ?>">Edit</a>
-                                               <a class="btn btn-danger" href="deletebarang.php?idb=<?php echo $row['id_barang'] ?>">Delete</a>
-                                               </td>
-                                               </tr>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                    <h1 align="center">Update Barang</h1>
+                                                        <form class="" method="post">
+                                                            <div class="form-floating mb-3">
+                                                                <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->nama_barang ?>" required>
+                                                                <label for="floatingInput">Nama Barang</label>
+                                                            </div>
+                                                            
+                                                            <div class="form-floating mb-3">
+                                                                <input type="text" name="jenis_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->jenis_barang ?>" required>
+                                                                <label for="floatingInput">Brand</label>
+                                                            </div>
+                                                            
+                                                            <div class="form-floating mb-3">
+                                                                <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->harga_barang ?>" required>
+                                                                <label for="floatingInput">Harga</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->jumlah_barang ?>"required>
+                                                                <label for="floatingInput">Stok</label>
+                                                            </div>
+                                                            <input type="submit" name="submit" value="Simpan" class="btn btn-success">
+                                                        </form>
+                                        <?php
+                                            // Check If form submitted, insert form data into users table.
+                                            if(isset($_POST['submit'])) {
+                                                $namabarang = $_POST['nama_barang'];
+                                                $jenis      = $_POST['jenis_barang'];
+                                                $harga      = $_POST['harga_barang'];
+                                                $stok       = $_POST['jumlah_barang'];
                                                 
-                                            <?php }
-                                            }else { ?>
-                                                <tr>
-                                                    <td colspan="9">Tidak ada data</td>
-                                                </tr>
-                                            <?php } ?>
+                                                // include database connection file
+                                                include 'database.php';
+                                                        
+                                                // Insert user data into table
+                                                $update = mysqli_query($koneksi, "UPDATE barang SET
+                                                            nama_barang = '".$namabarang."',
+                                                            jenis_barang = '".$jenis."', 
+                                                            harga_barang = '".$harga."', 
+                                                            jumlah_barang = '".$stok."'
+                                                            WHERE id_barang = '".$p->id_barang."'");
+                                                
+                                                if ($update){
+                                                    //jika data berhasil disimpan
+                                                    echo '<script>alert("Ubah data Berhasil")</script>';
+                                                    echo '<script>window.location="databarang.php"</script>';
+                                                }else{
+                                                    echo 'gagal'.mysqli_error($koneksi);
+                                                }
+
+                                            }
+                                            ?>
                                     </tbody>
                                 </table>
                                 </div>
