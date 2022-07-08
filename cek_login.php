@@ -21,23 +21,23 @@ if($cek > 0){
 	$_SESSION['id_admin'] = $data['admin_id'];
 
 	// cek jika user login sebagai admin
-	if($data['role']=="admin"){
+	if($data['role']=="disbekal"){
 		$d = mysqli_fetch_object($login);
 		// buat session login dan email
 		$_SESSION['email'] = $email;
-		$_SESSION['role'] = "admin";
+		$_SESSION['role'] = "disbekal";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		// alihkan ke halaman dashboard admin
-		header("location:home.php");
+		header("location:index.php");
 
 	// cek jika user login sebagai pegawai
-	}else if($data['role']=="user"){
+	}else if($data['role']=="kadopus"){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
-		$_SESSION['role'] = "user";
+		$_SESSION['role'] = "kadopus";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		// alihkan ke halaman dashboard pegawai
-		header("location:pengiriman.php");
+		header("location:index.php");
 	}else{
 
 		// alihkan ke halaman login kembali
