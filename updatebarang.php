@@ -211,7 +211,7 @@ file_put_contents('UIDContainer.php',$Write);
                                                 if ($update){
                                                     //jika data berhasil disimpan
                                                     echo '<script>alert("Ubah data Berhasil")</script>';
-                                                    echo '<script>window.location="databarang.php"</script>';
+                                                    echo '<script>window.location="index.php?page=databarang.php"</script>';
                                                 }else{
                                                     echo 'gagal'.mysqli_error($koneksi);
                                                 }
