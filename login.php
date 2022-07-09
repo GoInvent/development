@@ -66,9 +66,8 @@ file_put_contents('UIDContainer.php',$Write);
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <input type="submit" name="submit" value="Login"  class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                class="link-danger">Register</a></p>
+            <input type="submit" name="submit" value="Login"  class="btn btn-primary btn-lg" style="padding-left: 2rem; padding-right: 2rem; font-size:14px;">
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!" style="color:#1499DC;">Register</a></p>
           </div>
         </form>
       </div>

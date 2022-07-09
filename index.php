@@ -1,9 +1,17 @@
 <?php
+    include_once("helper.php");
+    // echo BASE_URL;
+    $page = isset($_GET['page']) ? $_GET['page'] : false;
+    
     $Write="<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
     file_put_contents('UIDContainer.php',$Write);
     include 'database.php';
     session_start();
+
+    // $page = isset($_GET['page']) ? $_GET['page'] : false;
+    // echo $_GET['page'];
 ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -110,27 +118,29 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Beranda</span></a></li>    
-                            <?php if ($_SESSION['role'] == "disbekal") : ?> 
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="databarang.php" aria-expanded="false"><i
-                                    class="mdi mdi-account-network"></i><span class="hide-menu">Produk</span></a></li>
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="pengiriman.php" aria-expanded="false"><i class="fa-solid fa-truck-fast"></i></i><span
-                                    class="hide-menu">Pengiriman</span></a></li>
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                    href="lihat_data.php" aria-expanded="false"><i class="mdi mdi-file"></i><span
-                                        class="hide-menu">Read RFID</span></a></li>
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" 
-                                    href="logout.php" onclick="return confirm('Ingin Logout?')"><i class="fa-solid fa-right-from-bracket"></i><span
-                                        class="hide-menu">Logout</span></i></a>  
-                            <?php elseif ($_SESSION['role'] == "kadopus") : ?>
                                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="registbarang.php" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
+                                     href="<?php echo BASE_URL .'index.php?page=home.php'?>" aria-expanded="false"><i class="mdi mdi-view-dashboard">
+                                </i> <span class="hide-menu">Beranda</span></a></li>    
+                            <?php if ($_SESSION['role'] == "disbekal") : ?>  <!--session disbekal -->
+                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    href="<?php echo BASE_URL."index.php?page=databarang.php"?>" aria-expanded="false"><i class="mdi mdi-account-network"> 
+                                    </i>
+                                <span class="hide-menu">Produk</span></a></li>
+                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    href="<?php echo BASE_URL."index.php?page=home.php"?>" aria-expanded="false"><i class="fa-solid fa-truck-fast"></i></i><span
+                                        class="hide-menu">Pengiriman</span></a></li>
+                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                        href="<?php echo BASE_URL."index.php?page=home.php"?>" aria-expanded="false"><i class="mdi mdi-file"></i><span
+                                            class="hide-menu">Read RFID</span></a></li> 
+                            <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kodapus -->
+                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="<?php echo BASE_URL."index.php?page=registbarang.php"?>" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
                                     class="hide-menu">Registrasi Barang</span></a></li>
                             <?php endif; ?>
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" 
+                                        href="<?php echo BASE_URL."index.php?page=logout.php"?>" onclick="return confirm('Ingin Logout?')"><i class="fa-solid fa-right-from-bracket"></i><span
+                                class="hide-menu">Logout</span></i></a> 
+
                     </ul>
 
                 </nav>
@@ -138,7 +148,24 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+
     <!-- ============================================================== -->
+    <!-- Dinamias Konten -->
+    <!-- Semua laman akan terinput disnis -->
+    <!-- ============================================================== -->
+    <div class="content" style="margin-left:0px;">
+        <?php 
+            $filename = $page;
+            // echo $filename;
+
+            if(file_exists($filename)){
+                include_once($filename);
+            }else{
+                echo "Maaf laman file belum tersedia";
+            }
+        ?>
+    </div>
+
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
