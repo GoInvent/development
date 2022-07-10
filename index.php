@@ -75,6 +75,14 @@
                             </form>
                         </li>
                     </ul>
+                    <ul class="navbar-nav float-end">
+                        <li class="nav-item dropdown">
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" 
+                                                href="<?php echo BASE_URL."index.php?page=logout.php"?>">
+                                                <span class="hide-menu">Login as: <?php echo $_SESSION['role']?></span></i></a>  
+                            
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </header>
@@ -83,11 +91,19 @@
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                            href="<?php echo BASE_URL .'index.php?page=home.php'?>" aria-expanded="false"><i class="mdi mdi-view-dashboard">
-                                        </i><span class="hide-menu">Beranda</span></a></li>    
+                    <ul id="sidebarnav">  
                                     <?php if ($_SESSION['role'] == "disbekal") : ?>  <!--session disbekal -->
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="<?php echo BASE_URL .'index.php?page=disbekal/home.php'?>" aria-expanded="false"><i class="mdi mdi-view-dashboard">
+                                        </i><span class="hide-menu">Beranda</span></a></li>
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="<?php echo BASE_URL .'index.php?page=log_barang.php'?>" aria-expanded="false"><i class="fa-solid fa-clock-rotate-left"></i>
+                                            <span class="hide-menu">Log</span></a></li>
+                                    <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kodapus -->
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="<?php echo BASE_URL .'index.php?page=kadopus/home.php'?>" aria-expanded="false"><i class="mdi mdi-view-dashboard">
+                                        </i><span class="hide-menu">Beranda</span></a></li> 
+                                    <?php endif; ?>
                                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="<?php echo BASE_URL."index.php?page=databarang.php"?>" aria-expanded="false"><i class="mdi mdi-account-network"> </i>
                                                 <span class="hide-menu">Produk</span></a></li>
@@ -100,15 +116,10 @@
                                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="<?php echo BASE_URL."index.php?page=lihat_data.php"?>" aria-expanded="false"><i class="mdi mdi-file"></i>
                                                 <span class="hide-menu">Read RFID</span></a></li>
-                                        
-                                    <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kodapus -->
-                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="<?php echo BASE_URL."index.php?page=registbarang.php"?>" aria-expanded="false"><i class="mdi mdi-border-all"></i>
-                                                <span class="hide-menu">Registrasi Barang</span></a></li>
-                                    <?php endif; ?>
                                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" 
                                                 href="<?php echo BASE_URL."index.php?page=logout.php"?>" onclick="return confirm('Ingin Logout?')"><i class="fa-solid fa-right-from-bracket"></i>
-                                                <span class="hide-menu">Logout</span></i></a> 
+                                                <span class="hide-menu">Logout</span></i></a>        
+                                        
 
                     </ul>
 

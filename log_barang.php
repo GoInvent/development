@@ -17,50 +17,31 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <h1 align="center">List Barang</h1>
+                                <h1 align="center">Log Barang</h1>
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
                                             <th>ID Barang</th>
-                                            <th>Kategori</th>
                                             <th>Nama</th>
-                                            <th>Volume</th>
-                                            <th>Harga</th>
                                             <th>Stok</th>
-                                            <th>Tahun</th>
-                                            <th>No.Kontrak</th>
-                                            <th>Status</th>
-                                            <?php if ($_SESSION['role'] == "disbekal" || "kadopus") : ?>
-                                            <th>Aksi</th>
-                                            <?php elseif ($_SESSION['role'] == "kadopus") : ?>
-                                            <?php endif; ?>
+                                            <th>Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM log LEFT JOIN barang USING(id_barang) ORDER BY id_log DESC');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                             <td><?php echo $no++ ?></td>
                                             <td><?php echo $row['id_barang']?></td>
-                                            <td><?php echo $row['jenis_komoditi']?></td>
                                             <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['volume_barang']?></td>
-                                            <td><?php echo $row['harga_barang']?></td>
                                             <td><?php echo $row['jumlah_barang']?></td>
-                                            <td><?php echo $row['tahun_produksi']?></td>
-                                            <td><?php echo $row['no_kontrak']?></td>
-                                            <td><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
-                                            <?php if ($_SESSION['role'] == "disbekal" || "kadopus") : ?>
-                                            <td><a class="btn btn-success" href="updatebarang.php?id=<?php echo $row['id_barang'] ?>">Edit</a>
-                                            <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="deletebarang.php?idb=<?php echo $row['id_barang'] ?>">Delete</a>
-                                            <?php elseif ($_SESSION['role'] == "kadopus") : ?>
-                                            <?php endif; ?>    
+                                            <td><?php echo $row['updated_at']?></td>    
                                             </td>
                                             </tr>
                                             

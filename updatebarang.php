@@ -127,21 +127,30 @@ file_put_contents('UIDContainer.php',$Write);
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
 				<ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Beranda</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="databarang.php" aria-expanded="false"><i
-                                    class="mdi mdi-account-network"></i><span class="hide-menu">Produk</span></a></li>
-						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="registbarang.php" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
-                                    class="hide-menu">Registrasi Barang</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="pengiriman.php" aria-expanded="false"><i class="fa-solid fa-truck-fast"></i></i><span
-                                    class="hide-menu">Pengiriman</span></a></li>          
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="lihat_data.php" aria-expanded="false"><i class="mdi mdi-file"></i><span
-                                    class="hide-menu">Read RFID</span></a></li>
+                                    <?php if ($_SESSION['role'] == "disbekal") : ?>  <!--session disbekal -->
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=disbekal/home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard">
+                                        </i><span class="hide-menu">Beranda</span></a></li>
+                                    <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kodapus -->
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=kadopus/home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard">
+                                        </i><span class="hide-menu">Beranda</span></a></li> 
+                                    <?php endif; ?>
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=databarang.php" aria-expanded="false"><i class="mdi mdi-account-network"></i>
+                                            <span class="hide-menu">Produk</span></a></li>
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=registbarang.php" aria-expanded="false"><i class="mdi mdi-border-all"></i>
+                                            <span class="hide-menu">Registrasi Barang</span></a></li>
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=pengiriman.php" aria-expanded="false"><i class="fa-solid fa-truck-fast"></i></i>
+                                            <span class="hide-menu">Pengiriman</span></a></li>          
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=lihat_data.php" aria-expanded="false"><i class="mdi mdi-file"></i>
+                                            <span class="hide-menu">Read RFID</span></a></li>
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" 
+                                            href="<?php echo BASE_URL."index.php?page=logout.php"?>" onclick="return confirm('Ingin Logout?')"><i class="fa-solid fa-right-from-bracket"></i>
+                                            <span class="hide-menu">Logout</span></i></a> 
                     </ul>
 
                 </nav>
@@ -170,15 +179,26 @@ file_put_contents('UIDContainer.php',$Write);
                                                     <h1 align="center">Update Barang</h1>
                                                         <form class="" method="post">
                                                             <div class="form-floating mb-3">
+                                                                <select name="id_komoditi" class="form-control" required>
+                                                                    <option value="">--Pilih Kategori--</option>
+                                                                    <?php 
+                                                                        include 'database.php';
+                                                                        $komoditi = mysqli_query($koneksi, "SELECT * FROM komoditi ORDER BY id_komoditi DESC");
+                                                                        while ($r = mysqli_fetch_array($komoditi)) {
+                                                                    ?> 
+                                                                        <option value="<?php echo $r['id_komoditi'] ?>" <?php echo ($r['id_komoditi']==$p->id_komoditi)?'selected':''; ?>><?php echo $r['jenis_komoditi'] ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                                    <label for="floatingInput">Kategori</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3">
                                                                 <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->nama_barang ?>" required>
                                                                 <label for="floatingInput">Nama Barang</label>
                                                             </div>
-                                                            
                                                             <div class="form-floating mb-3">
-                                                                <input type="text" name="jenis_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->jenis_barang ?>" required>
-                                                                <label for="floatingInput">Brand</label>
-                                                            </div>
-                                                            
+                                                                <input type="number" name="volume_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->volume_barang ?>" required>
+                                                                <label for="floatingInput">Volume</label>
+                                                            </div>     
                                                             <div class="form-floating mb-3">
                                                                 <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->harga_barang ?>" required>
                                                                 <label for="floatingInput">Harga</label>
@@ -187,25 +207,48 @@ file_put_contents('UIDContainer.php',$Write);
                                                                 <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->jumlah_barang ?>"required>
                                                                 <label for="floatingInput">Stok</label>
                                                             </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->tahun_produksi ?>"required>
+                                                                <label for="floatingInput">Tahun</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->no_kontrak ?>"required>
+                                                                <label for="floatingInput">No Kontrak</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <select class="form-control" name="status_barang">
+                                                                    <option value="">--Pilih--</option>
+                                                                    <option value="1" <?php echo ($p->status_barang == 1)?'selected':'';?>>Approved</option>
+                                                                    <option value="0" <?php echo ($p->status_barang == 0)?'selected':'';?>>Pending</option>
+                                                                </select>
+                                                            </div>
                                                             <input type="submit" name="submit" value="Simpan" class="btn btn-success">
                                                         </form>
                                         <?php
                                             // Check If form submitted, insert form data into users table.
                                             if(isset($_POST['submit'])) {
+                                                $kategori   = $_POST['id_komoditi'];
                                                 $namabarang = $_POST['nama_barang'];
-                                                $jenis      = $_POST['jenis_barang'];
+                                                $volume     = $_POST['volume_barang'];
                                                 $harga      = $_POST['harga_barang'];
                                                 $stok       = $_POST['jumlah_barang'];
+                                                $tahun      = $_POST['tahun_produksi'];
+                                                $nokontrak  = $_POST['no_kontrak'];
+                                                $status     = $_POST['status_barang'];
                                                 
                                                 // include database connection file
                                                 include 'database.php';
                                                         
                                                 // Insert user data into table
                                                 $update = mysqli_query($koneksi, "UPDATE barang SET
-                                                            nama_barang = '".$namabarang."',
-                                                            jenis_barang = '".$jenis."', 
-                                                            harga_barang = '".$harga."', 
-                                                            jumlah_barang = '".$stok."'
+                                                            id_komoditi     = '".$kategori."',
+                                                            nama_barang     = '".$namabarang."',
+                                                            volume_barang   = '".$volume."', 
+                                                            harga_barang    = '".$harga."', 
+                                                            jumlah_barang   = '".$stok."',
+                                                            tahun_produksi  = '".$tahun."',
+                                                            no_kontrak      = '".$nokontrak."',
+                                                            status_barang   = '".$status."'
                                                             WHERE id_barang = '".$p->id_barang."'");
                                                 
                                                 if ($update){

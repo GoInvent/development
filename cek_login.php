@@ -37,7 +37,7 @@ if($cek > 0){
 		$_SESSION['role'] = "kadopus";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		// alihkan ke halaman dashboard pegawai
-		header("location:index.php?page=home.php");
+		header("location:index.php?page=kadopus/home.php");
 	}else{
 
 		// alihkan ke halaman login kembali
