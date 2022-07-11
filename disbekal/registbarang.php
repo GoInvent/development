@@ -12,9 +12,11 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
+                        <h1 text-align="center" style="margin:2% 0% 2% 0%">Registrasi Barang</h1>
                         <div class="card">
                             <div class="card-body">
-							<h1 align="center">Registrasi Barang</h1>
+                                <h4>Input data barang</h4>
+                                <p>Pendataan barang sebelum masuk gudang</p>
 								<form class="" action="registbarang.php" method="post">
 									<div class="form-floating mb-3">
 										<input name="id_barang" class="form-control" id="getUID" placeholder=" " required>

@@ -31,7 +31,7 @@ file_put_contents('UIDContainer.php',$Write);
 
 <body>
   <section>
-    <div class="container-fluid h-custom" style="margin-top:10%; width:80%;">
+    <div class="container-fluid h-custom" style="margin-top:7%; width:80%;">
       <div class="row d-flex justify-content-center align-items-center h-100">
         
         <div class="col-md-9 col-lg-6 col-xl-5">
@@ -39,40 +39,40 @@ file_put_contents('UIDContainer.php',$Write);
         </div>
              
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <h2 style="text-align: center">Masuk Akun Admin</h2>
-          <p style="text-align: center">Isi form dibawah ini untuk login</p>
-          <div class="border-regist"></div>
-          <form action="cek_login.php" method="POST">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <label class="form-label">Email address</label>
-              <input type="email" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
-            </div>
+            <h2 style="text-align: center">Buat Akun</h2>
+            <p style="text-align: center">Isi biodata dibawah ini dengan benar</p>
+            <div class="border-regist"></div>
+            <form action="cek_register.php" method="POST">
 
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" name="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" />
-            </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label">Nama</label>
+                    <input type="text" name="nama_user" id="nama_user" class="form-control form-control-lg" placeholder="Masukan nama lengkap" />
+                </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
-              <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                <label class="form-check-label" for="form2Example3">
-                  Remember me
-                </label>
-              </div>
-              <a href="#!" class="text-body">Forgot password?</a>
-            </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label">Email address</label>
+                    <input type="email" name="email_user" id="email_user" class="form-control form-control-lg" placeholder="Masukan email" />
+                </div>
 
-            <div class="text-center text-lg-start mt-4 pt-2">
-              <input type="submit" name="submit" value="Login"  class="btn btn-primary btn-lg" style="padding-left: 2rem; padding-right: 2rem; font-size:14px; width:100%;">
-              <!-- <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="register.php" style="color:#1499DC;">Register</a></p> -->
-            </div>
+                <div class="form-outline mb-3">
+                    <label class="form-label">Password</label>
+                   <input type="password" name="password_user" id="pass_user" class="form-control form-control-lg" placeholder="Masukan Pasword" />
+                </div>
 
-          </form>
+                <div class="form-outline mb-3">
+                    <label class="form-label">Re-Password</label>
+                    <input type="password" name="re_password_user" id="re_pass_user" class="form-control form-control-lg" placeholder="Masukan ulang password" />
+                </div>
+
+
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <input type="submit" name="submit" value="Register"  class="btn btn-primary btn-lg" style="padding-left: 2rem; padding-right: 2rem; font-size:14px; width:100%;">
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Sudah memiliki akun? <a href="login.php" style="color:#1499DC;">Login</a></p>
+                </div>
+
+            </form>
         </div>
+
       </div>
     </div>
   </section>

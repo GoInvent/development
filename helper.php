@@ -1,5 +1,5 @@
 <?php 
 
-    define("BASE_URL", "http://localhost/goinvent/"); 
+    define("BASE_URL", "http://localhost:8080/website-warehouse/development-1/"); 
 
 ?>

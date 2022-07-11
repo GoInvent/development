@@ -14,10 +14,12 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
+                    <h1 style="margin:2% 0% 2% 0%">Log Barang</h1>
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <h1 align="center">Log Barang</h1>
+                                <h4 text-align="left">Riwayat Barang</h4>
+                                <p>Riwayat keluar masuk data barang</p>
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -25,7 +27,7 @@
                                             <th>ID Barang</th>
                                             <th>Nama</th>
                                             <th>Stok</th>
-                                            <th>Time</th>
+                                            <th>Waktu Eksekusi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

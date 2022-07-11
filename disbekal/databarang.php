@@ -14,10 +14,12 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
+                    <h1 text-align="center" style="margin:2% 0% 2% 0%;">List Barang</h1>
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <h1 align="center">List Barang</h1>
+                                <h4>Daftar barang di Gudang</h4>
+                                <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 <table class="table">
                                     <thead>
                                         <tr>

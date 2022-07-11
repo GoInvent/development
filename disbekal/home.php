@@ -25,7 +25,7 @@ file_put_contents('UIDContainer.php',$Write);
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <h1 class="mb-0 fw-bold">Dashboard</h1> 
+                    <h1 class="mb-0 fw-bold">Peyedian Barang</h1> 
                 </div>
             </div>
         </div>
@@ -48,7 +48,8 @@ file_put_contents('UIDContainer.php',$Write);
                             <!-- title -->
                             <div class="d-md-flex">
                                 <div>
-                                    <h4 class="card-title">List Admin</h4>
+                                    <h4 class="card-title">Persetujuan Barang</h4>
+                                    <p>Informasi permintaan penyediaan barang masuk</p>
                                 </div>
                             </div>
                             <!-- title -->
@@ -56,15 +57,18 @@ file_put_contents('UIDContainer.php',$Write);
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">ID</th>
-                                            <th class="border-top-0">Nama</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Role</th>
-                                            <th class="border-top-0">Status</th>
+                                            <th class="border-top-0">No</th>
+                                            <th class="border-top-0">ID Penyedia</th>
+                                            <th class="border-top-0">Nama Penyedia</th>
+                                            <th class="border-top-0">Nama Barang</th>
+                                            <th class="border-top-0">Jumlah Barang</th>
+                                            <th class="border-top-0">Tanggal Permintaan</th>
+                                            <th class="border-top-0">Status Persetujuan</th>
+                                            <th class="border-top-0">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
+                                    <!-- <?php
                                             include 'database.php';
                                             $no = 1;
                                             $sql = mysqli_query($koneksi,'SELECT * FROM admin ORDER BY id_admin DESC');
@@ -75,7 +79,6 @@ file_put_contents('UIDContainer.php',$Write);
                                             <td><?php echo $no++ ?></td>
                                             <td><?php echo $row['nama_admin']?></td>
                                             <td><?php echo $row['email']?></td>
-                                            <td><?php echo $row['role']?></td>
                                             <td><?php echo ($row['status']== 0)?'Tidak Aktif':'Aktif'; ?></td>
                                             </tr>
                                         <?php }
@@ -83,7 +86,7 @@ file_put_contents('UIDContainer.php',$Write);
                                             <tr>
                                                 <td colspan="9">Tidak ada data</td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php } ?> -->
                                     </tbody>
                                 </table>
                             </div>
