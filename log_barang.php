@@ -27,6 +27,7 @@
                                             <th>ID Barang</th>
                                             <th>Nama</th>
                                             <th>Stok</th>
+                                            <th>Status</th>
                                             <th>Waktu Eksekusi</th>
                                         </tr>
                                     </thead>
@@ -43,7 +44,8 @@
                                             <td><?php echo $row['id_barang']?></td>
                                             <td><?php echo $row['nama_barang']?></td>
                                             <td><?php echo $row['jumlah_barang']?></td>
-                                            <td><?php echo $row['updated_at']?></td>    
+                                            <td><?php echo $row['status']?></td>
+                                            <td><?php echo $row['date']?></td>    
                                             </td>
                                             </tr>
                                             

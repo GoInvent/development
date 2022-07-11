@@ -131,14 +131,18 @@ file_put_contents('UIDContainer.php',$Write);
                                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                             href="index.php?page=disbekal/home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard">
                                         </i><span class="hide-menu">Beranda</span></a></li>
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=disbekal/databarang.php" aria-expanded="false"><i class="mdi mdi-account-network"></i>
+                                            <span class="hide-menu">Produk</span></a></li>
                                     <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kodapus -->
                                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                             href="index.php?page=kadopus/home.php" aria-expanded="false"><i class="mdi mdi-view-dashboard">
-                                        </i><span class="hide-menu">Beranda</span></a></li> 
+                                        </i><span class="hide-menu">Beranda</span></a></li>
+                                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                            href="index.php?page=kadopus/databarang.php" aria-expanded="false"><i class="mdi mdi-account-network"></i>
+                                            <span class="hide-menu">Produk</span></a></li> 
                                     <?php endif; ?>
-                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                            href="index.php?page=databarang.php" aria-expanded="false"><i class="mdi mdi-account-network"></i>
-                                            <span class="hide-menu">Produk</span></a></li>
+                                    
                                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                             href="index.php?page=registbarang.php" aria-expanded="false"><i class="mdi mdi-border-all"></i>
                                             <span class="hide-menu">Registrasi Barang</span></a></li>
@@ -254,7 +258,11 @@ file_put_contents('UIDContainer.php',$Write);
                                                 if ($update){
                                                     //jika data berhasil disimpan
                                                     echo '<script>alert("Ubah data Berhasil")</script>';
-                                                    echo '<script>window.location="index.php?page=databarang.php"</script>';
+                                                    if ($_SESSION['role'] == "disbekal"){
+                                                        echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
+                                                    } elseif ($_SESSION['role'] == "kadopus"){
+                                                        echo '<script>window.location="index.php?page=kadopus/databarang.php"</script>';
+                                                    }
                                                 }else{
                                                     echo 'gagal'.mysqli_error($koneksi);
                                                 }

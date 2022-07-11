@@ -134,13 +134,38 @@
                                 </a>
                             </li>
 
-                        <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kodapus -->
+                        <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="d<?php echo BASE_URL .'index.php?page=kadopus/home.php'?>" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=kadopus/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Beranda</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=kadopus/databarang.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-account-network"> </i>
+                                <span class="hide-menu">Barang</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=kadopus/registbarang.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Registrasi Barang</span></a>
+                            </li>
+                        <?php elseif ($_SESSION['role'] == "penyedia") : ?> <!--session kadopus -->
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=penyedia/home.php'?>" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Beranda</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=penyedia/databarang.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-account-network"> </i>
+                                <span class="hide-menu">Barang</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=penyedia/registbarang.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Input Barang</span></a>
                             </li> 
-
                         <?php endif; ?>                            
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=logout.php"?>" onclick="return confirm('Ingin Logout?')">

@@ -41,6 +41,14 @@ if($cek > 0){
 		$_SESSION['nama_admin'] = $data['nama_admin'];
 		// alihkan ke halaman dashboard pegawai
 		header("location:index.php?page=kadopus/home.php");
+	}else if($data['role']=="penyedia"){
+		// buat session login dan email
+		$_SESSION['email'] = $email;
+		$_SESSION['role'] = "penyedia";
+		$_SESSION['id_admin'] = $data['admin_id'];
+		$_SESSION['nama_admin'] = $data['nama_admin'];
+		// alihkan ke halaman dashboard pegawai
+		header("location:index.php?page=penyedia/home.php");
 	}else{
 		// alihkan ke halaman login kembali
 		header("location:index.php?pesan=gagal");
