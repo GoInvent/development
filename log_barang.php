@@ -26,8 +26,10 @@
                                             <th>No.</th>
                                             <th>ID Barang</th>
                                             <th>Nama</th>
-                                            <th>Stok</th>
-                                            <th>Status</th>
+                                            <th>Stok Awal</th>
+                                            <th>Masuk</th>
+                                            <th>Keluar</th>
+                                            <th>Stok Akhir</th>
                                             <th>Waktu Eksekusi</th>
                                         </tr>
                                     </thead>
@@ -42,9 +44,11 @@
                                             <tr>
                                             <td><?php echo $no++ ?></td>
                                             <td><?php echo $row['id_barang']?></td>
-                                            <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['jumlah_barang']?></td>
-                                            <td><?php echo $row['status']?></td>
+                                            <td><?php echo $row['nama_baru']?></td>
+                                            <td><?php echo $row['stok_awal']?></td>
+                                            <td><?php echo $row['stok_masuk']?></td>
+                                            <td><?php echo $row['stok_keluar']?></td>
+                                            <td><?php echo $row['stok_akhir']?></td>
                                             <td><?php echo $row['date']?></td>    
                                             </td>
                                             </tr>

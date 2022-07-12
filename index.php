@@ -7,7 +7,9 @@
     file_put_contents('UIDContainer.php',$Write);
     include 'database.php';
     session_start();
-
+    if(!$_SESSION['role']==" "){
+		header("location:login.php");
+		}
     $role = $_SESSION['role'];
     $nama_admin = $_SESSION['nama_admin'];
 ?>

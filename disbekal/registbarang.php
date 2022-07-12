@@ -17,7 +17,7 @@
                             <div class="card-body">
                                 <h4>Input data barang</h4>
                                 <p>Pendataan barang sebelum masuk gudang</p>
-								<form class="" action="registbarang.php" method="post">
+								<form class="" action="" method="post">
 									<div class="form-floating mb-3">
 										<input name="id_barang" class="form-control" id="getUID" placeholder=" " required>
 										<label for="getUID">ID Produk (Scan RFID to display ID)</label>
@@ -86,7 +86,7 @@
                                     }else{
                                         echo 'gagal'.mysqli_error($koneksi);
                                     }
-                                    header("Location: index.php?page=databarang.php");
+                                    header("Location: index.php?page=disbekal/databarang.php");
                                 }
                                 ?>
                             </div>
