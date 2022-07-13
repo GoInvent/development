@@ -26,7 +26,7 @@ if($cek > 0){
 	if($data['role']=="disbekal"){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
-		$_SESSION['role'] = "disbekal";
+		$_SESSION['role'] = "Disbekal";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
 		// alihkan ke halaman dashboard admin
@@ -36,7 +36,7 @@ if($cek > 0){
 	}else if($data['role']=="kadopus"){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
-		$_SESSION['role'] = "kadopus";
+		$_SESSION['role'] = "Kadopus";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
 		// alihkan ke halaman dashboard pegawai
@@ -44,7 +44,7 @@ if($cek > 0){
 	}else if($data['role']=="penyedia"){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
-		$_SESSION['role'] = "penyedia";
+		$_SESSION['role'] = "Penyedia";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
 		// alihkan ke halaman dashboard pegawai
@@ -55,7 +55,7 @@ if($cek > 0){
 	}	
 }else{
 	echo '<script>alert("Email dan Password SALAH!")</script>';
-	// echo '<script>window.location="login.php"</script>';
+	echo '<script>window.location="login.php"</script>';
 }
 
 ?>

@@ -183,6 +183,10 @@ file_put_contents('UIDContainer.php',$Write);
                                                     <h1 align="center">Update Barang</h1>
                                                         <form class="" method="post">
                                                             <div class="form-floating mb-3">
+                                                                <input type="text" name="id_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->id_barang ?>" required disabled>
+                                                                <label for="floatingInput">Nama Barang</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3">
                                                                 <select name="id_komoditi" class="form-control" required>
                                                                     <option value="">--Pilih Kategori--</option>
                                                                     <?php 

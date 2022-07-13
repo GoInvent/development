@@ -98,7 +98,7 @@
                         <div style="margin-bottom:8%; border:1px solid #DFDFDF; border-radius:5px; padding:8px;">
                             <?php echo "<b>Laman $role</b>"?>
                         </div>
-                        <?php if ($_SESSION['role'] == "disbekal") : ?>  <!--session disbekal -->
+                        <?php if ($_SESSION['role'] == "Disbekal") : ?>  <!--session disbekal -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
@@ -136,7 +136,7 @@
                                 </a>
                             </li>
 
-                        <?php elseif ($_SESSION['role'] == "kadopus") : ?> <!--session kadopus -->
+                        <?php elseif ($_SESSION['role'] == "Kadopus") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=kadopus/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
@@ -152,7 +152,7 @@
                                 <i class="mdi mdi-border-all"></i>
                                 <span class="hide-menu">Registrasi Barang</span></a>
                             </li>
-                        <?php elseif ($_SESSION['role'] == "penyedia") : ?> <!--session kadopus -->
+                        <?php elseif ($_SESSION['role'] == "Penyedia") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=penyedia/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>

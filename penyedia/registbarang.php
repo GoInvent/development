@@ -17,10 +17,14 @@
                             <div class="card-body">
                                 <h4>Input data barang</h4>
                                 <p>Pendataan barang sebelum masuk gudang</p>
-								<form class="" action="registbarang.php" method="post">
+								<form class="" action="" method="post">
+                                    <div class="form-floating mb-3">
+										<input name="nama_penyedia" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $_SESSION['nama_admin'] ?>" required disabled>
+										<label for="nama_penyedia">Nama</label>
+									</div>
 									<div class="form-floating mb-3">
-										<input name="id_barang" class="form-control" id="getUID" placeholder=" " required>
-										<label for="getUID">ID Produk (Scan RFID to display ID)</label>
+										<input name="role" class="form-control" id="role" placeholder=" " value="<?php echo $_SESSION['role']?>" required disabled>
+										<label for="role">Role</label>
 									</div>
                                     <div class="form-floating mb-3">
                                     <select name="id_komoditi" class="form-control" required>
@@ -64,29 +68,31 @@
                                 <?php
                                 // Check If form submitted, insert form data into users table.
                                 if(isset($_POST['submit'])) {
-                                    $kategori = $_POST['id_komoditi'];
-                                    $namabarang = $_POST['nama_barang'];
-                                    $volume = $_POST['volume_barang'];
-                                    $harga = $_POST['harga_barang'];
-                                    $stok = $_POST['jumlah_barang'];
-                                    $tahun = $_POST['tahun_produksi'];
-                                    $nokontrak = $_POST['no_kontrak'];
+                                    $namaadmin      = $_POST['nama_admin'] = $_SESSION['nama_admin'];
+                                    $roleadmin      = $_POST['role'] = $_SESSION['role'];
+                                    $kategori       = $_POST['id_komoditi'];    
+                                    $namabarang     = $_POST['nama_barang'];
+                                    $volume         = $_POST['volume_barang'];
+                                    $harga          = $_POST['harga_barang'];
+                                    $stok           = $_POST['jumlah_barang'];
+                                    $tahun          = $_POST['tahun_produksi'];
+                                    $nokontrak      = $_POST['no_kontrak'];
                                     
                                     // include database connection file
-                                    include_once("database.php");
+                                    include_once("../database.php");
                                             
                                     // Insert user data into table
-                                    $result = mysqli_query($koneksi, "INSERT INTO log (id_barang,id_komoditi,nama_barang, volume_barang, harga_barang, jumlah_barang, tahun_produksi, no_kontrak) VALUES('$idbarang','$kategori','$namabarang','$volume','$harga','$stok','$tahun','$nokontrak')");
+                                    $result = mysqli_query($koneksi, "INSERT INTO persetujuan (nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang) VALUES('$namaadmin','$roleadmin','$kategori','$namabarang','$stok')");
 
                                     
                                     if ($result){
                                         //jika data berhasil disimpan
                                         echo '<script>alert("Simpan data Berhasil")</script>';
-                                        echo '<script>window.location="databarang.php"</script>';
+                                        echo '<script>window.location="index.php?page=penyedia/databarang.php"</script>';
                                     }else{
                                         echo 'gagal'.mysqli_error($koneksi);
                                     }
-                                    header("Location: index.php?page=databarang.php");
+                                    header("Location: index.php?page=penyedia/registbarang.php");
                                 }
                                 ?>
                             </div>
