@@ -59,12 +59,13 @@ file_put_contents('UIDContainer.php',$Write);
                                         <tr>
                                             <th class="border-top-0">No</th>
                                             <th class="border-top-0">Nama Penyedia</th>
-                                            <th class="border-top-0">Role</th>
+                                            <th class="border-top-0" style="text-align:center">Role</th>
                                             <th class="border-top-0">Kategori</th>
                                             <th class="border-top-0">Nama Barang</th>
                                             <th class="border-top-0">Jumlah Barang</th>
                                             <th class="border-top-0">Tanggal Permintaan</th>
                                             <th class="border-top-0">Status Persetujuan</th>
+                                            <th class="border-top-0">Persetujuan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -80,10 +81,14 @@ file_put_contents('UIDContainer.php',$Write);
                                             <td><?php echo $row['nama_penyedia']?></td>
                                             <td><?php echo $row['role']?></td>
                                             <td><?php echo $row['jenis_komoditi']?></td>
-                                            <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['jumlah_barang']?></td>
+                                            <td style="text-align:center"><?php echo $row['nama_barang']?></td>
+                                            <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
                                             <td><?php echo $row['tgl_request']?></td>
-                                            <td><?php echo ($row['status_request']== 0)?'Pending':'Approved'; ?></td>
+                                            <td style="text-align:center"><?php echo ($row['status_request']== 0)?'Pending':'Approved'; ?></td>
+                                            <td>
+                                                <a href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php"?>">Lihat Detail</a>
+                                                <!-- <input type="button" name="persetujuan" value="disetujui"> -->
+                                            </td>
                                             </tr>
                                         <?php }
                                         }else { ?>

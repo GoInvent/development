@@ -59,7 +59,7 @@
 										<input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " required>
 										<label for="floatingInput">No.Kontrak</label>
 									</div>
-									<input type="submit" name="submit" value="Simpan" class="btn btn-success">
+									<input type="submit" name="submit" value="Setujui Barang" class="btn btn-success">
                                 </form>
                                 <?php
                                 // Check If form submitted, insert form data into users table.

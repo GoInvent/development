@@ -34,6 +34,7 @@
     <script src="https://kit.fontawesome.com/64c79ef594.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="css/style-detail-persetujuan.css" rel="stylesheet">
     <script>
 		$(document).ready(function(){
 				$("#getUID").load("UIDContainer.php");
@@ -186,7 +187,7 @@
     <!-- Konten Dinamis -->
     <!-- Semua laman akan terinput disini -->
     <!-- ============================================================== -->
-    <div class="content" style="margin-left:0px;">
+    <div class="content">
         <?php 
             $filename = $page;
             // echo $filename;
