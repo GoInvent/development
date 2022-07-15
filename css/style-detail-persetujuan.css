@@ -37,3 +37,11 @@ input.submit-persetujuan {
 input.submit-persetujuan:hover {
     background:orange;
 }
+
+a.submit-persetujuan {
+    border: 1px solid;
+    border-radius: 7px;
+    padding: 7px;
+    background: #109f10;
+    color: white;
+}
