@@ -41,7 +41,11 @@ input.submit-persetujuan:hover {
 a.submit-persetujuan {
     border: 1px solid;
     border-radius: 7px;
-    padding: 7px;
-    background: #109f10;
+    background: #35ba35;
     color: white;
+    font-size: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    padding-left: 3px;
 }

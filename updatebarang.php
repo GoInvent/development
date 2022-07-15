@@ -14,6 +14,7 @@ file_put_contents('UIDContainer.php',$Write);
 		echo '<script>window.location="databarang.php"</script>';
 	}
 	$p = mysqli_fetch_object($produk);
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
