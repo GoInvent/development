@@ -11,8 +11,8 @@
     $password = $_POST['password_user'];
     $role = "User";
 
-    
     $cek_email = mysqli_num_rows(mysqli_query($koneksi,"SELECT * FROM users WHERE email_user = '$email'"));
+    
     if ($cek_email>0) {
         // Could not get the data that should have been sent.
         echo '<script>alert("Email sudah terdaftar")</script>';

@@ -10,6 +10,8 @@
         $row = mysqli_fetch_assoc($sql_pemasukan);
 
         $nama_penyedia = $row['nama_penyedia'];
+        $komoditi = $row['id_komoditi'];
+        $jenis_komoditi = $row['jenis_komoditi'];
         $nama_barang = $row['nama_barang'];
         $jumlah_barang = $row['jumlah_barang'];
         $harga_barang = $row['harga_barang'];
@@ -32,15 +34,30 @@
                             <h4>Input data barang</h4>
                             <p>Pendataan barang sebelum masuk gudang</p>
                             <?php if($id_request):?>
-                                <form class="" action="" method="POST">
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php" ?>" method="POST">
                                     <div class="form-floating mb-3">
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" ">
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                     </div>
 
-                                    <div class="form-floating mb-3">
-                                        <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $jenis_komoditi ?> required readonly>
+                                    <!-- <div class="form-floating mb-3">
+                                        <input type="text" name="id_komoditi" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $jenis_komoditi ?> required readonly>
                                         <label for="floatingInput">Kategori Barang</label>
+                                    </div> -->
+
+                                    <div class="form-floating mb-3">
+                                        <select name="id_komoditi" class="form-control" required>
+                                            <option readonly value="<?php echo $komoditi ?>"><?php echo $jenis_komoditi ?></option>
+                                            <?php 
+                                                include 'database.php';
+                                                $komoditi = mysqli_query($koneksi, "SELECT * FROM komoditi ORDER BY id_komoditi DESC");
+                                                while ($r = mysqli_fetch_array($komoditi)) {
+                                            ?> 
+                                            <?php if($komoditi != $komoditi)?>
+                                                <option value="<?php echo $r['id_komoditi'] ?>"><?php echo $r['jenis_komoditi'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                            <label for="floatingInput">Kategori</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
@@ -70,7 +87,7 @@
                                     <input type="submit" name="submit" value="Setujui Barang" class="btn btn-success">
                                 </form>
                             <?php else: ?>
-                                <form class="" action="" method="post">
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php" ?>" method="post">
                                     <div class="form-floating mb-3">
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" " required>
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
@@ -116,34 +133,6 @@
                                     </div>
                                     <input type="submit" name="submit" value="Simpan" class="btn btn-success">
                                 </form>
-                            <?php
-                            // Check If form submitted, insert form data into users table.
-                            if(isset($_POST['submit'])) {
-                                $idbarang       = $_POST['id_barang'];
-                                $kategori       = $_POST['id_komoditi'];
-                                $namabarang     = $_POST['nama_barang'];
-                                $harga          = $_POST['harga_barang'];
-                                $stok           = $_POST['jumlah_barang'];
-                                $tahun          = $_POST['tahun_produksi'];
-                                $nokontrak      = $_POST['no_kontrak'];
-                                $statusbarang   = "Approved";
-                                
-                                // include database connection file
-                                include_once("database.php");
-                                        
-                                // Insert user data into table
-                                $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_komoditi,nama_barang, harga_barang, jumlah_barang, tahun_produksi, no_kontrak, status_barang) VALUES('$idbarang','$kategori','$namabarang','$harga','$stok','$tahun','$nokontrak','$statusbarang')");
-                                
-                                if ($result){
-                                    //jika data berhasil disimpan
-                                    echo '<script>alert("Simpan data Berhasil")</script>';
-                                    echo '<script>window.location="index.php?page=disbekal/databarang.php&id_barang=$row[id_barang]"</script>';
-                                }else{
-                                    echo 'gagal'.mysqli_error($koneksi);
-                                }
-                                header("Location: index.php?page=disbekal/databarang.php");
-                            }
-                            ?>
                             <?php endif; ?>
                         </div>
                     </div>
