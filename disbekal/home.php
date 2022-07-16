@@ -51,7 +51,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                             <!-- title -->
                             <div class="d-md-flex">
                                 <div>
-                                    <h4 class="card-title">Persetujuan Barang</h4>
+                                    <h4 class="card-title">Pemasukan Barang</h4>
                                     <p>Daftar Permintaan Barang Masuk</p>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM persetujuan LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_request DESC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_request DESC');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>

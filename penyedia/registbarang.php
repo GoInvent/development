@@ -77,16 +77,17 @@
                                     $roleadmin      = $_POST['role'] = $_SESSION['role'];
                                     $kategori       = $_POST['id_komoditi'];    
                                     $namabarang     = $_POST['nama_barang'];
-                                    $harga          = $_POST['harga_barang'];
                                     $stok           = $_POST['jumlah_barang'];
+                                    $harga          = $_POST['harga_barang'];
                                     $tahun          = $_POST['tahun_produksi'];
                                     $nokontrak      = $_POST['no_kontrak'];
+                                    $statusrequest   = "Pending";
                                     
                                     // include database connection file
                                     include_once("database.php");
                                             
                                     // Insert user data into table
-                                    $result = mysqli_query($koneksi, "INSERT INTO persetujuan (id_admin, nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi) VALUES('$idadmin','$namaadmin','$roleadmin','$kategori','$namabarang','$stok','$harga','$tahun')");
+                                    $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_admin, nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi, status_request) VALUES('$idadmin','$namaadmin','$roleadmin','$kategori','$namabarang','$stok','$harga','$tahun','$statusrequest')");
 
                                     
                                     if ($result){

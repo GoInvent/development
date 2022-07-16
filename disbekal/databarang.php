@@ -1,3 +1,12 @@
+<?php 
+
+include 'database.php';
+include_once('helper.php');
+
+$id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
+$id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
+?>
+
 <body>
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->

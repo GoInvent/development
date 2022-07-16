@@ -5,9 +5,9 @@
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
     if ($id_request){
-        $sql_persetujuan = mysqli_query($koneksi, "SELECT * FROM persetujuan LEFT JOIN komoditi ON komoditi.id_komoditi = persetujuan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
-        $row = mysqli_fetch_assoc($sql_persetujuan);
-        $sql_admin = mysqli_query($koneksi, "SELECT * FROM persetujuan LEFT JOIN admin ON admin.id_admin = persetujuan.id_admin WHERE id_request = '".$_GET['id_request']."'");
+        $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN komoditi ON komoditi.id_komoditi = pemasukan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
+        $row = mysqli_fetch_assoc($sql_pemasukan);
+        $sql_admin = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN admin ON admin.id_admin = pemasukan.id_admin WHERE id_request = '".$_GET['id_request']."'");
         $data = mysqli_fetch_assoc($sql_admin);
         $nama_penyedia  = $row['nama_penyedia'];
         $nama_barang    = $row['nama_barang'];
@@ -32,7 +32,7 @@
             ?>
             <h6>ID Request : <?php echo $id_request?></h6>
         
-        <div class="card" style="width: 65rem;">
+        <div class="card" style="width: 65rem; border:1px solid black">
             <div class="card-header" style="text-align: center;">
                 <h5>Informasi Penyedia</h3>
             </div>

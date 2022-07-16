@@ -3,10 +3,11 @@
     include_once('helper.php');
 
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
+    $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
 
     if ($id_request){
-        $sql_persetujuan = mysqli_query($koneksi, "SELECT * FROM persetujuan LEFT JOIN komoditi ON komoditi.id_komoditi = persetujuan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
-        $row = mysqli_fetch_assoc($sql_persetujuan);
+        $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN komoditi ON komoditi.id_komoditi = pemasukan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
+        $row = mysqli_fetch_assoc($sql_pemasukan);
 
         $nama_penyedia = $row['nama_penyedia'];
         $nama_barang = $row['nama_barang'];
@@ -136,7 +137,7 @@
                                 if ($result){
                                     //jika data berhasil disimpan
                                     echo '<script>alert("Simpan data Berhasil")</script>';
-                                    echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
+                                    echo '<script>window.location="index.php?page=disbekal/databarang.php&id_barang=$row[id_barang]"</script>';
                                 }else{
                                     echo 'gagal'.mysqli_error($koneksi);
                                 }
