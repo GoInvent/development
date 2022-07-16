@@ -5,12 +5,15 @@
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
     if ($id_request){
-        $sql_persetujuan = mysqli_query($koneksi, 'SELECT * FROM persetujuan LEFT JOIN komoditi USING(id_komoditi)');
+        $sql_persetujuan = mysqli_query($koneksi, "SELECT * FROM persetujuan LEFT JOIN komoditi ON komoditi.id_komoditi = persetujuan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
         $row = mysqli_fetch_assoc($sql_persetujuan);
 
         $nama_penyedia = $row['nama_penyedia'];
+        $notelp = $row['no_hp'];
         $nama_barang = $row['nama_barang'];
         $jumlah_barang = $row['jumlah_barang'];
+        $harga_barang = $row['harga_barang'];
+        $tahun_produksi = $row['tahun_produksi'];
         $tgl_request = $row['tgl_request'];
         $jenis_komoditi = $row['jenis_komoditi'];
     }
@@ -32,14 +35,16 @@
             <div class='informasi-penyedia'>
                 <h6 class="form-penyedia">Id Penyedia   : </h6>
                 <h6 class="form-penyedia">Nama Penyedia : <?php echo $nama_penyedia ?></h6>
-                <h6 class="form-penyedia">No Hp         : </h6>
+                <h6 class="form-penyedia">No Hp         : <?php echo $notelp ?></h6>
                 <h6 class="form-penyedia">Email Aktif   :</h6>
                 <h6 class="form-penyedia">Tanggal Pengajuan : <?php echo $tgl_request ?></h6>
             </div>
             <div class="informasi-pengajuan-barang" style="margin-bottom:20px;">
                 <h6 class="form-penyedia">Nama Barang : <?php echo $nama_barang?></h6>
-                <h6 class="form-penyedia">Jenis Barang : <?php echo $jenis_komoditi?> </h6>
+                <h6 class="form-penyedia">Jenis Barang : <?php echo  $jenis_komoditi ?> </h6>
                 <h6 class="form-penyedia">Jumlah Barang : <?php echo $jumlah_barang?> </h6>
+                <h6 class="form-penyedia">Harga Barang : <?php echo $harga_barang?> </h6>
+                <h6 class="form-penyedia">Tahun Produksi : <?php echo $tahun_produksi?> </h6>
             </div>
             
             <!-- <input class="submit-persetujuan" type="submit" value="Registrasi Barang" style="margin-top:2%;"></input> -->

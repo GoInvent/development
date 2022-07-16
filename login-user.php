@@ -42,7 +42,7 @@ file_put_contents('UIDContainer.php',$Write);
           <h2 style="text-align: center">Masuk Akun Admin</h2>
           <p style="text-align: center">Isi form dibawah ini untuk login</p>
           <div class="border-regist"></div>
-          <form action="cek_login.php" method="POST">
+          <form action="cek_login_user.php" method="POST">
             <!-- Email input -->
             <div class="form-outline mb-4">
               <label class="form-label">Email address</label>
@@ -68,6 +68,7 @@ file_put_contents('UIDContainer.php',$Write);
 
             <div class="text-center text-lg-start mt-4 pt-2">
               <input type="submit" name="submit" value="Login"  class="btn btn-primary btn-lg" style="padding-left: 2rem; padding-right: 2rem; font-size:14px; width:100%;">
+              <a class="btn btn-success" href="register.php" style="padding-left: 2rem; padding-right: 2rem; font-size:14px; width:100%;">Register</a>
               <!-- <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="register.php" style="color:#1499DC;">Register</a></p> -->
             </div>
 

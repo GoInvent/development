@@ -27,7 +27,6 @@
                                             <th>ID Barang</th>
                                             <th>Kategori</th>
                                             <th>Nama</th>
-                                            <th>Volume</th>
                                             <th>Harga</th>
                                             <th>Stok</th>
                                             <th>Tahun</th>
@@ -49,13 +48,12 @@
                                             <td><?php echo $row['id_barang']?></td>
                                             <td><?php echo $row['jenis_komoditi']?></td>
                                             <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['volume_barang']?></td>
                                             <td><?php echo $row['harga_barang']?></td>
                                             <td><?php echo $row['jumlah_barang']?></td>
                                             <td><?php echo $row['tahun_produksi']?></td>
                                             <td><?php echo $row['no_kontrak']?></td>
                                             <td><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
-                                            <td><a class="btn btn-success" href="updatebarang.php?id=<?php echo $row['id_barang'] ?>">Edit</a>
+                                            <td><a class="btn btn-success" href="index.php?page=updatebarang.php&id=<?php echo $row['id_barang'] ?>">Edit</a>
                                             <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="deletebarang.php?idb=<?php echo $row['id_barang'] ?>">Delete</a>
                                             </td>
                                             </tr>
@@ -72,20 +70,8 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

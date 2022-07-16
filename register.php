@@ -35,7 +35,7 @@ file_put_contents('UIDContainer.php',$Write);
       <div class="row d-flex justify-content-center align-items-center h-100">
         
         <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" style="width:95%;" alt="Sample image">
+          <img src="assets/images/image.webp" class="img-fluid" style="width:95%;" alt="Sample image">
         </div>
              
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -46,28 +46,28 @@ file_put_contents('UIDContainer.php',$Write);
 
                 <div class="form-outline mb-4">
                     <label class="form-label">Nama</label>
-                    <input type="text" name="nama_user" id="nama_user" class="form-control form-control-lg" placeholder="Masukan nama lengkap" />
+                    <input type="text" name="nama_user" id="nama_user" class="form-control form-control-lg" placeholder="Masukan nama lengkap" required/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label">No.Handphone</label>
+                    <input type="number" name="no_hp" id="nama_user" class="form-control form-control-lg" placeholder="Masukan No Handphone" required />
                 </div>
 
                 <div class="form-outline mb-4">
                     <label class="form-label">Email address</label>
-                    <input type="email" name="email_user" id="email_user" class="form-control form-control-lg" placeholder="Masukan email" />
+                    <input type="email" name="email_user" id="email_user" class="form-control form-control-lg" placeholder="Masukan email" required/>
                 </div>
 
                 <div class="form-outline mb-3">
                     <label class="form-label">Password</label>
-                   <input type="password" name="password_user" id="pass_user" class="form-control form-control-lg" placeholder="Masukan Pasword" />
-                </div>
-
-                <div class="form-outline mb-3">
-                    <label class="form-label">Re-Password</label>
-                    <input type="password" name="re_password_user" id="re_pass_user" class="form-control form-control-lg" placeholder="Masukan ulang password" />
+                   <input type="password" name="password_user" id="pass_user" class="form-control form-control-lg" placeholder="Masukan Pasword" required/>
                 </div>
 
 
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <input type="submit" name="submit" value="Register"  class="btn btn-primary btn-lg" style="padding-left: 2rem; padding-right: 2rem; font-size:14px; width:100%;">
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Sudah memiliki akun? <a href="login.php" style="color:#1499DC;">Login</a></p>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Sudah memiliki akun? <a href="login-user.php" style="color:#1499DC;">Login</a></p>
                 </div>
 
             </form>

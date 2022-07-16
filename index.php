@@ -7,11 +7,15 @@
     file_put_contents('UIDContainer.php',$Write);
     include 'database.php';
     session_start();
-    if(!$_SESSION['role']==" "){
+    if($_SESSION['login']==0){
 		header("location:login.php");
-		}
+	} else if ($_SESSION['role']=="User"){
+        $nama_user = $_SESSION['nama_user'];
+    } else if (!$_SESSION['role']=="User") {
+        $nama_admin = $_SESSION['nama_admin'];
+    }
     $role = $_SESSION['role'];
-    $nama_admin = $_SESSION['nama_admin'];
+    
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +89,14 @@
                 </div>
 
                 <div style="margin:2% 0% 0% 0%;">
-                    <?php echo "Hi Selamat datang, <b>$nama_admin</b>" ?>
+                    <?php 
+                    if ($_SESSION['role']=="User") {
+                       echo "Hi Selamat datang, <b>$nama_user</b>";
+                    } elseif (!$_SESSION['role']=="User") {
+                       echo "Hi Selamat datang, <b>$nama_admin</b>";
+                    }
+                    
+                    ?>
                 </div>
             </nav>
         </header>
@@ -169,6 +180,17 @@
                                 <i class="mdi mdi-border-all"></i>
                                 <span class="hide-menu">Input Barang</span></a>
                             </li> 
+                        <?php elseif ($_SESSION['role'] == "User") : ?> <!--session kadopus -->
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/home.php'?>" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Beranda</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/databarang.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Permintaan Barang</span></a>
+                            </li>
                         <?php endif; ?>                            
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=logout.php"?>" onclick="return confirm('Ingin Logout?')">

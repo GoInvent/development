@@ -31,7 +31,7 @@
                                             <th>Stok</th>
                                             <th>Tahun</th>
                                             <th>No.Kontrak</th>
-                                            <th>Status</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,7 +51,8 @@
                                             <td><?php echo $row['jumlah_barang']?></td>
                                             <td><?php echo $row['tahun_produksi']?></td>
                                             <td><?php echo $row['no_kontrak']?></td>
-                                            <td><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
+                                            <td><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
+                                            </td>
                                             </tr>
                                         <?php }
                                         }else { ?>

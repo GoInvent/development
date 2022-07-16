@@ -1,14 +1,8 @@
 <?php
 $Write="<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
 file_put_contents('UIDContainer.php',$Write);
-
-    error_reporting(0);
-	session_start();
 	require 'database.php';
-	// cek apakah yang mengakses halaman ini sudah login
-	if(!$_SESSION['role']=="disbekal"){
-	header("location:login.php?pesan=gagal");
-	}	
+	// cek apakah yang mengakses halaman ini sudah login	
 	$produk = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_barang ='".$_GET['id']."' ");
 	if(mysqli_num_rows($produk)==0){
 		echo '<script>window.location="databarang.php"</script>';
@@ -39,20 +33,19 @@ file_put_contents('UIDContainer.php',$Write);
 <body>
         <div class="page-wrapper">
             <div class="container-fluid">
-
                                         <tbody>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                    <h1 align="center">Update Barang</h1>
+                                                    <h1 align="center">Request Barang</h1>
                                                         <form class="" method="post">
                                                             <div class="form-floating mb-3">
                                                                 <input type="text" name="id_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->id_barang ?>" required disabled>
-                                                                <label for="floatingInput">Nama Barang</label>
+                                                                <label for="floatingInput">ID Barang</label>
                                                             </div>
                                                             <div class="form-floating mb-3">
-                                                                <select name="id_komoditi" class="form-control" required>
+                                                                <select name="id_komoditi" class="form-control" required disabled> 
                                                                     <option value="">--Pilih Kategori--</option>
                                                                     <?php 
                                                                         include 'database.php';
@@ -65,33 +58,33 @@ file_put_contents('UIDContainer.php',$Write);
                                                                     <label for="floatingInput">Kategori</label>
                                                             </div>
                                                             <div class="form-floating mb-3">
-                                                                <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->nama_barang ?>" required>
+                                                                <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->nama_barang ?>" required disabled>
                                                                 <label for="floatingInput">Nama Barang</label>
                                                             </div> 
                                                             <div class="form-floating mb-3">
-                                                                <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->harga_barang ?>" required>
+                                                                <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->harga_barang ?>" required disabled>
                                                                 <label for="floatingInput">Harga</label>
                                                             </div>
                                                             <div class="form-floating mb-3">
-                                                                <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->jumlah_barang ?>"required>
+                                                                <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->jumlah_barang ?>"required> 
                                                                 <label for="floatingInput">Stok</label>
                                                             </div>
                                                             <div class="form-floating mb-3">
-                                                                <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->tahun_produksi ?>"required>
+                                                                <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->tahun_produksi ?>"required disabled>
                                                                 <label for="floatingInput">Tahun</label>
                                                             </div>
                                                             <div class="form-floating mb-3">
-                                                                <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->no_kontrak ?>"required>
+                                                                <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $p->no_kontrak ?>"required disabled>
                                                                 <label for="floatingInput">No Kontrak</label>
                                                             </div>
                                                             <div class="form-floating mb-3">
-                                                                <select class="form-control" name="status_barang">
+                                                                <select class="form-control" name="status_barang" required readonly>
                                                                     <option value="">--Pilih--</option>
                                                                     <option value="1" <?php echo ($p->status_barang == 1)?'selected':'';?>>Approved</option>
                                                                     <option value="0" <?php echo ($p->status_barang == 0)?'selected':'';?>>Pending</option>
                                                                 </select>
                                                             </div>
-                                                            <input type="submit" name="submit" value="Simpan" class="btn btn-success">
+                                                            <input type="submit" name="submit" value="Request" class="btn btn-success">
                                                         </form>
                                         <?php
                                             // Check If form submitted, insert form data into users table.

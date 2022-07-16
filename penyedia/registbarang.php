@@ -43,10 +43,6 @@
 										<input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=" " required>
 										<label for="floatingInput">Nama Barang</label>
 									</div>
-                                    <div class="form-floating mb-3">
-										<input type="number" name="volume_barang" class="form-control" id="floatingInput" placeholder=" " required>
-										<label for="floatingInput">Volume</label>
-									</div>
 									<div class="form-floating mb-3">
 										<input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required>
 										<label for="floatingInput">Harga</label>
@@ -72,7 +68,6 @@
                                     $roleadmin      = $_POST['role'] = $_SESSION['role'];
                                     $kategori       = $_POST['id_komoditi'];    
                                     $namabarang     = $_POST['nama_barang'];
-                                    $volume         = $_POST['volume_barang'];
                                     $harga          = $_POST['harga_barang'];
                                     $stok           = $_POST['jumlah_barang'];
                                     $tahun          = $_POST['tahun_produksi'];
@@ -82,7 +77,7 @@
                                     include_once("../database.php");
                                             
                                     // Insert user data into table
-                                    $result = mysqli_query($koneksi, "INSERT INTO persetujuan (nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang) VALUES('$namaadmin','$roleadmin','$kategori','$namabarang','$stok')");
+                                    $result = mysqli_query($koneksi, "INSERT INTO persetujuan (nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi) VALUES('$namaadmin','$roleadmin','$kategori','$namabarang','$stok','$harga','$tahun')");
 
                                     
                                     if ($result){

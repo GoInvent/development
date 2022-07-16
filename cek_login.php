@@ -20,7 +20,6 @@ if($cek > 0){
 
 	$data = mysqli_fetch_assoc($login);
 	$_SESSION['id_admin'] = $data['admin_id'];
-	$_SESSION['id_user'] = $data_user['id_user'];
 
 	// cek jika user login sebagai admin
 	if($data['role']=="disbekal"){
@@ -29,6 +28,7 @@ if($cek > 0){
 		$_SESSION['role'] = "Disbekal";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
+		$_SESSION['login'] = 1;
 		// alihkan ke halaman dashboard admin
 		header("location:index.php?page=disbekal/home.php");
 
@@ -39,6 +39,7 @@ if($cek > 0){
 		$_SESSION['role'] = "Kadopus";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
+		$_SESSION['login'] = 1;
 		// alihkan ke halaman dashboard pegawai
 		header("location:index.php?page=kadopus/home.php");
 	}else if($data['role']=="penyedia"){
@@ -47,6 +48,7 @@ if($cek > 0){
 		$_SESSION['role'] = "Penyedia";
 		$_SESSION['id_admin'] = $data['admin_id'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
+		$_SESSION['login'] = 1;
 		// alihkan ke halaman dashboard pegawai
 		header("location:index.php?page=penyedia/home.php");
 	}else{

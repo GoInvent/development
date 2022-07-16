@@ -5,12 +5,14 @@
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
     if ($id_request){
-        $sql_persetujuan = mysqli_query($koneksi, 'SELECT * FROM persetujuan LEFT JOIN komoditi USING(id_komoditi)');
+        $sql_persetujuan = mysqli_query($koneksi, "SELECT * FROM persetujuan LEFT JOIN komoditi ON komoditi.id_komoditi = persetujuan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
         $row = mysqli_fetch_assoc($sql_persetujuan);
 
         $nama_penyedia = $row['nama_penyedia'];
         $nama_barang = $row['nama_barang'];
         $jumlah_barang = $row['jumlah_barang'];
+        $harga_barang = $row['harga_barang'];
+        $tahun_produksi = $row['tahun_produksi'];
         $tgl_request = $row['tgl_request'];
         $jenis_komoditi = $row['jenis_komoditi'];
         $no_kontrak = rand();
@@ -29,9 +31,9 @@
                             <h4>Input data barang</h4>
                             <p>Pendataan barang sebelum masuk gudang</p>
                             <?php if($id_request):?>
-                                <form class="" action="" method="post">
+                                <form class="" action="proses_tambah.php" method="POST">
                                     <div class="form-floating mb-3">
-                                        <input name="id_barang" class="form-control" id="getUID" placeholder=" " required>
+                                        <input name="id_barang" class="form-control" id="getUID" placeholder=" ">
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                     </div>
 
@@ -41,12 +43,12 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $nama_barang ?> readonly>
+                                        <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $nama_barang ?> required readonly>
                                         <label for="floatingInput">Nama Barang</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $harga_barang ?> readonly>
                                         <label for="floatingInput">Harga</label>
                                     </div>
 
@@ -56,7 +58,7 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $tahun_produksi ?> readonly>
                                         <label for="floatingInput">Tahun</label>
                                     </div>
 
@@ -93,11 +95,6 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="volume_barang" class="form-control" id="floatingInput" placeholder=" " required>
-                                        <label for="floatingInput">Volume</label>
-                                    </div>
-
-                                    <div class="form-floating mb-3">
                                         <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required>
                                         <label for="floatingInput">Harga</label>
                                     </div>
@@ -113,10 +110,10 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " required> 
                                         <label for="floatingInput">No.Kontrak</label>
                                     </div>
-                                    <input type="submit" name="submit" value="Setujui Barang" class="btn btn-success">
+                                    <input type="submit" name="submit" value="Simpan" class="btn btn-success">
                                 </form>
                             <?php
                             // Check If form submitted, insert form data into users table.
@@ -124,22 +121,22 @@
                                 $idbarang = $_POST['id_barang'];
                                 $kategori = $_POST['id_komoditi'];
                                 $namabarang = $_POST['nama_barang'];
-                                $volume = $_POST['volume_barang'];
                                 $harga = $_POST['harga_barang'];
                                 $stok = $_POST['jumlah_barang'];
                                 $tahun = $_POST['tahun_produksi'];
                                 $nokontrak = $_POST['no_kontrak'];
+                                $statusbarang = "Approved";
                                 
                                 // include database connection file
                                 include_once("database.php");
                                         
                                 // Insert user data into table
-                                $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_komoditi,nama_barang, volume_barang, harga_barang, jumlah_barang, tahun_produksi, no_kontrak) VALUES('$idbarang','$kategori','$namabarang','$volume','$harga','$stok','$tahun','$nokontrak')");
+                                $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_komoditi,nama_barang, harga_barang, jumlah_barang, tahun_produksi, no_kontrak, status_barang) VALUES('$idbarang','$kategori','$namabarang','$harga','$stok','$tahun','$nokontrak','$statusbarang')");
                                 
                                 if ($result){
                                     //jika data berhasil disimpan
                                     echo '<script>alert("Simpan data Berhasil")</script>';
-                                    echo '<script>window.location="databarang.php"</script>';
+                                    echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
                                 }else{
                                     echo 'gagal'.mysqli_error($koneksi);
                                 }
