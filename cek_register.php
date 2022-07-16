@@ -11,15 +11,16 @@
     $password = $_POST['password_user'];
     $role = "User";
 
-    $register = mysqli_query($koneksi, "INSERT INTO users(nama_user, no_hp, email_user, password_user, role)
-                VALUES('$nama','$notelp', '$email', '$password','$role')");
-    // Now we check if the data was submitted, isset() function will check if the data exists.
+    
     $cek_email = mysqli_num_rows(mysqli_query($koneksi,"SELECT * FROM users WHERE email_user = '$email'"));
     if ($cek_email>0) {
         // Could not get the data that should have been sent.
         echo '<script>alert("Email sudah terdaftar")</script>';
         echo '<script>window.location="register.php"</script>';
     }else {
+        $register = mysqli_query($koneksi, "INSERT INTO users(nama_user, no_hp, email_user, password_user, role)
+                VALUES('$nama','$notelp', '$email', '$password','$role')");
+        echo '<script>alert("Registrasi Berhasil")</script>';
         echo '<script>window.location="login-user.php"</script>';
     }
 ?>

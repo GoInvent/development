@@ -18,6 +18,10 @@
                                 <h4>Input data barang</h4>
                                 <p>Pendataan barang sebelum masuk gudang</p>
 								<form class="" action="" method="post">
+                                <div class="form-floating mb-3">
+										<input name="id_admin" class="form-control" id="id_admin" placeholder=" " value="<?php echo $_SESSION['id_admin'] ?>" required disabled>
+										<label for="id_admin">ID Admin</label>
+									</div>
                                     <div class="form-floating mb-3">
 										<input name="nama_penyedia" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $_SESSION['nama_admin'] ?>" required disabled>
 										<label for="nama_penyedia">Nama</label>
@@ -26,6 +30,10 @@
 										<input name="role" class="form-control" id="role" placeholder=" " value="<?php echo $_SESSION['role']?>" required disabled>
 										<label for="role">Role</label>
 									</div>
+                                    <!-- <div class="form-floating mb-3">
+										<input name="notelp" class="form-control" id="notelp" placeholder=" " value="<?php echo $_SESSION['email']?>" required disabled>
+										<label for="notelp">Notelp</label>
+									</div> -->
                                     <div class="form-floating mb-3">
                                     <select name="id_komoditi" class="form-control" required>
                                         <option value="">--Pilih Kategori--</option>
@@ -64,6 +72,7 @@
                                 <?php
                                 // Check If form submitted, insert form data into users table.
                                 if(isset($_POST['submit'])) {
+                                    $idadmin        = $_POST['id_admin'] = $_SESSION['id_admin'];
                                     $namaadmin      = $_POST['nama_admin'] = $_SESSION['nama_admin'];
                                     $roleadmin      = $_POST['role'] = $_SESSION['role'];
                                     $kategori       = $_POST['id_komoditi'];    
@@ -74,10 +83,10 @@
                                     $nokontrak      = $_POST['no_kontrak'];
                                     
                                     // include database connection file
-                                    include_once("../database.php");
+                                    include_once("database.php");
                                             
                                     // Insert user data into table
-                                    $result = mysqli_query($koneksi, "INSERT INTO persetujuan (nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi) VALUES('$namaadmin','$roleadmin','$kategori','$namabarang','$stok','$harga','$tahun')");
+                                    $result = mysqli_query($koneksi, "INSERT INTO persetujuan (id_admin, nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi) VALUES('$idadmin','$namaadmin','$roleadmin','$kategori','$namabarang','$stok','$harga','$tahun')");
 
                                     
                                     if ($result){

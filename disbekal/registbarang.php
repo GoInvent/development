@@ -31,7 +31,7 @@
                             <h4>Input data barang</h4>
                             <p>Pendataan barang sebelum masuk gudang</p>
                             <?php if($id_request):?>
-                                <form class="" action="proses_tambah.php" method="POST">
+                                <form class="" action="" method="POST">
                                     <div class="form-floating mb-3">
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" ">
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
@@ -110,7 +110,7 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " required> 
+                                        <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " readonly> 
                                         <label for="floatingInput">No.Kontrak</label>
                                     </div>
                                     <input type="submit" name="submit" value="Simpan" class="btn btn-success">
@@ -118,14 +118,14 @@
                             <?php
                             // Check If form submitted, insert form data into users table.
                             if(isset($_POST['submit'])) {
-                                $idbarang = $_POST['id_barang'];
-                                $kategori = $_POST['id_komoditi'];
-                                $namabarang = $_POST['nama_barang'];
-                                $harga = $_POST['harga_barang'];
-                                $stok = $_POST['jumlah_barang'];
-                                $tahun = $_POST['tahun_produksi'];
-                                $nokontrak = $_POST['no_kontrak'];
-                                $statusbarang = "Approved";
+                                $idbarang       = $_POST['id_barang'];
+                                $kategori       = $_POST['id_komoditi'];
+                                $namabarang     = $_POST['nama_barang'];
+                                $harga          = $_POST['harga_barang'];
+                                $stok           = $_POST['jumlah_barang'];
+                                $tahun          = $_POST['tahun_produksi'];
+                                $nokontrak      = $_POST['no_kontrak'];
+                                $statusbarang   = "Approved";
                                 
                                 // include database connection file
                                 include_once("database.php");

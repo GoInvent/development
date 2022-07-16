@@ -7,49 +7,64 @@
     if ($id_request){
         $sql_persetujuan = mysqli_query($koneksi, "SELECT * FROM persetujuan LEFT JOIN komoditi ON komoditi.id_komoditi = persetujuan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
         $row = mysqli_fetch_assoc($sql_persetujuan);
-
-        $nama_penyedia = $row['nama_penyedia'];
-        $notelp = $row['no_hp'];
-        $nama_barang = $row['nama_barang'];
-        $jumlah_barang = $row['jumlah_barang'];
-        $harga_barang = $row['harga_barang'];
+        $sql_admin = mysqli_query($koneksi, "SELECT * FROM persetujuan LEFT JOIN admin ON admin.id_admin = persetujuan.id_admin WHERE id_request = '".$_GET['id_request']."'");
+        $data = mysqli_fetch_assoc($sql_admin);
+        $nama_penyedia  = $row['nama_penyedia'];
+        $nama_barang    = $row['nama_barang'];
+        $jumlah_barang  = $row['jumlah_barang'];
+        $harga_barang   = $row['harga_barang'];
         $tahun_produksi = $row['tahun_produksi'];
-        $tgl_request = $row['tgl_request'];
+        $tgl_request    = $row['tgl_request'];
         $jenis_komoditi = $row['jenis_komoditi'];
+        $idadmin        = $data['id_admin'];
+        $email          = $data['email'];
     }
 ?>
 
 <!DOCTYPE html><html lang="en">
 <body>
-    <div class="container" style="margin-left:280px; margin-top:20px;">
-        <h3>Pengajuan masuk barang</h3>
-        <p>Detail lengkap persetujuan masuk-nya barang ke gudang</p>
-        <div class="border-persetujuan"></div>
-        <!-- Ambil data barang dari tb-penyediaan-barang -->
-        <?php
-            
-        ?>
-        <h6 style="margin-bottom:20px;">Id permintaan masuk barang : <?php echo $id_request?></h6>
+    <div class="container-fluid" style="margin-left:280px; margin-top:20px;">
+            <h3>Pengajuan Pemasukan Barang</h3>
+            <p>Detail barang</p>
+            <div class="border-persetujuan"></div>
+            <?php
+                
+            ?>
+            <h6>ID Request : <?php echo $id_request?></h6>
         
-        <div>
-            <div class='informasi-penyedia'>
-                <h6 class="form-penyedia">Id Penyedia   : </h6>
-                <h6 class="form-penyedia">Nama Penyedia : <?php echo $nama_penyedia ?></h6>
-                <h6 class="form-penyedia">No Hp         : <?php echo $notelp ?></h6>
-                <h6 class="form-penyedia">Email Aktif   :</h6>
-                <h6 class="form-penyedia">Tanggal Pengajuan : <?php echo $tgl_request ?></h6>
+        <div class="card" style="width: 65rem;">
+            <div class="card-header" style="text-align: center;">
+                <h5>Informasi Penyedia</h3>
             </div>
-            <div class="informasi-pengajuan-barang" style="margin-bottom:20px;">
-                <h6 class="form-penyedia">Nama Barang : <?php echo $nama_barang?></h6>
-                <h6 class="form-penyedia">Jenis Barang : <?php echo  $jenis_komoditi ?> </h6>
-                <h6 class="form-penyedia">Jumlah Barang : <?php echo $jumlah_barang?> </h6>
-                <h6 class="form-penyedia">Harga Barang : <?php echo $harga_barang?> </h6>
-                <h6 class="form-penyedia">Tahun Produksi : <?php echo $tahun_produksi?> </h6>
+                <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID   : <?php echo $idadmin ?></li>
+                    <li class="list-group-item">Nama Penyedia : <?php echo $nama_penyedia ?></li>
+                    <li class="list-group-item">Email  : <?php echo $email ?></li>
+                    <li class="list-group-item">Tanggal Pengajuan : <?php echo $tgl_request ?></li>
+                </ul>
+                </div>
+            <div class="card-header" style="text-align: center;">
+                <h5>Informasi Barang</h3> 
             </div>
-            
-            <!-- <input class="submit-persetujuan" type="submit" value="Registrasi Barang" style="margin-top:2%;"></input> -->
-            <a class="submit-persetujuan" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php&id_request=$row[id_request]" ?>">Registrasi Barang</a>
+                <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nama Barang : <?php echo $nama_barang?></li>
+                    <li class="list-group-item">Jenis Barang : <?php echo  $jenis_komoditi ?></li>
+                    <li class="list-group-item">Jumlah Barang : <?php echo $jumlah_barang?></li>
+                    <li class="list-group-item">Harga Barang : <?php echo $harga_barang?> </li>
+                    <li class="list-group-item">Tahun Produksi : <?php echo $tahun_produksi?> </li>
+                </ul>
+                </div>
+                <div class="card-body" style="margin-bottom:20px;">
+                    <h6 class="form-penyedia"></h6>
+                    <h6 class="form-penyedia"> </h6>
+                    <h6 class="form-penyedia"> </h6>
+                    <h6 class="form-penyedia"></h6>
+                    <h6 class="form-penyedia"></h6>
+                </div>
         </div>
+        <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php&id_request=$row[id_request]" ?>">Registrasi Barang</a>
     </div>
     
 </body>

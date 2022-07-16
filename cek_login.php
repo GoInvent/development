@@ -19,14 +19,14 @@ $cek = mysqli_num_rows($login);
 if($cek > 0){
 
 	$data = mysqli_fetch_assoc($login);
-	$_SESSION['id_admin'] = $data['admin_id'];
+	$_SESSION['id_admin'] = $data['id_admin'];
 
 	// cek jika user login sebagai admin
 	if($data['role']=="disbekal"){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
 		$_SESSION['role'] = "Disbekal";
-		$_SESSION['id_admin'] = $data['admin_id'];
+		$_SESSION['id_admin'] = $data['id_admin'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
 		$_SESSION['login'] = 1;
 		// alihkan ke halaman dashboard admin
@@ -37,7 +37,7 @@ if($cek > 0){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
 		$_SESSION['role'] = "Kadopus";
-		$_SESSION['id_admin'] = $data['admin_id'];
+		$_SESSION['id_admin'] = $data['id_admin'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
 		$_SESSION['login'] = 1;
 		// alihkan ke halaman dashboard pegawai
@@ -46,7 +46,7 @@ if($cek > 0){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
 		$_SESSION['role'] = "Penyedia";
-		$_SESSION['id_admin'] = $data['admin_id'];
+		$_SESSION['id_admin'] = $data['id_admin'];
 		$_SESSION['nama_admin'] = $data['nama_admin'];
 		$_SESSION['login'] = 1;
 		// alihkan ke halaman dashboard pegawai
