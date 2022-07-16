@@ -2,7 +2,7 @@
 	$hostname = 'localhost';
 	$username = 'root';
 	$password = '';
-	$dbname   = 'goinvent';
+	$dbname   = 'ilogi';
 
 
 	$koneksi = mysqli_connect($hostname, $username, $password, $dbname) or die ('Gagal terhubung ke database');
