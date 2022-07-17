@@ -27,7 +27,6 @@
                                             <th>ID Barang</th>
                                             <th>Kategori</th>
                                             <th>Nama</th>
-                                            <th>Volume</th>
                                             <th>Harga</th>
                                             <th>Stok</th>
                                             <th>Tahun</th>
@@ -48,7 +47,6 @@
                                             <td><?php echo $row['id_barang']?></td>
                                             <td><?php echo $row['jenis_komoditi']?></td>
                                             <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['volume_barang']?></td>
                                             <td><?php echo $row['harga_barang']?></td>
                                             <td><?php echo $row['jumlah_barang']?></td>
                                             <td><?php echo $row['tahun_produksi']?></td>

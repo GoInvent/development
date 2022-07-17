@@ -53,6 +53,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                 <div>
                                     <h4 class="card-title">Pemasukan Barang</h4>
                                     <p>Daftar Permintaan Barang Masuk</p>
+                                    <?php echo $_SESSION['id_user']?>
                                 </div>
                             </div>
                             <!-- title -->
@@ -68,7 +69,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                             <th class="border-top-0">Harga</th>
                                             <th class="border-top-0">Tahun</th>
                                             <th class="border-top-0">No. Kontrak</th>
-                                            <th class="border-top-0">Tanggal Permintaan</th>
+                                            <th class="border-top-0">Tanggal Persetujuan</th>
                                             <th class="border-top-0">Status Persetujuan</th>
                                         </tr>  
                                     </thead>
@@ -89,7 +90,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                             <td style="text-align:center"><?php echo $row['harga_barang']?></td>
                                             <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                             <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
-                                            <td><?php echo $row['tgl_request']?></td>
+                                            <td><?php echo $row['tgl_kirim']?></td>
                                             <td style="text-align:center"><?php echo ($row['status_request']== 0)?'Processed':'Sent'; ?></td>
                                             <td>
                                             </td>

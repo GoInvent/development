@@ -20,7 +20,8 @@ if($cek > 0){
 
 	$data = mysqli_fetch_assoc($login);
 	$_SESSION['id_admin'] = $data['id_admin'];
-
+	$idadmin = $_SESSION['id_admin'];
+	$result = mysqli_query($koneksi, "UPDATE admin SET last_login = NOW() WHERE id_admin = $idadmin");
 	// cek jika user login sebagai admin
 	if($data['role']=="disbekal"){
 		// buat session login dan email

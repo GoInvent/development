@@ -11,7 +11,7 @@
 		header("location:login.php");
 	} else if ($_SESSION['role']=="User"){
         $nama_user = $_SESSION['nama_user'];
-    } else if (!$_SESSION['role']=="User") {
+    } else {
         $nama_admin = $_SESSION['nama_admin'];
     }
     $role = $_SESSION['role'];
@@ -92,7 +92,7 @@
                     <?php 
                     if ($_SESSION['role']=="User") {
                        echo "Hi Selamat datang, <b>$nama_user</b>";
-                    } elseif (!$_SESSION['role']=="User") {
+                    } else {
                        echo "Hi Selamat datang, <b>$nama_admin</b>";
                     }
                     
@@ -142,7 +142,7 @@
                             </li>
 
                             <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/pengiriman.php"?>" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/pengeluaran.php"?>" aria-expanded="false">
                                 <i class="fa-solid fa-truck-fast"></i>
                                 <span class="hide-menu">Pengeluaran</span>
                                 </a>

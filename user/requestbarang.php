@@ -46,6 +46,10 @@
 										<label for="nama_penyedia">Nama</label>
 									</div>
                                     <div class="form-floating mb-3">
+										<input name="alamat_user" class="form-control" id="alamat_user" placeholder=" " required>
+										<label for="alamat_user">Alamat</label>
+									</div>
+                                    <div class="form-floating mb-3">
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" " value ="<?php echo $p->id_barang ?>" required readonly>
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                     </div>
@@ -95,6 +99,7 @@
                             if(isset($_POST['submit'])) {
                                 $iduser         = $_POST['id_user'] = $_SESSION['id_user'];
                                 $namauser       = $_POST['nama_user'] = $_SESSION['nama_user'];
+                                $alamat         = $_POST['alamat_user'];
                                 $idbarang       = $_POST['id_barang'];  
                                 $kategori       = $_POST['id_komoditi'];    
                                 $namabarang     = $_POST['nama_barang'];
@@ -108,7 +113,7 @@
                                 include_once("database.php");
                                         
                                 // Insert user data into table
-                                $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_user,nama_user,id_barang,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi, no_kontrak) VALUES('$iduser','$namauser','$idbarang','$kategori','$namabarang','$stok','$harga','$tahun','$nokontrak')");
+                                $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_user,nama_user,alamat_user,id_barang,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi, no_kontrak) VALUES('$iduser','$namauser','$alamat','$idbarang','$kategori','$namabarang','$stok','$harga','$tahun','$nokontrak')");
                                 
                                 if ($result){
                                     //jika data berhasil disimpan
