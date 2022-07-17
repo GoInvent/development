@@ -38,7 +38,7 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY nama_barang ASC');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>

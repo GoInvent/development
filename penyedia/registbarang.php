@@ -63,10 +63,6 @@
 										<input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " required>
 										<label for="floatingInput">Tahun</label>
 									</div>
-                                    <div class="form-floating mb-3">
-										<input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " required>
-										<label for="floatingInput">No.Kontrak</label>
-									</div>
 									<input type="submit" name="submit" value="Simpan" class="btn btn-success">
                                 </form>
                                 <?php
@@ -80,7 +76,6 @@
                                     $stok           = $_POST['jumlah_barang'];
                                     $harga          = $_POST['harga_barang'];
                                     $tahun          = $_POST['tahun_produksi'];
-                                    $nokontrak      = $_POST['no_kontrak'];
                                     $statusrequest   = "Pending";
                                     
                                     // include database connection file

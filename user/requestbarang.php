@@ -51,14 +51,14 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                    <select name="id_komoditi" class="form-control" required value ="<?php echo $p->id_komoditi ?> required>
+                                    <select name="id_komoditi" class="form-control" required readonly>
                                         <option value="">--Pilih Kategori--</option>
                                         <?php 
                                             include 'database.php';
                                             $komoditi = mysqli_query($koneksi, "SELECT * FROM komoditi ORDER BY id_komoditi DESC");
                                             while ($r = mysqli_fetch_array($komoditi)) {
                                         ?> 
-                                            <option value="<?php echo $p->id_komoditi ?>"><?php echo $p->jenis_komoditi ?></option>
+                                            <option value="<?php echo $r['id_komoditi'] ?>" <?php echo ($r['id_komoditi']==$p->id_komoditi)?'selected':''; ?>><?php echo $r['jenis_komoditi'] ?></option>
                                         <?php } ?>
                                     </select>
 										<label for="floatingInput">Kategori</label>
@@ -75,8 +75,8 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " required>
-                                        <label for="floatingInput">Stok</label>
+                                        <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" Masukkan Jumlah Barang " required>
+                                        <label for="floatingInput">Jumlah Barang</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
@@ -95,6 +95,7 @@
                             if(isset($_POST['submit'])) {
                                 $iduser         = $_POST['id_user'] = $_SESSION['id_user'];
                                 $namauser       = $_POST['nama_user'] = $_SESSION['nama_user'];
+                                $idbarang       = $_POST['id_barang'];  
                                 $kategori       = $_POST['id_komoditi'];    
                                 $namabarang     = $_POST['nama_barang'];
                                 $stok           = $_POST['jumlah_barang'];
@@ -107,7 +108,7 @@
                                 include_once("database.php");
                                         
                                 // Insert user data into table
-                                $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_user,nama_user,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi, no_kontrak) VALUES('$iduser','$namauser','$kategori','$namabarang','$stok','$harga','$tahun','$nokontrak')");
+                                $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_user,nama_user,id_barang,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi, no_kontrak) VALUES('$iduser','$namauser','$idbarang','$kategori','$namabarang','$stok','$harga','$tahun','$nokontrak')");
                                 
                                 if ($result){
                                     //jika data berhasil disimpan

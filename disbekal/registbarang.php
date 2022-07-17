@@ -40,13 +40,8 @@
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                     </div>
 
-                                    <!-- <div class="form-floating mb-3">
-                                        <input type="text" name="id_komoditi" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $jenis_komoditi ?> required readonly>
-                                        <label for="floatingInput">Kategori Barang</label>
-                                    </div> -->
-
                                     <div class="form-floating mb-3">
-                                        <select name="id_komoditi" class="form-control" required>
+                                        <select name="id_komoditi" class="form-control" required readonly>
                                             <option readonly value="<?php echo $komoditi ?>"><?php echo $jenis_komoditi ?></option>
                                             <?php 
                                                 include 'database.php';

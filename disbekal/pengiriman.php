@@ -91,9 +91,9 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                             <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                             <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
                                             <td><?php echo $row['tgl_request']?></td>
-                                            <td style="text-align:center"><?php echo ($row['status_request']== 0)?'Processed':'Sent'; ?></td>
+                                            <td style="text-align:center"><?php echo ($row['status_request'] == 0)?'Processed':'Sent'; ?></td>
                                             <td>
-                                                <a href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_kirim=$row[id_kirim]" ?>">Lihat Detail</a>
+                                                <a href="<?php echo BASE_URL."index.php?page=disbekal/detail_pengeluaran.php&id_kirim=$row[id_kirim]" ?>">Lihat Detail</a>
                                                 <!-- <input type="button" name="persetujuan" value="disetujui"> -->
                                             </td>
                                             </tr>
