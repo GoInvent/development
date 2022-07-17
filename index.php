@@ -164,6 +164,12 @@
                                 <i class="mdi mdi-border-all"></i>
                                 <span class="hide-menu">Registrasi Barang</span></a>
                             </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=kadopus/pengeluaran.php"?>" aria-expanded="false">
+                                <i class="fa-solid fa-truck-fast"></i>
+                                <span class="hide-menu">Pengeluaran</span>
+                                </a>
+                            </li>
                         <?php elseif ($_SESSION['role'] == "Penyedia") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=penyedia/home.php'?>" aria-expanded="false">
