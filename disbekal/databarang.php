@@ -39,6 +39,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             <th>Tahun</th>
                                             <th>No.Kontrak</th>
                                             <th>Status</th>
+                                            <th>Tanggal Approve</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -46,7 +47,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY nama_barang ASC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY created_at DESC');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -60,6 +61,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             <td><?php echo $row['tahun_produksi']?></td>
                                             <td><?php echo $row['no_kontrak']?></td>
                                             <td><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
+                                            <td><?php echo $row['created_at']?></td>
                                             <td><a class="btn btn-success" href="index.php?page=updatebarang.php&id=<?php echo $row['id_barang'] ?>">Edit</a>
                                             <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="deletebarang.php?idb=<?php echo $row['id_barang'] ?>">Delete</a>
                                             </td>
