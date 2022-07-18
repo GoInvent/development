@@ -91,7 +91,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                             <td style="text-align:center"><?php echo $row['harga_barang']?></td>
                                             <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                             <td><?php echo $row['tgl_request']?></td>
-                                            <td style="text-align:center"><?php echo ($row['status_request']== 0)?'Pending':'Approved'; ?></td>
+                                            <td style="text-align:center"><?php echo ($row['status_request'] == 0)?'Pending':'Approved'; ?></td>
                                             <td>
                                                 <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Lihat Detail</a>
                                                 <!-- <input type="button" name="persetujuan" value="disetujui"> -->

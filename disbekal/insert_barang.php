@@ -1,7 +1,7 @@
 <?php 
     include 'database.php';
     include_once('helper.php');
-
+    $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
     date_default_timezone_set('Asia/Jakarta');
 
     $idbarang       = $_POST['id_barang'];
@@ -19,7 +19,7 @@
     $row = mysqli_fetch_assoc($barang);
     $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_komoditi,nama_barang, harga_barang, jumlah_barang, tahun_produksi, no_kontrak, status_barang, created_at, updated_at) 
                 VALUES('$idbarang','$kategori','$namabarang','$harga','$stok','$tahun','$nokontrak','$statusbarang', '$created_at', '$update_at')");
-    
+    $update = mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1 WHERE id_request = '".$_GET['id_request']."'");
     if ($result){
         //jika data berhasil disimpan
         echo '<script>alert("Simpan data Berhasil")</script>';
@@ -27,9 +27,11 @@
     }else if($namabarang == $row['nama_barang']){
         echo '<script>alert("Gagal, Nama barang sudah ada")</script>';
         echo '<script>window.location="index.php?page=disbekal/home.php"</script>';
-    }else{
+    }else if($update){
+        echo '<script>alert("Simpan data Berhasil")</script>';
+    }else {
         echo 'gagal'.mysqli_error($koneksi);
-    } 
+    }
 // echo 'test 2jojdpoqwe12iepqowjdpoajd';
 
     // header("location:".BASE_URL."index.php?page=disbekal/databarang.php");
