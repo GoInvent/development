@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2022 at 06:06 PM
+-- Generation Time: Jul 18, 2022 at 06:54 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -45,10 +45,10 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `status`, `created_at`, `last_login`, `login`) VALUES
-(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-07-17 13:31:43', b'0'),
+(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-07-18 04:26:59', b'0'),
 (2, 'Test', 'test@gmail.com', 'test', 'kadopus', b'1', '2022-07-07 06:02:21', '2022-07-17 15:59:25', b'0'),
 (3, 'Aku', 'aku@gmail.com', 'test', 'penyedia', b'1', '0000-00-00 00:00:00', '2022-07-17 13:05:01', b'0'),
-(4, 'Omar Penyedia', 'dia@gmail.com', 'test', 'penyedia', b'1', '2022-07-13 08:41:23', '2022-07-17 13:05:01', b'0');
+(4, 'Omar Penyedia', 'dia@gmail.com', 'test', 'penyedia', b'1', '2022-07-13 08:41:23', '2022-07-18 03:52:13', b'0');
 
 -- --------------------------------------------------------
 
@@ -69,18 +69,6 @@ CREATE TABLE `barang` (
   `deleted_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `barang`
---
-
-INSERT INTO `barang` (`id_barang`, `id_komoditi`, `nama_barang`, `harga_barang`, `jumlah_barang`, `tahun_produksi`, `no_kontrak`, `status_barang`, `created_at`, `deleted_at`, `updated_at`) VALUES
-('11414', 3, 'Pensil', 2500, 95, 2019, 2001198644, b'1', '2017-07-21 19:31:56', '2022-07-17 07:35:38', '2022-07-17 07:35:38'),
-('123124', 2, 'Laptop', 150000000, 10, 2015, 1618347659, b'1', '2017-07-22 04:07:34', '2022-07-17 14:28:08', '2022-07-17 14:28:08'),
-('12312412', 3, 'Sandal', 15000, 15, 2151, 841766986, b'1', '2017-07-22 04:06:20', '2022-07-17 04:06:20', '2017-07-22 04:06:20'),
-('123151', 2, 'Sepatu Nike', 123155, 15, 2154, 123151, b'1', '2022-07-16 03:49:10', '2022-07-16 03:49:10', '2022-07-16 03:49:10'),
-('15161', 3, 'Sepatu Adidas Aja', 150000, 10, 2015, 1514515, b'1', '2022-07-16 05:19:12', '2022-07-17 07:15:57', '2022-07-17 07:15:57'),
-('155151', 1, 'Jaket', 150000, 45, 2019, 1476624244, b'1', '2017-07-22 04:21:25', '2022-07-17 13:44:34', '2022-07-17 13:44:34');
 
 --
 -- Triggers `barang`
@@ -107,19 +95,17 @@ DELIMITER ;
 
 CREATE TABLE `komoditi` (
   `id_komoditi` int(11) NOT NULL,
-  `jenis_komoditi` varchar(50) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `jenis_komoditi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `komoditi`
 --
 
-INSERT INTO `komoditi` (`id_komoditi`, `jenis_komoditi`, `created_at`, `updated_at`) VALUES
-(1, 'Pakaian', '2022-07-10 13:53:54', '2022-07-10 13:54:08'),
-(2, 'Elektronik', '2022-07-10 13:54:26', '2022-07-10 13:54:38'),
-(3, 'Lain-lain', '2022-07-10 13:54:40', '2022-07-10 13:54:49');
+INSERT INTO `komoditi` (`id_komoditi`, `jenis_komoditi`) VALUES
+(1, 'Pakaian'),
+(2, 'Elektronik'),
+(3, 'Lain-lain');
 
 -- --------------------------------------------------------
 
@@ -138,41 +124,6 @@ CREATE TABLE `log` (
   `stok_akhir` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `log`
---
-
-INSERT INTO `log` (`id_log`, `id_barang`, `nama_lama`, `nama_baru`, `stok_awal`, `stok_masuk`, `stok_keluar`, `stok_akhir`, `date`) VALUES
-(1, '12314asd', '', '', 10, 0, 0, 0, '2022-07-10 13:00:22'),
-(2, 'asdasdasda', '', 'Sepatu', 0, 0, 0, 0, '2022-07-12 06:32:20'),
-(3, '12314asd', '', 'Dasi', 0, 0, 0, 0, '2022-07-12 06:33:55'),
-(4, 'asdasdasda', '', 'Dasi', 0, 0, 0, 0, '2022-07-12 06:36:45'),
-(5, 'asdasdasda', '', 'Dasi', 5151515, 0, 0, 5151515, '2022-07-12 06:43:49'),
-(6, 'asdasdasda', '', 'Dasi', 10, 0, 0, 105, '2022-07-12 06:44:27'),
-(7, 'asdasdasda', '', 'Dasi', 105, 10, 10, 10, '2022-07-12 07:08:35'),
-(10, 'asdasdasda', '', 'Dasi', 10, 10, 10, 10, '2022-07-13 10:19:55'),
-(11, 'asdasdasda', '', 'Sepatu', 10, 10, 10, 10, '2022-07-13 10:20:30'),
-(12, '123123', '', 'Sepatu', 10, 10, 10, 10, '2022-07-15 17:54:31'),
-(13, '12312', '', 'Sepatu', 10, 10, 10, 10, '2022-07-16 01:03:13'),
-(14, '12312', '', 'Sepatu', 10, 10, 10, 10, '2022-07-16 01:03:19'),
-(15, '12312', '', 'Sepatu', 10, 100, 100, 100, '2022-07-16 01:03:24'),
-(16, '12312', '', 'Sepatu', 100, 10, 10, 10, '2022-07-16 01:03:33'),
-(17, '12312', '', 'Sepatu', 10, 100, 100, 100, '2022-07-16 01:03:55'),
-(19, '15161', '', 'Sepatu Adidas', 15, 15, 15, 15, '2022-07-16 05:22:58'),
-(20, '15161', '', 'Sepatu Adidasssss', 15, 15, 15, 15, '2022-07-16 05:23:31'),
-(21, '15161', '', 'Sepatu Adidas Aja', 15, 15, 15, 15, '2022-07-16 05:26:11'),
-(23, '123124', '', 'Laptop', 15, 15, 15, 15, '2022-07-17 04:12:58'),
-(24, '12312412', '', 'Sandal', 15, 15, 15, 15, '2022-07-17 04:13:05'),
-(25, '155151', '', 'Jaket', 90, 90, 90, 90, '2022-07-17 04:27:53'),
-(26, '155151', '', 'Jaket', 90, 80, 80, 80, '2022-07-17 05:12:29'),
-(27, '155151', '', 'Jaket', 80, 70, 70, 70, '2022-07-17 05:13:12'),
-(28, '15161', '', 'Sepatu Adidas Aja', 15, 10, 10, 10, '2022-07-17 07:15:57'),
-(29, '11414', '', 'Pensil', 100, 95, 95, 95, '2022-07-17 07:35:38'),
-(30, '155151', '', 'Jaket', 70, 55, 55, 55, '2022-07-17 07:42:32'),
-(31, '123124', '', 'Laptop', 15, 14, 14, 14, '2022-07-17 13:41:54'),
-(32, '155151', '', 'Jaket', 55, 45, 45, 45, '2022-07-17 13:44:34'),
-(33, '123124', '', 'Laptop', 14, 10, 10, 10, '2022-07-17 14:28:08');
 
 -- --------------------------------------------------------
 
@@ -205,15 +156,8 @@ CREATE TABLE `pemasukan` (
   `harga_barang` int(11) NOT NULL,
   `tahun_produksi` int(11) NOT NULL,
   `tgl_request` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status_request` enum('Approved','Pending') NOT NULL
+  `status_request` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pemasukan`
---
-
-INSERT INTO `pemasukan` (`id_request`, `id_admin`, `nama_penyedia`, `role`, `id_komoditi`, `id_barang`, `nama_barang`, `jumlah_barang`, `harga_barang`, `tahun_produksi`, `tgl_request`, `status_request`) VALUES
-(30, 3, 'Aku', 'Penyedia', 3, '', 'Pensil', 100, 2500, 2019, '2022-07-17 07:31:23', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -237,20 +181,6 @@ CREATE TABLE `pengeluaran` (
   `tgl_kirim` timestamp NOT NULL DEFAULT current_timestamp(),
   `status_request` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pengeluaran`
---
-
-INSERT INTO `pengeluaran` (`id_kirim`, `id_user`, `nama_user`, `alamat_user`, `id_barang`, `id_komoditi`, `nama_barang`, `jumlah_barang`, `harga_barang`, `tahun_produksi`, `no_kontrak`, `tgl_request`, `tgl_kirim`, `status_request`) VALUES
-(10, 1, 'Omar', '', '155151', 1, 'Jaket', 10, 150000, 2019, 1476624244, '2022-07-17 05:12:29', '2022-07-17 16:03:16', b'1'),
-(11, 1, 'Omar', '', '155151', 1, 'Jaket', 10, 150000, 2019, 1476624244, '2022-07-17 05:13:12', '2022-07-17 14:23:50', b'1'),
-(12, 1, 'Omar', '', '15161', 3, 'Sepatu Adidas Aja', 5, 150000, 2015, 1514515, '2022-07-17 07:15:57', '2022-07-17 14:23:50', b'1'),
-(13, 1, 'Omar', '', '11414', 3, 'Pensil', 5, 2500, 2019, 2001198644, '2022-07-17 07:35:38', '2022-07-17 14:23:50', b'1'),
-(14, 2, 'Siapa', '', '155151', 1, 'Jaket', 15, 150000, 2019, 1476624244, '2022-07-17 07:42:32', '2022-07-17 14:23:50', b'1'),
-(15, 1, 'Omar', 'Jalan Pluto Dalam 1 No.33 RT04/004', '123124', 2, 'Laptop', 1, 150000000, 2015, 1618347659, '2022-07-17 13:41:54', '2022-07-17 14:23:50', b'1'),
-(16, 1, 'Omar', 'Jalan jalan yuk kemana kek', '155151', 1, 'Jaket', 10, 150000, 2019, 1476624244, '2022-07-17 13:44:34', '2022-07-17 14:23:50', b'1'),
-(17, 1, 'Omar', 'Jalan Pluto Dalam 1 No.33 RT04/004', '123124', 2, 'Laptop', 4, 150000000, 2015, 1618347659, '2022-07-17 14:28:08', '2022-07-17 14:30:08', b'1');
 
 --
 -- Triggers `pengeluaran`
@@ -383,7 +313,7 @@ ALTER TABLE `log_penyedia`
 -- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran`
