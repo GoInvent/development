@@ -64,7 +64,7 @@
                     <h6 class="form-penyedia"></h6>
                 </div>
         </div>
-        <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php&id_request=$row[id_request]" ?>">Registrasi Barang</a>
+        <a class="btn btn-success" style="margin-bottom:40px;" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php&id_request=$row[id_request]" ?>">Registrasi Barang</a>
     </div>
     
 </body>

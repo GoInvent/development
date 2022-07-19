@@ -17,16 +17,13 @@
     $row = mysqli_fetch_assoc($barang);
     $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_komoditi,nama_barang, harga_barang, jumlah_barang, tahun_produksi, no_kontrak, status_barang, created_at, updated_at) 
                 VALUES('$idbarang','$kategori','$namabarang','$harga','$stok','$tahun','$nokontrak','$statusbarang', NOW(), NOW())");
-    $update = mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1 WHERE id_request = '".$_GET['id_request']."'");
+    $update = mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");
+
     if ($result){
         //jika data berhasil disimpan
-        if($idbarang == $row['id_barang'] && $stok != 0){
-            echo '<script>alert("Simpan data Berhasil")</script>';
-            echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
-        }else{
-            echo '<script>alert("Simpan data Berhasil")</script>';
-            echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
-        }
+
+        echo '<script>alert("Simpan data Berhasil")</script>';
+        echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
     }else if($idbarang == $row['id_barang']){
         echo '<script>alert("Gagal, ID Barang sudah ada")</script>';
         echo '<script>window.location="index.php?page=disbekal/home.php"</script>';

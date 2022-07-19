@@ -26,6 +26,7 @@
                                             <th>No.</th>
                                             <th>ID Barang</th>
                                             <th>Nama</th>
+                                            <th>Status</th>
                                             <th>Stok Awal</th>
                                             <th>Masuk</th>
                                             <th>Keluar</th>
@@ -45,6 +46,7 @@
                                             <td><?php echo $no++ ?></td>
                                             <td><?php echo $row['id_barang']?></td>
                                             <td><?php echo $row['nama_baru']?></td>
+                                            <td><?php echo $row['status']?></td>
                                             <td><?php echo $row['stok_awal']?></td>
                                             <td><?php echo $row['stok_masuk']?></td>
                                             <td><?php echo $row['stok_keluar']?></td>

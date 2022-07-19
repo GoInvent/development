@@ -38,25 +38,49 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                             <td><?php echo $no++ ?></td>
-                                            <td><?php echo $row['id_barang']?></td>
+                                            <td>
+                                                <?php 
+                                                    if($row['id_barang'] == NULL){
+                                                        echo 'menunggu verifikasi';
+                                                    }else{
+                                                        echo $row['id_barang'];
+                                                    }
+                                                ?>
+                                            </td>
                                             <td><?php echo $row['jenis_komoditi']?></td>
                                             <td><?php echo $row['nama_barang']?></td>
                                             <td><?php echo $row['harga_barang']?></td>
                                             <td><?php echo $row['jumlah_barang']?></td>
                                             <td><?php echo $row['tahun_produksi']?></td>
-                                            <td><?php echo $row['no_kontrak']?></td>
-                                            <td><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
+                                            <td>
+                                                <?php 
+                                                 if($row['no_kontrak'] == 0){
+                                                    echo 'belum tersedia';
+                                                 }else{
+                                                    echo $row['no_kontrak'];
+                                                 }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                if($row['status_request'] == 0){
+                                                    echo 'menunggu verifikasi';
+                                                }else{
+                                                    echo 'terverifikasi';
+                                                }
+                                                ?>
+                                            </td>
                                             </tr>
                                         <?php }
                                         }else { ?>
                                             <tr>
-                                                <td colspan="9">Tidak ada data</td>
+                                                <td colspan="9">Data belum terverifikasi</td>
                                             </tr>
                                         <?php } ?>
                                 </tbody>

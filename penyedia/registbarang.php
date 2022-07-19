@@ -83,7 +83,6 @@
                                     // Insert user data into table
                                     $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_admin, nama_penyedia, role,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi, status_request) VALUES('$idadmin','$namaadmin','$roleadmin','$kategori','$namabarang','$stok','$harga','$tahun',0)");
 
-                                    
                                     if ($result){
                                         //jika data berhasil disimpan
                                         echo '<script>alert("Simpan data Berhasil")</script>';
