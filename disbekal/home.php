@@ -111,11 +111,6 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                     </div>
                 </div>
             </div>
-        <footer class="footer text-center">
-            All Rights Reserved by Flexy Admin. Designed and Developed by <a
-                href="https://www.wrappixel.com">WrapPixel</a>.
-        </footer>
-
     </div>
     </div>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>

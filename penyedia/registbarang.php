@@ -18,7 +18,7 @@
                                 <h4>Input data barang</h4>
                                 <p>Pendataan barang sebelum masuk gudang</p>
 								<form class="" action="" method="post">
-                                <div class="form-floating mb-3">
+                                    <div class="form-floating mb-3">
 										<input name="id_admin" class="form-control" id="id_admin" placeholder=" " value="<?php echo $_SESSION['id_admin'] ?>" required disabled>
 										<label for="id_admin">ID Admin</label>
 									</div>

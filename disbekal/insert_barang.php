@@ -21,7 +21,6 @@
 
     if ($result){
         //jika data berhasil disimpan
-
         echo '<script>alert("Simpan data Berhasil")</script>';
         echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
     }else if($idbarang == $row['id_barang']){
