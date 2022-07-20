@@ -4,7 +4,7 @@
     // $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
     
     if($id_barang){
-        $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN komoditi ON komoditi.id_komoditi = pemasukan.id_komoditi WHERE id_barang = '".$_GET['id_barang']."'");
+        $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi ON komoditi.id_komoditi = barang.id_komoditi WHERE id_barang = '".$_GET['id_barang']."'");
         $row = mysqli_fetch_assoc($sql_pemasukan);
 
         $nama_penyedia = $row['nama_penyedia'];
@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h4>Input tambah data barang</h4>
                             <p>Pendataan tambah barang sebelum masuk gudang</p>
-                            <form action="#">
+                            <form action="<?php echo BASE_URL."index.php?page=penyedia/update_tambah_barang.php&id_barang=$row[id_barang]" ?>" method="POST">
                                 <div class="form-floating mb-3">
                                     <input name="id_barang" class="form-control" id="id_barang" placeholder=" " value="<?php echo $id_barang ?>" required disabled>
                                     <label for="id_barang">ID Barang</label>
@@ -44,12 +44,12 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input name="jumlah_barang" class="form-control" id="jumlah_barang" placeholder=" " value="<?php echo $jumlah_barang ?>" required disabled>
-                                    <label for="jumlah_barang">Jumlah Barang di Gudang</label>
+                                    <input name="jumlah_barang_gudang" class="form-control" id="jumlah_barang_gudang" placeholder=" " value="<?php echo $jumlah_barang ?>" required disabled>
+                                    <label for="jumlah_barang_gudang">Jumlah Barang di Gudang</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type = "number" name="tambah_barang" class="form-control" id="tambah_barang" placeholder=" ">
+                                    <input type = "number" name="jumlah_barang" class="form-control" id="jumlah_barang" placeholder=" ">
                                     <label for="jumlah_barang">Tambah Barang</label>
                                 </div>
 
