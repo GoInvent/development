@@ -23,8 +23,6 @@
 
     $update = mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");
 
-    $update_barang = mysqli_query($koneksi, "UPDATE barang SET jumlah_barang = $stok WHERE id_request = '".$_GET['id_request']."'");
-
     if ($result){
         //jika data berhasil disimpan
         echo '<script>alert("Simpan data Berhasil")</script>';
