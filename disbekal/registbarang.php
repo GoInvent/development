@@ -22,6 +22,7 @@
         $no_kontrak = rand();
         $rfid = $row['id_barang'];
     }
+
 ?>
 
 <body>

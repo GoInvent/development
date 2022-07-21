@@ -22,16 +22,16 @@
                 VALUES('$idbarang','$kategori','$namabarang', '$id_admin', '$harga','$stok','$tahun','$nokontrak','$statusbarang', NOW(), NOW())");
 
     $update = mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");
+    // $update_barang = mysqli_query($koneksi, "UPDATE barang SET jumlah_barang = $stok, updated_at = NOW() WHERE id_barang = '".$_GET['id_barang']."'");
 
     if ($result){
         //jika data berhasil disimpan
         echo '<script>alert("Simpan data Berhasil")</script>';
         echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
     }else if($idbarang == $row['id_barang']){
-        mysqli_query($koneksi, "UPDATE barang SET jumlah_barang = $stok, updated_at = NOW() WHERE id_barang = '".$_GET['id_barang']."'");
-
-        echo '<script>alert("Penambahan Barang masuk disetujui")</script>';
-        echo '<script>window.location="index.php?page=disbekal/home.php"</script>';
+        print('data berhasil diperbarui');
+        // echo '<script>alert("Simpan data Berhasil")</script>';
+        // echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
     }else if($update){
         echo '<script>alert("Simpan data Berhasil")</script>';
     }else {

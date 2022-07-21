@@ -1,3 +1,14 @@
+<?php
+    include 'helper.php';
+
+    function rupiah($angka){
+        
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+    
+    }
+?>
+
 <body>
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
@@ -20,18 +31,18 @@
                             <div class="table-responsive">
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
-                                <table class="table">
-                                    <thead>
+                                <table class="table mb-0 table-hover align-middle text-nowrap">
+                                    <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th>No.</th>
-                                            <th>ID Barang</th>
-                                            <th>Kategori</th>
-                                            <th>Nama</th>
-                                            <th>Harga</th>
-                                            <th>Stok</th>
-                                            <th>Tahun</th>
-                                            <th>No.Kontrak</th>
-                                            <th>Aksi</th>
+                                            <th style="color:white; text-align:center;">No.</th>
+                                            <th style="color:white; text-align:center;">ID Barang</th>
+                                            <th style="color:white; text-align:center;">Kategori</th>
+                                            <th style="color:white; text-align:center;">Nama</th>
+                                            <th style="color:white; text-align:center;">Harga</th>
+                                            <th style="color:white; text-align:center;">Stok</th>
+                                            <th style="color:white; text-align:center;">Tahun</th>
+                                            <th style="color:white; text-align:center;">No.Kontrak</th>
+                                            <th style="color:white; text-align:center;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,15 +54,15 @@
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
-                                            <td><?php echo $no++ ?></td>
-                                            <td><?php echo $row['id_barang']?></td>
-                                            <td><?php echo $row['jenis_komoditi']?></td>
-                                            <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['harga_barang']?></td>
-                                            <td><?php echo $row['jumlah_barang']?></td>
-                                            <td><?php echo $row['tahun_produksi']?></td>
-                                            <td><?php echo $row['no_kontrak']?></td>
-                                            <td><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
+                                            <td style="text-align:center;"><?php echo $no++ ?></td>
+                                            <td style="text-align:center;"><?php echo $row['id_barang']?></td>
+                                            <td style="text-align:center;"><?php echo $row['jenis_komoditi']?></td>
+                                            <td style="text-align:center;"><?php echo $row['nama_barang']?></td>
+                                            <td style="text-align:center;"><?php echo $row['harga_barang']?></td>
+                                            <td style="text-align:center;"><?php echo rupiah($row['jumlah_barang'])?></td>
+                                            <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
+                                            <td style="text-align:center;"><?php echo $row['no_kontrak']?></td>
+                                            <td style="text-align:center;"><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
                                             </td>
                                             </tr>
                                         <?php }

@@ -53,24 +53,23 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                 <div>
                                     <h4 class="card-title">Pemasukan Barang</h4>
                                     <p>Daftar Permintaan Barang Masuk</p>
-                                    <?php echo $_SESSION['id_user']?>
                                 </div>
                             </div>
                             <!-- title -->
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
-                                    <thead>
+                                    <thead  style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th class="border-top-0">No</th>
-                                            <th class="border-top-0">Nama User</th>
-                                            <th class="border-top-0">Kategori</th>
-                                            <th class="border-top-0">Nama Barang</th>
-                                            <th class="border-top-0">Jumlah Barang</th>
-                                            <th class="border-top-0">Harga</th>
-                                            <th class="border-top-0">Tahun</th>
-                                            <th class="border-top-0">No. Kontrak</th>
-                                            <th class="border-top-0">Tanggal Persetujuan</th>
-                                            <th class="border-top-0">Status Persetujuan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">No</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Nama User</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Kategori</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Jumlah Barang</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Harga</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">No. Kontrak</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Tanggal Persetujuan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
                                         </tr>  
                                     </thead>
                                     <tbody>

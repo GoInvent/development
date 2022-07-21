@@ -21,6 +21,13 @@
         $idadmin        = $data['id_admin'];
         $email          = $data['email'];
     }
+
+    function rupiah($angka){
+
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+
+    }
 ?>
 
 <!DOCTYPE html><html lang="en">
@@ -55,7 +62,7 @@
                     <li class="list-group-item">Nama Barang : <?php echo $nama_barang?></li>
                     <li class="list-group-item">Jenis Barang : <?php echo  $jenis_komoditi ?></li>
                     <li class="list-group-item">Jumlah Barang : <?php echo $jumlah_barang?></li>
-                    <li class="list-group-item">Harga Barang : <?php echo $harga_barang?> </li>
+                    <li class="list-group-item">Harga Barang : <?php echo rupiah($harga_barang)?> </li>
                     <li class="list-group-item">Tahun Produksi : <?php echo $tahun_produksi?> </li>
                 </ul>
                 </div>

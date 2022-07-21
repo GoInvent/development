@@ -4,6 +4,14 @@ file_put_contents('UIDContainer.php',$Write);
 
 $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
+
+function rupiah($angka){
+	
+    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+    return $hasil_rupiah;
+ 
+}
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -58,19 +66,19 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                             <!-- title -->
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
-                                    <thead>
+                                    <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th class="border-top-0">No</th>
-                                            <th class="border-top-0">Nama Penyedia</th>
-                                            <th class="border-top-0" style="text-align:center">Role</th>
-                                            <th class="border-top-0">Kategori</th>
-                                            <th class="border-top-0">Nama Barang</th>
-                                            <th class="border-top-0">Jumlah Barang</th>
-                                            <th class="border-top-0">Harga</th>
-                                            <th class="border-top-0">Tahun</th>
-                                            <th class="border-top-0">Tanggal Permintaan</th>
-                                            <th class="border-top-0">Status Persetujuan</th>
-                                            <th class="border-top-0">Persetujuan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">No</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Penyedia</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Role</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Kategori</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Jumlah Barang</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Harga</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Persetujuan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,13 +90,13 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
-                                            <td><?php echo $no++ ?></td>
-                                            <td><?php echo $row['nama_penyedia']?></td>
-                                            <td><?php echo $row['role']?></td>
-                                            <td><?php echo $row['jenis_komoditi']?></td>
+                                            <td style="text-align:center"><?php echo $no++ ?></td>
+                                            <td style="text-align:center"><?php echo $row['nama_penyedia']?></td>
+                                            <td style="text-align:center"><?php echo $row['role']?></td>
+                                            <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
                                             <td style="text-align:center"><?php echo $row['nama_barang']?></td>
                                             <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
-                                            <td style="text-align:center"><?php echo $row['harga_barang']?></td>
+                                            <td style="text-align:center"><?php echo rupiah ($row['harga_barang'])?></td>
                                             <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                             <td><?php echo $row['tgl_request']?></td>
                                             <td style="text-align:center"><?php echo ($row['status_request'] == 0)?'Pending':'Approved'; ?></td>

@@ -11,11 +11,12 @@
 		header("location:login.php");
 	} else if ($_SESSION['role']=="User"){
         $nama_user = $_SESSION['nama_user'];
+        $role = $_SESSION['role'];
     } else {
         $nama_admin = $_SESSION['nama_admin'];
+        $role = $_SESSION['role'];
+        $id_admin = $_SESSION['id_admin'];
     }
-    $role = $_SESSION['role'];
-    $id_admin = $_SESSION['id_admin'];
     
 ?>
 
@@ -89,7 +90,7 @@
                     </ul>
                 </div>
 
-                <div style="margin:2% 0% 0% 0%;">
+                <div style="margin:2% 1% 0% 0%;">
                     <?php 
                     if ($_SESSION['role']=="User") {
                        echo "Hi Selamat datang, <b>$nama_user</b>";

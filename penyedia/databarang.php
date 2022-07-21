@@ -2,6 +2,15 @@
 
     $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
 
+    //format rupiah
+
+    function rupiah($angka){
+	
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+     
+    }
+
 ?>
 
 <body>
@@ -18,15 +27,15 @@
                                 <table class="table">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th style="color:white;">No.</th>
-                                            <th style="color:white;">ID Barang</th>
-                                            <th style="color:white;">Kategori</th>
-                                            <th style="color:white;">Nama</th>
-                                            <th style="color:white;">Harga</th>
-                                            <th style="color:white;">Stok</th>
-                                            <th style="color:white;">Tahun</th>
-                                            <th style="color:white;">No.Kontrak</th>
-                                            <th style="color:white;">Status</th>
+                                            <th style="color:white; text-align:center;">No.</th>
+                                            <th style="color:white; text-align:center;">ID Barang</th>
+                                            <th style="color:white; text-align:center;">Kategori</th>
+                                            <th style="color:white; text-align:center;">Nama</th>
+                                            <th style="color:white; text-align:center;">Harga</th>
+                                            <th style="color:white; text-align:center;">Stok</th>
+                                            <th style="color:white; text-align:center;">Tahun</th>
+                                            <th style="color:white; text-align:center;">No.Kontrak</th>
+                                            <th style="color:white; text-align:center;">Status</th>
                                             <!-- <th>Tambah Barang</th> -->
                                         </tr>
                                     </thead>
@@ -39,8 +48,8 @@
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
-                                            <td><?php echo $no++ ?></td>
-                                            <td>
+                                            <td style="text-align:center;"><?php echo $no++ ?></td>
+                                            <td style="text-align:center;">
                                                 <?php 
                                                     if($row['id_barang'] == NULL){
                                                         echo 'menunggu verifikasi';
@@ -49,12 +58,12 @@
                                                     }
                                                 ?>
                                             </td>
-                                            <td><?php echo $row['jenis_komoditi']?></td>
-                                            <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['harga_barang']?></td>
-                                            <td><?php echo $row['jumlah_barang']?></td>
-                                            <td><?php echo $row['tahun_produksi']?></td>
-                                            <td>
+                                            <td style="text-align:center;"><?php echo $row['jenis_komoditi']?></td>
+                                            <td style="text-align:center;"><?php echo $row['nama_barang']?></td>
+                                            <td style="text-align:center;"><?php echo rupiah ($row['harga_barang'])?></td>
+                                            <td style="text-align:center;"><?php echo $row['jumlah_barang']?></td>
+                                            <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
+                                            <td style="text-align:center;">
                                                 <?php 
                                                  if($row['no_kontrak'] == 0){
                                                     echo 'belum tersedia';
@@ -63,7 +72,7 @@
                                                  }
                                                 ?>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center;">
                                                 <?php 
                                                     if($row['status_request'] == 0){
                                                         echo 'menunggu verifikasi';

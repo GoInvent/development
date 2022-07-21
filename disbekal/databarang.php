@@ -5,6 +5,14 @@ include_once('helper.php');
 
 $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
+
+function rupiah($angka){
+	
+    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+    return $hasil_rupiah;
+ 
+}
+
 ?>
 
 <body>
@@ -27,20 +35,20 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                             <div class="table-responsive">
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
-                                <table class="table">
-                                    <thead>
+                                <table class="table mb-0 table-hover align-middle text-nowrap">
+                                    <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th>No.</th>
-                                            <th>ID Barang</th>
-                                            <th>Kategori</th>
-                                            <th>Nama</th>
-                                            <th>Harga</th>
-                                            <th>Stok</th>
-                                            <th>Tahun</th>
-                                            <th>No.Kontrak</th>
-                                            <th>Status</th>
-                                            <th>Tanggal Approve</th>
-                                            <th>Aksi</th>
+                                            <th style="color:white; text-align:center;">No.</th>
+                                            <th style="color:white; text-align:center;">ID Barang</th>
+                                            <th style="color:white; text-align:center;">Kategori</th>
+                                            <th style="color:white; text-align:center;">Nama</th>
+                                            <th style="color:white; text-align:center;">Harga</th>
+                                            <th style="color:white; text-align:center;">Stok</th>
+                                            <th style="color:white; text-align:center;">Tahun</th>
+                                            <th style="color:white; text-align:center;">No.Kontrak</th>
+                                            <th style="color:white; text-align:center;">Status</th>
+                                            <th style="color:white; text-align:center;">Tanggal Approve</th>
+                                            <th style="color:white; text-align:center;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -52,19 +60,20 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
-                                            <td><?php echo $no++ ?></td>
-                                            <td><?php echo $row['id_barang']?></td>
-                                            <td><?php echo $row['jenis_komoditi']?></td>
-                                            <td><?php echo $row['nama_barang']?></td>
-                                            <td><?php echo $row['harga_barang']?></td>
-                                            <td><?php echo $row['jumlah_barang']?></td>
-                                            <td><?php echo $row['tahun_produksi']?></td>
-                                            <td><?php echo $row['no_kontrak']?></td>
-                                            <td><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
-                                            <td><?php echo $row['created_at']?></td>
-                                            <td><a class="btn btn-success" href="index.php?page=updatebarang.php&id=<?php echo $row['id_barang'] ?>">Edit</a>
-                                            <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="deletebarang.php?idb=<?php echo $row['id_barang'] ?>">Delete</a>
-                                            </td>
+                                            <td style="text-align:center"><?php echo $no++ ?></td>
+                                            <td style="text-align:center"><?php echo $row['id_barang']?></td>
+                                            <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
+                                            <td style="text-align:center"><?php echo $row['nama_barang']?></td>
+                                            <td style="text-align:center"><?php echo rupiah($row['harga_barang'])?></td>
+                                            <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
+                                            <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
+                                            <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
+                                            <td style="text-align:center"><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
+                                            <td style="text-align:center"><?php echo $row['created_at']?></td>
+                                            <td><a href="#" class="btn btn-success">Lihat Detail</a></td>
+                                            <!-- <td><a class="btn btn-success" href="index.php?page=updatebarang.php&id=<?php echo $row['id_barang'] ?>">Edit</a> -->
+                                            <!-- <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="deletebarang.php?idb=<?php echo $row['id_barang'] ?>">Delete</a> -->
+                                            <!-- </td> -->
                                             </tr>
                                         <?php }
                                         }else { ?>

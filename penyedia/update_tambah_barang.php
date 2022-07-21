@@ -36,7 +36,7 @@
                 VALUES('$id_admin', 'kosong', '$role', '$id_komoditi', '$id_barang', '$nama_barang', '$jumlah_barang', '$harga_barang', '$tahun_produksi', NOW(), '$no_kontrak', 'Penambahan $tambah_barang barang masuk', 0) ");
     
     if($result){
-        // mysqli_query($koneksi, "UPDATE barang SET jumlah_barang = $jumlah_barang, updated_at = NOW() WHERE id_barang = '".$_GET['id_barang']."'");
+        mysqli_query($koneksi, "UPDATE barang SET jumlah_barang = $jumlah_barang, updated_at = NOW() WHERE id_barang = '".$_GET['id_barang']."'");
 
         echo '<script>alert("Simpan data Berhasil")</script>';
         echo '<script>window.location="index.php?page=penyedia/databarang.php"</script>';
