@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jul 2022 pada 06.06
+-- Waktu pembuatan: 21 Jul 2022 pada 11.03
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.6
 
@@ -44,9 +44,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `status`, `created_at`, `last_login`, `login`) VALUES
-(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-07-19 04:05:00', b'0'),
-(2, 'Test', 'test@gmail.com', 'test', 'kadopus', b'1', '2022-07-07 06:02:21', '2022-07-17 15:59:25', b'0'),
-(3, 'Aku', 'aku@gmail.com', 'test', 'penyedia', b'1', '0000-00-00 00:00:00', '2022-07-19 04:03:33', b'0'),
+(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-07-21 08:58:48', b'0'),
+(2, 'Test', 'test@gmail.com', 'test', 'kadopus', b'1', '2022-07-07 06:02:21', '2022-07-20 13:34:25', b'0'),
+(3, 'Aku', 'aku@gmail.com', 'test', 'penyedia', b'1', '0000-00-00 00:00:00', '2022-07-21 08:46:10', b'0'),
 (4, 'Omar Penyedia', 'dia@gmail.com', 'test', 'penyedia', b'1', '2022-07-13 08:41:23', '2022-07-18 03:52:13', b'0');
 
 -- --------------------------------------------------------
@@ -59,6 +59,7 @@ CREATE TABLE `barang` (
   `id_barang` varchar(11) NOT NULL,
   `id_komoditi` int(11) NOT NULL,
   `nama_barang` varchar(250) NOT NULL,
+  `id_admin` int(11) NOT NULL,
   `harga_barang` int(11) NOT NULL,
   `jumlah_barang` int(11) NOT NULL,
   `tahun_produksi` int(11) NOT NULL,
@@ -68,13 +69,6 @@ CREATE TABLE `barang` (
   `deleted_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `barang`
---
-
-INSERT INTO `barang` (`id_barang`, `id_komoditi`, `nama_barang`, `harga_barang`, `jumlah_barang`, `tahun_produksi`, `no_kontrak`, `status_barang`, `created_at`, `deleted_at`, `updated_at`) VALUES
-('21312', 1, 'BAJU', 150000, 20, 2022, 682087156, b'1', '2022-07-19 04:03:23', '2022-07-19 04:03:23', '2022-07-19 04:03:23');
 
 --
 -- Trigger `barang`
@@ -157,7 +151,11 @@ INSERT INTO `log` (`id_log`, `id_barang`, `nama_lama`, `nama_baru`, `status`, `s
 (45, '21341231242', '', 'BAJU', 'Masuk Barang', 20, 20, 0, 20, '2022-07-19 03:57:15'),
 (46, '221312', '', 'Handphone', 'Masuk Barang', 10, 10, 0, 10, '2022-07-19 03:59:00'),
 (47, '21341231242', '', 'Handphone', 'Masuk Barang', 10, 10, 0, 10, '2022-07-19 04:01:54'),
-(48, '21312', '', 'BAJU', 'Masuk Barang', 20, 20, 0, 20, '2022-07-19 04:03:23');
+(48, '21312', '', 'BAJU', 'Masuk Barang', 20, 20, 0, 20, '2022-07-19 04:03:23'),
+(49, '21312', '', 'BAJU', '', 20, 60, 60, 60, '2022-07-20 14:06:29'),
+(50, '21312', '', 'BAJU', '', 60, 70, 70, 70, '2022-07-20 14:17:50'),
+(51, '7987', '', 'Handphone', 'Masuk Barang', 10, 10, 0, 10, '2022-07-21 04:39:39'),
+(52, '7987', '', 'Handphone', '', 10, 60, 60, 60, '2022-07-21 07:52:55');
 
 -- --------------------------------------------------------
 
@@ -191,16 +189,9 @@ CREATE TABLE `pemasukan` (
   `tahun_produksi` int(11) NOT NULL,
   `tgl_request` timestamp NOT NULL DEFAULT current_timestamp(),
   `no_kontrak` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL,
   `status_request` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pemasukan`
---
-
-INSERT INTO `pemasukan` (`id_request`, `id_admin`, `nama_penyedia`, `role`, `id_komoditi`, `id_barang`, `nama_barang`, `jumlah_barang`, `harga_barang`, `tahun_produksi`, `tgl_request`, `no_kontrak`, `status_request`) VALUES
-(39, 3, 'Aku', 'Penyedia', 2, '', 'Handphone', 10, 2000000, 2019, '2022-07-19 02:46:32', 0, b'0'),
-(43, 3, 'Aku', 'Penyedia', 1, '21312', 'BAJU', 20, 150000, 2022, '2022-07-19 03:40:35', 682087156, b'1');
 
 -- --------------------------------------------------------
 
@@ -344,7 +335,7 @@ ALTER TABLE `komoditi`
 -- AUTO_INCREMENT untuk tabel `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT untuk tabel `log_penyedia`
@@ -356,7 +347,7 @@ ALTER TABLE `log_penyedia`
 -- AUTO_INCREMENT untuk tabel `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengeluaran`
