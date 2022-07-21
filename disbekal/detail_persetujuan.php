@@ -10,6 +10,7 @@
         $sql_admin = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN admin ON admin.id_admin = pemasukan.id_admin WHERE id_request = '".$_GET['id_request']."'");
         $data = mysqli_fetch_assoc($sql_admin);
         
+        $id_barang = $row['id_barang'];
         $nama_penyedia  = $row['nama_penyedia'];
         $nama_barang    = $row['nama_barang'];
         $jumlah_barang  = $row['jumlah_barang'];
@@ -50,19 +51,13 @@
             </div>
                 <div class="card-body">
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID Barang : <?php echo $id_barang?></li>
                     <li class="list-group-item">Nama Barang : <?php echo $nama_barang?></li>
                     <li class="list-group-item">Jenis Barang : <?php echo  $jenis_komoditi ?></li>
                     <li class="list-group-item">Jumlah Barang : <?php echo $jumlah_barang?></li>
                     <li class="list-group-item">Harga Barang : <?php echo $harga_barang?> </li>
                     <li class="list-group-item">Tahun Produksi : <?php echo $tahun_produksi?> </li>
                 </ul>
-                </div>
-                <div class="card-body" style="margin-bottom:20px;">
-                    <h6 class="form-penyedia"></h6>
-                    <h6 class="form-penyedia"> </h6>
-                    <h6 class="form-penyedia"> </h6>
-                    <h6 class="form-penyedia"></h6>
-                    <h6 class="form-penyedia"></h6>
                 </div>
         </div>
         <a class="btn btn-success" style="margin-bottom:40px;" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php&id_request=$row[id_request]" ?>">Registrasi Barang</a>

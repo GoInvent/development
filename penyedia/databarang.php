@@ -13,8 +13,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <h4>Daftar barang di Gudang</h4>
-                                <p>Semua informasi data barang ter-tracking secara otomatis</p>
+                                <h4>Riwayat barang di Gudang</h4>
+                                <p>Semua informasi data keluar masuk barang ter-tracking secara otomatis</p>
                                 <table class="table">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>

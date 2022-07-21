@@ -31,8 +31,8 @@ file_put_contents('UIDContainer.php',$Write);
                             <!-- title -->
                             <div class="d-md-flex">
                                 <div style="margin-bottom:20px;">
-                                    <h4 class="card-title">Top Selling Products</h4>
-                                    <h5 class="card-subtitle">Overview of Top Selling Items</h5>
+                                    <h4>Daftar barang di Gudang</h4>
+                                    <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 </div>
                             </div>
                             <!-- title -->
@@ -46,7 +46,8 @@ file_put_contents('UIDContainer.php',$Write);
                                             <th class="border-top-0" style="text-align: center; color:white;">Nama Barang</th>
                                             <th class="border-top-0" style="text-align: center; color:white;">Jumlah Barang</th>
                                             <th class="border-top-0" style="text-align: center; color:white;">No Kontrak</th>
-                                            <th class="border-top-0" style="text-align: center; color:white;">Tanggal</th>
+                                            <th class="border-top-0" style="text-align: center; color:white;">Tanggal Masuk Barang</th>
+                                            <th class="border-top-0" style="text-align: center; color:white;">Tanggal Perbaruan Barang</th>
                                             <th class="border-top-0" style="text-align:center; color:white;">Aksi</th>
                                         </tr>
                                     </thead>
@@ -67,6 +68,7 @@ file_put_contents('UIDContainer.php',$Write);
                                                 <td style="text-align:center";><?php echo $row['jumlah_barang']?></td>
                                                 <td style="text-align:center";><?php echo $row['no_kontrak']?></td>
                                                 <td style="text-align:center";><?php echo $row['created_at']?></td>
+                                                <td style="text-align:center";><?php echo $row['updated_at']?></td>
                                                 <div>
                                                     <td style="text-align:center";>
                                                         <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=penyedia/tambah_barang.php&id_barang=$row[id_barang]" ?>">Tambah Barang</a>

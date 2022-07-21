@@ -8,7 +8,7 @@
     if ($id_request){
         $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN komoditi ON komoditi.id_komoditi = pemasukan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
         $row = mysqli_fetch_assoc($sql_pemasukan);
-
+       
         $nama_penyedia = $row['nama_penyedia'];
         $komoditi = $row['id_komoditi'];
         $jenis_komoditi = $row['jenis_komoditi'];
@@ -20,6 +20,7 @@
         $tgl_request = $row['tgl_request'];
         $jenis_komoditi = $row['jenis_komoditi'];
         $no_kontrak = rand();
+        $rfid = $row['id_barang'];
     }
 ?>
 
@@ -41,10 +42,17 @@
                                         <label for="floatingInput">Id Penyedia</label>
                                     </div>
 
-                                    <div class="form-floating mb-3">
-                                        <input name="id_barang" class="form-control" id="getUID" placeholder=" ">
-                                        <label for="getUID">ID Produk (Scan RFID to display ID)</label>
-                                    </div>
+                                    <?php if($rfid != NULL):?>
+                                        <div class="form-floating mb-3">
+                                            <input name="id_barang" class="form-control" id="getUID" placeholder="" value = <?php echo $rfid?> readonly>
+                                            <label for="getUID">ID Produk (Scan RFID to display ID)</label>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="form-floating mb-3">
+                                            <input name="id_barang" class="form-control" id="getUID" placeholder=" " >
+                                            <label for="getUID">ID Produk (Scan RFID to display ID)</label>
+                                        </div>
+                                    <?php endif;?>
 
                                     <div class="form-floating mb-3">
                                         <select name="id_komoditi" class="form-control" required readonly>
