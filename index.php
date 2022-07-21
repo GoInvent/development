@@ -177,12 +177,12 @@
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=penyedia/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Beranda</span></a>
+                                <span class="hide-menu">Barang di Gudang</span></a>
                             </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=penyedia/databarang.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-account-network"> </i>
-                                <span class="hide-menu">Barang</span></a>
+                                <span class="hide-menu">Log Barang</span></a>
                             </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=penyedia/registbarang.php"?>" aria-expanded="false">

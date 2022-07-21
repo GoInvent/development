@@ -39,7 +39,7 @@ file_put_contents('UIDContainer.php',$Write);
         </div>
              
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <h2 style="text-align: center">Masuk Akun Admin</h2>
+          <h2 style="text-align: center">Masuk Akun</h2>
           <p style="text-align: center">Isi form dibawah ini untuk login</p>
           <div class="border-regist"></div>
           <form action="cek_login_user.php" method="POST">

@@ -16,18 +16,18 @@
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 <table class="table">
-                                    <thead>
+                                    <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th>No.</th>
-                                            <th>ID Barang</th>
-                                            <th>Kategori</th>
-                                            <th>Nama</th>
-                                            <th>Harga</th>
-                                            <th>Stok</th>
-                                            <th>Tahun</th>
-                                            <th>No.Kontrak</th>
-                                            <th>Status</th>
-                                            <th>Tambah Barang</th>
+                                            <th style="color:white;">No.</th>
+                                            <th style="color:white;">ID Barang</th>
+                                            <th style="color:white;">Kategori</th>
+                                            <th style="color:white;">Nama</th>
+                                            <th style="color:white;">Harga</th>
+                                            <th style="color:white;">Stok</th>
+                                            <th style="color:white;">Tahun</th>
+                                            <th style="color:white;">No.Kontrak</th>
+                                            <th style="color:white;">Status</th>
+                                            <!-- <th>Tambah Barang</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,7 +72,7 @@
                                                     }
                                                 ?>
                                             </td>
-                                            <td><a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=penyedia/tambah_barang.php&id_barang=$row[id_barang]" ?>">Tambah Barang</a>
+                                            <!-- <td><a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=penyedia/tambah_barang.php&id_barang=$row[id_barang]" ?>">Tambah Barang</a> -->
                                             </tr>
                                         <?php }
                                         }else { ?>
