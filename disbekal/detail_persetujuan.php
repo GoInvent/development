@@ -9,6 +9,7 @@
         $row = mysqli_fetch_assoc($sql_pemasukan);
         $sql_admin = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN admin ON admin.id_admin = pemasukan.id_admin WHERE id_request = '".$_GET['id_request']."'");
         $data = mysqli_fetch_assoc($sql_admin);
+        
         $nama_penyedia  = $row['nama_penyedia'];
         $nama_barang    = $row['nama_barang'];
         $jumlah_barang  = $row['jumlah_barang'];

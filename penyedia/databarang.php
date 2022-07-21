@@ -65,11 +65,11 @@
                                             </td>
                                             <td>
                                                 <?php 
-                                                if($row['status_request'] == 0){
-                                                    echo 'menunggu verifikasi';
-                                                }else{
-                                                    echo 'terverifikasi';
-                                                }
+                                                    if($row['status_request'] == 0){
+                                                        echo 'menunggu verifikasi';
+                                                    }else{
+                                                        echo 'terverifikasi';
+                                                    }
                                                 ?>
                                             </td>
                                             <td><a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=penyedia/tambah_barang.php&id_barang=$row[id_barang]" ?>">Tambah Barang</a>

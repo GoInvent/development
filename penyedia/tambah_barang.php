@@ -5,16 +5,16 @@
     
     if($id_barang){
         $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi ON komoditi.id_komoditi = barang.id_komoditi WHERE id_barang = '".$_GET['id_barang']."'");
+        // $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN komoditi ON komoditi.id_komoditi = barang.id_komoditi");
         $row = mysqli_fetch_assoc($sql_pemasukan);
 
-        $nama_penyedia = $row['nama_penyedia'];
+        $id_penyedia = $row["id_admin"];
         $komoditi = $row['id_komoditi'];
         $jenis_komoditi = $row['jenis_komoditi'];
         $nama_barang = $row['nama_barang'];
         $jumlah_barang = $row['jumlah_barang'];
         $harga_barang = $row['harga_barang'];
         $tahun_produksi = $row['tahun_produksi'];
-        $tgl_request = $row['tgl_request'];
         $no_kontrak = rand();
     }
 

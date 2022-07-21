@@ -7,6 +7,7 @@
     $idbarang       = $_POST['id_barang'];
     $kategori       = $_POST['id_komoditi'];
     $namabarang     = $_POST['nama_barang'];
+    $id_admin       = $_POST['id_admin'];
     $harga          = $_POST['harga_barang'];
     $stok           = $_POST['jumlah_barang'];
     $tahun          = $_POST['tahun_produksi'];
@@ -15,8 +16,8 @@
 
     $barang = mysqli_query($koneksi, "SELECT * FROM barang");
     $row = mysqli_fetch_assoc($barang);
-    $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_komoditi,nama_barang, harga_barang, jumlah_barang, tahun_produksi, no_kontrak, status_barang, created_at, updated_at) 
-                VALUES('$idbarang','$kategori','$namabarang','$harga','$stok','$tahun','$nokontrak','$statusbarang', NOW(), NOW())");
+    $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_komoditi,nama_barang, id_admin, harga_barang, jumlah_barang, tahun_produksi, no_kontrak, status_barang, created_at, updated_at) 
+                VALUES('$idbarang','$kategori','$namabarang', '$id_admin', '$harga','$stok','$tahun','$nokontrak','$statusbarang', NOW(), NOW())");
     $update = mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");
 
     if ($result){

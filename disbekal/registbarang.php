@@ -13,6 +13,7 @@
         $komoditi = $row['id_komoditi'];
         $jenis_komoditi = $row['jenis_komoditi'];
         $nama_barang = $row['nama_barang'];
+        $id_admin = $row['id_admin'];
         $jumlah_barang = $row['jumlah_barang'];
         $harga_barang = $row['harga_barang'];
         $tahun_produksi = $row['tahun_produksi'];
@@ -34,6 +35,12 @@
                             <p>Pendataan barang sebelum masuk gudang</p>
                             <?php if($id_request):?>
                                 <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php&id_request=$row[id_request]" ?>" method="POST">
+
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="id_admin" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $id_admin ?> required readonly>
+                                        <label for="floatingInput">Id Penyedia</label>
+                                    </div>
+
                                     <div class="form-floating mb-3">
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" ">
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>

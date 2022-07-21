@@ -15,6 +15,7 @@
         $nama_admin = $_SESSION['nama_admin'];
     }
     $role = $_SESSION['role'];
+    $id_admin = $_SESSION['id_admin'];
     
 ?>
 
@@ -110,6 +111,7 @@
                         <div style="margin-bottom:8%; border:1px solid #DFDFDF; border-radius:5px; padding:8px;">
                             <?php echo "<b>Laman $role</b>"?>
                         </div>
+   
                         <?php if ($_SESSION['role'] == "Disbekal") : ?>  <!--session disbekal -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/home.php'?>" aria-expanded="false">
@@ -171,6 +173,7 @@
                                 </a>
                             </li>
                         <?php elseif ($_SESSION['role'] == "Penyedia") : ?> <!--session kadopus -->
+                            
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=penyedia/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
@@ -186,6 +189,7 @@
                                 <i class="mdi mdi-border-all"></i>
                                 <span class="hide-menu">Input Barang</span></a>
                             </li> 
+
                         <?php elseif ($_SESSION['role'] == "User") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/home.php'?>" aria-expanded="false">
