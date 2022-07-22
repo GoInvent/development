@@ -19,15 +19,9 @@
         $tgl_request    = $row['tgl_request'];
         $jenis_komoditi = $row['jenis_komoditi'];
         $idadmin        = $data['id_admin'];
-        $email          = $data['email'];
+        $email          = $data['email'];   
     }
 
-    function rupiah($angka){
-
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-        return $hasil_rupiah;
-
-    }
 ?>
 
 <!DOCTYPE html><html lang="en">

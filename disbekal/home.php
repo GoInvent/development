@@ -5,13 +5,6 @@ file_put_contents('UIDContainer.php',$Write);
 $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
 
-function rupiah($angka){
-	
-    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-    return $hasil_rupiah;
- 
-}
-
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">

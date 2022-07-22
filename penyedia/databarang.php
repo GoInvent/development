@@ -1,15 +1,7 @@
 <?php 
-
+    include_once('helper.php');
     $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
-
-    //format rupiah
-
-    function rupiah($angka){
-	
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-        return $hasil_rupiah;
-     
-    }
+    
 
 ?>
 

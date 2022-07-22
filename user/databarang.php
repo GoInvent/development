@@ -1,12 +1,5 @@
 <?php
-    include 'helper.php';
-
-    function rupiah($angka){
-        
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-        return $hasil_rupiah;
-    
-    }
+    include_once('helper.php');
 ?>
 
 <body>
@@ -58,8 +51,8 @@
                                             <td style="text-align:center;"><?php echo $row['id_barang']?></td>
                                             <td style="text-align:center;"><?php echo $row['jenis_komoditi']?></td>
                                             <td style="text-align:center;"><?php echo $row['nama_barang']?></td>
-                                            <td style="text-align:center;"><?php echo $row['harga_barang']?></td>
-                                            <td style="text-align:center;"><?php echo rupiah($row['jumlah_barang'])?></td>
+                                            <td style="text-align:center;"><?php echo rupiah ($row['harga_barang'])?></td>
+                                            <td style="text-align:center;"><?php echo $row['jumlah_barang']?></td>
                                             <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
                                             <td style="text-align:center;"><?php echo $row['no_kontrak']?></td>
                                             <td style="text-align:center;"><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>

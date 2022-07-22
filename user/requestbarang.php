@@ -6,23 +6,20 @@
     $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
 
     $produk = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi ON komoditi.id_komoditi = barang.id_komoditi WHERE id_barang ='".$_GET['id']."' ");
-	if(mysqli_num_rows($produk)==0){
-		echo '<script>window.location="databarang.php"</script>';
-	}
 	$p = mysqli_fetch_object($produk);
-    // if ($id_request){
-    //     $barang = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC");
-    //     $row = mysqli_fetch_assoc($barang);
+    if ($id_request){
+        $barang = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC");
+        $row = mysqli_fetch_assoc($barang);
 
-    //     $nama_penyedia = $row['nama_penyedia'];
-    //     $nama_barang = $row['nama_barang'];
-    //     $jumlah_barang = $row['jumlah_barang'];
-    //     $harga_barang = $row['harga_barang'];
-    //     $tahun_produksi = $row['tahun_produksi'];
-    //     $tgl_request = $row['tgl_request'];
-    //     $jenis_komoditi = $row['jenis_komoditi'];
-    //     $no_kontrak = rand();
-    // }
+        $nama_penyedia = $row['nama_penyedia'];
+        $nama_barang = $row['nama_barang'];
+        $jumlah_barang = $row['jumlah_barang'];
+        $harga_barang = $row['harga_barang'];
+        $tahun_produksi = $row['tahun_produksi'];
+        $tgl_request = $row['tgl_request'];
+        $jenis_komoditi = $row['jenis_komoditi'];
+        $no_kontrak = rand();
+    }
 ?>
 
 
