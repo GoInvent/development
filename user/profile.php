@@ -42,7 +42,7 @@
                     Daftarkan akun profile-mu sebagai penyedia, untuk kamu bisa menyimpan dan memasukan barang<br/>
                     ke gudang kami.<a href="#"> Lihat Detail</a>
             </p>
-            <?php if($row['id_admin'] == $id_user) : ?>
+            <?php if($row['id_user'] == $id_user) : ?>
                 <p style="font-weight: bold;">Anda telah mengajukan permintaan sebagai penyedia</p>
                 <p style="font-weight: bold; margin-top:-13px;">Mohon tunggu, permintaan sebagai penyedia sedang kami proses</p>
             <?php else : ?>
