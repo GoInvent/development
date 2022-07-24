@@ -17,7 +17,7 @@
         <h4>Profile Kamu</h4>
         <p>Biodata lengkap profile</p>
         <div class="border-profile"></div>
-        <form action="<?php echo BASE_URL."index.php?page=user/request_profile.php&id_user=$id_user" ?>" method="POST">
+        <form action="<?php echo BASE_URL."index.php?page=user/approve_profile.php&id_user=$idd_user" ?>" method="POST">
             <div style="margin-top:20px">
                 <h6>ID Pengguna : <?php echo $id_user; ?></h6>
                 <div class="form-floating mb-3">
@@ -35,9 +35,7 @@
                     <label for="floatingInput">Email Pengguna</label>
                 </div>
             </div>
-            
-            <div style="border: 1px solid gray;width:97%;margin:20px 0px 20px 0px;"></div>
-            
+        
             <input type="submit" name="submit" value="Setujui" class="btn btn-success">
         </form>
     </div>
