@@ -4,6 +4,8 @@ file_put_contents('UIDContainer.php',$Write);
 
 $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
 
+include_once('helper.php')
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -86,7 +88,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                             <td><?php echo $row['jenis_komoditi']?></td>
                                             <td style="text-align:center"><?php echo $row['nama_barang']?></td>
                                             <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
-                                            <td style="text-align:center"><?php echo $row['harga_barang']?></td>
+                                            <td style="text-align:center"><?php echo rupiah ($row['harga_barang'])?></td>
                                             <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                             <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
                                             <td><?php echo $row['tgl_kirim']?></td>

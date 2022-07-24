@@ -41,6 +41,8 @@
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
     <link href="css/style-detail-persetujuan.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
+    
     <script>
 		$(document).ready(function(){
 				$("#getUID").load("UIDContainer.php");
@@ -49,6 +51,7 @@
 		}, 500);
 		});
 	</script>
+    
 </head>
 
 <body>
@@ -192,6 +195,11 @@
                             </li> 
 
                         <?php elseif ($_SESSION['role'] == "User") : ?> <!--session kadopus -->
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL.'index.php?page=user/profile.php'?>" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Profile</span></a>
+                            </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
