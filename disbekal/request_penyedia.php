@@ -74,19 +74,21 @@ $id_user = isset($_GET['id_user']) ? $_GET['id_user'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM log_penyedia LEFT JOIN users USING(id_user) ORDER BY id_user DESC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM users LEFT JOIN log_penyedia USING(id_user) ORDER BY id_user DESC');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
-                                            <tr>
-                                            <td style="text-align:center"><?php echo $no++ ?></td>
-                                            <td style="text-align:center"><?php echo $row['id_user']?></td>
-                                            <td style="text-align:center"><?php echo $row['nama_user']?></td>
-                                            <td style="text-align:center"><?php echo $row['email_user']?></td>
-                                            <td style="text-align:center"><?php echo $row['created_at']?></td>
-                                            <td style="text-align:center"><?php echo $row['status']?></td>
-                                            <td style="text-align:center"><a href="#" class="btn btn-success">Persetujuan</a></td>
-                                            </tr>
+                                            <?php if($row['status'] != NULL): ?>
+                                                <tr>
+                                                <td style="text-align:center"><?php echo $no++ ?></td>
+                                                <td style="text-align:center"><?php echo $row['id_user']?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_user']?></td>
+                                                <td style="text-align:center"><?php echo $row['email_user']?></td>
+                                                <td style="text-align:center"><?php echo $row['created_at']?></td>
+                                                <td style="text-align:center"><?php echo $row['status']?></td>
+                                                <td style="text-align:center"><a href="<?php echo BASE_URL."index.php?page=disbekal/detail_request.php&id_user=$row[id_user]" ?>" class="btn btn-success">Lihat Detail</a></td>
+                                                </tr>
+                                            <?php endif; ?>
                                         <?php }
                                         }else { ?>
                                             <tr>
