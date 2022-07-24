@@ -34,6 +34,8 @@
             <div>
                 <div>
                     <!-- kasih action yang mana update dari role user menjadi penyedia pada table users kolom role -->
+                    <!-- muncul pop yang sebagai warning untuk user, menyetujui menjadi penyedia -->
+                    <!-- ketiak user setuju maka role akan insert ke tb_log_penyedia -->
                     <a href="<?php echo BASE_URL."index.php?page=user/request_profile.php&id_user=$id_user" ?>" class="btn btn-success">Ajukan Profile Sebagai Penyedia</a>
                 </div>
                 <div style="margin-top:10px;">
