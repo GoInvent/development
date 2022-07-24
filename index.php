@@ -154,6 +154,13 @@
                                 </a>
                             </li>
 
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/request_penyedia.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-file"></i>
+                                <span class="hide-menu">Reuqest Pengguna</span>
+                                </a>
+                            </li>
+
                         <?php elseif ($_SESSION['role'] == "Kadopus") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=kadopus/home.php'?>" aria-expanded="false">
