@@ -32,7 +32,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
-                                <a href="#" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Lihat detail barang</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/detail_barang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Lihat detail barang</a>
 
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
