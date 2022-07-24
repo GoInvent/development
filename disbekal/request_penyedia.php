@@ -85,7 +85,13 @@ $id_user = isset($_GET['id_user']) ? $_GET['id_user'] : false;
                                                 <td style="text-align:center"><?php echo $row['nama_user']?></td>
                                                 <td style="text-align:center"><?php echo $row['email_user']?></td>
                                                 <td style="text-align:center"><?php echo $row['created_at']?></td>
-                                                <td style="text-align:center"><?php echo $row['status']?></td>
+                                                <td style="text-align:center">
+                                                    <?php if($row['login'] == 1): ?>
+                                                        <p>Terverifikasi</p>
+                                                    <?php else: ?>
+                                                        <p>Pending</p>
+                                                    <?php endif; ?>
+                                                </td>
                                                 <td style="text-align:center"><a href="<?php echo BASE_URL."index.php?page=disbekal/detail_request.php&id_user=$row[id_user]" ?>" class="btn btn-success">Lihat Detail</a></td>
                                                 </tr>
                                             <?php endif; ?>
