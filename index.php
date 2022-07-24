@@ -12,7 +12,10 @@
 	} else if ($_SESSION['role']=="User"){
         $nama_user = $_SESSION['nama_user'];
         $role = $_SESSION['role'];
-    } else {
+    }else if ($_SESSION['role']=="Penyedia"){
+        $nama_user = $_SESSION['nama_user'];
+        $role = $_SESSION['role'];
+    }else {
         $nama_admin = $_SESSION['nama_admin'];
         $role = $_SESSION['role'];
         $id_admin = $_SESSION['id_admin'];
@@ -97,7 +100,9 @@
                     <?php 
                     if ($_SESSION['role']=="User") {
                        echo "Hi Selamat datang, <b>$nama_user</b>";
-                    } else {
+                    }else if($_SESSION['role']=="Penyedia"){
+                        echo "Hi Selamat datang, <b>$nama_user</b>";
+                    }else {
                        echo "Hi Selamat datang, <b>$nama_admin</b>";
                     }
                     
@@ -184,23 +189,36 @@
                                 </a>
                             </li>
                         <?php elseif ($_SESSION['role'] == "Penyedia") : ?> <!--session kadopus -->
-                            
                             <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=penyedia/home.php'?>" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL.'index.php?page=user/profile.php'?>" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Profile</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/home.php'?>" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Pemasukan Barang</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/databarang.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Permintaan Barang</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/penyedia/registbarang.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Input Barang</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/penyedia/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Barang di Gudang</span></a>
                             </li>
                             <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=penyedia/databarang.php"?>" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/penyedia/databarang.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-account-network"> </i>
                                 <span class="hide-menu">Log Barang</span></a>
-                            </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=penyedia/registbarang.php"?>" aria-expanded="false">
-                                <i class="mdi mdi-border-all"></i>
-                                <span class="hide-menu">Input Barang</span></a>
                             </li> 
-
                         <?php elseif ($_SESSION['role'] == "User") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL.'index.php?page=user/profile.php'?>" aria-expanded="false">

@@ -8,7 +8,7 @@
     $role = isset($_SESSION['role']) ? $_SESSION['role']: false;
     $email_user = isset($_SESSION['email_user']) ? $_SESSION['email_user'] : false;
 
-    $sql = mysqli_query($koneksi, "SELECT * FROM log_penyedia");
+    $sql = mysqli_query($koneksi, "SELECT * FROM log_penyedia WHERE id_user = $id_user");
     $row = mysqli_fetch_assoc($sql);
 ?>
 
@@ -38,13 +38,16 @@
             </div>
             
             <div style="border: 1px solid gray;width:97%;margin:20px 0px 20px 0px;"></div>
-            <p class="text-profile">
+
+            <?php if($row['id_user'] == $id_user && $role == 'User') : ?>
+                <p class="text-profile">
                     Daftarkan akun profile-mu sebagai penyedia, untuk kamu bisa menyimpan dan memasukan barang<br/>
                     ke gudang kami.<a href="#"> Lihat Detail</a>
-            </p>
-            <?php if($row['id_user'] == $id_user) : ?>
+                </p>
                 <p style="font-weight: bold;">Anda telah mengajukan permintaan sebagai penyedia</p>
                 <p style="font-weight: bold; margin-top:-13px;">Mohon tunggu, permintaan sebagai penyedia sedang kami proses</p>
+            <?php elseif($role == 'Penyedia') : ?>
+                <p>Anda telah terverifikasi sebagai penyedia</p>
             <?php else : ?>
                 <!-- kasih action yang mana update dari role user menjadi penyedia pada table users kolom role -->
                 <!-- muncul pop yang sebagai warning untuk user, menyetujui menjadi penyedia -->
@@ -56,6 +59,7 @@
                     <label for="aggre"> Menyetujui syarat dan ketentuan yang berlaku</label><br>
                 </div>
             <?php endif; ?>
+
         </form>
     </div>
 </body>

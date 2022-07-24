@@ -1,6 +1,9 @@
 <?php
 $Write="<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
 file_put_contents('UIDContainer.php',$Write);
+
+$id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user']:false;
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -56,7 +59,7 @@ file_put_contents('UIDContainer.php',$Write);
                                                 include 'database.php';
 
                                                 $no = 1;
-                                                $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC');
+                                                $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) WHERE id_admin = $id_user");
                                                 if (mysqli_num_rows($sql) > 0 ) {
                                                 while ($row = mysqli_fetch_array($sql)){
                                             ?>

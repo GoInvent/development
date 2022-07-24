@@ -1,8 +1,8 @@
 <?php 
     include_once('helper.php');
     $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
+    $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user']:false;
     
-
 ?>
 
 <body>
@@ -35,7 +35,7 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC');
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) WHERE id_admin = $id_user");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>

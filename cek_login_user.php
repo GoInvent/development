@@ -24,7 +24,7 @@ if($cek > 0){
     $_SESSION['id_user'] = $data['id_user'];
     $iduser = $_SESSION['id_user'];
     $_SESSION['login'] = 1;
-    $_SESSION['role'] = "User";
+    $_SESSION['role'] = $data['role'];
     $result = mysqli_query($koneksi, "UPDATE users SET last_login = NOW() WHERE id_user = $iduser");
     
     header("location:index.php?page=user/home.php");

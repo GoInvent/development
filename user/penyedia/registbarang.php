@@ -19,11 +19,11 @@
                                 <p>Pendataan barang sebelum masuk gudang</p>
 								<form class="" action="" method="post">
                                     <div class="form-floating mb-3">
-										<input name="id_admin" class="form-control" id="id_admin" placeholder=" " value="<?php echo $_SESSION['id_admin'] ?>" required disabled>
-										<label for="id_admin">ID Admin</label>
+										<input name="id_user" class="form-control" id="id_user" placeholder=" " value="<?php echo $_SESSION['id_user'] ?>" required disabled>
+										<label for="id_user">ID User</label>
 									</div>
                                     <div class="form-floating mb-3">
-										<input name="nama_penyedia" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $_SESSION['nama_admin'] ?>" required disabled>
+										<input name="nama_penyedia" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $_SESSION['nama_user'] ?>" required disabled>
 										<label for="nama_penyedia">Nama</label>
 									</div>
 									<div class="form-floating mb-3">
@@ -68,8 +68,8 @@
                                 <?php
                                 // Check If form submitted, insert form data into users table.
                                 if(isset($_POST['submit'])) {
-                                    $idadmin        = $_POST['id_admin'] = $_SESSION['id_admin'];
-                                    $namaadmin      = $_POST['nama_admin'] = $_SESSION['nama_admin'];
+                                    $idadmin        = $_POST['id_user'] = $_SESSION['id_user'];
+                                    $namaadmin      = $_POST['nama_penyedia'] = $_SESSION['nama_user'];
                                     $roleadmin      = $_POST['role'] = $_SESSION['role'];
                                     $kategori       = $_POST['id_komoditi'];    
                                     $namabarang     = $_POST['nama_barang'];
@@ -86,11 +86,11 @@
                                     if ($result){
                                         //jika data berhasil disimpan
                                         echo '<script>alert("Simpan data Berhasil")</script>';
-                                        echo '<script>window.location="index.php?page=penyedia/databarang.php"</script>';
+                                        echo '<script>window.location="index.php?page=user/penyedia/databarang.php"</script>';
                                     }else{
                                         echo 'gagal'.mysqli_error($koneksi);
                                     }
-                                    header("Location: index.php?page=penyedia/registbarang.php");
+                                    header("Location: index.php?page=user/penyedia/registbarang.php");
                                 }
                                 ?>
                             </div>
