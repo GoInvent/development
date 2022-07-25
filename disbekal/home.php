@@ -4,6 +4,9 @@ file_put_contents('UIDContainer.php',$Write);
 
 $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
+$pagination = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
+$data_perhalaman = 3;
+$mulai_dari = ($pagination -1)* $data_perhalaman;
 
 ?>
 <!DOCTYPE html>
@@ -77,8 +80,8 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                     <tbody>
                                      <?php
                                             include 'database.php';
-                                            $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_request DESC');
+                                            $no = 1 + $mulai_dari;
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) LIMIT $mulai_dari, $data_perhalaman");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -106,7 +109,12 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                                <?php echo $id_request ?>
+                                
+                                <?php 
+                                    $sqlPagination = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi)");
+                                    pagination($sqlPagination, $data_perhalaman, $pagination, "index.php?page=disbekal/home.php")
+                                ?>
+
                             </div>
                         </div>
                     </div>

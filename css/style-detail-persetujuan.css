@@ -49,3 +49,13 @@ a.submit-persetujuan {
     padding-right: 3px;
     padding-left: 3px;
 }
+
+li.page-pagination {
+    border: 1px solid;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 4px;
+    margin: 7px 5px 0px 0px;
+    border-radius: 7px;
+}

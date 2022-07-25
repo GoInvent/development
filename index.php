@@ -45,6 +45,7 @@
     <link href="dist/css/style.min.css" rel="stylesheet">
     <link href="css/style-detail-persetujuan.css" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
     
     <script>
 		$(document).ready(function(){
