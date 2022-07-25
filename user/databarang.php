@@ -24,6 +24,17 @@
                             <div class="table-responsive">
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
+                                <!-- Filter kategori barang -->
+                                <form action="/action_page.php">
+                                    <label for="cars">Pilih Kategori:</label>
+                                    <select id="cars" name="cars">
+                                        <option value="1">Elektronik</option>
+                                        <option value="2">Pakaian</option>
+                                        <option value="3">Lain - Lain</option>
+                                    </select>
+                                    <!-- <input type="submit" class= "btn btn-success"> -->
+                                </form>
+                                <!-- ---------------------- -->
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
