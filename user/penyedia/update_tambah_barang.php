@@ -26,12 +26,6 @@
     $jumlah_barang_awal = $row['jumlah_barang'];
     $jumlah_barang = $tambah_barang + $jumlah_barang_awal;
 
-    // $status = 'Barang masuk, $jumlah_barang';
-
-    //update diganti sama push, masuk ke tb_pemasukan.
-    // mysqli_query($koneksi, "UPDATE barang SET jumlah_barang = $jumlah_barang WHERE id_barang = '".$_GET['id_barang']."'");
-
-    //insert tambah barang ke pemasukan
     $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_admin, nama_penyedia, role, id_komoditi, id_barang, nama_barang, jumlah_barang, harga_barang, tahun_produksi, tgl_request, no_kontrak, status, status_request )
                 VALUES('$id_admin', 'kosong', '$role', '$id_komoditi', '$id_barang', '$nama_barang', '$jumlah_barang', '$harga_barang', '$tahun_produksi', NOW(), '$no_kontrak', 'Penambahan $tambah_barang barang masuk', 0) ");
     
@@ -39,10 +33,10 @@
         mysqli_query($koneksi, "UPDATE barang SET jumlah_barang = $jumlah_barang, updated_at = NOW() WHERE id_barang = '".$_GET['id_barang']."'");
 
         echo '<script>alert("Simpan data Berhasil")</script>';
-        echo '<script>window.location="index.php?page=penyedia/databarang.php"</script>';
+        echo '<script>window.location="index.php?page=user/penyedia/databarang.php"</script>';
     }else{
-        echo '<script>alert("Simpan data Berhasil")</script>';
-        echo '<script>window.location="index.php?page=penyedia/databarang.php"</script>';
+        echo '<script>alert("Simpan data gagal")</script>';
+        echo '<script>window.location="index.php?page=user/penyedia/databarang.php"</script>';
     }
 
 ?>

@@ -74,7 +74,7 @@ $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user']:false;
                                                 <td style="text-align:center";><?php echo $row['updated_at']?></td>
                                                 <div>
                                                     <td style="text-align:center";>
-                                                        <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=penyedia/tambah_barang.php&id_barang=$row[id_barang]" ?>">Tambah Barang</a>
+                                                        <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=user/penyedia/tambah_barang.php&id_barang=$row[id_barang]" ?>">Tambah Barang</a>
                                                         <a class="btn btn-info" style="color:white;" href="#">Lihat Detail</a>
                                                     </td>
                                                 </div>

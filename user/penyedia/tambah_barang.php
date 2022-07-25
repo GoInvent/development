@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h4>Input tambah data barang</h4>
                             <p>Pendataan tambah barang sebelum masuk gudang</p>
-                            <form action="<?php echo BASE_URL."index.php?page=penyedia/update_tambah_barang.php&id_barang=$row[id_barang]" ?>" method="POST">
+                            <form action="<?php echo BASE_URL."index.php?page=user/penyedia/update_tambah_barang.php&id_barang=$row[id_barang]" ?>" method="POST">
                                 <div class="form-floating mb-3">
                                     <input name="id_barang" class="form-control" id="id_barang" placeholder=" " value="<?php echo $id_barang ?>" required disabled>
                                     <label for="id_barang">ID Barang</label>
