@@ -70,7 +70,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             <td style="text-align:center"><?php echo $row['created_at']?></td>
                                             <td><a href="#" class="btn btn-success">Lihat Detail</a></td>
                                             <!-- <td><a class="btn btn-success" href="index.php?page=updatebarang.php&id=<?php echo $row['id_barang'] ?>">Edit</a> -->
-                                            <!-- <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="deletebarang.php?idb=<?php echo $row['id_barang'] ?>">Delete</a> -->
+                                            <!-- <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?idb=<?php echo $row['id_barang'] ?>">Delete</a> -->
                                             <!-- </td> -->
                                             </tr>
                                         <?php }

@@ -59,7 +59,7 @@ $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user']:false;
                                                 include 'database.php';
 
                                                 $no = 1;
-                                                $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) WHERE id_admin = $id_user");
+                                                $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi)");
                                                 if (mysqli_num_rows($sql) > 0 ) {
                                                 while ($row = mysqli_fetch_array($sql)){
                                             ?>

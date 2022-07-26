@@ -46,7 +46,8 @@
     <link href="css/style-detail-persetujuan.css" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
-    
+    <script src="http://cdn.static.w3big.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script>
 		$(document).ready(function(){
 				$("#getUID").load("UIDContainer.php");
@@ -124,15 +125,24 @@
    
                         <?php if ($_SESSION['role'] == "Disbekal") : ?>  <!--session disbekal -->
                             <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/dashboard.php'?>" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Dashboard</span></a>
+                            </li>
+                            <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Pemasukan</span></a>
                             </li>
-
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/databekal.php'?>" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Jenis Bekal</span></a>
+                            </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/databarang.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-account-network"> </i>
-                                <span class="hide-menu">Barang</span></a>
+                                <span class="hide-menu">Bekal</span></a>
                             </li>
                             
                             <li class="sidebar-item"> 
@@ -163,7 +173,7 @@
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/request_penyedia.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-file"></i>
-                                <span class="hide-menu">Reuqest Pengguna</span>
+                                <span class="hide-menu">Request Pengguna</span>
                                 </a>
                             </li>
 

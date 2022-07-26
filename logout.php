@@ -1,7 +1,7 @@
 <?php 
 	
 	session_destroy();
-	if($_SESSION['role'] == "User"){
+	if($_SESSION['role'] == "User" || "Penyedia"){
 	session_start();
 	echo '<script>window.location="login-user.php"</script>';
 	}else{

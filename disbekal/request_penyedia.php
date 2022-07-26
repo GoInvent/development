@@ -74,7 +74,7 @@ $id_user = isset($_GET['id_user']) ? $_GET['id_user'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM users LEFT JOIN log_penyedia USING(id_user) ORDER BY id_user DESC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM users LEFT JOIN log_penyedia ON users.id_user = log_penyedia.id_user');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>

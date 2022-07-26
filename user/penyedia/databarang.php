@@ -35,7 +35,7 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) WHERE id_admin = $id_user");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) WHERE id_admin = $id_user ORDER BY id_request DESC");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
