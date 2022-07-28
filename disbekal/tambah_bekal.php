@@ -17,6 +17,10 @@
                         <div class="card-body">
                             <h4>Tambah Kategori</h4>
                                 <form class="" action="" method="POST">
+                                <div class="form-floating mb-3">
+                                        <input type="text" name="jenis_komoditi" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <label for="floatingInput">Kode Bekal</label>
+                                    </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" name="jenis_komoditi" class="form-control" id="floatingInput" placeholder=" " required>
                                         <label for="floatingInput">Jenis Bekal</label>

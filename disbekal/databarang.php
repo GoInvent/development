@@ -28,6 +28,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                             <div class="table-responsive">
                     
                                 <h4>Daftar barang di Gudang</h4>
+                                <?php echo $_SESSION['role'] ?>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
@@ -38,7 +39,8 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                         <tr>
                                             <th style="color:white; text-align:center;">No.</th>
                                             <th style="color:white; text-align:center;">ID Barang</th>
-                                            <th style="color:white; text-align:center;">Kategori</th>
+                                            <th style="color:white; text-align:center;">Kode Bekal</th>
+                                            <th style="color:white; text-align:center;">Jenis Bekal</th>
                                             <th style="color:white; text-align:center;">Nama</th>
                                             <th style="color:white; text-align:center;">Harga</th>
                                             <th style="color:white; text-align:center;">Stok</th>
@@ -60,6 +62,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             <tr>
                                             <td style="text-align:center"><?php echo $no++ ?></td>
                                             <td style="text-align:center"><?php echo $row['id_barang']?></td>
+                                            <td style="text-align:center"><?php echo $row['kode_komoditi']?></td>
                                             <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
                                             <td style="text-align:center"><?php echo $row['nama_barang']?></td>
                                             <td style="text-align:center"><?php echo rupiah($row['harga_barang'])?></td>
@@ -68,10 +71,9 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
                                             <td style="text-align:center"><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
                                             <td style="text-align:center"><?php echo $row['created_at']?></td>
-                                            <td><a href="#" class="btn btn-success">Lihat Detail</a></td>
-                                            <!-- <td><a class="btn btn-success" href="index.php?page=updatebarang.php&id=<?php echo $row['id_barang'] ?>">Edit</a> -->
-                                            <!-- <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?idb=<?php echo $row['id_barang'] ?>">Delete</a> -->
-                                            <!-- </td> -->
+                                            <td><a class="btn btn-success" href="index.php?page=updatebarang.php&id=<?php echo $row['id_barang'] ?>">Edit</a>
+                                            <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?idb=<?php echo $row['id_barang'] ?>">Delete</a>
+                                            </td>
                                             </tr>
                                         <?php }
                                         }else { ?>

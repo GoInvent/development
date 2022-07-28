@@ -1,5 +1,16 @@
 <?php
     include_once('helper.php');
+    if(isset($_GET['komoditi'])){
+        $cari = $_GET['komoditi'];
+
+        //ambil data dari database, dimana pencarian sesuai dengan variabel cari
+        $data = mysqli_query($koneksi, "SELECT * FROM komoditi where id_komoditi = '$cari'");
+		
+        }else{
+
+        //tapi jika jurusan belum diset, maka jangan tampilkan apapun
+        $data = [];		
+    }
 ?>
 
 <body>
@@ -25,12 +36,17 @@
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 <!-- Filter kategori barang -->
-                                <form action="/action_page.php">
-                                    <label for="cars">Pilih Kategori:</label>
-                                    <select id="cars" name="cars">
-                                        <option value="1">Elektronik</option>
-                                        <option value="2">Pakaian</option>
-                                        <option value="3">Lain - Lain</option>
+                                <form action="" method="GET" id="form_id" >
+                                    <label for="komoditi">Filter by:</label> <br>
+                                    <select name="komoditi" id="komoditi_dropdown"class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px" onChange="document.getElementById('form_id').submit();">
+                                        <option value="">Pilih Kategori</option>
+                                        <?php 
+                                            include 'database.php';
+                                            $komoditi = mysqli_query($koneksi, "SELECT * FROM komoditi ORDER BY id_komoditi DESC");
+                                            while ($r = mysqli_fetch_array($komoditi)) {
+                                        ?> 
+                                            <option value="<?php echo $r['id_komoditi'] ?>"><?php echo $r['jenis_komoditi'] ?></option>
+                                        <?php } ?>
                                     </select>
                                     <!-- <input type="submit" class= "btn btn-success"> -->
                                 </form>
@@ -53,7 +69,7 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY nama_barang ASC');
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) WHERE id_komoditi = '$cari' ORDER BY created_at DESC ");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -96,6 +112,14 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#komoditi_dropdown").on('change' function() {
+                var value = $(this).val();
+                alert(value);
+            })
+        });
+    </script>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

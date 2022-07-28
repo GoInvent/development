@@ -45,8 +45,12 @@ file_put_contents('UIDContainer.php',$Write);
                                             <div class="col-12">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                    <h1 align="center">Update Barang</h1>
+                                                    <h1 align="center">Update Bekal</h1>
                                                         <form class="" method="post">
+                                                            <div class="form-floating mb-3">
+                                                                <input type="text" name="kode_komoditi" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $row->kode_komoditi ?>" required>
+                                                                <label for="floatingInput">Jenis Bekal</label>
+                                                            </div>
                                                             <div class="form-floating mb-3">
                                                                 <input type="text" name="jenis_komoditi" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $row->jenis_komoditi ?>" required>
                                                                 <label for="floatingInput">Jenis Bekal</label>
@@ -56,15 +60,18 @@ file_put_contents('UIDContainer.php',$Write);
                                         <?php
                                             // Check If form submitted, insert form data into users table.
                                             if(isset($_POST['submit'])) {
+                                                $kodebekal    = $_POST['kode_komoditi'];
                                                 $jenisbekal   = $_POST['jenis_komoditi'];
+                                                
                                                 
                                                 // include database connection file
                                                 include 'database.php';
                                                         
                                                 // Insert user data into table
                                                 $update = mysqli_query($koneksi, "UPDATE komoditi SET
+                                                            kode_komoditi      = '".$kodebekal."',   
                                                             jenis_komoditi     = '".$jenisbekal."'
-                                                            WHERE id_komoditi = '".$row->id_komoditi."'");
+                                                            WHERE id_komoditi  = '".$row->id_komoditi."'");
                                                 
                                                 if ($update){
                                                     //jika data berhasil disimpan

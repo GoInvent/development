@@ -36,6 +36,7 @@ include_once('helper.php');
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th style="color:white; text-align:center;">No.</th>
+                                            <th style="color:white; text-align:center;">Kode Bekal</th>
                                             <th style="color:white; text-align:center;">Jenis Bekal</th>
                                             <th style="color:white; text-align:center;">Aksi</th>
                                         </tr>
@@ -50,6 +51,7 @@ include_once('helper.php');
                                         ?>
                                             <tr>
                                             <td style="text-align:center"><?php echo $no++ ?></td>
+                                            <td style="text-align:center"><?php echo $row['kode_komoditi']?></td>
                                             <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
                                             <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_komoditi'] ?>">Edit</a> 
                                             <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?id_bekal=<?php echo $row['id_komoditi'] ?>">Delete</a>
