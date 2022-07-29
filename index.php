@@ -125,58 +125,37 @@
    
                         <?php if ($_SESSION['role'] == "Disbekal") : ?>  <!--session disbekal -->
                             <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/dashboard.php'?>" aria-expanded="false">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/databarang.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Dashboard</span></a>
+                                <span class="hide-menu">Bekal</span></a>
                             </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Pemasukan</span></a>
-                            </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/databekal.php'?>" aria-expanded="false">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Jenis Bekal</span></a>
-                            </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/databarang.php"?>" aria-expanded="false">
-                                <i class="mdi mdi-account-network"> </i>
-                                <span class="hide-menu">Bekal</span></a>
-                            </li>
-                            
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php"?>" aria-expanded="false">
-                                <i class="mdi mdi-border-all"></i>
-                                <span class="hide-menu">Registrasi Barang</span></a>
-                            </li>
-
+                                <span class="hide-menu">Pemasukan Bekal</span></a>
+                            </li>                         
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=lihat_data.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-file"></i>
                                 <span class="hide-menu">Read RFID</span></a>
                             </li>
-
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=log_barang.php'?>" aria-expanded="false">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                                <span class="hide-menu">Log</span></a>
-                            </li>
-
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/pengeluaran.php"?>" aria-expanded="false">
                                 <i class="fa-solid fa-truck-fast"></i>
                                 <span class="hide-menu">Pengeluaran</span>
                                 </a>
                             </li>
-
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/request_penyedia.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-file"></i>
                                 <span class="hide-menu">Request Pengguna</span>
                                 </a>
                             </li>
-
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=log_barang.php'?>" aria-expanded="false">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <span class="hide-menu">Log</span></a>
+                            </li>
                         <?php elseif ($_SESSION['role'] == "Kadopus") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=kadopus/home.php'?>" aria-expanded="false">
@@ -208,22 +187,12 @@
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Pemasukan Barang</span></a>
-                            </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/databarang.php"?>" aria-expanded="false">
-                                <i class="mdi mdi-border-all"></i>
-                                <span class="hide-menu">Permintaan Barang</span></a>
-                            </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/penyedia/registbarang.php"?>" aria-expanded="false">
-                                <i class="mdi mdi-border-all"></i>
-                                <span class="hide-menu">Input Barang</span></a>
+                                <span class="hide-menu">Status Daftar Bekal</span></a>
                             </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/penyedia/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Barang di Gudang</span></a>
+                                <span class="hide-menu">Bekal di Gudang</span></a>
                             </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/penyedia/databarang.php"?>" aria-expanded="false">

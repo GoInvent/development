@@ -16,9 +16,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>Tambah Kategori</h4>
-                                <form class="" action="" method="POST">
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_tambah_bekal.php" ?>" method="POST">
                                 <div class="form-floating mb-3">
-                                        <input type="text" name="jenis_komoditi" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <input type="text" name="kode_komoditi" class="form-control" id="floatingInput" placeholder=" " required>
                                         <label for="floatingInput">Kode Bekal</label>
                                     </div>
                                     <div class="form-floating mb-3">
@@ -33,20 +33,6 @@
             </div>
         </div>
     </div>
-<?php 
-if(isset($_POST['submit'])){
-    $jenisbekal = $_POST['jenis_komoditi'];
-    $insert = mysqli_query($koneksi, "INSERT INTO komoditi VALUES (null,'".$jenisbekal."')"); 
-
-    if ($insert) {
-        echo '<script>alert("Simpan data Berhasil")</script>';
-        echo '<script>window.location="index.php?page=disbekal/databekal.php"</script>';
-    }else{
-        echo 'gagal'.mysqli_error($koneksi);
-
-    }
-}
-?>
 
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->

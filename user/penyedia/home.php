@@ -33,12 +33,14 @@ $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user']:false;
                         <div class="card-body">
                             <!-- title -->
                             <div class="d-md-flex">
-                                <div style="margin-bottom:20px;">
+                                <div>
                                     <h4>Daftar barang di Gudang</h4>
                                     <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 </div>
                             </div>
                             <!-- title -->
+                            <a href="<?php echo BASE_URL."index.php?page=user/penyedia/registbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Input Bekal Masuk</a>
+
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">

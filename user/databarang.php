@@ -4,7 +4,7 @@
         $cari = $_GET['komoditi'];
 
         //ambil data dari database, dimana pencarian sesuai dengan variabel cari
-        $data = mysqli_query($koneksi, "SELECT * FROM komoditi where id_komoditi = '$cari'");
+        $data = mysqli_query($koneksi, "SELECT * FROM komoditi where id_komoditi");
 		
         }else{
 
@@ -69,7 +69,7 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) WHERE id_komoditi = '$cari' ORDER BY created_at DESC ");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) WHERE id_komoditi ORDER BY created_at DESC ");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -114,7 +114,7 @@
     <!-- ============================================================== -->
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#komoditi_dropdown").on('change' function() {
+            $("#komoditi_dropdown").on('change',function() {
                 var value = $(this).val();
                 alert(value);
             })

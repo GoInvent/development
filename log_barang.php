@@ -21,17 +21,17 @@
                                 <h4 text-align="left">Riwayat Barang</h4>
                                 <p>Riwayat keluar masuk data barang</p>
                                 <table class="table">
-                                    <thead>
+                                    <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th>No.</th>
-                                            <th>ID Barang</th>
-                                            <th>Nama</th>
-                                            <th>Status</th>
-                                            <th>Stok Awal</th>
-                                            <th>Masuk</th>
-                                            <th>Keluar</th>
-                                            <th>Stok Akhir</th>
-                                            <th>Waktu Eksekusi</th>
+                                            <th style="text-align: center;color: white;">No.</th>
+                                            <th style="text-align: center;color: white;">ID Barang</th>
+                                            <th style="text-align: center;color: white;">Nama</th>
+                                            <th style="text-align: center;color: white;">Status</th>
+                                            <th style="text-align: center;color: white;">Stok Awal</th>
+                                            <th style="text-align: center;color: white;">Masuk</th>
+                                            <th style="text-align: center;color: white;">Keluar</th>
+                                            <th style="text-align: center;color: white;">Stok Akhir</th>
+                                            <th style="text-align: center;color: white;">Waktu Eksekusi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,15 +43,15 @@
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
-                                            <td><?php echo $no++ ?></td>
-                                            <td><?php echo $row['id_barang']?></td>
-                                            <td><?php echo $row['nama_baru']?></td>
-                                            <td><?php echo $row['status']?></td>
-                                            <td><?php echo $row['stok_awal']?></td>
-                                            <td><?php echo $row['stok_masuk']?></td>
-                                            <td><?php echo $row['stok_keluar']?></td>
-                                            <td><?php echo $row['stok_akhir']?></td>
-                                            <td><?php echo $row['date']?></td>    
+                                            <td style="text-align: center;"><?php echo $no++ ?></td>
+                                            <td style="text-align: center;"><?php echo $row['id_barang']?></td>
+                                            <td style="text-align: center;"><?php echo $row['nama_baru']?></td>
+                                            <td style="text-align: center;"><?php echo $row['status']?></td>
+                                            <td style="text-align: center;"><?php echo $row['stok_awal']?></td>
+                                            <td style="text-align: center;"><?php echo $row['stok_masuk']?></td>
+                                            <td style="text-align: center;"><?php echo $row['stok_keluar']?></td>
+                                            <td style="text-align: center;"><?php echo $row['stok_akhir']?></td>
+                                            <td style="text-align: center;"><?php echo $row['date']?></td>    
                                             </td>
                                             </tr>
                                             

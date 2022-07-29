@@ -32,7 +32,7 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <h1 class="mb-0 fw-bold">Persediaan Barang</h1> 
+                    <h1 class="mb-0 fw-bold">Persediaan Bekal</h1> 
                 </div>
             </div>
         </div>
@@ -55,11 +55,13 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                             <!-- title -->
                             <div class="d-md-flex">
                                 <div>
-                                    <h4 class="card-title">Pemasukan Barang</h4>
-                                    <p>Daftar Permintaan Barang Masuk</p>
+                                    <h4 class="card-title">Pemasukan Bekal</h4>
+                                    <p>Daftar Permintaan Bekal Masuk</p>
                                 </div>
                             </div>
                             <!-- title -->
+                            <a href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Registrasi Bekal</a>
+
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">

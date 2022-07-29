@@ -58,6 +58,9 @@ include_once('helper.php')
                                 </div>
                             </div>
                             <!-- title -->
+                            
+                            <a href="<?php echo BASE_URL."index.php?page=user/databarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Permintaan Bekal</a>
+                           
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead  style="background-color:#1a9bfc;">
@@ -109,11 +112,6 @@ include_once('helper.php')
                     </div>
                 </div>
             </div>
-        <footer class="footer text-center">
-            All Rights Reserved by Flexy Admin. Designed and Developed by <a
-                href="https://www.wrappixel.com">WrapPixel</a>.
-        </footer>
-
     </div>
     </div>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>

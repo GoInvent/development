@@ -86,7 +86,7 @@ Highcharts.chart('container', {
 
   series: [{
     name: 'Total',
-    data: [<?php echo $row['total'] ?>, <?php echo $data['total'] ?>],
+    data: [<?php echo $data['total'] ?>, <?php echo $row['total'] ?>],
   }]
 }); 
 		</script>
