@@ -22,22 +22,23 @@ include_once('helper.php');
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
-                    <h1 text-align="center" style="margin:2% 0% 2% 0%;">List Barang</h1>
+                    <h1 text-align="center" style="margin:2% 0% 2% 0%;">List kategori</h1>
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
                     
-                                <h4>Daftar barang di Gudang</h4>
+                                <h4>Daftar barang bekal</h4>
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/tambah_bekal.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Tambah Jenis Bekal</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/tambah_kategori_bekal.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Tambah Kategori Bekal</a>
 
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th style="color:white; text-align:center;">No.</th>
-                                            <th style="color:white; text-align:center;">Kode Bekal</th>
-                                            <th style="color:white; text-align:center;">Jenis Bekal</th>
+                                            <th style="color:white; text-align:center;">Kategori bekal</th>
+                                            <th style="color:white; text-align:center;">Kelas Bekal</th>
+                                            <th style="color:white; text-align:center;">Tanggal dibuat</th>
                                             <th style="color:white; text-align:center;">Aksi</th>
                                         </tr>
                                     </thead>
@@ -45,14 +46,15 @@ include_once('helper.php');
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM komoditi ORDER BY id_komoditi DESC");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM kategori_bekal");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                             <td style="text-align:center"><?php echo $no++ ?></td>
-                                            <td style="text-align:center"><?php echo $row['kode_komoditi']?></td>
-                                            <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
+                                            <td style="text-align:center"><?php echo $row['nama_kategori_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['created_at']?></td>
                                             <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_komoditi'] ?>">Edit</a> 
                                             <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?id_bekal=<?php echo $row['id_komoditi'] ?>">Delete</a>
                                             </td>

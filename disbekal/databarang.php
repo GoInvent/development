@@ -28,12 +28,11 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                             <div class="table-responsive">
                     
                                 <h4>Daftar barang di Gudang</h4>
-                                <?php echo $_SESSION['role'] ?>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/detail_barang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Lihat detail barang</a>
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/databekal.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Jenis Bekal</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/detail_barang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Detail Bekal</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/databekal.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Jenis Kategori Bekal</a>
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>

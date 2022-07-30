@@ -79,6 +79,11 @@
             </div>
         </div>
 
+        <div style="margin:5px 0px 30px 290px;">
+            <h3>Informasi kesediaan barang di gudang berdasarkan kategori</h3>
+            <p>Data keluar masuk barang di gudang</p>
+        </div>
+
     </div> 
 </body>
 </html>

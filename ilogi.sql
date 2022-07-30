@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jul 2022 pada 16.10
+-- Waktu pembuatan: 30 Jul 2022 pada 16.41
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.6
 
@@ -44,7 +44,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `status`, `created_at`, `last_login`, `login`) VALUES
-(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-07-25 04:32:16', b'0'),
+(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-07-30 13:00:42', b'0'),
 (2, 'Test', 'test@gmail.com', 'test', 'kadopus', b'1', '2022-07-07 06:02:21', '2022-07-20 13:34:25', b'0'),
 (3, 'Aku', 'aku@gmail.com', 'test', 'penyedia', b'1', '0000-00-00 00:00:00', '2022-07-23 15:17:18', b'0'),
 (4, 'Omar Penyedia', 'dia@gmail.com', 'test', 'penyedia', b'1', '2022-07-13 08:41:23', '2022-07-18 03:52:13', b'0');
@@ -71,14 +71,6 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `barang`
---
-
-INSERT INTO `barang` (`id_barang`, `id_komoditi`, `nama_barang`, `id_admin`, `harga_barang`, `jumlah_barang`, `tahun_produksi`, `no_kontrak`, `status_barang`, `created_at`, `deleted_at`, `updated_at`) VALUES
-('12345', 2, 'Handphone', 3, 20000000, 20, 2020, 1633524666, b'1', '2022-07-23 15:15:43', '2022-07-23 15:28:49', '2022-07-23 15:28:49'),
-('1321231', 1, 'Celana', 1, 2000000, 220, 2019, 1584268906, b'1', '2022-07-25 04:24:26', '2022-07-25 04:29:25', '2022-07-25 04:29:25');
-
---
 -- Trigger `barang`
 --
 DELIMITER $$
@@ -99,11 +91,50 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `bekal_penyedia`
+--
+
+CREATE TABLE `bekal_penyedia` (
+  `id_bekal_penyedia` int(11) NOT NULL,
+  `kategori_bekal` varchar(255) NOT NULL,
+  `nama_bekal` varchar(255) NOT NULL,
+  `id_bekal` int(11) NOT NULL,
+  `stok_bekal` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kategori_bekal`
+--
+
+CREATE TABLE `kategori_bekal` (
+  `id_kategori` int(11) NOT NULL,
+  `nama_kategori_bekal` varchar(255) NOT NULL,
+  `kelas_bekal` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `kategori_bekal`
+--
+
+INSERT INTO `kategori_bekal` (`id_kategori`, `nama_kategori_bekal`, `kelas_bekal`, `created_at`, `updated_at`) VALUES
+(1, 'Makanan', 'BK.1', '2022-07-30 21:03:00', '2022-07-30 21:03:00'),
+(3, 'Pakaian Kaporlap', 'BK.2', '2022-07-30 21:03:50', '2022-07-30 21:03:50');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `komoditi`
 --
 
 CREATE TABLE `komoditi` (
   `id_komoditi` int(11) NOT NULL,
+  `kode_komoditi` varchar(15) NOT NULL,
   `jenis_komoditi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -111,10 +142,10 @@ CREATE TABLE `komoditi` (
 -- Dumping data untuk tabel `komoditi`
 --
 
-INSERT INTO `komoditi` (`id_komoditi`, `jenis_komoditi`) VALUES
-(1, 'Pakaian'),
-(2, 'Elektronik'),
-(3, 'Lain-lain');
+INSERT INTO `komoditi` (`id_komoditi`, `kode_komoditi`, `jenis_komoditi`) VALUES
+(6, 'BK.I.00001', 'Roti Kabin'),
+(7, 'BK.I.00002', 'Susu Bubuk'),
+(8, 'BK.I.00003', 'Kopi Bubuk');
 
 -- --------------------------------------------------------
 
@@ -140,9 +171,8 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id_log`, `id_barang`, `nama_lama`, `nama_baru`, `status`, `stok_awal`, `stok_masuk`, `stok_keluar`, `stok_akhir`, `date`) VALUES
-(59, '6789', '', 'Celana', 'Masuk Barang', 1000, 1000, 0, 1000, '2022-07-25 04:21:50'),
-(60, '63435', '', 'Celana', 'Masuk Barang', 1000, 1000, 0, 1000, '2022-07-25 04:23:23'),
-(61, '1321231', '', 'Celana', 'Masuk Barang', 1000, 1000, 0, 1000, '2022-07-25 04:24:26');
+(64, '12345', '', 'Susu', 'Masuk Barang', 200, 200, 0, 200, '2022-07-29 01:51:44'),
+(65, '213123', '', 'Kopi', 'Masuk Barang', 20, 20, 0, 20, '2022-07-29 08:23:26');
 
 -- --------------------------------------------------------
 
@@ -156,14 +186,6 @@ CREATE TABLE `log_penyedia` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` enum('approved','pending') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `log_penyedia`
---
-
-INSERT INTO `log_penyedia` (`id_log_penyedia`, `id_user`, `created_at`, `status`) VALUES
-(1, 1, '2022-07-24 07:16:06', 'pending'),
-(2, 2, '2022-07-24 13:18:47', 'pending');
 
 -- --------------------------------------------------------
 
@@ -187,18 +209,6 @@ CREATE TABLE `pemasukan` (
   `status` varchar(255) NOT NULL,
   `status_request` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pemasukan`
---
-
-INSERT INTO `pemasukan` (`id_request`, `id_admin`, `nama_penyedia`, `role`, `id_komoditi`, `id_barang`, `nama_barang`, `jumlah_barang`, `harga_barang`, `tahun_produksi`, `tgl_request`, `no_kontrak`, `status`, `status_request`) VALUES
-(69, 2, 'Siapa', 'Penyedia', 2, '', 'Handphone', 10, 8000000, 2020, '2022-07-24 14:21:56', 0, '', b'0'),
-(70, 1, 'Omar', 'Penyedia', 1, '1321231', 'Celana', 1000, 2000000, 2019, '2022-07-25 02:56:14', 1584268906, '', b'1'),
-(71, 1, 'Omar', 'Penyedia', 2, '', 'Radio', 900, 200000, 2012, '2022-07-25 02:56:35', 0, '', b'0'),
-(72, 1, 'Omar', 'Penyedia', 1, '', 'Jaket', 80, 8000000, 2021, '2022-07-25 02:56:55', 0, '', b'0'),
-(73, 1, 'Omar', 'Penyedia', 2, '', 'Laptop Asus', 100, 90000000, 2022, '2022-07-25 02:57:19', 0, '', b'0'),
-(74, 3, 'kosong', 'Penyedia', 2, '1321231', 'Handphone', 220, 20000000, 2020, '2022-07-25 04:29:25', 1633524666, 'Penambahan 200 barang masuk', b'0');
 
 -- --------------------------------------------------------
 
@@ -224,13 +234,6 @@ CREATE TABLE `pengeluaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengeluaran`
---
-
-INSERT INTO `pengeluaran` (`id_kirim`, `id_user`, `nama_user`, `alamat_user`, `id_barang`, `id_komoditi`, `nama_barang`, `jumlah_barang`, `harga_barang`, `tahun_produksi`, `no_kontrak`, `tgl_request`, `tgl_kirim`, `status_request`) VALUES
-(18, 1, 'Omar', 'jl siliwangi', '12345', 2, 'Handphone', 10, 20000000, 2020, 1633524666, '2022-07-23 15:28:49', '2022-07-23 15:29:28', b'1');
-
---
 -- Trigger `pengeluaran`
 --
 DELIMITER $$
@@ -239,6 +242,29 @@ SET jumlah_barang=jumlah_barang-new.jumlah_barang
 WHERE id_barang=new.id_barang
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `penyedia_barang`
+--
+
+CREATE TABLE `penyedia_barang` (
+  `id_penyedia` int(11) NOT NULL,
+  `nama_penyedia` varchar(255) NOT NULL,
+  `email_penyedia` varchar(255) NOT NULL,
+  `no_penyedia` int(11) NOT NULL,
+  `alamat_penyedia` varchar(255) NOT NULL,
+  `tanggal_terdaftar` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penyedia_barang`
+--
+
+INSERT INTO `penyedia_barang` (`id_penyedia`, `nama_penyedia`, `email_penyedia`, `no_penyedia`, `alamat_penyedia`, `tanggal_terdaftar`) VALUES
+(2, 'PT Persenjataan', 'persenjataan@gmail.com', 2147483647, 'Jl. Kebon Jahe No.12', '2022-07-30 14:37:48'),
+(3, 'PT Sari Roti', 'sariroti@gmail.com', 21039810, 'JL. Ir Soekarno', '2022-07-30 21:22:13');
 
 -- --------------------------------------------------------
 
@@ -263,8 +289,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nama_user`, `no_hp`, `email_user`, `password_user`, `created_at`, `last_login`, `role`, `login`) VALUES
-(1, 'Omar', '085885819904', 'omar@gmail.com', 'user', '2022-07-24 10:38:13', '2022-07-25 04:39:30', 'Penyedia', b'1'),
-(2, 'Siapa', '082119624945', 'siapa@gmail.com', 'user', '2022-07-24 13:28:05', '2022-07-24 14:07:33', 'Penyedia', b'1');
+(1, 'Omar', '085885819904', 'omar@gmail.com', 'user', '2022-07-24 10:38:13', '2022-07-29 08:38:11', 'Penyedia', b'1'),
+(2, 'Siapa', '082119624945', 'siapa@gmail.com', 'user', '2022-07-25 14:14:55', '2022-07-24 14:07:33', 'Penyedia', b'1'),
+(3, 'user', '0821389719371', 'user@gmail.com', 'user', '2022-07-29 07:32:09', '2022-07-29 07:39:44', 'User', b'0');
 
 --
 -- Indexes for dumped tables
@@ -283,6 +310,18 @@ ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
   ADD UNIQUE KEY `nama_barang` (`nama_barang`),
   ADD KEY `fk_id_komoditi` (`id_komoditi`);
+
+--
+-- Indeks untuk tabel `bekal_penyedia`
+--
+ALTER TABLE `bekal_penyedia`
+  ADD PRIMARY KEY (`id_bekal_penyedia`);
+
+--
+-- Indeks untuk tabel `kategori_bekal`
+--
+ALTER TABLE `kategori_bekal`
+  ADD PRIMARY KEY (`id_kategori`);
 
 --
 -- Indeks untuk tabel `komoditi`
@@ -323,6 +362,12 @@ ALTER TABLE `pengeluaran`
   ADD KEY `fk_id_user1` (`id_user`);
 
 --
+-- Indeks untuk tabel `penyedia_barang`
+--
+ALTER TABLE `penyedia_barang`
+  ADD PRIMARY KEY (`id_penyedia`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -340,16 +385,28 @@ ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT untuk tabel `bekal_penyedia`
+--
+ALTER TABLE `bekal_penyedia`
+  MODIFY `id_bekal_penyedia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `kategori_bekal`
+--
+ALTER TABLE `kategori_bekal`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `komoditi`
 --
 ALTER TABLE `komoditi`
-  MODIFY `id_komoditi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_komoditi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT untuk tabel `log_penyedia`
@@ -361,19 +418,25 @@ ALTER TABLE `log_penyedia`
 -- AUTO_INCREMENT untuk tabel `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id_kirim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_kirim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT untuk tabel `penyedia_barang`
+--
+ALTER TABLE `penyedia_barang`
+  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
