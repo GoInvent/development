@@ -15,16 +15,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
             <div class="lds-pos"></div>
         </div>
     </div>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-6">
@@ -32,17 +23,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Table -->
-            <!-- ============================================================== -->
             <div class="row">
                 <!-- column -->
                 <div class="col-12">
@@ -51,8 +32,8 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                             <!-- title -->
                             <div class="d-md-flex">
                                 <div>
-                                    <h4 class="card-title">Pemasukan Barang</h4>
-                                    <p>Daftar Permintaan Barang Masuk</p>
+                                    <h4 class="card-title">Pengeluaran Barang</h4>
+                                    <p>Daftar Permintaan Barang Keluar</p>
                                 </div>
                             </div>
                             <!-- title -->
@@ -69,7 +50,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                             <th class="border-top-0;" style="color:white;">Tahun</th>
                                             <th class="border-top-0;" style="color:white;">No. Kontrak</th>
                                             <th class="border-top-0;" style="color:white;">Tanggal Permintaan</th>
-                                            <th class="border-top-0;" style="color:white;">Status Persetujuan</th>
+                                            <th class="border-top-0;" style="color:white;">Status</th>
                                             <th class="border-top-0;" style="color:white;">Persetujuan</th>
                                         </tr>
                                     </thead>

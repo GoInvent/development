@@ -97,7 +97,7 @@
                                     <input type="submit" name="submit" value="Setujui Barang" class="btn btn-success">
                                 </form>
                             <?php else: ?>
-                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.ph&id_request=$row[id_request]p" ?>" method="post">
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php" ?>" method="post">
                                     <div class="form-floating mb-3">
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" " required>
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>

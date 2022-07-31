@@ -12,7 +12,7 @@
     $harga          = $_POST['harga_barang'];
     $stok           = $_POST['jumlah_barang'];
     $tahun          = $_POST['tahun_produksi'];
-    $nokontrak      = $_POST['no_kontrak'];
+    $nokontrak      = rand();
     $statusbarang   = 1;
 
     $barang = mysqli_query($koneksi, "SELECT * FROM barang");
