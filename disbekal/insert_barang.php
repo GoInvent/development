@@ -33,7 +33,9 @@
         echo 'gagal'.mysqli_error($koneksi);
         echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
     }
-// echo 'test 2jojdpoqwe12iepqowjdpoajd';
+    
+    // =================================================================================================
+    // echo 'test 2jojdpoqwe12iepqowjdpoajd';
 
     // header("location:".BASE_URL."index.php?page=disbekal/databarang.php");
 ?>

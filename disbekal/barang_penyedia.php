@@ -48,7 +48,7 @@
                 </div>
             </div>
         
-            <input type="submit" name="submit" value="Setujui" class="btn btn-success">
+            <input type="submit" name="submit" value="Simpan" class="btn btn-success">
         </form>
     </div>
 </body>
