@@ -24,21 +24,11 @@
                                         <label for="floatingInput">Nama Kategori Bekal</label>
                                     </div>
                                     
-                                    <label for="kelas_bekal">Pilih kelas bekal kategori:</label>
-                                    <select name="kelas_bekal" id="kelas_bekal" class="form-control">
-                                        <option value="BK.1">Bekal Kelas 1</option>
-                                        <option value="BK.2">Bekal Kelas 2</option>
-                                        <option value="BK.3">Bekal Kelas 3</option>
-                                        <option value="BK.4">Bekal Kelas 4</option>
-                                        <option value="BK.5">Bekal Kelas 5</option>
-                                        <option value="BK.6">Bekal Kelas 6</option>
-                                        <option value="BK.7">Bekal Kelas 7</option>
-                                        <option value="BK.8">Bekal Kelas 8</option>
-                                        <option value="BK.9">Bekal Kelas 9</option>
-                                        <option value="BK.10">Bekal Kelas 10</option>
-                                    </select>
-                                    
-
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="kelas_bekal" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <label for="floatingInput">ID Kelas Bekal</label>
+                                        <small>ex: BK.1</small>
+                                    </div>
                                     <input type="submit" name="submit" value="Simpan" style="margin-top:10px;" class="btn btn-success">
                                 </form>
                         </div>

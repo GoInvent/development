@@ -55,8 +55,8 @@ include_once('helper.php');
                                             <td style="text-align:center"><?php echo $row['nama_kategori_bekal']?></td>
                                             <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
                                             <td style="text-align:center"><?php echo $row['created_at']?></td>
-                                            <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_komoditi'] ?>">Edit</a> 
-                                            <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?id_bekal=<?php echo $row['id_komoditi'] ?>">Delete</a>
+                                            <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_kategori'] ?>">Edit</a> 
+                                            <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?id_bekal=<?php echo $row['id_kategori'] ?>">Delete</a>
                                             </td>
                                             </tr>
                                         <?php }

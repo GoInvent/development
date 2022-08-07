@@ -15,7 +15,7 @@ if(isset($_GET['idb'])){
 }
 if(isset($_GET['id_bekal'])){
 	require 'database.php';
-	$hapus = mysqli_query($koneksi, "DELETE FROM komoditi WHERE id_komoditi = '".$_GET['id_bekal']."'");
+	$hapus = mysqli_query($koneksi, "DELETE FROM kategori_bekal WHERE id_kategori = '".$_GET['id_bekal']."'");
 		// echo '<script>alert("Hapus data Berhasil")</script>';
 		// echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
 		if ($hapus){

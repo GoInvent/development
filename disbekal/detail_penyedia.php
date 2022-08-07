@@ -76,20 +76,43 @@ if($id_penyedia){
                             </div>
                             
                             <div class="table-responsive">
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/insert_barang_penyedia.php" ?>" class="btn btn-success" style="margin-bottom:10px;">Tambah bekal</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/barang_penyedia.php&id_penyedia=".$_GET['id_penyedia']."" ?>" class="btn btn-success" style="margin-bottom:10px;">Tambah bekal</a>
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th class="border-top-0" style="color:white; text-align:center;">No</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Kategori Bekal</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">ID Bekal</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Nama Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">ID Bekal</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Stok Bekal</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Riwayat Bekal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                        
+                                    <?php
+                                            include 'database.php';
+                                            $no = 1;
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM bekal_penyedia LEFT JOIN penyedia_barang USING(id_penyedia) WHERE id_penyedia = '".$_GET['id_penyedia']."'");
+                                            if (mysqli_num_rows($sql) > 0 ) {
+                                            while ($row = mysqli_fetch_array($sql)){
+                                        ?>
+                                            <tr>
+                                            <td style="text-align:center"><?php echo $no++ ?></td>
+                                            <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['nama_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['id_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['stok_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['created_at']?></td>
+                                            <!-- <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_kategori'] ?>">Edit</a> 
+                                            <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?id_bekal=<?php echo $row['id_kategori'] ?>">Delete</a>
+                                            </td> -->
+                                            </tr>
+                                        <?php }
+                                        }else { ?>
+                                            <tr>
+                                                <td colspan="9">Tidak ada data</td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

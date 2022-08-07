@@ -68,8 +68,6 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th class="border-top-0" style="color:white; text-align:center;">No</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Penyedia</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Role</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Kategori</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Jumlah Barang</th>
@@ -90,8 +88,6 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                         ?>
                                             <tr>
                                             <td style="text-align:center"><?php echo $no++ ?></td>
-                                            <td style="text-align:center"><?php echo $row['nama_penyedia']?></td>
-                                            <td style="text-align:center"><?php echo $row['role']?></td>
                                             <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
                                             <td style="text-align:center"><?php echo $row['nama_barang']?></td>
                                             <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>

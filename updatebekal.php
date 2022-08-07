@@ -9,11 +9,11 @@ file_put_contents('UIDContainer.php',$Write);
 	if(!$_SESSION['role']=="disbekal"){
 	header("location:login.php?pesan=gagal");
 	}	
-	$komoditi = mysqli_query($koneksi, "SELECT * FROM komoditi WHERE id_komoditi ='".$_GET['id']."' ");
-	if(mysqli_num_rows($komoditi)==0){
-		echo '<script>window.location="databarang.php"</script>';
+	$kategori = mysqli_query($koneksi, "SELECT * FROM kategori_bekal WHERE id_kategori ='".$_GET['id']."' ");
+	if(mysqli_num_rows($kategori)==0){
+		echo '<script>window.location="databekal.php"</script>';
 	}
-	$row = mysqli_fetch_object($komoditi);
+	$row = mysqli_fetch_object($kategori);
 
 ?>
 <!DOCTYPE html>
@@ -48,11 +48,11 @@ file_put_contents('UIDContainer.php',$Write);
                                                     <h1 align="center">Update Bekal</h1>
                                                         <form class="" method="post">
                                                             <div class="form-floating mb-3">
-                                                                <input type="text" name="kode_komoditi" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $row->kode_komoditi ?>" required>
+                                                                <input type="text" name="kelas_bekal" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $row->kelas_bekal ?>" required>
                                                                 <label for="floatingInput">Jenis Bekal</label>
                                                             </div>
                                                             <div class="form-floating mb-3">
-                                                                <input type="text" name="jenis_komoditi" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $row->jenis_komoditi ?>" required>
+                                                                <input type="text" name="nama_kategori_bekal" class="form-control" id="floatingInput" placeholder=" " value="<?php echo $row->nama_kategori_bekal ?>" required>
                                                                 <label for="floatingInput">Jenis Bekal</label>
                                                             </div>
                                                             <input type="submit" name="submit" value="Simpan" class="btn btn-success">
@@ -60,18 +60,18 @@ file_put_contents('UIDContainer.php',$Write);
                                         <?php
                                             // Check If form submitted, insert form data into users table.
                                             if(isset($_POST['submit'])) {
-                                                $kodebekal    = $_POST['kode_komoditi'];
-                                                $jenisbekal   = $_POST['jenis_komoditi'];
+                                                $idbekal    = $_POST['kelas_bekal'];
+                                                $namabekal   = $_POST['nama_kategori_bekal'];
                                                 
                                                 
                                                 // include database connection file
                                                 include 'database.php';
                                                         
                                                 // Insert user data into table
-                                                $update = mysqli_query($koneksi, "UPDATE komoditi SET
-                                                            kode_komoditi      = '".$kodebekal."',   
-                                                            jenis_komoditi     = '".$jenisbekal."'
-                                                            WHERE id_komoditi  = '".$row->id_komoditi."'");
+                                                $update = mysqli_query($koneksi, "UPDATE kategori_bekal SET
+                                                            kelas_bekal             = '".$idbekal."',   
+                                                            nama_kategori_bekal     = '".$namabekal."'
+                                                            WHERE id_kategori  = '".$row->id_kategori."'");
                                                 
                                                 if ($update){
                                                     //jika data berhasil disimpan
