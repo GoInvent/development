@@ -60,8 +60,8 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                 </div>
                             </div>
                             <!-- title -->
-                            <a href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Ajukan Bekal</a>
-                            <a href="<?php echo BASE_URL."index.php?page=disbekal/list_penyedia.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Daftar Penyedia</a>
+                            <a href="<?php echo BASE_URL."index.php?page=disbekal/ajukan_bekal/registbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Ajukan Bekal</a>
+                            <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/list_penyedia.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Daftar Penyedia</a>
 
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
@@ -76,6 +76,7 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                             <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Persetujuan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -98,6 +99,9 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                             <td>
                                                 <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Lihat Detail</a>
                                                 <!-- <input type="button" name="persetujuan" value="disetujui"> -->
+                                            </td>
+                                            <td>
+                                                <a href="#">Detail Barang</a>
                                             </td>
                                             </tr>
                                         <?php }

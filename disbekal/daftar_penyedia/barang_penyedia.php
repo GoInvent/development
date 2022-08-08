@@ -11,7 +11,7 @@
     <div style="margin-left:300px; margin-top:15px;">
         <h4>Input data barang penyedia</h4>
         <p>Masukan form dibawah ini</p>
-        <form action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang_penyedia.php" ?>" method="POST">
+        <form action="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/insert_barang_penyedia.php" ?>" method="POST">
             <div style="margin-top:20px">
                 <div class="form-floating mb-3">
                 <select class="form-control" name="kelas_bekal" id="kelas_bekal" class="form-floating mb-3">

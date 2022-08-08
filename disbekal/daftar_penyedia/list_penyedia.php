@@ -38,7 +38,7 @@ $id_penyedia = isset($_GET['id_penyedia']) ? $_GET['id_penyedia'] : false;
                                 </div>
                             </div>
                             <!-- title -->
-                            <a href="<?php echo BASE_URL."index.php?page=disbekal/regist_penyedia.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Daftarkan Penyedia</a>
+                            <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/regist_penyedia.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Daftarkan Penyedia</a>
                 
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
@@ -68,7 +68,7 @@ $id_penyedia = isset($_GET['id_penyedia']) ? $_GET['id_penyedia'] : false;
                                             <td style="text-align:center"><?php echo $row['email_penyedia']?></td>
                                             <td style="text-align:center"><?php echo $row['tanggal_terdaftar']?></td>
                                             <td style="text-align:center">
-                                                <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_penyedia.php&id_penyedia=$row[id_penyedia]" ?>">Lihat Detail</a>
+                                                <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/detail_penyedia.php&id_penyedia=$row[id_penyedia]" ?>">Lihat Detail</a>
                                             </td>
                                             </tr>
                                         <?php }

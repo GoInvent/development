@@ -30,7 +30,7 @@ include_once('helper.php');
                                 <h4>Daftar barang bekal</h4>
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/tambah_kategori_bekal.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Tambah Kategori Bekal</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/kategori_bekal/tambah_kategori_bekal.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Tambah Kategori Bekal</a>
 
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">

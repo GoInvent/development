@@ -76,7 +76,7 @@ if($id_penyedia){
                             </div>
                             
                             <div class="table-responsive">
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/barang_penyedia.php&id_penyedia=".$_GET['id_penyedia']."" ?>" class="btn btn-success" style="margin-bottom:10px;">Tambah bekal</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/barang_penyedia.php&id_penyedia=".$_GET['id_penyedia']."" ?>" class="btn btn-success" style="margin-bottom:10px;">Tambah bekal</a>
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>

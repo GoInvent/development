@@ -77,9 +77,9 @@ file_put_contents('UIDContainer.php',$Write);
                                                     //jika data berhasil disimpan
                                                     echo '<script>alert("Ubah data Berhasil")</script>';
                                                     if ($_SESSION['role'] == "Disbekal"){
-                                                        echo '<script>window.location="index.php?page=disbekal/databekal.php"</script>';
+                                                        echo '<script>window.location="index.php?page=disbekal/kategori_bekal/databekal.php"</script>';
                                                     } elseif ($_SESSION['role'] == "Kadopus"){
-                                                        echo '<script>window.location="index.php?page=kadopus/databekal.php"</script>';
+                                                        echo '<script>window.location="index.php?page=kadopus/kategori_bekal/databekal.php"</script>';
                                                     }
                                                 }else{
                                                     echo 'gagal'.mysqli_error($koneksi);

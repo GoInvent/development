@@ -91,11 +91,6 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                     </div>
                 </div>
             </div>
-        <footer class="footer text-center">
-            All Rights Reserved by Flexy Admin. Designed and Developed by <a
-                href="https://www.wrappixel.com">WrapPixel</a>.
-        </footer>
-
     </div>
     </div>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>

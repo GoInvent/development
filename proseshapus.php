@@ -21,7 +21,7 @@ if(isset($_GET['id_bekal'])){
 		if ($hapus){
 			//jika data berhasil disimpan
 			echo '<script>alert("Hapus data Berhasil")</script>';
-			echo '<script>window.location="index.php?page=disbekal/databekal.php"</script>';
+			echo '<script>window.location="index.php?page=disbekal/kategori_bekal/databekal.php"</script>';
 		}else{
 			echo 'gagal'.mysqli_error($koneksi);
 		} 

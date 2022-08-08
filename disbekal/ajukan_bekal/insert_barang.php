@@ -27,7 +27,7 @@
                     mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");
 
                     echo '<script>alert("Simpan data Berhasil")</script>';
-                    echo '<script>window.location="index.php?page=disbekal/databarang.php"</script>';
+                    echo '<script>window.location="index.php?page=disbekal/home.php"</script>';
                 }
     }else {
         echo 'gagal'.mysqli_error($koneksi);

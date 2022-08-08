@@ -36,7 +36,7 @@
                             <h4>Input data barang</h4>
                             <p>Pendataan barang sebelum masuk gudang</p>
                             <?php if($id_request):?>
-                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php&id_request=$row[id_request]" ?>" method="POST">
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/ajukan_bekal/insert_barang.php&id_request=$row[id_request]" ?>" method="POST">
 
                                     <div class="form-floating mb-3">
                                         <input type="text" name="id_admin" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $id_admin ?> required readonly>
@@ -197,9 +197,9 @@
     <script src="dist/js/custom.js"></script>
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery.chained.min.js"></script>
-    <script>
-            $("#penyedia").chained("#bekalpenyedia").;
-        </script>
+    <!-- <script>
+        $("#penyedia").chained("#bekalpenyedia").;
+    </script> -->
     <!-- <script>
             $(document).ready(function() {
                 $('.select2').select2()
