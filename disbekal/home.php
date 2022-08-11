@@ -60,8 +60,8 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                 </div>
                             </div>
                             <!-- title -->
-                            <a href="<?php echo BASE_URL."index.php?page=disbekal/ajukan_bekal/registbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Ajukan Bekal</a>
-                            <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/list_penyedia.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Daftar Penyedia</a>
+                            <a href="<?php echo BASE_URL."index.php?page=disbekal/ajukan_bekal/registbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Input Barang</a>
+                            <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/list_penyedia.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Registrasi Penyedia</a>
 
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
@@ -69,6 +69,7 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                         <tr>
                                             <th class="border-top-0" style="color:white; text-align:center;">No</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Kategori</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Gudang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Jumlah Barang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Harga</th>
@@ -83,13 +84,14 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                      <?php
                                             include 'database.php';
                                             $no = 1 + $mulai_dari;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_request DESC LIMIT $mulai_dari, $data_perhalaman");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN bekal_penyedia ON pemasukan.id_penyedia = bekal_penyedia.id_penyedia LEFT JOIN gudang ON bekal_penyedia.id_gudang = gudang.id_gudang ORDER BY id_request DESC LIMIT $mulai_dari, $data_perhalaman");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                             <td style="text-align:center"><?php echo $no++ ?></td>
-                                            <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
+                                            <td style="text-align:center"><?php echo $row['id_kategori'] ?></td>
+                                            <td style="text-align:center"><?php echo $row['id_gudang'] ?></td>
                                             <td style="text-align:center"><?php echo $row['nama_barang']?></td>
                                             <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
                                             <td style="text-align:center"><?php echo rupiah ($row['harga_barang'])?></td>

@@ -1,7 +1,7 @@
 <?php
     include 'database.php';
     include_once('helper.php');
-
+    // include_once('data_controller.php');
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
     $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
 
@@ -22,6 +22,11 @@
         $no_kontrak = rand();
         $rfid = $row['id_barang'];
     }
+
+    
+
+        // $data               =           new DataController();
+        // $penyedia          =           $data->getPenyedia();
 
 ?>
 
@@ -56,15 +61,7 @@
                                     <?php endif;?>  
                                     <div class="form-floating mb-3">
                                         <select name="id_penyedia" id="penyedia" class="form-control" required>
-                                            <option readonly value="">--Pilih Penyedia--</option>
-                                            <?php 
-                                                include 'database.php';
-                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM penyedia_barang ORDER BY id_penyedia DESC");
-                                                while ($r = mysqli_fetch_array($penyedia)) {
-                                            ?> 
-                                            <?php if($penyedia != $penyedia)?>
-                                                <option value="<?php echo $r['id_penyedia'] ?>"><?php echo $r['nama_penyedia'] ?></option>
-                                            <?php } ?>
+                                            <option id="penyedia" readonly value="">--Pilih Penyedia--</option>
                                         </select>
                                         <label for="floatingInput">Penyedia</label>
                                     </div>  
@@ -118,9 +115,9 @@
                                             <option readonly value="">--Pilih Penyedia--</option>
                                             <?php 
                                                 include 'database.php';
-                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM penyedia_barang ORDER BY id_penyedia DESC");
+                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM penyedia_barang");
                                                 while ($r = mysqli_fetch_array($penyedia)) {
-                                            ?> 
+                                            ?>
                                             <?php if($penyedia != $penyedia)?>
                                                 <option value="<?php echo $r['id_penyedia'] ?>"><?php echo $r['nama_penyedia'] ?></option>
                                             <?php } ?>
@@ -130,14 +127,14 @@
                                     <div class="form-floating mb-3">
                                         <select id="bekalpenyedia" name="bekal_penyedia" class="form-control select2" required>
                                             <option readonly value="">--Pilih Bekal--</option>
-                                            <?php 
+                                            <!-- <?php 
                                                 include 'database.php';
                                                 $bekalpenyedia = mysqli_query($koneksi, "SELECT * FROM bekal_penyedia INNER JOIN penyedia_barang ON penyedia_barang.id_penyedia = bekal_penyedia.id_penyedia");
                                                 while ($r = mysqli_fetch_array($bekalpenyedia)) {
                                             ?> 
                                             <?php if($bekalpenyedia != $bekalpenyedia)?>
                                                 <option value="<?php echo $r['id_penyedia'] ?>"><?php echo $r['kelas_bekal'] ?></option>
-                                            <?php } ?>
+                                            <?php } ?> -->
                                         </select>
                                             <label for="floatingInput">Bekal Penyedia</label>
                                     </div>
@@ -197,42 +194,29 @@
     <script src="dist/js/custom.js"></script>
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery.chained.min.js"></script>
-    <!-- <script>
-        $("#penyedia").chained("#bekalpenyedia").;
-    </script> -->
-    <!-- <script>
-            $(document).ready(function() {
-                $('.select2').select2()
-            });
-            $("#penyedia").change(function() {
-                var postForm = {
-                        'id': document.getElementById("penyedia").value,
-                        'op': 1
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost/ilogi/disbekal/select.php",
-                    data: postForm,
-                    success: function(data) {
-                        $("#kelas_bekal").html(data);
-                    }
-                });
-            });
-            $("#kelas_bekal").change(function() {
-                var postForm = {
-                        'id': document.getElementById("kelas_bekal").value,
-                        'op': 2
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost/ilogi/disbekal/select.php",
-                    data: postForm,
-                    success: function(data) {
-                        $("#nama_bekal").html(data);
-                    }
-                });
-            });
-        </script> -->
+    <script>
+        function getSelectValue(){
+            var selectedValue = document.getElementById("send-templates").value;
+            
+            if(selectedValue == "daily"){
+                console.log('daily')
+                $('#tanggal-pengiriman').removeClass('show')
+                $('#tanggal-pengiriman').addClass('form-tanggal')
+            } else if(selectedValue == 'monthly') {
+                console.log('monthly')
+                $('#tanggal-pengiriman').addClass('show')
+                $('#tanggal-pengiriman').removeClass('form-tanggal')
+            } else if(selectedValue == 'yearly') {
+                console.log('yearly')
+                $('#tanggal-pengiriman').addClass('show')
+                $('#tanggal-pengiriman').removeClass('form-tanggal')
+            } else {
+                console.log('selected')
+                $('#tanggal-pengiriman').addClass('show')
+                $('#tanggal-pengiriman').removeClass('form-tanggal')
+            }
+        }
+    </script>
 </body>
 
 </html>
