@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jul 2022 pada 16.41
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.6
+-- Generation Time: Aug 12, 2022 at 05:22 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -40,11 +41,11 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `status`, `created_at`, `last_login`, `login`) VALUES
-(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-07-30 13:00:42', b'0'),
+(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-08-12 13:39:47', b'0'),
 (2, 'Test', 'test@gmail.com', 'test', 'kadopus', b'1', '2022-07-07 06:02:21', '2022-07-20 13:34:25', b'0'),
 (3, 'Aku', 'aku@gmail.com', 'test', 'penyedia', b'1', '0000-00-00 00:00:00', '2022-07-23 15:17:18', b'0'),
 (4, 'Omar Penyedia', 'dia@gmail.com', 'test', 'penyedia', b'1', '2022-07-13 08:41:23', '2022-07-18 03:52:13', b'0');
@@ -52,7 +53,7 @@ INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `sta
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -71,7 +72,7 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Trigger `barang`
+-- Triggers `barang`
 --
 DELIMITER $$
 CREATE TRIGGER `insert_log_barang` AFTER INSERT ON `barang` FOR EACH ROW BEGIN
@@ -91,45 +92,81 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bekal_penyedia`
+-- Table structure for table `bekal_penyedia`
 --
 
 CREATE TABLE `bekal_penyedia` (
   `id_bekal_penyedia` int(11) NOT NULL,
-  `kategori_bekal` varchar(255) NOT NULL,
+  `id_penyedia` int(11) NOT NULL,
+  `kelas_bekal` varchar(255) NOT NULL,
   `nama_bekal` varchar(255) NOT NULL,
   `id_bekal` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
   `stok_bekal` int(11) NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `nama_gudang` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `bekal_penyedia`
+--
+
+INSERT INTO `bekal_penyedia` (`id_bekal_penyedia`, `id_penyedia`, `kelas_bekal`, `nama_bekal`, `id_bekal`, `harga`, `stok_bekal`, `tahun`, `nama_gudang`, `created_at`, `updated_at`) VALUES
+(25, 2, 'BK.1', 'Makanan Jadi', 1000834435, 50000, 50, 2022, 'Dopusbektim', '2022-08-12 09:33:07', '2022-08-12 09:33:07'),
+(26, 3, 'BK.2', 'Pakaian Asal', 775408049, 50000, 100, 2001, 'Dopusbekbar', '2022-08-12 09:33:33', '2022-08-12 09:33:33'),
+(27, 2, '3', 'Makanan Jadi', 2133270889, 50000, 50, 2022, 'Dopusbekbar', '2022-08-12 20:47:44', '2022-08-12 20:47:44'),
+(28, 2, 'BK.2', 'Makanan Belom Jadi', 841280033, 50000, 100, 2010, 'Dopusbektim', '2022-08-12 20:48:58', '2022-08-12 20:48:58');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_bekal`
+-- Table structure for table `gudang`
+--
+
+CREATE TABLE `gudang` (
+  `id_gudang` int(11) NOT NULL,
+  `nama_gudang` varchar(255) NOT NULL,
+  `alamat_gudang` varchar(255) NOT NULL,
+  `stok` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gudang`
+--
+
+INSERT INTO `gudang` (`id_gudang`, `nama_gudang`, `alamat_gudang`, `stok`) VALUES
+(1, 'Dopusbekbar', 'Jl.Jl. Semper Tim. I No.7, RT.7/RW.1, Semper Tim., Kec. Cilincing, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14130', 1000),
+(2, 'Dopusbektim', 'Jl. Pati Unus No.152, Ujung, Kec. Semampir, Kota SBY, Jawa Timur 60155', 500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori_bekal`
 --
 
 CREATE TABLE `kategori_bekal` (
-  `id_kategori` int(11) NOT NULL,
+  `id_kelas` int(11) NOT NULL,
   `nama_kategori_bekal` varchar(255) NOT NULL,
   `kelas_bekal` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kategori_bekal`
+-- Dumping data for table `kategori_bekal`
 --
 
-INSERT INTO `kategori_bekal` (`id_kategori`, `nama_kategori_bekal`, `kelas_bekal`, `created_at`, `updated_at`) VALUES
+INSERT INTO `kategori_bekal` (`id_kelas`, `nama_kategori_bekal`, `kelas_bekal`, `created_at`, `updated_at`) VALUES
 (1, 'Makanan', 'BK.1', '2022-07-30 21:03:00', '2022-07-30 21:03:00'),
-(3, 'Pakaian Kaporlap', 'BK.2', '2022-07-30 21:03:50', '2022-07-30 21:03:50');
+(9, 'Santri dan Komaliwan', 'BK.2', '2022-08-12 09:36:35', '2022-08-12 09:36:35'),
+(12, 'Amunisi', 'BK.3', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komoditi`
+-- Table structure for table `komoditi`
 --
 
 CREATE TABLE `komoditi` (
@@ -139,7 +176,7 @@ CREATE TABLE `komoditi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `komoditi`
+-- Dumping data for table `komoditi`
 --
 
 INSERT INTO `komoditi` (`id_komoditi`, `kode_komoditi`, `jenis_komoditi`) VALUES
@@ -150,7 +187,7 @@ INSERT INTO `komoditi` (`id_komoditi`, `kode_komoditi`, `jenis_komoditi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log`
+-- Table structure for table `log`
 --
 
 CREATE TABLE `log` (
@@ -167,7 +204,7 @@ CREATE TABLE `log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `log`
+-- Dumping data for table `log`
 --
 
 INSERT INTO `log` (`id_log`, `id_barang`, `nama_lama`, `nama_baru`, `status`, `stok_awal`, `stok_masuk`, `stok_keluar`, `stok_akhir`, `date`) VALUES
@@ -177,7 +214,7 @@ INSERT INTO `log` (`id_log`, `id_barang`, `nama_lama`, `nama_baru`, `status`, `s
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_penyedia`
+-- Table structure for table `log_penyedia`
 --
 
 CREATE TABLE `log_penyedia` (
@@ -190,15 +227,14 @@ CREATE TABLE `log_penyedia` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemasukan`
+-- Table structure for table `pemasukan`
 --
 
 CREATE TABLE `pemasukan` (
   `id_request` int(11) NOT NULL,
-  `id_admin` int(11) NOT NULL,
-  `nama_penyedia` varchar(250) NOT NULL,
-  `role` varchar(250) NOT NULL,
-  `id_komoditi` int(11) NOT NULL,
+  `id_penyedia` int(11) NOT NULL,
+  `id_gudang` int(11) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
   `id_barang` varchar(11) NOT NULL,
   `nama_barang` varchar(250) NOT NULL,
   `jumlah_barang` int(11) NOT NULL,
@@ -213,7 +249,7 @@ CREATE TABLE `pemasukan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengeluaran`
+-- Table structure for table `pengeluaran`
 --
 
 CREATE TABLE `pengeluaran` (
@@ -234,7 +270,7 @@ CREATE TABLE `pengeluaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Trigger `pengeluaran`
+-- Triggers `pengeluaran`
 --
 DELIMITER $$
 CREATE TRIGGER `barang_keluar` AFTER INSERT ON `pengeluaran` FOR EACH ROW UPDATE barang
@@ -246,7 +282,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penyedia_barang`
+-- Table structure for table `penyedia_barang`
 --
 
 CREATE TABLE `penyedia_barang` (
@@ -259,17 +295,17 @@ CREATE TABLE `penyedia_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `penyedia_barang`
+-- Dumping data for table `penyedia_barang`
 --
 
 INSERT INTO `penyedia_barang` (`id_penyedia`, `nama_penyedia`, `email_penyedia`, `no_penyedia`, `alamat_penyedia`, `tanggal_terdaftar`) VALUES
-(2, 'PT Persenjataan', 'persenjataan@gmail.com', 2147483647, 'Jl. Kebon Jahe No.12', '2022-07-30 14:37:48'),
+(2, 'PT Bogarasa', 'bogarasa@org.id', 2147483647, 'Jl. Kebon Jahe No.12', '2022-07-30 14:37:48'),
 (3, 'PT Sari Roti', 'sariroti@gmail.com', 21039810, 'JL. Ir Soekarno', '2022-07-30 21:22:13');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -285,7 +321,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_user`, `nama_user`, `no_hp`, `email_user`, `password_user`, `created_at`, `last_login`, `role`, `login`) VALUES
@@ -298,13 +334,13 @@ INSERT INTO `users` (`id_user`, `nama_user`, `no_hp`, `email_user`, `password_us
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
@@ -312,48 +348,56 @@ ALTER TABLE `barang`
   ADD KEY `fk_id_komoditi` (`id_komoditi`);
 
 --
--- Indeks untuk tabel `bekal_penyedia`
+-- Indexes for table `bekal_penyedia`
 --
 ALTER TABLE `bekal_penyedia`
-  ADD PRIMARY KEY (`id_bekal_penyedia`);
+  ADD PRIMARY KEY (`id_bekal_penyedia`),
+  ADD KEY `fk_id_penyedia` (`id_penyedia`);
 
 --
--- Indeks untuk tabel `kategori_bekal`
+-- Indexes for table `gudang`
+--
+ALTER TABLE `gudang`
+  ADD PRIMARY KEY (`id_gudang`);
+
+--
+-- Indexes for table `kategori_bekal`
 --
 ALTER TABLE `kategori_bekal`
-  ADD PRIMARY KEY (`id_kategori`);
+  ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indeks untuk tabel `komoditi`
+-- Indexes for table `komoditi`
 --
 ALTER TABLE `komoditi`
   ADD PRIMARY KEY (`id_komoditi`);
 
 --
--- Indeks untuk tabel `log`
+-- Indexes for table `log`
 --
 ALTER TABLE `log`
   ADD PRIMARY KEY (`id_log`),
   ADD KEY `fk_id_barang` (`id_barang`);
 
 --
--- Indeks untuk tabel `log_penyedia`
+-- Indexes for table `log_penyedia`
 --
 ALTER TABLE `log_penyedia`
   ADD PRIMARY KEY (`id_log_penyedia`),
   ADD KEY `fk_id_admin` (`id_user`);
 
 --
--- Indeks untuk tabel `pemasukan`
+-- Indexes for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
   ADD PRIMARY KEY (`id_request`),
-  ADD KEY `fk_id_komoditi1` (`id_komoditi`),
-  ADD KEY `fk_id_admin1` (`id_admin`),
-  ADD KEY `fk_id_barang2` (`id_barang`);
+  ADD KEY `fk_id_barang2` (`id_barang`),
+  ADD KEY `fk_id_kategori` (`id_kategori`),
+  ADD KEY `fk_id_penyedia1` (`id_penyedia`),
+  ADD KEY `fk_id_gudang` (`id_gudang`);
 
 --
--- Indeks untuk tabel `pengeluaran`
+-- Indexes for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`id_kirim`),
@@ -362,107 +406,120 @@ ALTER TABLE `pengeluaran`
   ADD KEY `fk_id_user1` (`id_user`);
 
 --
--- Indeks untuk tabel `penyedia_barang`
+-- Indexes for table `penyedia_barang`
 --
 ALTER TABLE `penyedia_barang`
   ADD PRIMARY KEY (`id_penyedia`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `email_user` (`email_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `bekal_penyedia`
+-- AUTO_INCREMENT for table `bekal_penyedia`
 --
 ALTER TABLE `bekal_penyedia`
-  MODIFY `id_bekal_penyedia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bekal_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori_bekal`
+-- AUTO_INCREMENT for table `gudang`
+--
+ALTER TABLE `gudang`
+  MODIFY `id_gudang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `kategori_bekal`
 --
 ALTER TABLE `kategori_bekal`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `komoditi`
+-- AUTO_INCREMENT for table `komoditi`
 --
 ALTER TABLE `komoditi`
   MODIFY `id_komoditi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `log`
+-- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
   MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT untuk tabel `log_penyedia`
+-- AUTO_INCREMENT for table `log_penyedia`
 --
 ALTER TABLE `log_penyedia`
   MODIFY `id_log_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `pemasukan`
+-- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
--- AUTO_INCREMENT untuk tabel `pengeluaran`
+-- AUTO_INCREMENT for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   MODIFY `id_kirim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `penyedia_barang`
+-- AUTO_INCREMENT for table `penyedia_barang`
 --
 ALTER TABLE `penyedia_barang`
   MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `barang`
+-- Constraints for table `barang`
 --
 ALTER TABLE `barang`
   ADD CONSTRAINT `fk_id_komoditi` FOREIGN KEY (`id_komoditi`) REFERENCES `komoditi` (`id_komoditi`);
 
 --
--- Ketidakleluasaan untuk tabel `log_penyedia`
+-- Constraints for table `bekal_penyedia`
+--
+ALTER TABLE `bekal_penyedia`
+  ADD CONSTRAINT `fk_id_penyedia` FOREIGN KEY (`id_penyedia`) REFERENCES `penyedia_barang` (`id_penyedia`);
+
+--
+-- Constraints for table `log_penyedia`
 --
 ALTER TABLE `log_penyedia`
   ADD CONSTRAINT `fk_id_admin` FOREIGN KEY (`id_user`) REFERENCES `admin` (`id_admin`);
 
 --
--- Ketidakleluasaan untuk tabel `pemasukan`
+-- Constraints for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  ADD CONSTRAINT `fk_id_admin1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
-  ADD CONSTRAINT `fk_id_komoditi1` FOREIGN KEY (`id_komoditi`) REFERENCES `komoditi` (`id_komoditi`);
+  ADD CONSTRAINT `fk_id_gudang` FOREIGN KEY (`id_gudang`) REFERENCES `gudang` (`id_gudang`),
+  ADD CONSTRAINT `fk_id_kategori` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_bekal` (`id_kelas`),
+  ADD CONSTRAINT `fk_id_penyedia1` FOREIGN KEY (`id_penyedia`) REFERENCES `penyedia_barang` (`id_penyedia`);
 
 --
--- Ketidakleluasaan untuk tabel `pengeluaran`
+-- Constraints for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
   ADD CONSTRAINT `fk_id_barang1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
