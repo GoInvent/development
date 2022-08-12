@@ -10,7 +10,7 @@
 
     if($sql){
         echo '<script>alert("Simpan data Berhasil")</script>';
-        echo '<script>window.location="index.php?page=disbekal/databekal.php"</script>';
+        echo '<script>window.location="index.php?page=disbekal/kategori_bekal/databekal.php"</script>';
     }else{
         echo '<script>alert("Gagal Input Data")</script>';
     }

@@ -46,7 +46,7 @@ include_once('helper.php');
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM kategori_bekal");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM kategori_bekal ORDER BY kelas_bekal ASC");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>

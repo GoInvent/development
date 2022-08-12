@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <h4>Tambah Kategori Bekal</h4>
                             <p>Laman registrasi kategori bekal</p>
-                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_tambah_bekal.php" ?>" method="POST">
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/kategori_bekal/insert_tambah_bekal.php" ?>" method="POST">
                                     
                                     <div class="form-floating mb-3">
                                         <input type="text" name="nama_kategori_bekal" class="form-control" id="floatingInput" placeholder=" " required>

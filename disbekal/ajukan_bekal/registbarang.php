@@ -118,7 +118,7 @@
                                                 <option value="<?php echo $r['id_penyedia'] ?>"><?php echo $r['nama_penyedia'] ?></option>
                                             <?php }?>
                                         </select>
-                                            <label for="floatingInput">Penyedia</label>
+                                        <label for="floatingInput">Penyedia</label>
                                     </div>
                                     
                                     <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
@@ -126,7 +126,7 @@
                                         <select id="kelas_bekal" name="kelas_bekal" class="form-control select2">
                                             <option>--Pilih kelas Bekal--</option>
                                         </select>
-                                        <label for="floatingInput">Jenis Bekal</label>
+                                        <label for="floatingInput">Kelas Bekal</label>
                                     </div>
                                     
                                      <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
@@ -134,7 +134,7 @@
                                         <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
                                             <option>--Pilih Bekal--</option>
                                         </select>
-                                        <label for="floatingInput">Nama Bekal</label>
+                                        <label for="floatingInput">Jenis Bekal</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
@@ -195,6 +195,7 @@
                         id_penyedia:id_penyedia,
                     },
                     success: function(respond){
+                        console.log(id_penyedia)
                         $('#kelas_bekal').html(respond)
                     },
                     error:function(){
@@ -202,7 +203,7 @@
                     }
                 })
             })
-            $('kelas_bekal').on('change', function(){
+            $('#kelas_bekal').on('change', function(){
                 var id_penyedia = $(this).val();
                 var kelas_bekal = $(this).val();
 
@@ -215,7 +216,7 @@
                         kelas_bekal:kelas_bekal,
                     },
                     success: function(respond){
-                        console.log(id_penyedia)
+                        // console.log(id_penyedia)
                         console.log(kelas_bekal)
                         $('#jenis_bekal').html(respond)
                     },
