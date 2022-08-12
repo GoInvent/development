@@ -22,11 +22,8 @@
         $no_kontrak = rand();
         $rfid = $row['id_barang'];
     }
-
-    
-
-        // $data               =           new DataController();
-        // $penyedia          =           $data->getPenyedia();
+        // $data     = new DataController();
+        // $penyedia = $data->getPenyedia();
 
 ?>
 
@@ -59,29 +56,27 @@
                                             <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                         </div>
                                     <?php endif;?>  
+
                                     <div class="form-floating mb-3">
                                         <select name="id_penyedia" id="penyedia" class="form-control" required>
                                             <option id="penyedia" readonly value="">--Pilih Penyedia--</option>
                                         </select>
                                         <label for="floatingInput">Penyedia</label>
                                     </div>  
-                                    <div class="form-floating mb-3">
-                                    <select id="kelas_bekal" class="form-control select2">
-                                        <option value="">--Pilih Kelas Bekal--</option>
-                                    </select>
-                                    <label for="floatingInput">Kelas Bekal</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                    <select id="nama_bekal" class="form-control select2">
-                                        <option value="">--Pilih Bekal--</option>
-                                    </select>
-                                    <label for="floatingInput">Nama Bekal</label>
-                                    </div>      
 
                                     <div class="form-floating mb-3">
-                                        <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=""  value = <?php echo $nama_barang ?> required readonly>
-                                        <label for="floatingInput">Nama Barang</label>
+                                        <select id="kelas_bekal" class="form-control select2">
+                                            <option value="">--Pilih Kelas Bekal--</option>
+                                        </select>
+                                        <label for="floatingInput">Kelas Bekal</label>
                                     </div>
+
+                                    <div class="form-floating mb-3">
+                                        <select id="nama_bekal" class="form-control select2">
+                                            <option value="">--Pilih Jenis Bekal--</option>
+                                        </select>
+                                        <label for="floatingInput">Nama Bekal</label>
+                                    </div>      
 
                                     <div class="form-floating mb-3">
                                         <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $harga_barang ?> readonly>
@@ -110,48 +105,40 @@
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" " required>
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                     </div>
+                                    
+                                    <!-- ambil data nilai penyedia barang -->
                                     <div class="form-floating mb-3">
-                                        <select id="penyedia" name="id_penyedia" class="form-control select2" required>
+                                        <select id="id_penyedia" name="id_penyedia" class="form-control select2" required>
                                             <option readonly value="">--Pilih Penyedia--</option>
                                             <?php 
                                                 include 'database.php';
                                                 $penyedia = mysqli_query($koneksi, "SELECT * FROM penyedia_barang");
                                                 while ($r = mysqli_fetch_array($penyedia)) {
                                             ?>
-                                            <?php if($penyedia != $penyedia)?>
                                                 <option value="<?php echo $r['id_penyedia'] ?>"><?php echo $r['nama_penyedia'] ?></option>
-                                            <?php } ?>
+                                            <?php }?>
                                         </select>
                                             <label for="floatingInput">Penyedia</label>
                                     </div>
+                                    
+                                    <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
                                     <div class="form-floating mb-3">
-                                        <select id="bekalpenyedia" name="bekal_penyedia" class="form-control select2" required>
-                                            <option readonly value="">--Pilih Bekal--</option>
-                                            <!-- <?php 
-                                                include 'database.php';
-                                                $bekalpenyedia = mysqli_query($koneksi, "SELECT * FROM bekal_penyedia INNER JOIN penyedia_barang ON penyedia_barang.id_penyedia = bekal_penyedia.id_penyedia");
-                                                while ($r = mysqli_fetch_array($bekalpenyedia)) {
-                                            ?> 
-                                            <?php if($bekalpenyedia != $bekalpenyedia)?>
-                                                <option value="<?php echo $r['id_penyedia'] ?>"><?php echo $r['kelas_bekal'] ?></option>
-                                            <?php } ?> -->
+                                        <select id="kelas_bekal" name="kelas_bekal" class="form-control select2">
+                                            <option>--Pilih kelas Bekal--</option>
                                         </select>
-                                            <label for="floatingInput">Bekal Penyedia</label>
+                                        <label for="floatingInput">Jenis Bekal</label>
                                     </div>
+                                    
+                                     <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
                                     <div class="form-floating mb-3">
-                                    <select id="kelas_bekal" class="form-control select2">
-                                        <option value="">--Pilih Kelas Bekal--</option>
-                                    </select>
-                                    <label for="floatingInput">Kelas Bekal</label>
+                                        <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
+                                            <option>--Pilih Bekal--</option>
+                                        </select>
+                                        <label for="floatingInput">Nama Bekal</label>
                                     </div>
+
                                     <div class="form-floating mb-3">
-                                    <select id="nama_bekal" class="form-control select2">
-                                        <option value="">--Pilih Bekal--</option>
-                                    </select>
-                                    <label for="floatingInput">Nama Bekal</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder="" required>
                                         <label for="floatingInput">Harga</label>
                                     </div>
 
@@ -194,28 +181,50 @@
     <script src="dist/js/custom.js"></script>
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery.chained.min.js"></script>
+
     <script>
-        function getSelectValue(){
-            var selectedValue = document.getElementById("send-templates").value;
-            
-            if(selectedValue == "daily"){
-                console.log('daily')
-                $('#tanggal-pengiriman').removeClass('show')
-                $('#tanggal-pengiriman').addClass('form-tanggal')
-            } else if(selectedValue == 'monthly') {
-                console.log('monthly')
-                $('#tanggal-pengiriman').addClass('show')
-                $('#tanggal-pengiriman').removeClass('form-tanggal')
-            } else if(selectedValue == 'yearly') {
-                console.log('yearly')
-                $('#tanggal-pengiriman').addClass('show')
-                $('#tanggal-pengiriman').removeClass('form-tanggal')
-            } else {
-                console.log('selected')
-                $('#tanggal-pengiriman').addClass('show')
-                $('#tanggal-pengiriman').removeClass('form-tanggal')
-            }
-        }
+        $(document).ready(function(){
+            $('#id_penyedia').on('change', function(){
+                var id_penyedia = $(this).val();
+
+                $.ajax({
+                    url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller.php"?>',
+                    type : "POST",
+                    data: {
+                        modul:'kelas_bekal',
+                        id_penyedia:id_penyedia,
+                    },
+                    success: function(respond){
+                        $('#kelas_bekal').html(respond)
+                    },
+                    error:function(){
+                        alert("Gagal mengambil data")
+                    }
+                })
+            })
+            $('kelas_bekal').on('change', function(){
+                var id_penyedia = $(this).val();
+                var kelas_bekal = $(this).val();
+
+                $.ajax({
+                    url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller.php"?>',
+                    type : "POST",
+                    data: {
+                        modul:'jenis_bekal',
+                        id_penyedia:id_penyedia,
+                        kelas_bekal:kelas_bekal,
+                    },
+                    success: function(respond){
+                        console.log(id_penyedia)
+                        console.log(kelas_bekal)
+                        $('#jenis_bekal').html(respond)
+                    },
+                    error:function(){
+                        alert("Gagal mengambil data")
+                    }
+                })
+            })
+        });
     </script>
 </body>
 
