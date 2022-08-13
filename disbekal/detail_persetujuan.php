@@ -24,33 +24,6 @@
 
 <!DOCTYPE html><html lang="en">
 <body>
-    <!-- <div class="container-fluid">
-            <h3>Pengajuan Pemasukan Barang</h3>
-            <p>Detail barang</p>
-            <div class="border-persetujuan"></div>
-            <?php
-                
-            ?> -->
-            <h6>ID Request : <?php echo $id_request?></h6>
-            
-        <!-- <div class="card" style="width: 65rem; border:1px solid black">
-            <div class="card-header" style="text-align: center;">
-                <h5>Informasi Barang</h3> 
-            </div>
-                <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID Barang : <?php echo $id_barang?></li>
-                    <li class="list-group-item">Nama Barang : <?php echo $nama_barang?></li>
-                    <li class="list-group-item">Jenis Barang : <?php echo  $nama_kelas ?></li>
-                    <li class="list-group-item">Jumlah Barang : <?php echo $jumlah_barang?></li>
-                    <li class="list-group-item">Harga Barang : <?php echo rupiah($harga_barang)?> </li>
-                    <li class="list-group-item">Tahun Produksi : <?php echo $tahun_produksi?> </li>
-                </ul>
-                </div>
-        </div>
-        
-        <a class="btn btn-success" style="margin-bottom:40px;" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php&id_request=$row[id_request]" ?>">Registrasi Barang</a>
-    </div> -->
     <div class="page-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -78,11 +51,6 @@
                                     <input name="kelas_bekal" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $nama_kelas ?>" readonly>
                                         <label for="floatingInput">Kelas Bekal</label>
                                     </div>
-
-                                    <div class="form-floating mb-3">
-                                    <input name="nama_bekal" class="form-control" id="floatingInput" placeholder=" " required value = "<?php echo $nama_bekal ?>" readonly>
-                                        <label for="floatingInput">Nama Barang</label>
-                                    </div>      
 
                                     <div class="form-floating mb-3">
                                         <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder="floatingInput" placeholder=" " required value = <?php echo $harga_bekal ?>>

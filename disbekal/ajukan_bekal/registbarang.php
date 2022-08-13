@@ -128,10 +128,6 @@
                                         </select>
                                         <label for="floatingInput">Jenis Bekal</label>
                                     </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" name="nama_bekal" class="form-control" id="nama_bekal" placeholder=" " required>
-                                        <label for="floatingInput">Nama</label>
-                                    </div>
                                     
                                      <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
                                     <!-- <div class="form-floating mb-3">
@@ -154,6 +150,14 @@
                                     <div class="form-floating mb-3">
                                         <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " required>
                                         <label for="floatingInput">Tahun</label>
+                                    </div>
+                                    
+                                    <div class="form-floating mb-3">
+                                        <select name="gudang_nama" id="gudang_nama" class="form-control">
+                                            <option value="wilbar">Wilayah Barat</option>
+                                            <option value="wiltim">Wilayah Timur</option>
+                                        </select>
+                                        <label for="floatingInput">Gudang Penyimpanan</label>
                                     </div>
 
                                     <div class="form-floating mb-3">

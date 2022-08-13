@@ -68,17 +68,16 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th class="border-top-0" style="color:white; text-align:center;">No</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Kategori</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Bekal</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Gudang</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Jumlah Barang</th>
+                                            <!-- <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th> -->
+                                            <th class="border-top-0" style="color:white; text-align:center;">Jumlah Bekal</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Harga</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Persetujuan</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Aksi</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Detail</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Setujui Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Detail Hapus Bekal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,19 +92,18 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                                 <td style="text-align:center"><?php echo $no++ ?></td>
                                                 <td style="text-align:center"><?php echo $row['nama_kelas'] ?></td>
                                                 <td style="text-align:center"><?php echo $row['nama_gudang'] ?></td>
-                                                <td style="text-align:center"><?php echo $row['nama_bekal']?></td>
+                                                <!-- <td style="text-align:center"><?php echo $row['nama_bekal']?></td> -->
                                                 <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
                                                 <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?></td>
                                                 <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                                 <td><?php echo $row['tgl_request']?></td>
-                                                <td style="text-align:center"><?php echo ($row['status'] == 0)?'Pending':'Approved'; ?></td>
-                                                <td style="text-align:center"><?php echo ($row['status_request'] == 0)?'Pending':'Approved'; ?></td>
+                                                <td style="text-align:center"><?php echo $row['status'] ?></td>
                                                 <td>
-                                                    <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Lihat Detail</a>
+                                                    <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Setujui Bekal</a>
                                                     <!-- <input type="button" name="persetujuan" value="disetujui"> -->
                                                 </td>
                                                 <td>
-                                                    <a href="#">Detail Barang</a>
+                                                    <a href="<?php echo BASE_URL."index.php?page=disbekal/reject_bekal/hapus_bekal.php&id_request=$row[id_request]" ?>" class="btn btn-warning" style="text-align:center">Hapus Bekal</a>
                                                 </td>
                                             </tr>
                                         <?php }

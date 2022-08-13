@@ -5,7 +5,7 @@
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
     $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
 
-    $produk = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi ON komoditi.id_komoditi = barang.id_komoditi WHERE id_barang ='".$_GET['id']."' ");
+    $produk = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_barang ='".$_GET['id']."' ");
 	$p = mysqli_fetch_object($produk);
     if ($id_request){
         $barang = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC");

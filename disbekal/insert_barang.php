@@ -13,9 +13,15 @@
     $stok           = $_POST['jumlah_bekal'];
     $tahun          = $_POST['tahun_produksi'];
     $nokontrak      = rand();
-    $statusbarang   = "Pending"; 
+    $statusbarang   = "menunggu persetujuan - 2"; 
     $status         = 1;
 
+    // jadi nanti ada 2 approval - yang pertama barang ketika dikirim.
+    // dan kedua ketika barang masuk gudang.
+
+    // ada kondisi dimana barang, akan update status aja ketika status 'menunggu persetujuan - 1' menjadi 'menunggu persetujuan - 2',
+    // ketika status barang di 'menunggu persetujuan - 2', maka akan insert ke gudang bekal dan status menjadi approved.
+    
     $barang = mysqli_query($koneksi, "SELECT * FROM barang");
     $row = mysqli_fetch_assoc($barang);
 
@@ -34,7 +40,4 @@
                 }
     
     // =================================================================================================
-    // echo 'test 2jojdpoqwe12iepqowjdpoajd';
-
-    // header("location:".BASE_URL."index.php?page=disbekal/databarang.php");
 ?>

@@ -59,7 +59,7 @@ include_once('helper.php')
                             </div>
                             <!-- title -->
                             
-                            <a href="<?php echo BASE_URL."index.php?page=user/databarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Permintaan Bekal</a>
+                            <a href="<?php echo BASE_URL."index.php?page=user/requestbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Ajukan Permintaan Bekal</a>
                            
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">

@@ -27,39 +27,12 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" name="role_user" class="form-control" style="width:97%;" id="floatingInput" placeholder=""  value = <?php echo $role ?> required readonly>
-                    <label for="floatingInput">Role Pengguna</label>
-                </div>
-
-                <div class="form-floating mb-3">
                     <input type="text" name="email_user" class="form-control" style="width:97%;" id="floatingInput" placeholder=""  value = <?php echo $email_user ?> required readonly>
                     <label for="floatingInput">Email Pengguna</label>
                 </div>
             </div>
             
             <div style="border: 1px solid gray;width:97%;margin:20px 0px 20px 0px;"></div>
-
-            <?php if($row['id_user'] == $id_user && $role == 'User') : ?>
-                <p class="text-profile">
-                    Daftarkan akun profile-mu sebagai penyedia, untuk kamu bisa menyimpan dan memasukan barang<br/>
-                    ke gudang kami.<a href="#"> Lihat Detail</a>
-                </p>
-                <p style="font-weight: bold;">Anda telah mengajukan permintaan sebagai penyedia</p>
-                <p style="font-weight: bold; margin-top:-13px;">Mohon tunggu, permintaan sebagai penyedia sedang kami proses</p>
-            <?php elseif($role == 'Penyedia') : ?>
-                <p>Anda telah terverifikasi sebagai penyedia</p>
-            <?php else : ?>
-                <!-- kasih action yang mana update dari role user menjadi penyedia pada table users kolom role -->
-                <!-- muncul pop yang sebagai warning untuk user, menyetujui menjadi penyedia -->
-                <!-- ketiak user setuju maka role akan insert ke tb_log_penyedia -->
-                <input type="submit" name="submit" value="Ajukan Porfile Sebagai Penyedia" class="btn btn-success">
-                
-                <div style="margin-top:10px;">
-                    <input type="checkbox" id="aggre_" name="aggre_form" value="aggre">
-                    <label for="aggre"> Menyetujui syarat dan ketentuan yang berlaku</label><br>
-                </div>
-            <?php endif; ?>
-
         </form>
     </div>
 </body>

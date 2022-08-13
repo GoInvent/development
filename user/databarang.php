@@ -74,16 +74,16 @@
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
-                                            <td style="text-align:center;"><?php echo $no++ ?></td>
-                                            <td style="text-align:center;"><?php echo $row['id_barang']?></td>
-                                            <td style="text-align:center;"><?php echo $row['jenis_komoditi']?></td>
-                                            <td style="text-align:center;"><?php echo $row['nama_barang']?></td>
-                                            <td style="text-align:center;"><?php echo rupiah ($row['harga_barang'])?></td>
-                                            <td style="text-align:center;"><?php echo $row['jumlah_barang']?></td>
-                                            <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
-                                            <td style="text-align:center;"><?php echo $row['no_kontrak']?></td>
-                                            <td style="text-align:center;"><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
-                                            </td>
+                                                <td style="text-align:center;"><?php echo $no++ ?></td>
+                                                <td style="text-align:center;"><?php echo $row['id_barang']?></td>
+                                                <td style="text-align:center;"><?php echo $row['jenis_komoditi']?></td>
+                                                <td style="text-align:center;"><?php echo $row['nama_barang']?></td>
+                                                <td style="text-align:center;"><?php echo rupiah ($row['harga_barang'])?></td>
+                                                <td style="text-align:center;"><?php echo $row['jumlah_barang']?></td>
+                                                <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
+                                                <td style="text-align:center;"><?php echo $row['no_kontrak']?></td>
+                                                <td style="text-align:center;"><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
+                                                </td>
                                             </tr>
                                         <?php }
                                         }else { ?>
@@ -106,12 +106,7 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
+  
     <script type="text/javascript">
         $(document).ready(function(){
             $("#komoditi_dropdown").on('change',function() {
@@ -120,6 +115,7 @@
             })
         });
     </script>
+    
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
