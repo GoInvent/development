@@ -123,19 +123,19 @@
                                     
                                     <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
                                     <div class="form-floating mb-3">
-                                        <select id="kelas_bekal" name="kelas_bekal" class="form-control select2">
-                                            <option>--Pilih kelas Bekal--</option>
+                                        <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
+                                            <option>--Pilih jenis Bekal--</option>
                                         </select>
-                                        <label for="floatingInput">Kelas Bekal</label>
+                                        <label for="floatingInput">jenis Bekal</label>
                                     </div>
                                     
                                      <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
-                                    <div class="form-floating mb-3">
+                                    <!-- <div class="form-floating mb-3">
                                         <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
                                             <option>--Pilih Bekal--</option>
                                         </select>
                                         <label for="floatingInput">Jenis Bekal</label>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-floating mb-3">
                                         <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder="" required>
@@ -191,34 +191,33 @@
                     url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller.php"?>',
                     type : "POST",
                     data: {
-                        modul:'kelas_bekal',
+                        modul:'jenis_bekal',
                         id_penyedia:id_penyedia,
                     },
                     success: function(respond){
                         console.log(id_penyedia)
-                        $('#kelas_bekal').html(respond)
+                        $('#jenis_bekal').html(respond)
                     },
                     error:function(){
                         alert("Gagal mengambil data")
                     }
                 })
             })
-            $('#kelas_bekal').on('change', function(){
-                var id_penyedia = $(this).val();
-                var kelas_bekal = $(this).val();
+            $('#jenis_bekal').on('change', function(){
+                var id_bekal_penyedia = $(this).val();
+                var harga_bekal
 
                 $.ajax({
                     url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller.php"?>',
                     type : "POST",
                     data: {
-                        modul:'jenis_bekal',
-                        id_penyedia:id_penyedia,
-                        kelas_bekal:kelas_bekal,
+                        modul:'harga_bekal',
+                        id_bekal_penyedia:id_bekal_penyedia,
                     },
                     success: function(respond){
                         // console.log(id_penyedia)
                         console.log(kelas_bekal)
-                        $('#jenis_bekal').html(respond)
+                        $('#harga_bekal').html(respond)
                     },
                     error:function(){
                         alert("Gagal mengambil data")

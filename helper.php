@@ -1,8 +1,7 @@
 <?php 
-    // mar cog komen aja nanti urlnya
-    // wkwkwkkwkw ribet lu ya, gua mah gampang
-    define("BASE_URL", "http://localhost/ilogi/"); 
-    // define("BASE_URL", "http://localhost:8080/website-warehouse/development/"); 
+
+    // define("BASE_URL", "http://localhost/ilogi/"); 
+    define("BASE_URL", "http://localhost:8080/website-warehouse/development/"); 
 
 
     function rupiah($angka){
