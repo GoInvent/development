@@ -12,10 +12,10 @@
         $nama_penyedia = $row['nama_penyedia'];
         $komoditi = $row['id_komoditi'];
         $jenis_komoditi = $row['jenis_komoditi'];
-        $nama_barang = $row['nama_barang'];
+        $nama_bekal = $row['nama_bekal'];
         $id_admin = $row['id_admin'];
-        $jumlah_barang = $row['jumlah_barang'];
-        $harga_barang = $row['harga_barang'];
+        $jumlah_bekal = $row['jumlah_bekal'];
+        $harga_bekal = $row['harga_bekal'];
         $tahun_produksi = $row['tahun_produksi'];
         $tgl_request = $row['tgl_request'];
         $jenis_komoditi = $row['jenis_komoditi'];
@@ -45,7 +45,7 @@
                                         <label for="floatingInput">Id Penyedia</label>
                                     </div>
 
-                                    <?php if($rfid != NULL):?>
+                                    <!-- <?php if($rfid != NULL):?>
                                         <div class="form-floating mb-3">
                                             <input name="id_barang" class="form-control" id="getUID" placeholder="" value = <?php echo $rfid?> readonly>
                                             <label for="getUID">ID Produk (Scan RFID to display ID)</label>
@@ -55,7 +55,7 @@
                                             <input name="id_barang" class="form-control" id="getUID" placeholder=" " >
                                             <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                         </div>
-                                    <?php endif;?>  
+                                    <?php endif;?>   -->
 
                                     <div class="form-floating mb-3">
                                         <select name="id_penyedia" id="penyedia" class="form-control" required>
@@ -79,12 +79,12 @@
                                     </div>      
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $harga_barang ?> readonly>
+                                        <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $harga_bekal ?> readonly>
                                         <label for="floatingInput">Harga</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $jumlah_barang ?> readonly>
+                                        <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $jumlah_bekal ?> readonly>
                                         <label for="floatingInput">Stok</label>
                                     </div>
 
@@ -100,11 +100,11 @@
                                     <input type="submit" name="submit" value="Setujui Barang" class="btn btn-success">
                                 </form>
                                 <?php else: ?>
-                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php" ?>" method="post">
-                                    <div class="form-floating mb-3">
-                                        <input name="id_barang" class="form-control" id="getUID" placeholder=" " required>
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/ajukan_bekal/insert_barang.php" ?>" method="post">
+                                    <!-- <div class="form-floating mb-3">
+                                        <input type="number" name="id_barang" class="form-control" id="getUID" placeholder=" " required>
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
-                                    </div>
+                                    </div> -->
                                     
                                     <!-- ambil data nilai penyedia barang -->
                                     <div class="form-floating mb-3">
@@ -126,7 +126,11 @@
                                         <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
                                             <option>--Pilih jenis Bekal--</option>
                                         </select>
-                                        <label for="floatingInput">jenis Bekal</label>
+                                        <label for="floatingInput">Jenis Bekal</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="nama_bekal" class="form-control" id="nama_bekal" placeholder=" " required>
+                                        <label for="floatingInput">Nama</label>
                                     </div>
                                     
                                      <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
@@ -138,12 +142,12 @@
                                     </div> -->
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder="" required>
+                                        <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder=" " required>
                                         <label for="floatingInput">Harga</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <input type="number" name="jumlah_bekal" class="form-control" id="floatingInput" placeholder=" " required>
                                         <label for="floatingInput">Stok</label>
                                     </div>
 
@@ -204,20 +208,19 @@
                 })
             })
             $('#jenis_bekal').on('change', function(){
-                var id_bekal_penyedia = $(this).val();
-                var harga_bekal
-
+                var nama_bekal = $(this).val();
+                var modul = "harga_bekal"
                 $.ajax({
                     url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller.php"?>',
                     type : "POST",
                     data: {
-                        modul:'harga_bekal',
-                        id_bekal_penyedia:id_bekal_penyedia,
+                        modul:modul,
+                        nama_bekal:nama_bekal
                     },
                     success: function(respond){
-                        // console.log(id_penyedia)
-                        console.log(kelas_bekal)
-                        $('#harga_bekal').html(respond)
+                        console.log(nama_bekal)
+                        // console.log(modul)
+                        $('#harga_bekal').html("respond")
                     },
                     error:function(){
                         alert("Gagal mengambil data")

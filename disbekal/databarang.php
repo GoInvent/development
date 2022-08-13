@@ -53,7 +53,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY created_at DESC");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia ORDER BY created_at DESC");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -62,9 +62,9 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                                 <td style="text-align:center"><?php echo $row['id_barang']?></td>
                                                 <td style="text-align:center"><?php echo $row['kode_komoditi']?></td>
                                                 <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
-                                                <td style="text-align:center"><?php echo $row['nama_barang']?></td>
-                                                <td style="text-align:center"><?php echo rupiah($row['harga_barang'])?></td>
-                                                <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_bekal']?></td>
+                                                <td style="text-align:center"><?php echo rupiah($row['harga_bekal'])?></td>
+                                                <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
                                                 <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                                 <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
                                                 <td style="text-align:center"><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>

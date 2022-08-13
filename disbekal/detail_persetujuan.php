@@ -5,48 +5,35 @@
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
     if ($id_request){
-        $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN komoditi ON komoditi.id_komoditi = pemasukan.id_komoditi WHERE id_request = '".$_GET['id_request']."'");
+        $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan WHERE id_request = '".$_GET['id_request']."'");
         $row = mysqli_fetch_assoc($sql_pemasukan);
-        $sql_admin = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN admin ON admin.id_admin = pemasukan.id_admin WHERE id_request = '".$_GET['id_request']."'");
-        $data = mysqli_fetch_assoc($sql_admin);
+        // $sql_admin = mysqli_query($koneksi, "SELECT * FROM pemasukan LEFT JOIN admin ON admin.id_admin = pemasukan.id_admin WHERE id_request = '".$_GET['id_request']."'");
+        // $data = mysqli_fetch_assoc($sql_admin);
         
-        $id_barang = $row['id_barang'];
-        $nama_penyedia  = $row['nama_penyedia'];
-        $nama_barang    = $row['nama_barang'];
-        $jumlah_barang  = $row['jumlah_barang'];
-        $harga_barang   = $row['harga_barang'];
+        $id_penyedia    = $row['id_penyedia'];
+        $nama_bekal    = $row['nama_bekal'];
+        $jumlah_bekal  = $row['jumlah_bekal'];
+        $nama_kelas     = $row['nama_kelas']; 
+        $harga_bekal   = $row['harga_bekal'];
         $tahun_produksi = $row['tahun_produksi'];
-        $tgl_request    = $row['tgl_request'];
-        $jenis_komoditi = $row['jenis_komoditi'];
-        $idadmin        = $data['id_admin'];
-        $email          = $data['email'];   
+        $tgl_request    = $row['tgl_request'];   
+        $no_kontrak     = $row['no_kontrak'];
     }
 
 ?>
 
 <!DOCTYPE html><html lang="en">
 <body>
-    <div class="container-fluid" style="margin-left:280px; margin-top:20px;">
+    <!-- <div class="container-fluid">
             <h3>Pengajuan Pemasukan Barang</h3>
             <p>Detail barang</p>
             <div class="border-persetujuan"></div>
             <?php
                 
-            ?>
+            ?> -->
             <h6>ID Request : <?php echo $id_request?></h6>
-        
-        <div class="card" style="width: 65rem; border:1px solid black">
-            <div class="card-header" style="text-align: center;">
-                <h5>Informasi Penyedia</h3>
-            </div>
-                <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID   : <?php echo $idadmin ?></li>
-                    <li class="list-group-item">Nama Penyedia : <?php echo $nama_penyedia ?></li>
-                    <li class="list-group-item">Email  : <?php echo $email ?></li>
-                    <li class="list-group-item">Tanggal Pengajuan : <?php echo $tgl_request ?></li>
-                </ul>
-                </div>
+            
+        <!-- <div class="card" style="width: 65rem; border:1px solid black">
             <div class="card-header" style="text-align: center;">
                 <h5>Informasi Barang</h3> 
             </div>
@@ -54,14 +41,139 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID Barang : <?php echo $id_barang?></li>
                     <li class="list-group-item">Nama Barang : <?php echo $nama_barang?></li>
-                    <li class="list-group-item">Jenis Barang : <?php echo  $jenis_komoditi ?></li>
+                    <li class="list-group-item">Jenis Barang : <?php echo  $nama_kelas ?></li>
                     <li class="list-group-item">Jumlah Barang : <?php echo $jumlah_barang?></li>
                     <li class="list-group-item">Harga Barang : <?php echo rupiah($harga_barang)?> </li>
                     <li class="list-group-item">Tahun Produksi : <?php echo $tahun_produksi?> </li>
                 </ul>
                 </div>
         </div>
+        
         <a class="btn btn-success" style="margin-bottom:40px;" href="<?php echo BASE_URL."index.php?page=disbekal/registbarang.php&id_request=$row[id_request]" ?>">Registrasi Barang</a>
+    </div> -->
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 text-align="center" style="margin:2% 0% 2% 0%">Registrasi Barang</h1>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Input data barang</h4>
+                            <p>Pendataan barang sebelum masuk gudang</p>
+                            <?php if($id_request):?>
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php&id_request=$row[id_request]" ?>" method="POST">
+
+        
+                                        <div class="form-floating mb-3">
+                                            <input name="id_barang" class="form-control" id="getUID" placeholder=" " readonly>
+                                            <label for="getUID">ID Produk (Scan RFID to display ID)</label>
+                                        </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="id_penyedia" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $id_penyedia ?> readonly>
+                                        <label for="floatingInput">Penyedia</label>
+                                    </div>  
+
+                                    <div class="form-floating mb-3">
+                                    <input name="kelas_bekal" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $nama_kelas ?>" readonly>
+                                        <label for="floatingInput">Kelas Bekal</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                    <input name="nama_bekal" class="form-control" id="floatingInput" placeholder=" " required value = "<?php echo $nama_bekal ?>" readonly>
+                                        <label for="floatingInput">Nama Barang</label>
+                                    </div>      
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder="floatingInput" placeholder=" " required value = <?php echo $harga_bekal ?>>
+                                        <label for="floatingInput">Harga</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="jumlah_bekal" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $jumlah_bekal ?>>
+                                        <label for="floatingInput">Stok</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $tahun_produksi ?>>
+                                        <label for="floatingInput">Tahun</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " required value=<?php echo $no_kontrak; ?> readonly> 
+                                        <label for="floatingInput">No.Kontrak</label>
+                                    </div>
+                                    <input type="submit" name="submit" value="Setujui Barang" class="btn btn-success">
+                                </form>
+                                <?php else: ?>
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php&id_request=$row[id_request]" ?>" method="post">
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="id_barang" class="form-control" id="getUID" placeholder=" " required>
+                                        <label for="getUID">ID Produk (Scan RFID to display ID)</label>
+                                    </div>
+                                    
+                                    <!-- ambil data nilai penyedia barang -->
+                                    <div class="form-floating mb-3">
+                                        <select id="id_penyedia" name="id_penyedia" class="form-control select2" required>
+                                            <option readonly value="">--Pilih Penyedia--</option>
+                                            <?php 
+                                                include 'database.php';
+                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM penyedia_barang");
+                                                while ($r = mysqli_fetch_array($penyedia)) {
+                                            ?>
+                                                <option value="<?php echo $r['id_penyedia'] ?>"><?php echo $r['nama_penyedia'] ?></option>
+                                            <?php }?>
+                                        </select>
+                                        <label for="floatingInput">Penyedia</label>
+                                    </div>
+                                    
+                                    <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
+                                    <div class="form-floating mb-3">
+                                        <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
+                                            <option>--Pilih jenis Bekal--</option>
+                                        </select>
+                                        <label for="floatingInput">Jenis Bekal</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="nama_bekal" class="form-control" id="nama_bekal" placeholder="" required>
+                                        <label for="floatingInput">Nama</label>
+                                    </div>
+                                    
+                                     <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
+                                    <!-- <div class="form-floating mb-3">
+                                        <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
+                                            <option>--Pilih Bekal--</option>
+                                        </select>
+                                        <label for="floatingInput">Jenis Bekal</label>
+                                    </div> -->
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder="" required>
+                                        <label for="floatingInput">Harga</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <label for="floatingInput">Stok</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="tahun_produksi" class="form-control" id="floatingInput" placeholder=" " required>
+                                        <label for="floatingInput">Tahun</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " readonly> 
+                                        <label for="floatingInput">No.Kontrak</label>
+                                    </div>
+                                    <input type="submit" name="submit" value="Simpan" class="btn btn-success">
+                                </form>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 </body>

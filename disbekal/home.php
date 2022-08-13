@@ -77,6 +77,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                             <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Persetujuan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Aksi</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Detail</th>
                                         </tr>
                                     </thead>
@@ -84,19 +85,20 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan ORDER BY id_request DESC");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                                 <td style="text-align:center"><?php echo $no++ ?></td>
-                                                <td style="text-align:center"><?php echo $row['id_kategori'] ?></td>
-                                                <td style="text-align:center"><?php echo $row['id_gudang'] ?></td>
-                                                <td style="text-align:center"><?php echo $row['nama_barang']?></td>
-                                                <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
-                                                <td style="text-align:center"><?php echo rupiah ($row['harga_barang'])?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_kelas'] ?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_gudang'] ?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_bekal']?></td>
+                                                <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
+                                                <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?></td>
                                                 <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                                 <td><?php echo $row['tgl_request']?></td>
+                                                <td style="text-align:center"><?php echo ($row['status'] == 0)?'Pending':'Approved'; ?></td>
                                                 <td style="text-align:center"><?php echo ($row['status_request'] == 0)?'Pending':'Approved'; ?></td>
                                                 <td>
                                                     <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Lihat Detail</a>

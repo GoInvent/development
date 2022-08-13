@@ -3,7 +3,8 @@
     include_once('helper.php');
 
     $id_penyedia = $_POST['id_penyedia'];
-    $kelas_bekal = $_POST['kelas_bekal'];
+    // $kelas_bekal = $_POST['kelas_bekal'];
+    $nama_bekal = "nama_bekal";
     $id_bekal_penyedia = $_POST['id_bekal_penyedia'];
     $modul =$_POST['modul'];
    
@@ -16,13 +17,13 @@
         echo $jenis_bekal;
 
     }
-    elseif($modul=='harga_bekal'){
+    if($modul=='harga_bekal'){
         $nama = mysqli_query($koneksi, "SELECT * FROM bekal_penyedia WHERE id_penyedia = $id_penyedia");
-        // $jenis_bekal = '<option value="1">'.$id_penyedia.'</option>';
+        $harga_bekal = '<option value="1">'.$modul.'</option>';
         while($row = mysqli_fetch_array($nama)){
-            $jenis_bekal .= '<option value="'.$row["harga_bekal"].'">'.$row["harga_bekal"].'</option>';
+            $harga_bekal .= '<input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder="" required value= "'.$row["harga"].'">';
         }
 
-        echo $jenis_bekal;
+        echo $harga_bekal;
     }
 ?>

@@ -81,10 +81,13 @@ if($id_penyedia){
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th class="border-top-0" style="color:white; text-align:center;">No</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Kategori Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Kelas Bekal</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Nama Bekal</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">ID Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Harga</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Stok Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Gudang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Riwayat Bekal</th>
                                         </tr>
                                     </thead>
@@ -101,7 +104,10 @@ if($id_penyedia){
                                             <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
                                             <td style="text-align:center"><?php echo $row['nama_bekal']?></td>
                                             <td style="text-align:center"><?php echo $row['id_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['harga']?></td>
                                             <td style="text-align:center"><?php echo $row['stok_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['tahun']?></td>
+                                            <td style="text-align:center"><?php echo $row['nama_gudang']?></td>
                                             <td style="text-align:center"><?php echo $row['created_at']?></td>
                                             <!-- <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_kategori'] ?>">Edit</a> 
                                             <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?id_bekal=<?php echo $row['id_kategori'] ?>">Delete</a>
