@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2022 at 05:22 PM
+-- Generation Time: Aug 13, 2022 at 03:46 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `status`, `created_at`, `last_login`, `login`) VALUES
-(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-08-12 13:39:47', b'0'),
+(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-08-13 04:46:22', b'0'),
 (2, 'Test', 'test@gmail.com', 'test', 'kadopus', b'1', '2022-07-07 06:02:21', '2022-07-20 13:34:25', b'0'),
 (3, 'Aku', 'aku@gmail.com', 'test', 'penyedia', b'1', '0000-00-00 00:00:00', '2022-07-23 15:17:18', b'0'),
 (4, 'Omar Penyedia', 'dia@gmail.com', 'test', 'penyedia', b'1', '2022-07-13 08:41:23', '2022-07-18 03:52:13', b'0');
@@ -58,16 +58,16 @@ INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `sta
 
 CREATE TABLE `barang` (
   `id_barang` varchar(11) NOT NULL,
-  `id_komoditi` int(11) NOT NULL,
-  `nama_barang` varchar(250) NOT NULL,
-  `id_admin` int(11) NOT NULL,
-  `harga_barang` int(11) NOT NULL,
-  `jumlah_barang` int(11) NOT NULL,
+  `id_penyedia` int(11) NOT NULL,
+  `kelas_bekal` varchar(250) NOT NULL,
+  `nama_bekal` varchar(250) NOT NULL,
+  `harga_bekal` int(11) NOT NULL,
+  `jumlah_bekal` int(11) NOT NULL,
   `tahun_produksi` int(11) NOT NULL,
   `no_kontrak` int(11) NOT NULL,
   `status_barang` bit(1) NOT NULL,
+  `status` bit(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `deleted_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -115,9 +115,8 @@ CREATE TABLE `bekal_penyedia` (
 
 INSERT INTO `bekal_penyedia` (`id_bekal_penyedia`, `id_penyedia`, `kelas_bekal`, `nama_bekal`, `id_bekal`, `harga`, `stok_bekal`, `tahun`, `nama_gudang`, `created_at`, `updated_at`) VALUES
 (25, 2, 'BK.1', 'Makanan Jadi', 1000834435, 50000, 50, 2022, 'Dopusbektim', '2022-08-12 09:33:07', '2022-08-12 09:33:07'),
-(26, 3, 'BK.2', 'Pakaian Asal', 775408049, 50000, 100, 2001, 'Dopusbekbar', '2022-08-12 09:33:33', '2022-08-12 09:33:33'),
-(27, 2, '3', 'Makanan Jadi', 2133270889, 50000, 50, 2022, 'Dopusbekbar', '2022-08-12 20:47:44', '2022-08-12 20:47:44'),
-(28, 2, 'BK.2', 'Makanan Belom Jadi', 841280033, 50000, 100, 2010, 'Dopusbektim', '2022-08-12 20:48:58', '2022-08-12 20:48:58');
+(26, 3, 'BK.2', 'Pakaian Asal', 775408049, 20000, 100, 2001, 'Dopusbekbar', '2022-08-12 09:33:33', '2022-08-12 09:33:33'),
+(28, 2, 'BK.2', 'Makanan Belom Jadi', 841280033, 350000, 100, 2010, 'Dopusbektim', '2022-08-12 20:48:58', '2022-08-12 20:48:58');
 
 -- --------------------------------------------------------
 
@@ -232,19 +231,28 @@ CREATE TABLE `log_penyedia` (
 
 CREATE TABLE `pemasukan` (
   `id_request` int(11) NOT NULL,
-  `id_penyedia` int(11) NOT NULL,
-  `id_gudang` int(11) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
   `id_barang` varchar(11) NOT NULL,
-  `nama_barang` varchar(250) NOT NULL,
-  `jumlah_barang` int(11) NOT NULL,
-  `harga_barang` int(11) NOT NULL,
+  `id_penyedia` int(11) NOT NULL,
+  `nama_kelas` varchar(50) NOT NULL,
+  `nama_gudang` varchar(50) NOT NULL,
+  `nama_bekal` varchar(250) NOT NULL,
+  `harga_bekal` int(11) NOT NULL,
+  `jumlah_bekal` int(11) NOT NULL,
   `tahun_produksi` int(11) NOT NULL,
   `tgl_request` timestamp NOT NULL DEFAULT current_timestamp(),
   `no_kontrak` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
   `status_request` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemasukan`
+--
+
+INSERT INTO `pemasukan` (`id_request`, `id_barang`, `id_penyedia`, `nama_kelas`, `nama_gudang`, `nama_bekal`, `harga_bekal`, `jumlah_bekal`, `tahun_produksi`, `tgl_request`, `no_kontrak`, `status`, `status_request`) VALUES
+(85, '12314', 2, 'Makanan Jadi', 'Dopusbekbar', 'Kedelai', 50000, 50, 2022, '2022-08-13 12:06:22', 792560510, 'Pending', b'1'),
+(86, '', 2, 'Makanan Jadi', 'Dopusbekbar', 'Lemper', 50000, 1000, 2022, '2022-08-13 13:03:00', 2051813262, 'Pending', b'1'),
+(87, '', 2, 'Makanan Jadi', 'Dopusbekbar', 'Sarden', 50000, 0, 2022, '2022-08-13 13:36:44', 820402030, 'Pending', b'1');
 
 -- --------------------------------------------------------
 
@@ -343,9 +351,7 @@ ALTER TABLE `admin`
 -- Indexes for table `barang`
 --
 ALTER TABLE `barang`
-  ADD PRIMARY KEY (`id_barang`),
-  ADD UNIQUE KEY `nama_barang` (`nama_barang`),
-  ADD KEY `fk_id_komoditi` (`id_komoditi`);
+  ADD PRIMARY KEY (`id_barang`);
 
 --
 -- Indexes for table `bekal_penyedia`
@@ -392,9 +398,7 @@ ALTER TABLE `log_penyedia`
 ALTER TABLE `pemasukan`
   ADD PRIMARY KEY (`id_request`),
   ADD KEY `fk_id_barang2` (`id_barang`),
-  ADD KEY `fk_id_kategori` (`id_kategori`),
-  ADD KEY `fk_id_penyedia1` (`id_penyedia`),
-  ADD KEY `fk_id_gudang` (`id_gudang`);
+  ADD KEY `fk_id_penyedia1` (`id_penyedia`);
 
 --
 -- Indexes for table `pengeluaran`
@@ -468,7 +472,7 @@ ALTER TABLE `log_penyedia`
 -- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran`
@@ -493,12 +497,6 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `barang`
---
-ALTER TABLE `barang`
-  ADD CONSTRAINT `fk_id_komoditi` FOREIGN KEY (`id_komoditi`) REFERENCES `komoditi` (`id_komoditi`);
-
---
 -- Constraints for table `bekal_penyedia`
 --
 ALTER TABLE `bekal_penyedia`
@@ -514,8 +512,6 @@ ALTER TABLE `log_penyedia`
 -- Constraints for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  ADD CONSTRAINT `fk_id_gudang` FOREIGN KEY (`id_gudang`) REFERENCES `gudang` (`id_gudang`),
-  ADD CONSTRAINT `fk_id_kategori` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_bekal` (`id_kelas`),
   ADD CONSTRAINT `fk_id_penyedia1` FOREIGN KEY (`id_penyedia`) REFERENCES `penyedia_barang` (`id_penyedia`);
 
 --
