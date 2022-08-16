@@ -14,8 +14,12 @@
                         <div class="card-body">
                             <h4>Input data penyediaan barang</h4>
                             <p>Registrasi penyediaan barang</p>
-                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/insert_peneydia.php" ?>" method="POST">
-                                    
+                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/insert_penyedia.php" ?>" method="POST">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="id_penyedia" class="form-control" id="floatingInput" placeholder="" readonly>
+                                        <label for="floatingInput">ID Penyedia</label>
+                                        <small>Auto-generate</small>
+                                    </div>
                                     <!-- Generate random -->
                                     <div class="form-floating mb-3">
                                         <input type="text" name="nama_penyedia" class="form-control" id="floatingInput" placeholder=""  required>

@@ -32,8 +32,8 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                             <!-- title -->
                             <div class="d-md-flex">
                                 <div>
-                                    <h4 class="card-title">Pengeluaran Barang</h4>
-                                    <p>Daftar Permintaan Barang Keluar</p>
+                                    <h4 class="card-title">Pengeluaran Bekal</h4>
+                                    <p>Daftar Permintaan Bekal Keluar</p>
                                 </div>
                             </div>
                             <!-- title -->
@@ -44,7 +44,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                             <th class="border-top-0;" style="color:white;">No</th>
                                             <th class="border-top-0;" style="color:white;">Nama User</th>
                                             <th class="border-top-0;" style="color:white;">Kategori</th>
-                                            <th class="border-top-0;" style="color:white;">Jumlah Barang</th>
+                                            <th class="border-top-0;" style="color:white;">Jumlah</th>
                                             <th class="border-top-0;" style="color:white;">Harga</th>
                                             <th class="border-top-0;" style="color:white;">Tahun</th>
                                             <th class="border-top-0;" style="color:white;">No. Kontrak</th>

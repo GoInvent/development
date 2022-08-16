@@ -76,7 +76,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                             <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Status</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Status Barang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Aksi</th>
                                         </tr>
                                     </thead>

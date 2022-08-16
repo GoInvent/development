@@ -126,7 +126,7 @@
                                         <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
                                             <option>--Pilih jenis Bekal--</option>
                                         </select>
-                                        <label for="floatingInput">Jenis Bekal</label>
+                                        <label for="floatingInput">Nama Bekal</label>
                                     </div>
                                     
                                      <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->

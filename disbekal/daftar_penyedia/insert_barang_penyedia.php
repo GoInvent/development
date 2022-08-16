@@ -17,7 +17,7 @@
 
     if($sql){
         echo '<script>alert("Simpan data Berhasil")</script>';
-        echo '<script>window.location="index.php?page=disbekal/databekal.php"</script>';
+        echo '<script>window.location="index.php?page=disbekal/daftar_penyedia/detail_penyedia.php&id_penyedia='.$idpenyedia.'"</script>';
     }else{
         echo '<script>alert("Gagal Input Data")</script>';
         echo "Error: " . mysqli_error($koneksi);

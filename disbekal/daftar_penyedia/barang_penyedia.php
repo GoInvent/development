@@ -14,8 +14,9 @@
         <form action="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/insert_barang_penyedia.php" ?>" method="POST">
             <div style="margin-top:20px">
                 <div class="form-floating mb-3">
-                    <input type="text" name="id_penyedia" class="form-control" style="width:97%;" id="floatingInput" value="<?php echo $id_penyedia?>" placeholder=" " required>
+                    <input type="text" name="id_penyedia" class="form-control" style="width:97%;" id="floatingInput" value="<?php echo $id_penyedia?>" placeholder=" " required readonly>
                     <label for="floatingInput">ID Penyedia</label>
+                    <small>Auto-generate</small>
                 </div>
                 <div class="form-floating mb-3">
                     <select id="kelas_bekal" name="kelas_bekal"  class="form-control select2" required>
@@ -25,17 +26,17 @@
                                 $kategori = mysqli_query($koneksi, "SELECT * FROM kategori_bekal");
                                 while ($r = mysqli_fetch_array($kategori)) {
                                 ?> 
-                                    <option value="<?php echo $r['kelas_bekal']?>"><?php echo $r['kelas_bekal'] ?></option>
+                                    <option value="<?php echo $r['kelas_bekal']?>-<?php echo $r['nama_kategori_bekal']?>"><?php echo $r['kelas_bekal'] ?>-<?php echo $r['nama_kategori_bekal']?></option>
                                 <?php } ?>
                     </select>
                 <label for="floatingInput">Kelas Bekal:</label>
                 </div>
-                <div class="form-floating mb-3">
+                <!-- <div class="form-floating mb-3">
                     <select id="nama_kategori_bekal" name="nama_kategori_bekal" class="form-control select2">
                         <option>--Pilih Jenis Bekal--</option>
                     </select>
                     <label for="floatingInput">Jenis Bekal</label>
-                </div>
+                </div> -->
                 <div class="form-floating mb-3">
                     <input type="text" name="nama_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " required>
                     <label for="floatingInput">Nama Bekal</label>
@@ -44,9 +45,9 @@
                 <div class="form-floating mb-3" style="margin-top:15px;">
                     <input type="text" name="id_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" "  disabled>
                     <label for="floatingInput">ID Bekal</label>
-                    <small>Generate by system</small>
+                    <small>Auto-generate</small>
                 </div>
-                <div class="form-floating mb-3" style="margin-top:15px;">
+                <!-- <div class="form-floating mb-3" style="margin-top:15px;">
                     <input type="text" name="harga" class="form-control" style="width:97%;" id="floatingInput" placeholder=" ">
                     <label for="floatingInput">Harga</label>
                 </div>                    
@@ -57,7 +58,7 @@
                 <div class="form-floating mb-3">
                     <input type="text" name="tahun" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " required>
                     <label for="floatingInput">Tahun</label>
-                </div>
+                </div> -->
                 <div class="form-floating mb-3">
                 <select class="form-control" name="nama_gudang" id="kelas_bekal" class="form-floating mb-3">
                     <option readonly value="">--Pilih Gudang--</option>
@@ -105,7 +106,6 @@
                         kelas_bekal:kelas_bekal,
                     },
                     success: function(respond){
-                        console.log(kelas_bekal)
                         $('#nama_kategori_bekal').html(respond)
                     },
                     error:function(){
@@ -113,7 +113,7 @@
                     }
                 })
             })
-            $('nama_kategori_bekal').on('change', function(){
+            $('#nama_kategori_bekal').on('change', function(){
                 var kelas_bekal = $(this).val();
                 var nama_bekal = $(this).val();
 

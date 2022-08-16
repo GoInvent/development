@@ -3,9 +3,9 @@
     include_once('helper.php');
 
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
-    $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
+    $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
 
-    $produk = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia WHERE id_barang");
+    $produk = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia WHERE id_barang = $id_barang");
 	$p = mysqli_fetch_object($produk);
     // if ($id_request){
     //     $barang = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC");
@@ -79,7 +79,7 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="jumlah_bekal" class="form-control" id="floatingInput" placeholder=" Masukkan Jumlah Barang " required>
+                                        <input type="number" name="jumlah_bekal" class="form-control" id="floatingInput" placeholder=" Masukkan Jumlah Barang " required min="1" max="<?php echo $p->jumlah_bekal ?>">
                                         <label for="floatingInput">Jumlah Barang</label>
                                     </div>
 
