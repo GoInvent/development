@@ -9,21 +9,21 @@
     // $idbarang       = $_POST['id_barang'];
     $idpenyedia     = $_POST['id_penyedia'];
     $jenisbekal     = $_POST['jenis_bekal'];
-    $namabekal      = $_POST['nama_bekal'];
+    // $namabekal      = $_POST['nama_bekal'];
     $hargabekal     = $_POST['harga_bekal'];
     $stok           = $_POST['jumlah_bekal'];
     $tahun          = $_POST['tahun_produksi'];
     $gudang_nama    = $_POST['gudang_nama'];
     $nokontrak      = rand();
     $statusbarang   = "Menunggu Persetujuan - 1"; 
-    $status         = 1;
+    $status         = 0;
 
     $barang = mysqli_query($koneksi, "SELECT * FROM barang");
     $row = mysqli_fetch_assoc($barang);
 
         //jika data berhasil disimpan
-        $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_penyedia,nama_kelas,nama_gudang,nama_bekal, harga_bekal,jumlah_bekal,  tahun_produksi,tgl_request, no_kontrak, status , status_request) 
-                VALUES('$idpenyedia','$jenisbekal','$gudang_nama','$namabekal', '$hargabekal','$stok','$tahun',NOW(),'$nokontrak','$statusbarang', $status)");
+        $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_penyedia,nama_kelas,nama_gudang, harga_bekal,jumlah_bekal,  tahun_produksi,tgl_request, no_kontrak, status , status_request) 
+                VALUES('$idpenyedia','$jenisbekal','$gudang_nama', '$hargabekal','$stok','$tahun',NOW(),'$nokontrak','$statusbarang', $status)");
 
                 if($result){
                     // mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");

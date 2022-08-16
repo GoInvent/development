@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2022 at 05:54 AM
+-- Generation Time: Aug 16, 2022 at 12:25 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `status`, `created_at`, `last_login`, `login`) VALUES
-(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-08-13 04:46:22', b'0'),
+(1, 'Omar Yazidz', 'omar@gmail.com', 'test', 'disbekal', b'1', '2022-07-06 17:09:39', '2022-08-16 09:26:53', b'0'),
 (2, 'Test', 'test@gmail.com', 'test', 'kadopus', b'1', '2022-07-07 06:02:21', '2022-07-20 13:34:25', b'0'),
 (3, 'Aku', 'aku@gmail.com', 'test', 'penyedia', b'1', '0000-00-00 00:00:00', '2022-07-23 15:17:18', b'0'),
 (4, 'Omar Penyedia', 'dia@gmail.com', 'test', 'penyedia', b'1', '2022-07-13 08:41:23', '2022-07-18 03:52:13', b'0');
@@ -76,8 +76,11 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `id_penyedia`, `nama_gudang`, `kelas_bekal`, `harga_bekal`, `jumlah_bekal`, `tahun_produksi`, `no_kontrak`, `status_barang`, `status`, `created_at`, `updated_at`) VALUES
-('1554812853', 2, 'Dopusbektim', 'Makanan Belom Jadi', 50000, 200, 2010, 2110200119, b'1', b'1', '2022-08-16 02:11:54', '2022-08-16 02:11:54'),
-('1691283321', 2, 'Dopusbekbar', 'Makanan Belom Jadi', 50000, 40, 2021, 431960580, b'1', b'1', '2022-08-16 02:13:08', '2022-08-16 02:15:43');
+('1235207074', 292375694, 'Dopusbekbar', 'Sarung Wadimor', 150000, 40, 2019, 2120385022, b'1', b'1', '2022-08-16 09:58:43', '2022-08-16 09:58:43'),
+('1647727668', 292375694, 'Dopusbekbar', 'Sarung Wadimor', 150000, 10, 2019, 1121990532, b'1', b'1', '2022-08-16 10:03:48', '2022-08-16 10:22:39'),
+('1848273272', 159109889, 'Dopusbektim', 'Sarung', 140000, 0, 2010, 280174882, b'1', b'1', '2022-08-16 09:52:02', '2022-08-16 09:53:02'),
+('1884418299', 292375694, 'Dopusbekbar', 'Sarung Wadimor', 150000, 100, 2019, 741300777, b'1', b'1', '2022-08-16 10:00:21', '2022-08-16 10:00:21'),
+('195193457', 159109889, 'Dopusbektim', 'Beras', 7500, 20, 2019, 14257184, b'1', b'1', '2022-08-16 09:50:25', '2022-08-16 09:50:25');
 
 -- --------------------------------------------------------
 
@@ -109,7 +112,9 @@ INSERT INTO `bekal_penyedia` (`id_bekal_penyedia`, `id_penyedia`, `kelas_bekal`,
 (28, 2, 'BK.1', 'Beras', 841280033, 350000, 100, 2010, 'Dopusbektim', '2022-08-12 20:48:58', '2022-08-12 20:48:58'),
 (29, 292375694, 'BK.2-Santri dan Komaliwan', 'Sarung Wadimor', 1955279660, 0, 0, 0, 'Dopusbekbar', '2022-08-16 10:44:23', '2022-08-16 10:44:23'),
 (30, 292375694, 'BK.1-Makanan', 'Sarden', 1306794697, 0, 0, 0, 'Dopusbektim', '2022-08-16 10:47:31', '2022-08-16 10:47:31'),
-(31, 292375694, 'BK.1-Makanan', 'Kue', 195411391, 0, 0, 0, 'Dopusbekbar', '2022-08-16 10:48:10', '2022-08-16 10:48:10');
+(31, 292375694, 'BK.1-Makanan', 'Kue', 195411391, 0, 0, 0, 'Dopusbekbar', '2022-08-16 10:48:10', '2022-08-16 10:48:10'),
+(32, 159109889, 'BK.2-Santri dan Komaliwan', 'Sarung', 612972841, 0, 0, 0, 'Dopusbekbar', '2022-08-16 16:43:13', '2022-08-16 16:43:13'),
+(33, 159109889, 'BK.1-Makanan', 'Beras', 1930346373, 0, 0, 0, 'Dopusbekbar', '2022-08-16 16:43:33', '2022-08-16 16:43:33');
 
 -- --------------------------------------------------------
 
@@ -241,10 +246,11 @@ CREATE TABLE `pemasukan` (
 --
 
 INSERT INTO `pemasukan` (`id_request`, `id_penyedia`, `nama_kelas`, `nama_gudang`, `harga_bekal`, `jumlah_bekal`, `tahun_produksi`, `tgl_request`, `no_kontrak`, `status`, `status_request`) VALUES
-(88, 2, 'Makanan Belom Jadi', 'Dopusbekbar', 50000, 400, 2021, '2022-08-16 01:22:20', 431960580, 'Approved', '1'),
-(89, 2, 'Makanan Belom Jadi', 'wilbar', 50000, 15, 2019, '2022-08-16 01:28:35', 145862515, 'Menunggu Persetujuan - 1', '1'),
-(90, 2, 'Makanan Belom Jadi', 'Dopusbektim', 50000, 200, 2010, '2022-08-16 01:29:49', 2110200119, 'Approved', '1'),
-(91, 2, 'Makanan Belom Jadi', 'Dopusbekbar', 15000, 5, 2022, '2022-08-16 01:33:19', 378489455, 'Menunggu Persetujuan - 1', '1');
+(92, 159109889, 'Beras', 'Dopusbektim', 7500, 20, 2019, '2022-08-16 09:45:19', 14257184, 'Approved', '1'),
+(93, 292375694, 'Sarden', 'Dopusbekbar', 25000, 10, 2017, '2022-08-16 09:45:52', 574711425, 'Menunggu Persetujuan - 1', '1'),
+(94, 159109889, 'Sarung', 'Dopusbektim', 150000, 20, 2020, '2022-08-16 09:51:37', 280174882, 'Approved', '1'),
+(95, 292375694, 'Sarung Wadimor', 'Dopusbekbar', 20000, 200, 2019, '2022-08-16 09:57:31', 1720433603, 'Menunggu Persetujuan - 1', '1'),
+(96, 292375694, 'Sarung Wadimor', 'Dopusbekbar', 150000, 100, 2019, '2022-08-16 09:58:21', 1121990532, 'Approved', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -273,7 +279,10 @@ CREATE TABLE `pengeluaran` (
 --
 
 INSERT INTO `pengeluaran` (`id_kirim`, `id_penyedia`, `nama_penyedia`, `alamat_user`, `id_barang`, `kelas_bekal`, `jumlah_bekal`, `harga_bekal`, `tahun_produksi`, `no_kontrak`, `tgl_request`, `tgl_kirim`, `status_request`) VALUES
-(14, 2, 'PT Bogarasa', 'Jl. jl', '166634381', 'Makanan Jadi', 1, 40000, 2021, 181184667, '2022-08-16 01:00:05', '2022-08-16 01:00:05', b'1');
+(16, 1, 'Omar', 'Jl. Matahari No.32', '1848273272', 'Sarung', 15, 140000, 2010, 280174882, '2022-08-16 09:53:02', '2022-08-16 09:53:02', b'1'),
+(17, 1, 'Omar', 'Jl. Pluto Dalam 1', '1647727668', 'Sarung Wadimor', 50, 150000, 2019, 1121990532, '2022-08-16 10:04:55', '2022-08-16 10:04:55', b'1'),
+(18, 1, 'Omar', 'Jl. Pluto Dalam 1', '1647727668', 'Sarung Wadimor', 20, 150000, 2019, 1121990532, '2022-08-16 10:16:43', '2022-08-16 10:16:43', b'1'),
+(19, 2, 'Allaam', 'Jl. Kemerdekaan', '1647727668', 'Sarung Wadimor', 20, 150000, 2019, 1121990532, '2022-08-16 10:22:39', '2022-08-16 10:22:39', b'1');
 
 --
 -- Triggers `pengeluaran`
@@ -305,6 +314,7 @@ CREATE TABLE `penyedia_barang` (
 --
 
 INSERT INTO `penyedia_barang` (`id_penyedia`, `nama_penyedia`, `email_penyedia`, `no_penyedia`, `alamat_penyedia`, `tanggal_terdaftar`) VALUES
+(159109889, 'PT. Bogarasa', 'bogarasa@co.id', 215151422, 'Jl. Sudirman', '2022-08-16 16:42:22'),
 (292375694, 'PT. Alfaria Sejahtera', 'alfaria@co.id', 2147483647, 'Jl. Hos Cokroaminoto', '2022-08-16 10:34:45');
 
 -- --------------------------------------------------------
@@ -330,9 +340,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nama_user`, `no_hp`, `email_user`, `password_user`, `created_at`, `last_login`, `role`, `login`) VALUES
-(1, 'Omar', '085885819904', 'omar@gmail.com', 'user', '2022-07-24 10:38:13', '2022-07-29 08:38:11', 'Penyedia', b'1'),
-(2, 'Siapa', '082119624945', 'siapa@gmail.com', 'user', '2022-07-25 14:14:55', '2022-07-24 14:07:33', 'Penyedia', b'1'),
-(3, 'user', '0821389719371', 'user@gmail.com', 'user', '2022-07-29 07:32:09', '2022-07-29 07:39:44', 'User', b'0');
+(1, 'Omar', '085885819904', 'omar@gmail.com', 'user', '2022-07-24 10:38:13', '2022-08-16 09:28:38', 'User', b'1'),
+(2, 'Allaam', '082119624945', 'allaam@gmail.com', 'user', '2022-07-25 14:14:55', '2022-08-16 10:22:14', 'User', b'1');
 
 --
 -- Indexes for dumped tables
@@ -431,7 +440,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bekal_penyedia`
 --
 ALTER TABLE `bekal_penyedia`
-  MODIFY `id_bekal_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_bekal_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `gudang`
@@ -467,13 +476,13 @@ ALTER TABLE `log_penyedia`
 -- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id_kirim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kirim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

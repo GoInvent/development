@@ -31,7 +31,7 @@
                 VALUES($idbarang,'$idpenyedia','$gudang','$kelasbekal', '$hargabekal','$stok','$tahun','$nokontrak','$statusbarang','$status', NOW(), NOW())");
 
                 if($result){
-                    mysqli_query($koneksi, "UPDATE pemasukan SET status='Approved', no_kontrak = $nokontrak WHERE id_request = '".$_GET['id_request']."'");
+                    mysqli_query($koneksi, "UPDATE pemasukan SET status='Approved', status_request ='Approved',no_kontrak = $nokontrak WHERE id_request = '".$_GET['id_request']."'");
 
                     echo '<script>alert("Simpan data Berhasil")</script>';
                     echo '<script>window.location="index.php?page=disbekal/home.php"</script>';

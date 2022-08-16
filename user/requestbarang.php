@@ -35,11 +35,11 @@
                             <p>Pendataan barang sebelum masuk gudang</p>
                                 <form class="" action="" method="POST">
                                 <div class="form-floating mb-3">
-										<input name="id_penyedia" class="form-control" id="id_penyedia" placeholder=" " value="<?php echo $p->id_penyedia ?>" required readonly>
+										<input name="id_user" class="form-control" id="id_penyedia" placeholder=" " value="<?php echo $_SESSION['id_user'] ?>" required readonly>
 										<label for="id_penyedia">ID Penyedia</label>
 									</div>
                                     <div class="form-floating mb-3">
-										<input type="text" name="nama_penyedia" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $p->nama_penyedia ?>" required readonly>
+										<input type="text" name="nama_user" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $_SESSION['nama_user'] ?>" required readonly>
 										<label for="nama_penyedia">Nama</label>
 									</div>
                                     <div class="form-floating mb-3">
@@ -81,6 +81,7 @@
                                     <div class="form-floating mb-3">
                                         <input type="number" name="jumlah_bekal" class="form-control" id="floatingInput" placeholder=" Masukkan Jumlah Barang " required min="1" max="<?php echo $p->jumlah_bekal ?>">
                                         <label for="floatingInput">Jumlah Barang</label>
+                                        <small>Barang tersisa : <?php echo $p->jumlah_bekal ?></small>
                                     </div>
 
                                     <div class="form-floating mb-3">
@@ -92,13 +93,13 @@
                                         <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $p->no_kontrak ?>" readonly> 
                                         <label for="floatingInput">No.Kontrak</label>
                                     </div>
-                                    <input type="submit" name="submit" value="Setujui Barang" class="btn btn-success">
+                                    <input type="submit" name="submit" value="Request" class="btn btn-success">
                                 </form>
                             <?php
                             // Check If form submitted, insert form data into users table.
                             if(isset($_POST['submit'])) {
-                                $idpenyedia     = $_POST['id_penyedia'];
-                                $namapenyedia   = $_POST['nama_penyedia'];
+                                $iduser     = $_SESSION['id_user'] = $_POST['id_user'];
+                                $namauser   = $_SESSION['nama_user'] = $_POST['nama_user'];
                                 $alamat         = $_POST['alamat_user'];
                                 $idbarang       = $_POST['id_barang'];  
                                 $kelasbekal     = $_POST['kelas_bekal'];    
@@ -114,7 +115,7 @@
                                         
                                 // Insert user data into table
                                 $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_penyedia,nama_penyedia,alamat_user,id_barang,kelas_bekal ,jumlah_bekal,harga_bekal, tahun_produksi, no_kontrak, tgl_request, tgl_kirim,status_request) 
-                                                VALUES('$idpenyedia','$namapenyedia','$alamat','$idbarang','$kelasbekal','$stok','$harga','$tahun','$nokontrak',NOW(),NOW(),1)");
+                                                VALUES('$iduser','$namauser','$alamat','$idbarang','$kelasbekal','$stok','$harga','$tahun','$nokontrak',NOW(),NOW(),1)");
                                 
                                 if ($result){
                                     //jika data berhasil disimpan

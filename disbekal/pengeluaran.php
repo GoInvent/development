@@ -57,7 +57,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM pengeluaran LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = pengeluaran.id_penyedia ORDER BY id_kirim DESC');
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pengeluaran LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = pengeluaran.id_penyedia ORDER BY id_kirim DESC");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
