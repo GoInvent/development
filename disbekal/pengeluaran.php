@@ -44,7 +44,6 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                             <th class="border-top-0;" style="color:white;">No</th>
                                             <th class="border-top-0;" style="color:white;">Nama User</th>
                                             <th class="border-top-0;" style="color:white;">Kategori</th>
-                                            <th class="border-top-0;" style="color:white;">Nama Barang</th>
                                             <th class="border-top-0;" style="color:white;">Jumlah Barang</th>
                                             <th class="border-top-0;" style="color:white;">Harga</th>
                                             <th class="border-top-0;" style="color:white;">Tahun</th>
@@ -58,17 +57,16 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,'SELECT * FROM pengeluaran LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_kirim DESC');
+                                            $sql = mysqli_query($koneksi,'SELECT * FROM pengeluaran LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = pengeluaran.id_penyedia ORDER BY id_kirim DESC');
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                             <td><?php echo $no++ ?></td>
-                                            <td><?php echo $row['nama_user']?></td>
-                                            <td><?php echo $row['jenis_komoditi']?></td>
-                                            <td style="text-align:center"><?php echo $row['nama_barang']?></td>
-                                            <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
-                                            <td style="text-align:center"><?php echo $row['harga_barang']?></td>
+                                            <td><?php echo $row['nama_penyedia']?></td>
+                                            <td><?php echo $row['kelas_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['harga_bekal']?></td>
                                             <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                             <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
                                             <td><?php echo $row['tgl_request']?></td>

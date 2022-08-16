@@ -5,21 +5,21 @@
     $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
     $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
 
-    $produk = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_barang ='".$_GET['id']."' ");
+    $produk = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia WHERE id_barang");
 	$p = mysqli_fetch_object($produk);
-    if ($id_request){
-        $barang = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC");
-        $row = mysqli_fetch_assoc($barang);
+    // if ($id_request){
+    //     $barang = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) ORDER BY id_barang DESC");
+    //     $row = mysqli_fetch_assoc($barang);
 
-        $nama_penyedia = $row['nama_penyedia'];
-        $nama_barang = $row['nama_barang'];
-        $jumlah_barang = $row['jumlah_barang'];
-        $harga_barang = $row['harga_barang'];
-        $tahun_produksi = $row['tahun_produksi'];
-        $tgl_request = $row['tgl_request'];
-        $jenis_komoditi = $row['jenis_komoditi'];
-        $no_kontrak = rand();
-    }
+    //     $nama_penyedia = $row['nama_penyedia'];
+    //     $nama_barang = $row['nama_barang'];
+    //     $jumlah_bekal = $row['jumlah_bekal'];
+    //     $harga_barang = $row['harga_barang'];
+    //     $tahun_produksi = $row['tahun_produksi'];
+    //     $tgl_request = $row['tgl_request'];
+    //     $jenis_komoditi = $row['jenis_komoditi'];
+    //     $no_kontrak = rand();
+    // }
 ?>
 
 
@@ -35,11 +35,11 @@
                             <p>Pendataan barang sebelum masuk gudang</p>
                                 <form class="" action="" method="POST">
                                 <div class="form-floating mb-3">
-										<input name="id_admin" class="form-control" id="id_admin" placeholder=" " value="<?php echo $_SESSION['id_user'] ?>" required disabled>
-										<label for="id_admin">ID Admin</label>
+										<input name="id_penyedia" class="form-control" id="id_penyedia" placeholder=" " value="<?php echo $p->id_penyedia ?>" required readonly>
+										<label for="id_penyedia">ID Penyedia</label>
 									</div>
                                     <div class="form-floating mb-3">
-										<input name="nama_penyedia" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $_SESSION['nama_user'] ?>" required disabled>
+										<input type="text" name="nama_penyedia" class="form-control" id="nama_penyedia" placeholder=" " value="<?php echo $p->nama_penyedia ?>" required readonly>
 										<label for="nama_penyedia">Nama</label>
 									</div>
                                     <div class="form-floating mb-3">
@@ -50,8 +50,11 @@
                                         <input name="id_barang" class="form-control" id="getUID" placeholder=" " value ="<?php echo $p->id_barang ?>" required readonly>
                                         <label for="getUID">ID Produk (Scan RFID to display ID)</label>
                                     </div>
-
                                     <div class="form-floating mb-3">
+                                        <input name="kelas_bekal" class="form-control" id="getUID" placeholder=" " value ="<?php echo $p->kelas_bekal ?>" required readonly>
+                                        <label for="getUID">Kelas Bekal</label>
+                                    </div>
+                                    <!-- <div class="form-floating mb-3">
                                     <select name="id_komoditi" class="form-control" required readonly>
                                         <option value="">--Pilih Kategori--</option>
                                         <?php 
@@ -63,20 +66,20 @@
                                         <?php } ?>
                                     </select>
 										<label for="floatingInput">Kategori</label>
-									</div>
+									</div> -->
 
-                                    <div class="form-floating mb-3">
+                                    <!-- <div class="form-floating mb-3">
                                         <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=""  value="<?php echo $p->nama_barang ?>" required readonly>
                                         <label for="floatingInput">Nama Barang</label>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $p->harga_barang ?>" readonly>
+                                        <input type="number" name="harga_bekal" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $p->harga_bekal ?>" readonly>
                                         <label for="floatingInput">Harga</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=" Masukkan Jumlah Barang " required>
+                                        <input type="number" name="jumlah_bekal" class="form-control" id="floatingInput" placeholder=" Masukkan Jumlah Barang " required>
                                         <label for="floatingInput">Jumlah Barang</label>
                                     </div>
 
@@ -94,14 +97,14 @@
                             <?php
                             // Check If form submitted, insert form data into users table.
                             if(isset($_POST['submit'])) {
-                                $iduser         = $_POST['id_user'] = $_SESSION['id_user'];
-                                $namauser       = $_POST['nama_user'] = $_SESSION['nama_user'];
+                                $idpenyedia     = $_POST['id_penyedia'];
+                                $namapenyedia   = $_POST['nama_penyedia'];
                                 $alamat         = $_POST['alamat_user'];
                                 $idbarang       = $_POST['id_barang'];  
-                                $kategori       = $_POST['id_komoditi'];    
-                                $namabarang     = $_POST['nama_barang'];
-                                $stok           = $_POST['jumlah_barang'];
-                                $harga          = $_POST['harga_barang'];
+                                $kelasbekal     = $_POST['kelas_bekal'];    
+                                // $namabarang     = $_POST['nama_barang'];
+                                $harga          = $_POST['harga_bekal'];
+                                $stok           = $_POST['jumlah_bekal'];
                                 $tahun          = $_POST['tahun_produksi'];
                                 $nokontrak      = $_POST['no_kontrak'];
                                 
@@ -110,12 +113,13 @@
                                 include_once("database.php");
                                         
                                 // Insert user data into table
-                                $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_user,nama_user,alamat_user,id_barang,id_komoditi,nama_barang ,jumlah_barang,harga_barang, tahun_produksi, no_kontrak) VALUES('$iduser','$namauser','$alamat','$idbarang','$kategori','$namabarang','$stok','$harga','$tahun','$nokontrak')");
+                                $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_penyedia,nama_penyedia,alamat_user,id_barang,kelas_bekal ,jumlah_bekal,harga_bekal, tahun_produksi, no_kontrak, tgl_request, tgl_kirim,status_request) 
+                                                VALUES('$idpenyedia','$namapenyedia','$alamat','$idbarang','$kelasbekal','$stok','$harga','$tahun','$nokontrak',NOW(),NOW(),1)");
                                 
                                 if ($result){
                                     //jika data berhasil disimpan
                                     echo '<script>alert("Simpan data Berhasil")</script>';
-                                    echo '<script>window.location="index.php?page=user/home.php"</script>';
+                                    echo '<script>window.location="index.php?page=user/databarang.php"</script>';
                                 }else{
                                     echo 'gagal'.mysqli_error($koneksi);
                                 }

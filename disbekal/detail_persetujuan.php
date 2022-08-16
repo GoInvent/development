@@ -18,6 +18,7 @@
         $tahun_produksi = $row['tahun_produksi'];
         $tgl_request    = $row['tgl_request'];   
         $no_kontrak     = $row['no_kontrak'];
+        $nama_gudang    = $row['nama_gudang'];
     }
 
 ?>
@@ -50,6 +51,10 @@
                                     <div class="form-floating mb-3">
                                     <input name="kelas_bekal" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $nama_kelas ?>" readonly>
                                         <label for="floatingInput">Kelas Bekal</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                    <input name="nama_gudang" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $nama_gudang ?>" readonly>
+                                        <label for="floatingInput">Nama Gudang</label>
                                     </div>
 
                                     <div class="form-floating mb-3">

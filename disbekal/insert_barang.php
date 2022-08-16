@@ -8,10 +8,11 @@
     $idbarang       = rand();
     $idpenyedia     = $_POST['id_penyedia'];
     $kelasbekal     = $_POST['kelas_bekal'];
-    $namabekal      = $_POST['nama_bekal'];
+    // $namabekal      = $_POST['nama_bekal'];
     $hargabekal     = $_POST['harga_bekal'];
     $stok           = $_POST['jumlah_bekal'];
     $tahun          = $_POST['tahun_produksi'];
+    $gudang         = $_POST['nama_gudang'];
     $nokontrak      = rand();
     $statusbarang   = "menunggu persetujuan - 2"; 
     $status         = 1;
@@ -26,11 +27,11 @@
     $row = mysqli_fetch_assoc($barang);
 
         //jika data berhasil disimpan
-        $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_penyedia,kelas_bekal, nama_bekal, harga_bekal, jumlah_bekal, tahun_produksi, no_kontrak, status_barang,status, created_at, updated_at) 
-                VALUES($idbarang,'$idpenyedia','$kelasbekal', '$namabekal', '$hargabekal','$stok','$tahun','$nokontrak','$statusbarang','$status', NOW(), NOW())");
+        $result = mysqli_query($koneksi, "INSERT INTO barang (id_barang,id_penyedia,nama_gudang,kelas_bekal, harga_bekal, jumlah_bekal, tahun_produksi, no_kontrak, status_barang,status, created_at, updated_at) 
+                VALUES($idbarang,'$idpenyedia','$gudang','$kelasbekal', '$hargabekal','$stok','$tahun','$nokontrak','$statusbarang','$status', NOW(), NOW())");
 
                 if($result){
-                    // mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");
+                    mysqli_query($koneksi, "UPDATE pemasukan SET status='Approved', no_kontrak = $nokontrak WHERE id_request = '".$_GET['id_request']."'");
 
                     echo '<script>alert("Simpan data Berhasil")</script>';
                     echo '<script>window.location="index.php?page=disbekal/home.php"</script>';

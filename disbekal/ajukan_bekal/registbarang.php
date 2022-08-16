@@ -154,8 +154,8 @@
                                     
                                     <div class="form-floating mb-3">
                                         <select name="gudang_nama" id="gudang_nama" class="form-control">
-                                            <option value="wilbar">Wilayah Barat</option>
-                                            <option value="wiltim">Wilayah Timur</option>
+                                            <option value="Dopusbekbar">Wilayah Barat</option>
+                                            <option value="Dopusbektim">Wilayah Timur</option>
                                         </select>
                                         <label for="floatingInput">Gudang Penyimpanan</label>
                                     </div>

@@ -3,7 +3,8 @@ $Write="<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
 file_put_contents('UIDContainer.php',$Write);
 
 $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
-
+// $produk = mysqli_query($koneksi, "SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia WHERE id_barang ='".$_GET['id']."' ");
+// $p = mysqli_fetch_assoc($produk);
 include_once('helper.php')
 
 ?>
@@ -68,7 +69,6 @@ include_once('helper.php')
                                             <th class="border-top-0" style="color:white; text-align:center;">No</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Nama User</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Kategori</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Jumlah Barang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Harga</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
@@ -81,17 +81,16 @@ include_once('helper.php')
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM pengeluaran LEFT JOIN komoditi ON komoditi.id_komoditi = pengeluaran.id_komoditi WHERE id_user= '".$_SESSION['id_user']."' ORDER BY id_kirim DESC");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pengeluaran LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = pengeluaran.id_penyedia ORDER BY id_kirim DESC");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                             <td><?php echo $no++ ?></td>
-                                            <td><?php echo $row['nama_user']?></td>
-                                            <td><?php echo $row['jenis_komoditi']?></td>
-                                            <td style="text-align:center"><?php echo $row['nama_barang']?></td>
-                                            <td style="text-align:center"><?php echo $row['jumlah_barang']?></td>
-                                            <td style="text-align:center"><?php echo rupiah ($row['harga_barang'])?></td>
+                                            <td><?php echo $row['nama_penyedia']?></td>
+                                            <td><?php echo $row['kelas_bekal']?></td>
+                                            <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
+                                            <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?></td>
                                             <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                             <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
                                             <td><?php echo $row['tgl_kirim']?></td>

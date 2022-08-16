@@ -76,8 +76,8 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                             <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Setujui Bekal</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Detail Hapus Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Status</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -98,12 +98,14 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                                 <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                                 <td><?php echo $row['tgl_request']?></td>
                                                 <td style="text-align:center"><?php echo $row['status'] ?></td>
+                                                <td style="text-align:center"><?php echo $row['status_request'] ?></td>
                                                 <td>
                                                     <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Setujui Bekal</a>
                                                     <!-- <input type="button" name="persetujuan" value="disetujui"> -->
+                                                    <a href="<?php echo BASE_URL."index.php?page=disbekal/reject_bekal/hapus_bekal.php&id_request=$row[id_request]" ?>" class="btn btn-danger" style="text-align:center">Hapus Bekal</a>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo BASE_URL."index.php?page=disbekal/reject_bekal/hapus_bekal.php&id_request=$row[id_request]" ?>" class="btn btn-warning" style="text-align:center">Hapus Bekal</a>
+                                                    
                                                 </td>
                                             </tr>
                                         <?php }

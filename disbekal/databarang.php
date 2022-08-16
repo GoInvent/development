@@ -38,9 +38,10 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                         <tr>
                                             <th style="color:white; text-align:center;">No.</th>
                                             <th style="color:white; text-align:center;">ID Barang</th>
-                                            <th style="color:white; text-align:center;">Kode Bekal</th>
+                                            <th style="color:white; text-align:center;">Nama Penyedia</th>
+                                            <th style="color:white; text-align:center;">Gudang</th>
                                             <th style="color:white; text-align:center;">Jenis Bekal</th>
-                                            <th style="color:white; text-align:center;">Nama</th>
+                                            <!-- <th style="color:white; text-align:center;">Nama</th> -->
                                             <th style="color:white; text-align:center;">Harga</th>
                                             <th style="color:white; text-align:center;">Stok</th>
                                             <th style="color:white; text-align:center;">Tahun</th>
@@ -60,9 +61,10 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             <tr>
                                                 <td style="text-align:center"><?php echo $no++ ?></td>
                                                 <td style="text-align:center"><?php echo $row['id_barang']?></td>
-                                                <td style="text-align:center"><?php echo $row['kode_komoditi']?></td>
-                                                <td style="text-align:center"><?php echo $row['jenis_komoditi']?></td>
-                                                <td style="text-align:center"><?php echo $row['nama_bekal']?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_penyedia']?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_gudang']?></td>
+                                                <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
+                                                <!-- <td style="text-align:center"><?php echo $row['nama_bekal']?></td> -->
                                                 <td style="text-align:center"><?php echo rupiah($row['harga_bekal'])?></td>
                                                 <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
                                                 <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>

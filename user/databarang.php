@@ -1,10 +1,10 @@
 <?php
     include_once('helper.php');
-    if(isset($_GET['komoditi'])){
-        $cari = $_GET['komoditi'];
+    if(isset($_GET['gudang'])){
+        $cari = $_GET['gudang'];
 
         //ambil data dari database, dimana pencarian sesuai dengan variabel cari
-        $data = mysqli_query($koneksi, "SELECT * FROM komoditi where id_komoditi");
+        $data = mysqli_query($koneksi, "SELECT * FROM gudang where id_gudang = '$cari'");
 		
         }else{
 
@@ -38,14 +38,14 @@
                                 <!-- Filter kategori barang -->
                                 <form action="" method="GET" id="form_id" >
                                     <label for="komoditi">Filter by:</label> <br>
-                                    <select name="komoditi" id="komoditi_dropdown"class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px" onChange="document.getElementById('form_id').submit();">
-                                        <option value="">Pilih Kategori</option>
+                                    <select name="gudang" id="gudang_dropdown"class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px" onChange="document.getElementById('form_id').submit();">
+                                        <option value="">Pilih Gudang</option>
                                         <?php 
                                             include 'database.php';
-                                            $komoditi = mysqli_query($koneksi, "SELECT * FROM komoditi ORDER BY id_komoditi DESC");
-                                            while ($r = mysqli_fetch_array($komoditi)) {
+                                            $gudang = mysqli_query($koneksi, "SELECT * FROM gudang ORDER BY id_gudang ASC");
+                                            while ($r = mysqli_fetch_array($gudang)) {
                                         ?> 
-                                            <option value="<?php echo $r['id_komoditi'] ?>"><?php echo $r['jenis_komoditi'] ?></option>
+                                            <option value="<?php echo $r['id_gudang'] ?>"><?php echo $r['nama_gudang'] ?></option>
                                         <?php } ?>
                                     </select>
                                     <!-- <input type="submit" class= "btn btn-success"> -->
@@ -56,8 +56,8 @@
                                         <tr>
                                             <th style="color:white; text-align:center;">No.</th>
                                             <th style="color:white; text-align:center;">ID Barang</th>
-                                            <th style="color:white; text-align:center;">Kategori</th>
-                                            <th style="color:white; text-align:center;">Nama</th>
+                                            <th style="color:white; text-align:center;">Nama Penyedia</th>
+                                            <th style="color:white; text-align:center;">Jenis Bekal</th>
                                             <th style="color:white; text-align:center;">Harga</th>
                                             <th style="color:white; text-align:center;">Stok</th>
                                             <th style="color:white; text-align:center;">Tahun</th>
@@ -69,17 +69,17 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN komoditi USING(id_komoditi) WHERE id_komoditi ORDER BY created_at DESC ");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia ORDER BY created_at DESC");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                                 <td style="text-align:center;"><?php echo $no++ ?></td>
                                                 <td style="text-align:center;"><?php echo $row['id_barang']?></td>
-                                                <td style="text-align:center;"><?php echo $row['jenis_komoditi']?></td>
-                                                <td style="text-align:center;"><?php echo $row['nama_barang']?></td>
-                                                <td style="text-align:center;"><?php echo rupiah ($row['harga_barang'])?></td>
-                                                <td style="text-align:center;"><?php echo $row['jumlah_barang']?></td>
+                                                <td style="text-align:center;"><?php echo $row['nama_penyedia']?></td>
+                                                <td style="text-align:center;"><?php echo $row['kelas_bekal']?></td>
+                                                <td style="text-align:center;"><?php echo rupiah ($row['harga_bekal'])?></td>
+                                                <td style="text-align:center;"><?php echo $row['jumlah_bekal']?></td>
                                                 <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
                                                 <td style="text-align:center;"><?php echo $row['no_kontrak']?></td>
                                                 <td style="text-align:center;"><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
@@ -109,7 +109,7 @@
   
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#komoditi_dropdown").on('change',function() {
+            $("#gudang_dropdown").on('change',function() {
                 var value = $(this).val();
                 alert(value);
             })
