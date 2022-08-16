@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2022 at 03:46 PM
+-- Generation Time: Aug 16, 2022 at 05:54 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -59,8 +59,8 @@ INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `role`, `sta
 CREATE TABLE `barang` (
   `id_barang` varchar(11) NOT NULL,
   `id_penyedia` int(11) NOT NULL,
+  `nama_gudang` varchar(250) NOT NULL,
   `kelas_bekal` varchar(250) NOT NULL,
-  `nama_bekal` varchar(250) NOT NULL,
   `harga_bekal` int(11) NOT NULL,
   `jumlah_bekal` int(11) NOT NULL,
   `tahun_produksi` int(11) NOT NULL,
@@ -72,22 +72,12 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Triggers `barang`
+-- Dumping data for table `barang`
 --
-DELIMITER $$
-CREATE TRIGGER `insert_log_barang` AFTER INSERT ON `barang` FOR EACH ROW BEGIN
-    INSERT INTO log
-    set id_barang = new.id_barang,
-    nama_baru=new.nama_barang,
-    status = 'Masuk Barang',
-    stok_awal=new.jumlah_barang,
-    stok_masuk=new.jumlah_barang,
-    stok_keluar= 0,
-    stok_akhir=new.jumlah_barang,
-    date = NOW();
-END
-$$
-DELIMITER ;
+
+INSERT INTO `barang` (`id_barang`, `id_penyedia`, `nama_gudang`, `kelas_bekal`, `harga_bekal`, `jumlah_bekal`, `tahun_produksi`, `no_kontrak`, `status_barang`, `status`, `created_at`, `updated_at`) VALUES
+('1554812853', 2, 'Dopusbektim', 'Makanan Belom Jadi', 50000, 200, 2010, 2110200119, b'1', b'1', '2022-08-16 02:11:54', '2022-08-16 02:11:54'),
+('1691283321', 2, 'Dopusbekbar', 'Makanan Belom Jadi', 50000, 40, 2021, 431960580, b'1', b'1', '2022-08-16 02:13:08', '2022-08-16 02:15:43');
 
 -- --------------------------------------------------------
 
@@ -114,9 +104,12 @@ CREATE TABLE `bekal_penyedia` (
 --
 
 INSERT INTO `bekal_penyedia` (`id_bekal_penyedia`, `id_penyedia`, `kelas_bekal`, `nama_bekal`, `id_bekal`, `harga`, `stok_bekal`, `tahun`, `nama_gudang`, `created_at`, `updated_at`) VALUES
-(25, 2, 'BK.1', 'Makanan Jadi', 1000834435, 50000, 50, 2022, 'Dopusbektim', '2022-08-12 09:33:07', '2022-08-12 09:33:07'),
-(26, 3, 'BK.2', 'Pakaian Asal', 775408049, 20000, 100, 2001, 'Dopusbekbar', '2022-08-12 09:33:33', '2022-08-12 09:33:33'),
-(28, 2, 'BK.2', 'Makanan Belom Jadi', 841280033, 350000, 100, 2010, 'Dopusbektim', '2022-08-12 20:48:58', '2022-08-12 20:48:58');
+(25, 2, 'BK.1', 'Gandum', 1000834435, 50000, 50, 2022, 'Dopusbektim', '2022-08-12 09:33:07', '2022-08-12 09:33:07'),
+(26, 3, 'BK.2', 'Peci', 775408049, 20000, 100, 2001, 'Dopusbekbar', '2022-08-12 09:33:33', '2022-08-12 09:33:33'),
+(28, 2, 'BK.1', 'Beras', 841280033, 350000, 100, 2010, 'Dopusbektim', '2022-08-12 20:48:58', '2022-08-12 20:48:58'),
+(29, 292375694, 'BK.2-Santri dan Komaliwan', 'Sarung Wadimor', 1955279660, 0, 0, 0, 'Dopusbekbar', '2022-08-16 10:44:23', '2022-08-16 10:44:23'),
+(30, 292375694, 'BK.1-Makanan', 'Sarden', 1306794697, 0, 0, 0, 'Dopusbektim', '2022-08-16 10:47:31', '2022-08-16 10:47:31'),
+(31, 292375694, 'BK.1-Makanan', 'Kue', 195411391, 0, 0, 0, 'Dopusbekbar', '2022-08-16 10:48:10', '2022-08-16 10:48:10');
 
 -- --------------------------------------------------------
 
@@ -231,28 +224,27 @@ CREATE TABLE `log_penyedia` (
 
 CREATE TABLE `pemasukan` (
   `id_request` int(11) NOT NULL,
-  `id_barang` varchar(11) NOT NULL,
   `id_penyedia` int(11) NOT NULL,
   `nama_kelas` varchar(50) NOT NULL,
   `nama_gudang` varchar(50) NOT NULL,
-  `nama_bekal` varchar(250) NOT NULL,
   `harga_bekal` int(11) NOT NULL,
   `jumlah_bekal` int(11) NOT NULL,
   `tahun_produksi` int(11) NOT NULL,
   `tgl_request` timestamp NOT NULL DEFAULT current_timestamp(),
   `no_kontrak` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `status_request` bit(1) NOT NULL
+  `status_request` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pemasukan`
 --
 
-INSERT INTO `pemasukan` (`id_request`, `id_barang`, `id_penyedia`, `nama_kelas`, `nama_gudang`, `nama_bekal`, `harga_bekal`, `jumlah_bekal`, `tahun_produksi`, `tgl_request`, `no_kontrak`, `status`, `status_request`) VALUES
-(85, '12314', 2, 'Makanan Jadi', 'Dopusbekbar', 'Kedelai', 50000, 50, 2022, '2022-08-13 12:06:22', 792560510, 'Pending', b'1'),
-(86, '', 2, 'Makanan Jadi', 'Dopusbekbar', 'Lemper', 50000, 1000, 2022, '2022-08-13 13:03:00', 2051813262, 'Pending', b'1'),
-(87, '', 2, 'Makanan Jadi', 'Dopusbekbar', 'Sarden', 50000, 0, 2022, '2022-08-13 13:36:44', 820402030, 'Pending', b'1');
+INSERT INTO `pemasukan` (`id_request`, `id_penyedia`, `nama_kelas`, `nama_gudang`, `harga_bekal`, `jumlah_bekal`, `tahun_produksi`, `tgl_request`, `no_kontrak`, `status`, `status_request`) VALUES
+(88, 2, 'Makanan Belom Jadi', 'Dopusbekbar', 50000, 400, 2021, '2022-08-16 01:22:20', 431960580, 'Approved', '1'),
+(89, 2, 'Makanan Belom Jadi', 'wilbar', 50000, 15, 2019, '2022-08-16 01:28:35', 145862515, 'Menunggu Persetujuan - 1', '1'),
+(90, 2, 'Makanan Belom Jadi', 'Dopusbektim', 50000, 200, 2010, '2022-08-16 01:29:49', 2110200119, 'Approved', '1'),
+(91, 2, 'Makanan Belom Jadi', 'Dopusbekbar', 15000, 5, 2022, '2022-08-16 01:33:19', 378489455, 'Menunggu Persetujuan - 1', '1');
 
 -- --------------------------------------------------------
 
@@ -262,14 +254,13 @@ INSERT INTO `pemasukan` (`id_request`, `id_barang`, `id_penyedia`, `nama_kelas`,
 
 CREATE TABLE `pengeluaran` (
   `id_kirim` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `nama_user` varchar(50) NOT NULL,
+  `id_penyedia` int(11) NOT NULL,
+  `nama_penyedia` varchar(50) NOT NULL,
   `alamat_user` varchar(250) NOT NULL,
   `id_barang` varchar(11) NOT NULL,
-  `id_komoditi` int(11) NOT NULL,
-  `nama_barang` varchar(250) NOT NULL,
-  `jumlah_barang` int(11) NOT NULL,
-  `harga_barang` int(11) NOT NULL,
+  `kelas_bekal` varchar(255) NOT NULL,
+  `jumlah_bekal` int(11) NOT NULL,
+  `harga_bekal` int(11) NOT NULL,
   `tahun_produksi` int(11) NOT NULL,
   `no_kontrak` int(11) NOT NULL,
   `tgl_request` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -278,11 +269,18 @@ CREATE TABLE `pengeluaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `pengeluaran`
+--
+
+INSERT INTO `pengeluaran` (`id_kirim`, `id_penyedia`, `nama_penyedia`, `alamat_user`, `id_barang`, `kelas_bekal`, `jumlah_bekal`, `harga_bekal`, `tahun_produksi`, `no_kontrak`, `tgl_request`, `tgl_kirim`, `status_request`) VALUES
+(14, 2, 'PT Bogarasa', 'Jl. jl', '166634381', 'Makanan Jadi', 1, 40000, 2021, 181184667, '2022-08-16 01:00:05', '2022-08-16 01:00:05', b'1');
+
+--
 -- Triggers `pengeluaran`
 --
 DELIMITER $$
 CREATE TRIGGER `barang_keluar` AFTER INSERT ON `pengeluaran` FOR EACH ROW UPDATE barang
-SET jumlah_barang=jumlah_barang-new.jumlah_barang
+SET jumlah_bekal=jumlah_bekal-new.jumlah_bekal
 WHERE id_barang=new.id_barang
 $$
 DELIMITER ;
@@ -307,8 +305,7 @@ CREATE TABLE `penyedia_barang` (
 --
 
 INSERT INTO `penyedia_barang` (`id_penyedia`, `nama_penyedia`, `email_penyedia`, `no_penyedia`, `alamat_penyedia`, `tanggal_terdaftar`) VALUES
-(2, 'PT Bogarasa', 'bogarasa@org.id', 2147483647, 'Jl. Kebon Jahe No.12', '2022-07-30 14:37:48'),
-(3, 'PT Sari Roti', 'sariroti@gmail.com', 21039810, 'JL. Ir Soekarno', '2022-07-30 21:22:13');
+(292375694, 'PT. Alfaria Sejahtera', 'alfaria@co.id', 2147483647, 'Jl. Hos Cokroaminoto', '2022-08-16 10:34:45');
 
 -- --------------------------------------------------------
 
@@ -397,7 +394,6 @@ ALTER TABLE `log_penyedia`
 --
 ALTER TABLE `pemasukan`
   ADD PRIMARY KEY (`id_request`),
-  ADD KEY `fk_id_barang2` (`id_barang`),
   ADD KEY `fk_id_penyedia1` (`id_penyedia`);
 
 --
@@ -405,9 +401,8 @@ ALTER TABLE `pemasukan`
 --
 ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`id_kirim`),
-  ADD KEY `fk_id_komoditi2` (`id_komoditi`),
   ADD KEY `fk_id_barang1` (`id_barang`),
-  ADD KEY `fk_id_user1` (`id_user`);
+  ADD KEY `fk_id_penyedia` (`id_penyedia`);
 
 --
 -- Indexes for table `penyedia_barang`
@@ -436,7 +431,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bekal_penyedia`
 --
 ALTER TABLE `bekal_penyedia`
-  MODIFY `id_bekal_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_bekal_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `gudang`
@@ -472,55 +467,13 @@ ALTER TABLE `log_penyedia`
 -- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id_kirim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `penyedia_barang`
---
-ALTER TABLE `penyedia_barang`
-  MODIFY `id_penyedia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `bekal_penyedia`
---
-ALTER TABLE `bekal_penyedia`
-  ADD CONSTRAINT `fk_id_penyedia` FOREIGN KEY (`id_penyedia`) REFERENCES `penyedia_barang` (`id_penyedia`);
-
---
--- Constraints for table `log_penyedia`
---
-ALTER TABLE `log_penyedia`
-  ADD CONSTRAINT `fk_id_admin` FOREIGN KEY (`id_user`) REFERENCES `admin` (`id_admin`);
-
---
--- Constraints for table `pemasukan`
---
-ALTER TABLE `pemasukan`
-  ADD CONSTRAINT `fk_id_penyedia1` FOREIGN KEY (`id_penyedia`) REFERENCES `penyedia_barang` (`id_penyedia`);
-
---
--- Constraints for table `pengeluaran`
---
-ALTER TABLE `pengeluaran`
-  ADD CONSTRAINT `fk_id_barang1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
-  ADD CONSTRAINT `fk_id_komoditi2` FOREIGN KEY (`id_komoditi`) REFERENCES `komoditi` (`id_komoditi`),
-  ADD CONSTRAINT `fk_id_user1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+  MODIFY `id_kirim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
