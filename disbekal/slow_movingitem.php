@@ -22,54 +22,49 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
-                    <h1 text-align="center" style="margin:2% 0% 2% 0%;">List Barang</h1>
+                    <h1 text-align="center" style="margin:2% 0% 2% 0%;">List Bekal lama di Gudang</h1>
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
                     
-                                <h4>Daftar barang di Gudang</h4>
-                                <p>Semua informasi data barang ter-tracking secara otomatis</p>
+                                <h4>Daftar bekal</h4>
+                                <p>Semua informasi bekal di gudang yang sudah lama berada di gudang.</p>
+                                <!-- kasih date range buat urutin tanggal -->
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
-                            
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th style="color:white; text-align:center;">No.</th>
                                             <th style="color:white; text-align:center;">ID Barang</th>
-                                            <th style="color:white; text-align:center;">Nama Penyedia</th>
+                                            <th style="color:white; text-align:center;">Nama Bekal</th>
                                             <th style="color:white; text-align:center;">Gudang</th>
-                                            <th style="color:white; text-align:center;">Jenis Bekal</th>
-                                            <!-- <th style="color:white; text-align:center;">Nama</th> -->
                                             <th style="color:white; text-align:center;">Harga</th>
                                             <th style="color:white; text-align:center;">Stok</th>
-                                            <th style="color:white; text-align:center;">Tahun</th>
-                                            <th style="color:white; text-align:center;">No.Kontrak</th>
-                                            <th style="color:white; text-align:center;">Status</th>
-                                            <th style="color:white; text-align:center;">Tanggal Approve</th>
+                                            <th style="color:white; text-align:center;">Tanggal Kadaluarsa</th>
+                                            <th style="color:white; text-align:center;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia ORDER BY created_at DESC");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia WHERE DATE(exp_date) <= CURRENT_DATE()-1825 ORDER BY created_at DESC ");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
                                                 <td style="text-align:center"><?php echo $no++ ?></td>
                                                 <td style="text-align:center"><?php echo $row['id_barang']?></td>
-                                                <td style="text-align:center"><?php echo $row['nama_penyedia']?></td>
-                                                <td style="text-align:center"><?php echo $row['nama_gudang']?></td>
                                                 <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
-                                                <!-- <td style="text-align:center"><?php echo $row['nama_bekal']?></td> -->
-                                                <td style="text-align:center"><?php echo rupiah($row['harga_bekal'])?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_gudang']?></td>
+                                                <td style="text-align:center"><?php echo $row['harga_bekal']?></td>
                                                 <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
-                                                <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
-                                                <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
-                                                <td style="text-align:center"><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
-                                                <td style="text-align:center"><?php echo $row['created_at']?></td>
+                                                <td style="text-align:center"><?php echo $row['exp_date']?></td>
+                                                <td style="text-align:center">
+                                                    <a href="#" class="btn btn-success" style="text-align:center">Lihat Detail</a>
+                                                    <a href="#" class="btn btn-danger" style="text-align:center">Hapus Bekal</a>
+                                                </td>
                                             </tr>
                                         <?php }
                                         }else { ?>

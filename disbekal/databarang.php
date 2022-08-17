@@ -31,8 +31,8 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
-                                <!-- <a href="<?php echo BASE_URL."index.php?page=disbekal/detail_barang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Detail Bekal</a> -->
                                 <a href="<?php echo BASE_URL."index.php?page=disbekal/kategori_bekal/databekal.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Jenis Kategori Bekal</a>
+                                <a href="<?php echo BASE_URL."index.php?page=disbekal/exp_bekal.php" ?>" class="btn btn-warning" style="margin:5px 0px 15px 0px;color:white;">Bekal Kadaluarsa</a>
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>

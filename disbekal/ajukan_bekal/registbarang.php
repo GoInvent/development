@@ -76,7 +76,7 @@
                                             <option value="">--Pilih Jenis Bekal--</option>
                                         </select>
                                         <label for="floatingInput">Nama Bekal</label>
-                                    </div>      
+                                    </div>
 
                                     <div class="form-floating mb-3">
                                         <input type="number" name="harga_barang" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $harga_bekal ?> readonly>
@@ -110,6 +110,7 @@
                                     <div class="form-floating mb-3">
                                         <select id="id_penyedia" name="id_penyedia" class="form-control select2" required>
                                             <option readonly value="">--Pilih Penyedia--</option>
+                                            
                                             <?php 
                                                 include 'database.php';
                                                 $penyedia = mysqli_query($koneksi, "SELECT * FROM penyedia_barang");
@@ -122,9 +123,24 @@
                                     </div>
                                     
                                     <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
+
+                                    <div class="form-floating mb-3">
+                                        <select id="kategori_bekal" name="kategori_bekal" class="form-control select2" onchange="getSelectValue();">
+                                            <option>--Kategori Bekal--</option>
+                                        </select>
+                                        <label for="floatingInput">Kategori Bekal</label>
+                                    </div>
+
                                     <div class="form-floating mb-3">
                                         <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
                                             <option>--Pilih jenis Bekal--</option>
+                                            <?php 
+                                                include 'database.php';
+                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM bekal_penyedia");
+                                                while ($r = mysqli_fetch_array($penyedia)) {
+                                            ?>
+                                                <option value="<?php echo $r['nama_bekal'] ?>"><?php echo $r['nama_bekal'] ?></option>
+                                            <?php }?> 
                                         </select>
                                         <label for="floatingInput">Nama Bekal</label>
                                     </div>
@@ -137,6 +153,13 @@
                                         <label for="floatingInput">Jenis Bekal</label>
                                     </div> -->
 
+                                    <!-- jika kelas bekal, ada di kelas bekal 1 maka tampilkan menu date exp -->
+                                    
+                                    <div id="exp_date" class="form-floating mb-3 show">
+                                        <input type="date" id="exp_date" name="exp_date" class="form-control" id="harga_bekal" placeholder=" " required>
+                                        <label for="floatingInput">Tanggal Kadaluarsa</label>
+                                    </div>
+                                    
                                     <div class="form-floating mb-3">
                                         <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder=" " required>
                                         <label for="floatingInput">Harga</label>
@@ -199,32 +222,12 @@
                     url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller.php"?>',
                     type : "POST",
                     data: {
-                        modul:'jenis_bekal',
-                        id_penyedia:id_penyedia,
+                        modul:'kategori_bekal',
+                        id_penyedia: id_penyedia,
                     },
                     success: function(respond){
                         console.log(id_penyedia)
-                        $('#jenis_bekal').html(respond)
-                    },
-                    error:function(){
-                        alert("Gagal mengambil data")
-                    }
-                })
-            })
-            $('#jenis_bekal').on('change', function(){
-                var nama_bekal = $(this).val();
-                var modul = "harga_bekal"
-                $.ajax({
-                    url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller.php"?>',
-                    type : "POST",
-                    data: {
-                        modul:modul,
-                        nama_bekal:nama_bekal
-                    },
-                    success: function(respond){
-                        console.log(nama_bekal)
-                        // console.log(modul)
-                        $('#harga_bekal').html("respond")
+                        $('#kategori_bekal').html(respond)
                     },
                     error:function(){
                         alert("Gagal mengambil data")
@@ -232,6 +235,20 @@
                 })
             })
         });
+    </script>
+
+    <script>
+        function getSelectValue(){
+            var selectedValue = document.getElementById("kategori_bekal").value;
+            
+            if(selectedValue == "BK.1"){
+                console.log('test')
+                $('#exp_date').removeClass('show')
+            } else {
+                console.log('test2')
+                $('#exp_date').addClass('show')
+            } 
+        }
     </script>
 </body>
 

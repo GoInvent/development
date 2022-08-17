@@ -15,15 +15,16 @@
     $tahun          = $_POST['tahun_produksi'];
     $gudang_nama    = $_POST['gudang_nama'];
     $nokontrak      = rand();
-    $statusbarang   = "Menunggu Persetujuan - 1"; 
+    $statusbarang   = "pending"; 
+    $exp_date = $_POST['exp_date'];
     $status         = 0;
 
     $barang = mysqli_query($koneksi, "SELECT * FROM barang");
     $row = mysqli_fetch_assoc($barang);
 
         //jika data berhasil disimpan
-        $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_penyedia,nama_kelas,nama_gudang, harga_bekal,jumlah_bekal,  tahun_produksi,tgl_request, no_kontrak, status , status_request) 
-                VALUES('$idpenyedia','$jenisbekal','$gudang_nama', '$hargabekal','$stok','$tahun',NOW(),'$nokontrak','$statusbarang', $status)");
+        $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_penyedia,nama_kelas,nama_gudang, harga_bekal,jumlah_bekal,  tahun_produksi, exp_date ,tgl_request, no_kontrak, status , status_request) 
+                VALUES('$idpenyedia','$jenisbekal','$gudang_nama', '$hargabekal','$stok','$tahun', '$exp_date', NOW(),'$nokontrak','$statusbarang', $status)");
 
                 if($result){
                     // mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");

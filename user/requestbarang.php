@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <h4>Input data barang</h4>
                             <p>Pendataan barang sebelum masuk gudang</p>
-                                <form class="" action="" method="POST">
+                                <form class="" action="#" method="POST">
                                 <div class="form-floating mb-3">
 										<input name="id_user" class="form-control" id="id_penyedia" placeholder=" " value="<?php echo $_SESSION['id_user'] ?>" required readonly>
 										<label for="id_penyedia">ID Penyedia</label>
@@ -112,19 +112,19 @@
                                 
                                 // include database connection file
                                 include_once("database.php");
-                                        
+
                                 // Insert user data into table
                                 $result = mysqli_query($koneksi, "INSERT INTO pengeluaran (id_penyedia,nama_penyedia,alamat_user,id_barang,kelas_bekal ,jumlah_bekal,harga_bekal, tahun_produksi, no_kontrak, tgl_request, tgl_kirim,status_request) 
-                                                VALUES('$iduser','$namauser','$alamat','$idbarang','$kelasbekal','$stok','$harga','$tahun','$nokontrak',NOW(),NOW(),1)");
+                                                VALUES('$iduser','$namauser','$alamat','$idbarang','$kelasbekal','$stok','$harga','$tahun','$nokontrak',NOW(),NOW(),'')");
                                 
                                 if ($result){
                                     //jika data berhasil disimpan
                                     echo '<script>alert("Simpan data Berhasil")</script>';
-                                    echo '<script>window.location="index.php?page=user/databarang.php"</script>';
+                                    echo '<script>window.location="index.php?page=user/home.php"</script>';
                                 }else{
                                     echo 'gagal'.mysqli_error($koneksi);
                                 }
-                                header("Location: index.php?page=user/databarang.php");
+                                header("Location: index.php?page=user/home.php");
                             }
                             ?>
                         </div>

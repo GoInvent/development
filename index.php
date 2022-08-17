@@ -45,6 +45,7 @@
     <!-- <link href="css/style.css" rel="stylesheet"> -->
     <script src="http://cdn.static.w3big.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+
     <script>
 		$(document).ready(function(){
 				$("#getUID").load("UIDContainer.php");
@@ -71,13 +72,12 @@
             <div class="navbar-header" data-logobg="skin6">
                     <a class="navbar-brand" href="index.html">
                         <b class="logo-icon">
-                            <img src="assets/images/logo.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo_tni.jpeg" alt="homepage" class="dark-logo" style="width:100%;margin:10px 0px 10px 0px;"/>
 
-                            <img src="assets/images/logo.png" alt="homepage" class="light-logo" />
+                            <img src="assets/images/logo_tni.jpeg" alt="homepage" class="light-logo" style="width:100%;margin:10px 0px 10px 0px;"/>
                         </b>
-                        <span class="logo-text">
-                            <img src="assets/images/logo-text-ilogi.png" alt="homepage" class="dark-logo" />
-                            <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                        <span class="logo-text" style="margin-top:10px;">
+                            <h6 style="font-size:13px;font-style:italic">Dinas Pembekalan<br/>Angkatan Laut</h6>
                         </span>
                     </a>
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a>
@@ -94,6 +94,12 @@
                         </li>
                     </ul>
                 </div>
+                
+                <!-- <div style="margin:20px 20px 0px 0px;">
+                    <a href="#">
+                        <i class="mdi mdi-view-dashboard" style="width:200px;"></i>
+                    </a>
+                </div> -->
 
                 <div style="margin:2% 1% 0% 0%;">
                     <?php 
@@ -102,7 +108,6 @@
                     }else {
                        echo "Hi Selamat datang, <b>$nama_admin</b>";
                     }
-                    
                     ?>
                 </div>
             </nav>
@@ -114,7 +119,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">  
-                        <div style="margin-bottom:8%; border:1px solid #DFDFDF; border-radius:5px; padding:8px;">
+                        <div style="margin-bottom:8%; border:1px solid #DFDFDF; border-radius:5px; padding:8px;margin-top:20px;">
                             <?php echo "<b>Laman $role</b>"?>
                         </div>
    
@@ -124,44 +129,45 @@
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Bekal di Gudang</span></a>
                             </li>
+                            
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Pengajuan Bekal</span></a>
-                            </li> 
+                            </li>
+
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/pengeluaran.php"?>" aria-expanded="false">
                                 <i class="fa-solid fa-truck-fast"></i>
                                 <span class="hide-menu">Pengeluaran Bekal</span>
                                 </a>
-                            </li>                        
+                            </li>
+
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/slow_movingitem.php"?>" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Bekal lama di Gudang</span></a>
+                            </li>
+
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=lihat_data.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-file"></i>
                                 <span class="hide-menu">Read RFID</span></a>
                             </li>
                         <?php elseif ($_SESSION['role'] == "Kadopus") : ?> <!--session kadopus -->
+                            
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=kadopus/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Beranda</span></a>
                             </li>
+                            
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=kadopus/databarang.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-account-network"> </i>
                                 <span class="hide-menu">Barang</span></a>
                             </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=kadopus/registbarang.php"?>" aria-expanded="false">
-                                <i class="mdi mdi-border-all"></i>
-                                <span class="hide-menu">Registrasi Barang</span></a>
-                            </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=kadopus/pengeluaran.php"?>" aria-expanded="false">
-                                <i class="fa-solid fa-truck-fast"></i>
-                                <span class="hide-menu">Pengeluaran</span>
-                                </a>
-                            </li>
+
                         <?php elseif ($_SESSION['role'] == "Penyedia") : ?> <!--session kadopus -->
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL.'index.php?page=user/profile.php'?>" aria-expanded="false">
@@ -193,11 +199,6 @@
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=user/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span class="hide-menu">Beranda</span></a>
-                            </li>
-                            <li class="sidebar-item"> 
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=user/databarang.php"?>" aria-expanded="false">
-                                <i class="mdi mdi-border-all"></i>
-                                <span class="hide-menu">Permintaan Barang</span></a>
                             </li>
                         <?php endif; ?>                            
                             <li class="sidebar-item"> 

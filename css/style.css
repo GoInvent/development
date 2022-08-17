@@ -20,3 +20,7 @@ h1{
 .container-fluid {
 	margin-top:100px;
 }
+
+.show{
+	display:none;
+}

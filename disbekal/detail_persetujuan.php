@@ -19,6 +19,8 @@
         $tgl_request    = $row['tgl_request'];   
         $no_kontrak     = $row['no_kontrak'];
         $nama_gudang    = $row['nama_gudang'];
+        $exp_date = $row['exp_date'];
+        $status = $row['status'];
     }
 
 ?>
@@ -38,10 +40,10 @@
                                 <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php&id_request=$row[id_request]" ?>" method="POST">
 
         
-                                        <div class="form-floating mb-3">
-                                            <input name="id_barang" class="form-control" id="getUID" placeholder=" " readonly>
-                                            <label for="getUID">ID Produk (Scan RFID to display ID)</label>
-                                        </div>
+                                    <div class="form-floating mb-3">
+                                        <input name="id_barang" class="form-control" id="getUID" placeholder=" " readonly>
+                                        <label for="getUID">ID Produk (Scan RFID to display ID)</label>
+                                    </div>
 
                                     <div class="form-floating mb-3">
                                         <input type="number" name="id_penyedia" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $id_penyedia ?> readonly>
@@ -49,9 +51,15 @@
                                     </div>  
 
                                     <div class="form-floating mb-3">
+                                        <input type="text" name="status" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $status ?> readonly>
+                                        <label for="floatingInput">Status Bekal</label>
+                                    </div> 
+
+                                    <div class="form-floating mb-3">
                                     <input name="kelas_bekal" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $nama_kelas ?>" readonly>
                                         <label for="floatingInput">Kelas Bekal</label>
                                     </div>
+
                                     <div class="form-floating mb-3">
                                     <input name="nama_gudang" class="form-control" id="floatingInput" placeholder=" " required value ="<?php echo $nama_gudang ?>" readonly>
                                         <label for="floatingInput">Nama Gudang</label>
@@ -65,6 +73,11 @@
                                     <div class="form-floating mb-3">
                                         <input type="number" name="jumlah_bekal" class="form-control" id="floatingInput" placeholder=" " required value = <?php echo $jumlah_bekal ?>>
                                         <label for="floatingInput">Stok</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="date" name="exp_date" class="form-control" id="floatingInput" placeholdder=" " required value = <?php echo $exp_date ?>>
+                                        <label for="floatingInput">Tanggal Kadaluarsa</label>
                                     </div>
 
                                     <div class="form-floating mb-3">

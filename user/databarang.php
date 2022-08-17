@@ -36,20 +36,33 @@
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 <!-- Filter kategori barang -->
-                                <form action="" method="GET" id="form_id" >
-                                    <label for="komoditi">Filter by:</label> <br>
-                                    <select name="gudang" id="gudang_dropdown"class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 10px" onChange="document.getElementById('form_id').submit();">
-                                        <option value="">Pilih Gudang</option>
-                                        <?php 
-                                            include 'database.php';
-                                            $gudang = mysqli_query($koneksi, "SELECT * FROM gudang ORDER BY id_gudang ASC");
-                                            while ($r = mysqli_fetch_array($gudang)) {
-                                        ?> 
-                                            <option value="<?php echo $r['id_gudang'] ?>"><?php echo $r['nama_gudang'] ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <!-- <input type="submit" class= "btn btn-success"> -->
-                                </form>
+                                <div style="display:flex;margin-bottom:10px;">
+                                    <div style="margin-right:10px;">
+                                        <select id="jenis_bekal" name="jenis_bekal">
+                                            <option>--Pilih Gudang Bekal--</option>
+                                            <?php 
+                                                include 'database.php';
+                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM gudang");
+                                                while ($r = mysqli_fetch_array($penyedia)) {
+                                            ?>
+                                                <option value="<?php echo $r['nama_gudang'] ?>"><?php echo $r['nama_gudang'] ?></option>
+                                            <?php }?> 
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <select id="jenis_bekal" name="jenis_bekal">
+                                            <option>--Pilih Kategori Bekal--</option>
+                                            <?php 
+                                                include 'database.php';
+                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM kategori_bekal");
+                                                while ($r = mysqli_fetch_array($penyedia)) {
+                                            ?>
+                                                <option value="<?php echo $r['kelas_bekal'] ?>"><?php echo $r['kelas_bekal'] ?></option>
+                                            <?php }?> 
+                                        </select>
+                                    </div>
+                                </div>
                                 <!-- ---------------------- -->
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
@@ -57,6 +70,7 @@
                                             <th style="color:white; text-align:center;">No.</th>
                                             <th style="color:white; text-align:center;">ID Barang</th>
                                             <th style="color:white; text-align:center;">Nama Penyedia</th>
+                                            <th style="color:white; text-align:center;">Nama gudang</th>
                                             <th style="color:white; text-align:center;">Jenis Bekal</th>
                                             <th style="color:white; text-align:center;">Harga</th>
                                             <th style="color:white; text-align:center;">Stok</th>
@@ -77,6 +91,7 @@
                                                 <td style="text-align:center;"><?php echo $no++ ?></td>
                                                 <td style="text-align:center;"><?php echo $row['id_barang']?></td>
                                                 <td style="text-align:center;"><?php echo $row['nama_penyedia']?></td>
+                                                <td style="text-align:center;"><?php echo $row['nama_gudang']?></td>
                                                 <td style="text-align:center;"><?php echo $row['kelas_bekal']?></td>
                                                 <td style="text-align:center;"><?php echo rupiah ($row['harga_bekal'])?></td>
                                                 <td style="text-align:center;"><?php echo $row['jumlah_bekal']?></td>

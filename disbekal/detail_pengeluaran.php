@@ -6,23 +6,22 @@
 
     
     if ($id_kirim){
-        $sql_pengeluaran = mysqli_query($koneksi, "SELECT * FROM pengeluaran LEFT JOIN komoditi ON komoditi.id_komoditi = pengeluaran.id_komoditi WHERE id_kirim = '".$_GET['id_kirim']."'");
-        $row = mysqli_fetch_assoc($sql_pengeluaran);
-        $sql_admin = mysqli_query($koneksi, "SELECT * FROM pengeluaran LEFT JOIN users ON users.id_user = pengeluaran.id_user WHERE id_kirim = '".$_GET['id_kirim']."'");
-        $produk = mysqli_query($koneksi, "SELECT * FROM pengeluaran WHERE id_kirim ='".$_GET['id_kirim']."' ");
-	    $p = mysqli_fetch_object($produk);
-        $data = mysqli_fetch_assoc($sql_admin);
-        $idbarang           = $row['id_barang'];
-        $nama_user          = $row['nama_user'];
-        $nama_barang        = $row['nama_barang'];
-        $jumlah_barang      = $row['jumlah_barang'];
-        $harga_barang       = $row['harga_barang'];
-        $tahun_produksi     = $row['tahun_produksi'];
-        $tgl_request        = $row['tgl_request'];
-        $jenis_komoditi     = $row['jenis_komoditi'];
-        $iduser             = $data['id_user'];
-        $notelp             = $data['no_hp'];
-        $alamat             = $row['alamat_user'];
+        $sql_pengeluaran = mysqli_query($koneksi, "SELECT * FROM pengeluaran WHERE id_kirim = '".$_GET['id_kirim']."'");
+        $row_pengeluaran = mysqli_fetch_assoc($sql_pengeluaran);
+        
+        $sql_user = mysqli_query($koneksi, "SELECT * FROM pengeluaran LEFT JOIN users ON users.id_user = pengeluaran.id_user WHERE id_kirim = '".$_GET['id_kirim']."'");
+        $row_user = mysqli_fetch_assoc($sql_user);
+        
+        $idbarang           = $row_pengeluaran['id_barang'];
+        $nama_user          = $row_user['nama_user'];
+        $nama_barang        = $row_pengeluaran['kelas_bekal'];
+        $jumlah_barang      = $row_pengeluaran['jumlah_bekal'];
+        $harga_barang       = $row_pengeluaran['harga_bekal'];
+        $tahun_produksi     = $row_pengeluaran['tahun_produksi'];
+        $tgl_request        = $row_pengeluaran['tgl_request'];
+        $iduser             = $row_user['id_user'];
+        $notelp             = $row_user['no_hp'];
+        $alamat             = $row_user['alamat_user'];
     }
 ?>
 
@@ -38,7 +37,7 @@
             ?>
             <h6>ID Request : <?php echo $id_kirim?></h6>
         
-        <div class="card" style="width: 65rem; border:1px solid black">
+        <div class="card" style="width: 65rem; border:1px solid gray;">
             <div class="card-header" style="text-align: center;">
                 <h5>Informasi Pengguna</h3>
             </div>
@@ -62,7 +61,7 @@
                         </div>
                     <div class="form-floating mb-3">
                             <input type="text" name="timestamp" class="form-control" id="floatingInput" placeholder=""  value ="<?php echo $tgl_request ?>" required readonly>
-                            <label for="floatingInput">Tanggal Request</label>
+                            <label for="floatingInput">Tanggal Permintaan</label>
                     </div>
                 </ul>
                 </div>
@@ -72,21 +71,25 @@
                 <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <div class="form-floating mb-3">
-                            <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=""  value ="<?php echo $idbarang ?>" required readonly>
-                            <label for="floatingInput">Nama Barang</label>
+                            <input type="text" name="id_barang" class="form-control" id="floatingInput" placeholder=""  value ="<?php echo $idbarang ?>" required readonly>
+                            <label for="floatingInput">ID Barang</label>
                     </div>
                     <div class="form-floating mb-3">
                             <input type="text" name="nama_barang" class="form-control" id="floatingInput" placeholder=""  value ="<?php echo $nama_barang ?>" required readonly>
                             <label for="floatingInput">Nama Barang</label>
                     </div>
-                    <div class="form-floating mb-3">
-                            <input type="text" name="jenis_komoditi" class="form-control" id="floatingInput" placeholder=""  value = "<?php echo $jenis_komoditi ?>" required readonly>
-                            <label for="floatingInput">Jenis Komoditi</label>
+
+                    <!-- setiap gudang timur dan barang memiliki stok bekal yang berbeda untuk barang yang sama -->
+                    
+                    <div>
+                        <h6 style="font-style:italic">Ketersedian bekal di gudang <?php echo $jumlah_barang ?></h6>
                     </div>
+
                     <div class="form-floating mb-3">
-                            <input type="text" name="jumlah_barang" class="form-control" id="floatingInput" placeholder=""  value = "<?php echo $jumlah_barang ?>" required readonly>
-                            <label for="floatingInput">Jumlah</label>
+                            <input type="text" name="jumlah_barang" class="form-control" id="floatingInput" placeholder="" required>
+                            <label for="floatingInput">Jumlah Bekal di kirim</label>
                     </div>
+
                     <div class="form-floating mb-3">
                             <input type="text" name="harga_barang" class="form-control" id="floatingInput" placeholder=""  value = "<?php echo $harga_barang ?>" required readonly>
                             <label for="floatingInput">Harga Barang</label>
@@ -97,16 +100,10 @@
                     </div>
                 </ul>
                 </div>
-                <div class="card-body" style="margin-bottom:20px;">
-                    <h6 class="form-penyedia"></h6>
-                    <h6 class="form-penyedia"> </h6>
-                    <h6 class="form-penyedia"> </h6>
-                    <h6 class="form-penyedia"></h6>
-                    <h6 class="form-penyedia"></h6>
-                </div>
         </div>
-        <input type="submit" name="submit" value="Kirim Barang" class="btn btn-success" onclick="return confirm('Apakah data sudah benar?')">
-        <a class="btn btn-danger"  href="<?php echo BASE_URL."index.php?page=disbekal/pengeluaran.php" ?>">Cancel</a>
+        <input type="submit" name="submit" value="Kirim Barang" class="btn btn-success" style="margin-bottom:20px;" onclick="return confirm('Apakah data sudah benar?')">
+        <a href="#" class="btn btn-info" style="margin-bottom:20px;color:white;">Cek Ketersedian Barang</a>
+        <!-- <a class="btn btn-danger"  href="<?php echo BASE_URL."index.php?page=disbekal/pengeluaran.php" ?>" style="margin-bottom:20px;">Reject </a> -->
     </div>
 </form>
     <?php

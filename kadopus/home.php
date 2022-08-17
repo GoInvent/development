@@ -1,6 +1,13 @@
 <?php
 $Write="<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
 file_put_contents('UIDContainer.php',$Write);
+
+$id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
+
+// $pagination = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
+// $data_perhalaman = 5;
+// $mulai_dari = ($pagination -1)* $data_perhalaman;
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -25,7 +32,7 @@ file_put_contents('UIDContainer.php',$Write);
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <h1 class="mb-0 fw-bold">Dashboard</h1> 
+                    <h1 class="mb-0 fw-bold">Persediaan Bekal</h1> 
                 </div>
             </div>
         </div>
@@ -48,158 +55,77 @@ file_put_contents('UIDContainer.php',$Write);
                             <!-- title -->
                             <div class="d-md-flex">
                                 <div>
-                                    <h4 class="card-title">Top Selling Products</h4>
-                                    <h5 class="card-subtitle">Overview of Top Selling Items</h5>
-                                </div>
-                                <div class="ms-auto">
-                                    <div class="dl">
-                                        <select class="form-select shadow-none">
-                                            <option value="0" selected>Monthly</option>
-                                            <option value="1">Daily</option>
-                                            <option value="2">Weekly</option>
-                                            <option value="3">Yearly</option>
-                                        </select>
-                                    </div>
+                                    <h4 class="card-title">Pemasukan Bekal</h4>
+                                    <p>Daftar Permintaan Bekal Masuk</p>
                                 </div>
                             </div>
                             <!-- title -->
+                            <!-- <a href="<?php echo BASE_URL."index.php?page=disbekal/ajukan_bekal/registbarang.php" ?>" class="btn btn-info" style="margin:5px 0px 15px 0px;color:white;">Input Barang</a>
+                            <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/list_penyedia.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Daftar Penyedia</a> -->
+
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
-                                    <thead>
+                                    <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th class="border-top-0">Products</th>
-                                            <th class="border-top-0">License</th>
-                                            <th class="border-top-0">Support Agent</th>
-                                            <th class="border-top-0">Technology</th>
-                                            <th class="border-top-0">Tickets</th>
-                                            <th class="border-top-0">Sales</th>
-                                            <th class="border-top-0">Earnings</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">No</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">ID Penyedia</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Jenis Kelas</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Nama Gudang</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Harga Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle d-flex btn-info text-white">EA</a>
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Elite Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>John Doe</td>
-                                            <td>
-                                                <label class="badge bg-danger">Angular</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle d-flex btn-orange text-white">MA</a>
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Monster Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>Venessa Fern</td>
-                                            <td>
-                                                <label class="badge bg-info">Vue Js</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle d-flex btn-success text-white">MP</a>
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Material Pro Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>John Doe</td>
-                                            <td>
-                                                <label class="badge bg-success">Bootstrap</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle d-flex btn-purple text-white">AA</a>
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Ample Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>John Doe</td>
-                                            <td>
-                                                <label class="badge bg-purple">React</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
+                                     <?php
+                                            include 'database.php';
+                                            $no = 1;
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan");
+                                            if (mysqli_num_rows($sql) > 0 ) {
+                                            while ($row = mysqli_fetch_array($sql)){
+                                        ?>
+                                            <tr>
+                                                <td style="text-align:center"><?php echo $no++ ?></td>
+                                                <td style="text-align:center"><?php echo $row['id_penyedia'] ?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_kelas'] ?></td>
+                                                <td style="text-align:center"><?php echo $row['nama_gudang']?></td>
+                                                <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?></td>
+                                                <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
+                                                <td><?php echo $row['tgl_request']?></td>
+                                                <td style="text-align:center"><?php echo $row['status'] ?></td>
+                                                <!-- <td style="text-align:center"><?php echo $row['status_request'] ?></td> -->
+                                                <td>
+                                                    <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Setujui Bekal</a>
+                                                    <!-- <input type="button" name="persetujuan" value="disetujui"> -->
+                                                    <a href="<?php echo BASE_URL."index.php?page=disbekal/reject_bekal/hapus_bekal.php&id_request=$row[id_request]" ?>" class="btn btn-danger" style="text-align:center">Hapus Bekal</a>
+                                                </td>
+                                                <td>
+                                                    
+                                                </td>
+                                            </tr>
+                                        <?php }
+                                        }else { ?>
+                                            <tr>
+                                                <td colspan="9">Tidak ada data</td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
+                                
+                                <?php 
+                                    // $sqlPagination = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi)");
+                                    // pagination($sqlPagination, $data_perhalaman, $pagination, "index.php?page=disbekal/home.php")
+                                ?>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- Table -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center">
-            All Rights Reserved by Flexy Admin. Designed and Developed by <a
-                href="https://www.wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
