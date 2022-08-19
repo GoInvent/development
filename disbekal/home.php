@@ -94,7 +94,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                                 <td style="text-align:center"><?php echo $row['nama_gudang'] ?></td>
                                                 <!-- <td style="text-align:center"><?php echo $row['nama_bekal']?></td> -->
                                                 <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
-                                                <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?></td>
+                                                <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?> /Satuan</td>
                                                 <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                                 <td><?php echo $row['tgl_request']?></td>
                                                 <td style="text-align:center"><?php echo $row['status'] ?></td>

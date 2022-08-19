@@ -136,6 +136,7 @@
                                             <option>--Pilih jenis Bekal--</option>
                                             <?php 
                                                 include 'database.php';
+
                                                 $penyedia = mysqli_query($koneksi, "SELECT * FROM bekal_penyedia");
                                                 while ($r = mysqli_fetch_array($penyedia)) {
                                             ?>
@@ -237,16 +238,56 @@
         });
     </script>
 
+
     <script>
         function getSelectValue(){
             var selectedValue = document.getElementById("kategori_bekal").value;
+            var id_penyedia = document.getElementById("id_penyedia").value;
             
             if(selectedValue == "BK.1"){
                 console.log('test')
                 $('#exp_date').removeClass('show')
+
+                $.ajax({
+                    url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller2.php"?>',
+                    type : "POST",
+                    data: {
+                        modul:'jenis_bekal',
+                        id_penyedia : id_penyedia,
+                        kelas_bekal: selectedValue,
+                    },
+                    success: function(respond){
+                        console.log(jenis_bekal)
+                        console.log(id_penyedia)
+                        $('#jenis_bekal').html(respond)
+                    },
+                    error:function(){
+                        alert("Gagal mengambil data")
+                    }
+                })
+
             } else {
                 console.log('test2')
                 $('#exp_date').addClass('show')
+
+                $.ajax({
+                    url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller2.php"?>',
+                    type : "POST",
+                    data: {
+                        modul:'jenis_bekal',
+                        id_penyedia : id_penyedia,
+                        kelas_bekal: selectedValue,
+                    },
+                    success: function(respond){
+                        console.log(jenis_bekal)
+                        console.log(id_penyedia)
+                        $('#jenis_bekal').html(respond)
+                    },
+                    error:function(){
+                        alert("Gagal mengambil data")
+                    }
+                })
+
             } 
         }
     </script>

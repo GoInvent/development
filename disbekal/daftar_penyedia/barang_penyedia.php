@@ -26,7 +26,7 @@
                                 $kategori = mysqli_query($koneksi, "SELECT * FROM kategori_bekal");
                                 while ($r = mysqli_fetch_array($kategori)) {
                                 ?> 
-                                    <option value="<?php echo $r['kelas_bekal']?>-<?php echo $r['nama_kategori_bekal']?>"><?php echo $r['kelas_bekal'] ?>-<?php echo $r['nama_kategori_bekal']?></option>
+                                    <option value="<?php echo $r['kelas_bekal']?>"><?php echo $r['kelas_bekal'] ?></option>
                                 <?php } ?>
                     </select>
                 <label for="floatingInput">Kelas Bekal:</label>
