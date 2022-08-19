@@ -63,3 +63,21 @@ li.page-pagination {
 .show {
     display: none;
 }
+
+a.btn-excel {
+    border: 1px solid #1d6f42;
+    padding: 7px;
+    background-color: #1d6f42;
+    color: white;
+    border-radius: 7px;
+    font-size: 12px;
+}
+
+a.btn-pdf {
+    border: 1px solid  #ff0000;
+    padding: 7px;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 7px;
+    font-size: 12px;
+}

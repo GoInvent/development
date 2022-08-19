@@ -81,6 +81,11 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                     </tbody>
                                 </table>
 
+                                <div style="margin:10px 0px 20px 0px;">
+                                    <a href="#" class="btn-excel">Laporan Excel</a>
+                                    <a href="#" class="btn-pdf">Laporan PDF</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>

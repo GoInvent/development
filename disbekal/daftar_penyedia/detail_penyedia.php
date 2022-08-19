@@ -89,6 +89,7 @@ if($id_penyedia){
                                             <th class="border-top-0" style="color:white; text-align:center;">Tahun</th> -->
                                             <th class="border-top-0" style="color:white; text-align:center;">Gudang</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Riwayat Bekal</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -109,6 +110,10 @@ if($id_penyedia){
                                             <td style="text-align:center"><?php echo $row['tahun']?></td> -->
                                             <td style="text-align:center"><?php echo $row['nama_gudang']?></td>
                                             <td style="text-align:center"><?php echo $row['created_at']?></td>
+                                            <td style="text-align:center">
+                                                <a href="#" class="btn btn-warning">Perbarui Bekal</a>
+                                                <a href="#" class="btn btn-danger">Hapus Bekal</a>
+                                            </td>
                                             <!-- <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_kategori'] ?>">Edit</a> 
                                             <a class="btn btn-danger" onclick="return confirm('Ingin Hapus?')" href="proseshapus.php?id_bekal=<?php echo $row['id_kategori'] ?>">Delete</a>
                                             </td> -->

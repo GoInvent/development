@@ -146,7 +146,7 @@
                                         <label for="floatingInput">Nama Bekal</label>
                                     </div>
                                     
-                                     <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
+                                    <!-- dilakukan inner join dengan pada tb bekal penyedia dengan penyedia barang. -->
                                     <!-- <div class="form-floating mb-3">
                                         <select id="jenis_bekal" name="jenis_bekal" class="form-control select2">
                                             <option>--Pilih Bekal--</option>
@@ -157,12 +157,12 @@
                                     <!-- jika kelas bekal, ada di kelas bekal 1 maka tampilkan menu date exp -->
                                     
                                     <div id="exp_date" class="form-floating mb-3 show">
-                                        <input type="date" id="exp_date" name="exp_date" class="form-control" id="harga_bekal" placeholder=" " required>
+                                        <input type="date" id="exp_date" name="exp_date" class="form-control" id="exp_date" placeholder=" " required>
                                         <label for="floatingInput">Tanggal Kadaluarsa</label>
                                     </div>
                                     
                                     <div class="form-floating mb-3">
-                                        <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder=" " required>
+                                        <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder=" " required onchange="getSelectValue();">
                                         <label for="floatingInput">Harga</label>
                                     </div>
 
@@ -188,7 +188,7 @@
                                         <input type="number" name="no_kontrak" class="form-control" id="floatingInput" placeholder=" " readonly> 
                                         <label for="floatingInput">No.Kontrak</label>
                                     </div>
-                                    <input type="submit" name="submit" value="Simpan" class="btn btn-success">
+                                    <input type="submit" name="submit" value="Simpan" class="btn btn-success">                    
                                 </form>
                             <?php endif; ?>
                         </div>
@@ -238,7 +238,6 @@
         });
     </script>
 
-
     <script>
         function getSelectValue(){
             var selectedValue = document.getElementById("kategori_bekal").value;
@@ -287,7 +286,6 @@
                         alert("Gagal mengambil data")
                     }
                 })
-
             } 
         }
     </script>

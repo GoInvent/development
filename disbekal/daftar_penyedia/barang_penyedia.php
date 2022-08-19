@@ -47,18 +47,22 @@
                     <label for="floatingInput">ID Bekal</label>
                     <small>Auto-generate</small>
                 </div>
-                <!-- <div class="form-floating mb-3" style="margin-top:15px;">
+
+                <div class="form-floating mb-3" style="margin-top:15px;">
                     <input type="text" name="harga" class="form-control" style="width:97%;" id="floatingInput" placeholder=" ">
                     <label for="floatingInput">Harga</label>
-                </div>                    
+                </div> 
+
                 <div class="form-floating mb-3">
                     <input type="text" name="stok_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " required>
                     <label for="floatingInput">Stok Bekal</label>
                 </div>
+
                 <div class="form-floating mb-3">
                     <input type="text" name="tahun" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " required>
                     <label for="floatingInput">Tahun</label>
-                </div> -->
+                </div>
+
                 <div class="form-floating mb-3">
                 <select class="form-control" name="nama_gudang" id="kelas_bekal" class="form-floating mb-3">
                     <option readonly value="">--Pilih Gudang--</option>
