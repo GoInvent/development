@@ -36,9 +36,9 @@
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 <!-- Filter kategori barang -->
-                                <div style="display:flex;margin-bottom:10px;">
+                                <!-- <div style="display:flex;margin-bottom:10px;">
                                     <div style="margin-right:10px;">
-                                        <select id="jenis_bekal" name="jenis_bekal">
+                                        <select id="nama_gudang" name="nama_gudang" class="sb-user">
                                             <option>--Pilih Gudang Bekal--</option>
                                             <?php 
                                                 include 'database.php';
@@ -51,7 +51,7 @@
                                     </div>
 
                                     <div>
-                                        <select id="jenis_bekal" name="jenis_bekal">
+                                        <select id="kategori_bekal" name="kategori_bekal" class="sb-user">
                                             <option>--Pilih Kategori Bekal--</option>
                                             <?php 
                                                 include 'database.php';
@@ -62,16 +62,18 @@
                                             <?php }?> 
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
+
+                                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="cari berdasarkan jenis bekal.." title="Type in a name" class="seacrh-bekal">
+
                                 <!-- ---------------------- -->
-                                <table class="table mb-0 table-hover align-middle text-nowrap">
+                                <table class="table mb-0 table-hover align-middle text-nowrap" id="myTable">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
-                                            <th style="color:white; text-align:center;">No.</th>
+                                            <th style="color:white; text-align:center;">Jenis Bekal</th>
                                             <th style="color:white; text-align:center;">ID Barang</th>
                                             <th style="color:white; text-align:center;">Nama Penyedia</th>
                                             <th style="color:white; text-align:center;">Nama gudang</th>
-                                            <th style="color:white; text-align:center;">Jenis Bekal</th>
                                             <th style="color:white; text-align:center;">Harga</th>
                                             <th style="color:white; text-align:center;">Stok</th>
                                             <th style="color:white; text-align:center;">Tahun</th>
@@ -88,11 +90,10 @@
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
                                             <tr>
-                                                <td style="text-align:center;"><?php echo $no++ ?></td>
+                                                <td style="text-align:center;"><?php echo $row['kelas_bekal']?></td>
                                                 <td style="text-align:center;"><?php echo $row['id_barang']?></td>
                                                 <td style="text-align:center;"><?php echo $row['nama_penyedia']?></td>
                                                 <td style="text-align:center;"><?php echo $row['nama_gudang']?></td>
-                                                <td style="text-align:center;"><?php echo $row['kelas_bekal']?></td>
                                                 <td style="text-align:center;"><?php echo rupiah ($row['harga_bekal'])?></td>
                                                 <td style="text-align:center;"><?php echo $row['jumlah_bekal']?></td>
                                                 <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
@@ -121,15 +122,29 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-  
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#gudang_dropdown").on('change',function() {
-                var value = $(this).val();
-                alert(value);
-            })
-        });
+
+    <script>
+        function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }       
+        }
+        }
     </script>
+  
+
     
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->

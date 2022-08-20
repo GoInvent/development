@@ -8,6 +8,8 @@
     $bekal_penyedia = mysqli_query($koneksi, "SELECT * FROM bekal_penyedia");
     $row = mysqli_fetch_assoc($bekal_penyedia);
 
+    // ada dua if kelas bekal == 1
+
     // $idbarang       = $_POST['id_barang'];
     $idpenyedia     = $_POST['id_penyedia'];
     $jenisbekal     = $_POST['jenis_bekal'];
@@ -18,12 +20,10 @@
     $gudang_nama    = $_POST['gudang_nama'];
     $nokontrak      = rand();
     $statusbarang   = "pending"; 
-    if($row['kelas_bekal'] == 'BK.1'){
-        $exp_date  = $_POST['exp_date'];
-    }else{
-        $exp_date = 0;
-    }
+    $exp_date  = $_POST['exp_date'];
+    $exp_date = 0;
     $status = 0;
+    // else 
 
     //jika data berhasil disimpan
     $result = mysqli_query($koneksi, "INSERT INTO pemasukan (id_penyedia,nama_kelas,nama_gudang, harga_bekal,jumlah_bekal,  tahun_produksi, exp_date ,tgl_request, no_kontrak, status , status_request) 

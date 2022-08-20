@@ -49,7 +49,7 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia WHERE DATE(exp_date) <= CURRENT_DATE()-30 ORDER BY created_at DESC ");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia WHERE DATE(exp_date) <=  CURRENT_DATE() ORDER BY created_at DESC ");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>

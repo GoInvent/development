@@ -81,3 +81,18 @@ a.btn-pdf {
     border-radius: 7px;
     font-size: 12px;
 }
+
+.sb-user {
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid #acacac;
+}
+
+input#myInput {
+    margin-bottom: 10px;
+    width: 36%;
+    height: 39px;
+    border: 1px solid #b4b4b4;
+    border-radius: 7px;
+    padding: 7px;
+}
