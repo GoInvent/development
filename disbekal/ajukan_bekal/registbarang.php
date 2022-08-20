@@ -160,6 +160,16 @@
                                         <input type="date" id="exp_date" name="exp_date" class="form-control" id="exp_date" placeholder=" ">
                                         <label for="floatingInput">Tanggal Kadaluarsa</label>
                                     </div>
+
+                                    <div class="form-floating mb-3 show-size" id="size">
+                                        <select name="size" id="size" class="form-control">
+                                            <option value="">-Ukuran-</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="M">XL</option>
+                                        </select>
+                                        <label for="floatingInput">Gudang Penyimpanan</label>
+                                    </div>
                                     
                                     <div class="form-floating mb-3">
                                         <input type="number" name="harga_bekal" class="form-control" id="harga_bekal" placeholder=" " required onchange="getSelectValue();">
@@ -181,7 +191,7 @@
                                             <option value="Dopusbekbar">Wilayah Barat</option>
                                             <option value="Dopusbektim">Wilayah Timur</option>
                                         </select>
-                                        <label for="floatingInput">Gudang Penyimpanan</label>
+                                        <label for="floatingInput">Ukruan</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
@@ -246,6 +256,7 @@
             if(selectedValue == "BK.1"){
                 console.log('test')
                 $('#exp_date').removeClass('show')
+                $('#size').addClass('show-size')
 
                 $.ajax({
                     url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller2.php"?>',
@@ -265,9 +276,10 @@
                     }
                 })
 
-            } else {
+            } else if(selectedValue == "BK.2") {
                 console.log('test2')
                 $('#exp_date').addClass('show')
+                $('#size').removeClass('show-size')
 
                 $.ajax({
                     url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller2.php"?>',
@@ -286,7 +298,30 @@
                         alert("Gagal mengambil data")
                     }
                 })
-            } 
+            } else {
+                console.log('test3')
+                $('#exp_date').addClass('show')
+                $('#size').addClass('show-size')
+
+                $.ajax({
+                    url : '<?php echo BASE_URL."disbekal/ajukan_bekal/data_controller2.php"?>',
+                    type : "POST",
+                    data: {
+                        modul:'jenis_bekal',
+                        id_penyedia : id_penyedia,
+                        kelas_bekal: selectedValue,
+                    },
+                    success: function(respond){
+                        console.log(jenis_bekal)
+                        console.log(id_penyedia)
+                        $('#jenis_bekal').html(respond)
+                    },
+                    error:function(){
+                        alert("Gagal mengambil data")
+                    }
+                })
+
+            }
         }
     </script>
 </body>

@@ -64,6 +64,10 @@ li.page-pagination {
     display: none;
 }
 
+.show-size {
+    display: none;
+}
+
 a.btn-excel {
     border: 1px solid #1d6f42;
     padding: 7px;
