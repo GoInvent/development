@@ -157,7 +157,7 @@
                                     <!-- jika kelas bekal, ada di kelas bekal 1 maka tampilkan menu date exp -->
                                     
                                     <div id="exp_date" class="form-floating mb-3 show">
-                                        <input type="date" id="exp_date" name="exp_date" class="form-control" id="exp_date" placeholder=" " required>
+                                        <input type="date" id="exp_date" name="exp_date" class="form-control" id="exp_date" placeholder=" ">
                                         <label for="floatingInput">Tanggal Kadaluarsa</label>
                                     </div>
                                     

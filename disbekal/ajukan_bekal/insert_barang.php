@@ -20,8 +20,11 @@
     $gudang_nama    = $_POST['gudang_nama'];
     $nokontrak      = rand();
     $statusbarang   = "pending"; 
-    $exp_date  = $_POST['exp_date'];
-    $exp_date = 0;
+    if (!$_POST) {
+        $exp_date = 0;
+    } else {
+        $exp_date  = $_POST['exp_date'];
+    }
     $status = 0;
     // else 
 

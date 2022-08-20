@@ -72,7 +72,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                             <th class="border-top-0" style="color:white; text-align:center;">Gudang</th>
                                             <!-- <th class="border-top-0" style="color:white; text-align:center;">Nama Barang</th> -->
                                             <th class="border-top-0" style="color:white; text-align:center;">Jumlah Bekal</th>
-                                            <th class="border-top-0" style="color:white; text-align:center;">Harga</th>
+                                            <th class="border-top-0" style="color:white; text-align:center;">Harga Satuan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Tahun</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Tanggal Permintaan</th>
                                             <th class="border-top-0" style="color:white; text-align:center;">Status Persetujuan</th>
@@ -94,7 +94,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                                 <td style="text-align:center"><?php echo $row['nama_gudang'] ?></td>
                                                 <!-- <td style="text-align:center"><?php echo $row['nama_bekal']?></td> -->
                                                 <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
-                                                <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?> /Satuan</td>
+                                                <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?></td>
                                                 <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                                 <td><?php echo $row['tgl_request']?></td>
                                                 <td style="text-align:center"><?php echo $row['status'] ?></td>
@@ -104,9 +104,6 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                                     <!-- <input type="button" name="persetujuan" value="disetujui"> -->
                                                     <!-- <a href="<?php echo BASE_URL."index.php?page=disbekal/reject_bekal/hapus_bekal.php&id_request=$row[id_request]" ?>" class="btn btn-danger" style="text-align:center">Hapus Bekal</a> -->
                                                 <!-- </td> -->
-                                                <td>
-                                                    
-                                                </td>
                                             </tr>
                                         <?php }
                                         }else { ?>

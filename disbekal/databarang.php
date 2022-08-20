@@ -42,12 +42,12 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                             <th style="color:white; text-align:center;">Gudang</th>
                                             <th style="color:white; text-align:center;">Jenis Bekal</th>
                                             <!-- <th style="color:white; text-align:center;">Nama</th> -->
-                                            <th style="color:white; text-align:center;">Harga</th>
+                                            <th style="color:white; text-align:center;">Harga Satuan</th>
                                             <th style="color:white; text-align:center;">Stok</th>
-                                            <th style="color:white; text-align:center;">Tahun</th>
                                             <th style="color:white; text-align:center;">No.Kontrak</th>
                                             <th style="color:white; text-align:center;">Status</th>
-                                            <th style="color:white; text-align:center;">Tanggal Approve</th>
+                                            <th style="color:white; text-align:center;">Tanggal Persetujuan</th>
+                                            <th style="color:white; text-align:center;">Log</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,10 +67,12 @@ $id_barang = isset($_GET['id_barang']) ? $_GET['id_barang'] : false;
                                                 <!-- <td style="text-align:center"><?php echo $row['nama_bekal']?></td> -->
                                                 <td style="text-align:center"><?php echo rupiah($row['harga_bekal'])?></td>
                                                 <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
-                                                <td style="text-align:center"><?php echo $row['tahun_produksi']?></td>
                                                 <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
                                                 <td style="text-align:center"><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
                                                 <td style="text-align:center"><?php echo $row['created_at']?></td>
+                                                <td>
+                                                    <a href="#" class="btn btn-success">Riwayat Bekal</a>
+                                                </td>
                                             </tr>
                                         <?php }
                                         }else { ?>
