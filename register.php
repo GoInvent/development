@@ -50,8 +50,13 @@ file_put_contents('UIDContainer.php',$Write);
                 </div>
 
                 <div class="form-outline mb-4">
+                    <label class="form-label">Alamat</label>
+                    <input type="text" name="alamat_user" id="alamat_user" class="form-control form-control-lg" placeholder="Masukan nama lengkap" required/>
+                </div>
+
+                <div class="form-outline mb-4">
                     <label class="form-label">No.Handphone</label>
-                    <input type="number" name="no_hp" id="nama_user" class="form-control form-control-lg" placeholder="Masukan No Handphone" required />
+                    <input type="number" name="no_hp" id="no_hp" class="form-control form-control-lg" placeholder="Masukan No Handphone" required />
                 </div>
 
                 <div class="form-outline mb-4">

@@ -98,7 +98,7 @@
                                                 <td style="text-align:center;"><?php echo $row['jumlah_bekal']?></td>
                                                 <td style="text-align:center;"><?php echo $row['tahun_produksi']?></td>
                                                 <td style="text-align:center;"><?php echo $row['no_kontrak']?></td>
-                                                <td style="text-align:center;"><a class="btn btn-success" href="index.php?page=user/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
+                                                <td style="text-align:center;"><a class="btn btn-success" href="index.php?page=user/ajukan_bekal/requestbarang.php&id=<?php echo $row['id_barang'] ?>">Request</a>
                                                 </td>
                                             </tr>
                                         <?php }

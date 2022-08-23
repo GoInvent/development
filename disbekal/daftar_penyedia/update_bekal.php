@@ -1,8 +1,18 @@
 <?php 
-    include 'database.php';
-    include_once('helper.php');
 
-    $id_penyedia = isset($_GET['id_penyedia']) ? $_GET['id_penyedia'] : false;
+include 'database.php';
+include_once ('helper.php');
+
+$id_bekal_penyedia = isset($_GET['id_bekal_penyedia']) ? $_GET['id_bekal_penyedia'] : false;
+
+    $query_bekal_penyedia = mysqli_query($koneksi,"SELECT * FROM bekal_penyedia WHERE id_bekal_penyedia = '".$_GET['id_bekal_penyedia']."'");    
+    $row = mysqli_fetch_assoc($query_bekal_penyedia);
+
+    // $nama_penyedia = $row['nama_penyedia'];
+    // $email_penyedia = $row['email_penyedia'];
+    // $no_penyedia = $row['no_penyedia'];
+    // $alamat_penyedia = $row['alamat_penyedia'];
+
 ?>
 
 <!DOCTYPE html>
@@ -11,16 +21,16 @@
     <div style="margin-left:300px; margin-top:15px;">
         <h4>Input data barang penyedia</h4>
         <p>Masukan form dibawah ini</p>
-        <form action="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/insert_barang_penyedia.php" ?>" method="POST">
+        <form action="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/proses_update_bekal.php&id_bekal_penyedia=$row[id_bekal_penyedia]" ?>" method="POST">
             <div style="margin-top:20px">
                 <div class="form-floating mb-3">
-                    <input type="text" name="id_penyedia" class="form-control" style="width:97%;" id="floatingInput" value="<?php echo $id_penyedia?>" placeholder=" " required readonly>
+                    <input type="text" name="id_penyedia" class="form-control" style="width:97%;" id="floatingInput" value="<?php echo $row['id_penyedia']?>" placeholder=" " required readonly>
                     <label for="floatingInput">ID Penyedia</label>
-                    <small>Auto-generate</small>
+                    <small>Otomatis Terisi</small>
                 </div>
                 <div class="form-floating mb-3">
-                    <select id="kelas_bekal" name="kelas_bekal"  class="form-control select2" required>
-                    <option readonly value="">--Pilih Kelas Bekal--</option>
+                    <select id="kelas_bekal" name="kelas_bekal"  class="form-control select2" value="">
+                    <option readonly value="<?php echo $row['kelas_bekal']?>"><?php echo $row['kelas_bekal']?>-Dipilih-</option>
                             <?php 
                                 include 'database.php';
                                 $kategori = mysqli_query($koneksi, "SELECT * FROM kategori_bekal");
@@ -38,34 +48,18 @@
                     <label for="floatingInput">Jenis Bekal</label>
                 </div> -->
                 <div class="form-floating mb-3">
-                    <input type="text" name="nama_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " required>
+                    <input type="text" name="nama_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " value="<?php echo $row['nama_bekal']?>" required>
                     <label for="floatingInput">Nama Bekal</label>
                 </div>
                 
                 <div class="form-floating mb-3" style="margin-top:15px;">
-                    <input type="text" name="id_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" "  disabled>
+                    <input type="text" name="id_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" "  value="<?php echo $row['id_bekal']; ?>" disabled>
                     <label for="floatingInput">ID Bekal</label>
-                    <small>Auto-generate</small>
+                    <small>Otomatis Terisi</small>
                 </div>
-
-                <!-- <div class="form-floating mb-3" style="margin-top:15px;">
-                    <input type="text" name="harga" class="form-control" style="width:97%;" id="floatingInput" placeholder=" ">
-                    <label for="floatingInput">Harga</label>
-                </div> 
-
-                <div class="form-floating mb-3">
-                    <input type="text" name="stok_bekal" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " required>
-                    <label for="floatingInput">Stok Bekal</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="text" name="tahun" class="form-control" style="width:97%;" id="floatingInput" placeholder=" " required>
-                    <label for="floatingInput">Tahun</label>
-                </div> -->
-
                 <div class="form-floating mb-3">
                 <select class="form-control" name="nama_gudang" id="kelas_bekal" class="form-floating mb-3">
-                    <option readonly value="">--Pilih Gudang--</option>
+                    <option readonly value="<?php echo $row['nama_gudang'] ?>"><?php echo $row['nama_gudang'] ?>-(Dipilih)-</option>
                             <?php 
                                 include 'database.php';
                                 $gudang = mysqli_query($koneksi, "SELECT * FROM gudang");
@@ -97,7 +91,7 @@
     <script src="dist/js/custom.js"></script>
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery.chained.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('#kelas_bekal').on('change', function(){
                 var kelas_bekal = $(this).val();
@@ -139,6 +133,6 @@
                 })
             })
         });
-    </script>
+    </script> -->
 </body>
 </html>

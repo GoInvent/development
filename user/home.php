@@ -87,7 +87,7 @@ include_once('helper.php')
                                         ?>
                                             <tr>
                                             <td style="text-align:center"><?php echo $no++ ?></td>
-                                            <td style="text-align:center"><?php echo $row['nama_penyedia']?></td>
+                                            <td style="text-align:center"><?php echo $row['nama_user']?></td>
                                             <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
                                             <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
                                             <td style="text-align:center"><?php echo rupiah ($row['harga_bekal'])?></td>

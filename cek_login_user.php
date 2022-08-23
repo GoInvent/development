@@ -20,6 +20,7 @@ if($cek > 0){
     $data = mysqli_fetch_assoc($login);
 	$_SESSION['email_user'] = $email;
     $_SESSION['nama_user'] = $data['nama_user'];
+    $_SESSION['alamat_user'] = $data['alamat_user'];
     $_SESSION['no_hp'] = $data['no_hp'];
     $_SESSION['id_user'] = $data['id_user'];
     $iduser = $_SESSION['id_user'];

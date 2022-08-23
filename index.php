@@ -127,26 +127,26 @@
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/databarang.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Bekal di Gudang</span></a>
+                                <span class="hide-menu">Stok</span></a>
                             </li>
                             
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/home.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Pengajuan Bekal</span></a>
+                                <span class="hide-menu">Bekal Masuk</span></a>
                             </li>
 
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/pengeluaran.php"?>" aria-expanded="false">
                                 <i class="fa-solid fa-truck-fast"></i>
-                                <span class="hide-menu">Pengeluaran Bekal</span>
+                                <span class="hide-menu">Bekal Keluar</span>
                                 </a>
                             </li>
 
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL."index.php?page=disbekal/slow_movingitem.php"?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Bekal lama di Gudang</span></a>
+                                <span class="hide-menu">Slow Moving</span></a>
                             </li>
 
                             <li class="sidebar-item"> 
