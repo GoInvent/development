@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                            <input type="text" name="jumlah_barang" class="form-control" id="floatingInput" placeholder="" required>
+                            <input type="number" name="jumlah_barang" class="form-control" id="floatingInput" placeholder="" min="0" max="<?php echo $jumlah_barang ?>" required>
                             <label for="floatingInput">Jumlah Bekal di kirim</label>
                     </div>
 

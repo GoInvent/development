@@ -112,7 +112,7 @@ if($id_penyedia){
                                             <td style="text-align:center"><?php echo $row['updated_at']?></td>
                                             <td style="text-align:center">
                                                 <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/update_bekal.php&id_penyedia=".$_GET['id_penyedia']."&id_bekal_penyedia=$row[id_bekal_penyedia]" ?>" class="btn btn-warning">Perbarui Bekal</a>
-                                                <a href="<?php echo BASE_URL."proseshapus.php?id_bekal_penyedia=$row[id_bekal_penyedia]" ?>" onclick="return confirm('Ingin Hapus?')" class="btn btn-danger">Perbarui Bekal</a>
+                                                <a href="<?php echo BASE_URL."index.php?page=disbekal/daftar_penyedia/proseshapus.php&id_penyedia=".$_GET['id_penyedia']."&id_bekal_penyedia=$row[id_bekal_penyedia]" ?>" onclick="return confirm('Ingin Hapus?')" class="btn btn-danger">Hapus Bekal</a>
                                                 <!-- <a class="btn btn-danger"  href="proseshapus.php?id_bekal_penyedia=<?php echo $row['id_bekal_penyedia'] ?>">Hapus Bekal</a> -->
                                             </td>
                                             <!-- <td style="text-align:center"><a class="btn btn-success" href="index.php?page=updatebekal.php&id=<?php echo $row['id_kategori'] ?>">Edit</a> 

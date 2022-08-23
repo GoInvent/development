@@ -27,9 +27,15 @@
 // 		} 
 // }
 
-include '../../database.php';
-include_once('../../helper.php');
+include 'database.php';
+include_once('helper.php');
+
+// $sql = mysqli_query($koneksi,"SELECT * FROM penyedia_barang");
+// $row = mysqli_fetch_assoc($sql);
+// $id_penyedia = $row['id_penyedia'];
+$id_penyedia = isset($_GET['id_penyedia']) ? $_GET['id_penyedia'] : false;
 if(isset($_GET['id_bekal_penyedia'])){
+	
 	$hapus = mysqli_query($koneksi, "DELETE FROM bekal_penyedia WHERE id_bekal_penyedia = '".$_GET['id_bekal_penyedia']."'");
 	// $id_penyedia = isset($_GET['id_penyedia']) ? $_GET['id_penyedia'] : false;
 		// echo '<script>alert("Hapus data Berhasil")</script>';
@@ -37,7 +43,7 @@ if(isset($_GET['id_bekal_penyedia'])){
 		if ($hapus){
 			//jika data berhasil disimpan
 			echo '<script>alert("Hapus data Berhasil")</script>';
-			echo '<script>window.location="index.php?page=disbekal/daftar_penyedia/list_penyedia.php"</script>';
+			echo '<script>window.location="index.php?page=disbekal/daftar_penyedia/detail_penyedia.php&id_penyedia='.$id_penyedia.'"</script>';
 		}else{
 			echo 'gagal'.mysqli_error($koneksi);
 		} 
