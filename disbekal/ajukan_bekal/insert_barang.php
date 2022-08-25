@@ -33,8 +33,11 @@
             VALUES('$idpenyedia','$jenisbekal','$gudang_nama', '$hargabekal','$stok','$tahun', '$exp_date', NOW(),'$nokontrak','$statusbarang', $status)");
 
             if($result){
-                // mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");
+                // mysqli_query($koneksi, "UPDATE pemasukan SET status_request = 1, no_kontrak = $nokontrak, id_barang = $idbarang WHERE id_request = '".$_GET['id_request']."'");      
 
+                mysqli_query($koneksi, "INSERT INTO log (id_barang, nama_gudang, nama_penyedia, jenis_bekal, stok_bekal, no_kontrak, riwayat_status, tanggal_persetujuan)
+                VALUES('', '$gudang_nama', '$id_penyedia', '$jenis_bekal', '$stok', '$no_kontrak', 'Masuk Bekal', '')");
+              
                 echo '<script>alert("Simpan data Berhasil")</script>';
                 echo '<script>window.location="index.php?page=disbekal/home.php"</script>';
             }elseif(!$result){

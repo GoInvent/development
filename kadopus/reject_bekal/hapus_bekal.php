@@ -9,17 +9,14 @@
         $sql_pemasukan = mysqli_query($koneksi, "SELECT * FROM pemasukan WHERE id_request = '".$_GET['id_request']."'");
         $row = mysqli_fetch_assoc($sql_pemasukan);
        
-        $id_barang = $row['id_barang'];
         $id_penyedia = $row['id_penyedia'];
         $nama_kelas = $row['nama_kelas'];
         $nama_gudang = $row['nama_gudang'];
-        $nama_bekal = $row['nama_bekal'];
         $harga_bekal = $row['harga_bekal'];
         $jumlah_bekal = $row['jumlah_bekal'];
         $harga_bekal = $row['harga_bekal'];
         $tahun_produksi = $row['tahun_produksi'];
         $tgl_request = $row['tgl_request'];
-        $jenis_komoditi = $row['jenis_komoditi'];
         $no_kontrak = rand();
         $rfid = $row['id_barang'];
     }

@@ -37,7 +37,7 @@
                             <h4>Input data barang</h4>
                             <p>Pendataan barang sebelum masuk gudang</p>
                             <?php if($id_request):?>
-                                <form class="" action="<?php echo BASE_URL."index.php?page=disbekal/insert_barang.php&id_request=$row[id_request]" ?>" method="POST">
+                                <form class="" action="<?php echo BASE_URL."index.php?page=kadopus/insert_barang.php&id_request=$row[id_request]" ?>" method="POST">
 
         
                                     <div class="form-floating mb-3">

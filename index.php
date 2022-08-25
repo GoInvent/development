@@ -127,7 +127,7 @@
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo BASE_URL .'index.php?page=disbekal/databarang.php'?>" aria-expanded="false">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span class="hide-menu">Stok</span></a>
+                                <span class="hide-menu">Stok di Gudang</span></a>
                             </li>
                             
                             <li class="sidebar-item"> 

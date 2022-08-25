@@ -1,16 +1,9 @@
 <?php
-    include_once('helper.php');
-    if(isset($_GET['gudang'])){
-        $cari = $_GET['gudang'];
 
-        //ambil data dari database, dimana pencarian sesuai dengan variabel cari
-        $data = mysqli_query($koneksi, "SELECT * FROM gudang where id_gudang = '$cari'");
-		
-        }else{
-
-        //tapi jika jurusan belum diset, maka jangan tampilkan apapun
-        $data = [];		
-    }
+    $pagination = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
+    $data_perhalaman = 5;
+    $mulai_dari = ($pagination -1)* $data_perhalaman;
+    
 ?>
 
 <body>
@@ -36,9 +29,13 @@
                                 <h4>Daftar barang di Gudang</h4>
                                 <p>Semua informasi data barang ter-tracking secara otomatis</p>
                                 <!-- Filter kategori barang -->
-                                <!-- <div style="display:flex;margin-bottom:10px;">
+                                <div style="display:flex;margin-bottom:10px;">
                                     <div style="margin-right:10px;">
-                                        <select id="nama_gudang" name="nama_gudang" class="sb-user">
+                                        <input style="width:300px;height:35px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="cari berdasarkan jenis bekal.." title="Type in a name" class="seacrh-bekal">
+                                    </div>
+
+                                    <div>
+                                        <select id="nama_gudang" name="nama_gudang" class="sb-user" style="height:35px;">
                                             <option>--Pilih Gudang Bekal--</option>
                                             <?php 
                                                 include 'database.php';
@@ -49,25 +46,10 @@
                                             <?php }?> 
                                         </select>
                                     </div>
-
-                                    <div>
-                                        <select id="kategori_bekal" name="kategori_bekal" class="sb-user">
-                                            <option>--Pilih Kategori Bekal--</option>
-                                            <?php 
-                                                include 'database.php';
-                                                $penyedia = mysqli_query($koneksi, "SELECT * FROM kategori_bekal");
-                                                while ($r = mysqli_fetch_array($penyedia)) {
-                                            ?>
-                                                <option value="<?php echo $r['kelas_bekal'] ?>"><?php echo $r['kelas_bekal'] ?></option>
-                                            <?php }?> 
-                                        </select>
-                                    </div>
-                                </div> -->
-
-                                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="cari berdasarkan jenis bekal.." title="Type in a name" class="seacrh-bekal">
+                                </div>
 
                                 <!-- ---------------------- -->
-                                <table class="table mb-0 table-hover align-middle text-nowrap" id="myTable">
+                                <table class="table mb-0 table-hover align-middle text-nowrap" id="myTable" oninput="filterTable()">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th style="color:white; text-align:center;">Jenis Bekal</th>
@@ -85,7 +67,7 @@
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia ORDER BY created_at DESC");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia ORDER BY created_at DESC LIMIT $mulai_dari, $data_perhalaman");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -109,6 +91,11 @@
                                         <?php } ?>
                                 </tbody>
                             </table>
+
+                                <?php 
+                                    $sqlPagination = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia");
+                                    pagination($sqlPagination, $data_perhalaman, $pagination, "index.php?page=user/databarang.php")
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -143,8 +130,30 @@
         }
         }
     </script>
-  
 
+    <script>
+        function filterTable() {
+        // Variables
+        let dropdown, table, rows, cells, gudang, filter;
+        dropdown = document.getElementById("nama_gudang");
+        table = document.getElementById("myTable");
+        rows = table.getElementsByTagName("tr");
+        filter = dropdown.value;
+
+        // Loops through rows and hides those with countries that don't match the filter
+        for (let row of rows) { // `for...of` loops through the NodeList
+            cells = row.getElementsByTagName("td");
+            country = cells[1] || null; // gets the 2nd `td` or nothing
+            // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
+            if (filter === "All" || !country || (filter === country.textContent)) {
+            row.style.display = ""; // shows this row
+            }
+            else {
+            row.style.display = "none"; // hides this row
+            }
+        }
+        }
+    </script>
     
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->

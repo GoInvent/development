@@ -4,11 +4,12 @@ file_put_contents('UIDContainer.php',$Write);
 
 $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
 
-// $pagination = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
-// $data_perhalaman = 5;
-// $mulai_dari = ($pagination -1)* $data_perhalaman;
+$pagination = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
+$data_perhalaman = 5;
+$mulai_dari = ($pagination -1)* $data_perhalaman;
 
 ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -82,7 +83,7 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pemasukan LIMIT $mulai_dari, $data_perhalaman");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -96,10 +97,13 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                                 <td><?php echo $row['tgl_request']?></td>
                                                 <td style="text-align:center"><?php echo $row['status'] ?></td>
                                                 <!-- <td style="text-align:center"><?php echo $row['status_request'] ?></td> -->
-                                                <td>
-                                                    <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=disbekal/detail_persetujuan.php&id_request=$row[id_request]" ?>">Setujui Bekal</a>
-                                                    <!-- <input type="button" name="persetujuan" value="disetujui"> -->
-                                                    <a href="<?php echo BASE_URL."index.php?page=disbekal/reject_bekal/hapus_bekal.php&id_request=$row[id_request]" ?>" class="btn btn-danger" style="text-align:center">Hapus Bekal</a>
+                                                <td style="text-align:center">
+                                                    <?php if ($row['status'] == "Approved") : ?>
+                                                        <p>Bekal masuk Gudang</p>
+                                                    <?php else: ?>
+                                                        <a class="btn btn-success" href="<?php echo BASE_URL."index.php?page=kadopus/detail_persetujuan.php&id_request=$row[id_request]" ?>">Setujui Bekal</a>
+                                                        <a href="<?php echo BASE_URL."index.php?page=kadopus/reject_bekal/hapus_bekal.php&id_request=$row[id_request]" ?>" class="btn btn-danger" style="text-align:center">Hapus Bekal</a>
+                                                    <?php endif; ?>
                                                 </td>
                                                 <td>
                                                     
@@ -115,8 +119,8 @@ $id_request = isset($_GET['id_request']) ? $_GET['id_request'] : false;
                                 </table>
                                 
                                 <?php 
-                                    // $sqlPagination = mysqli_query($koneksi,"SELECT * FROM pemasukan LEFT JOIN komoditi USING(id_komoditi)");
-                                    // pagination($sqlPagination, $data_perhalaman, $pagination, "index.php?page=disbekal/home.php")
+                                    $sqlPagination = mysqli_query($koneksi,"SELECT * FROM pemasukan");
+                                    pagination($sqlPagination, $data_perhalaman, $pagination, "index.php?page=kadopus/home.php")
                                 ?>
 
                             </div>

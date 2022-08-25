@@ -61,7 +61,7 @@ include_once('helper.php')
                             <!-- title -->
                             
                             <a href="<?php echo BASE_URL."index.php?page=user/databarang.php"?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Ajukan permintaan Bekal di Gudang</a>
-                          
+                            <a href="#" class="btn btn-primary" style="margin:5px 0px 15px 0px;color:white;">Riwayat Bekal</a>
                             <div class="table-responsive">
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead  style="background-color:#1a9bfc;">

@@ -4,6 +4,10 @@ file_put_contents('UIDContainer.php',$Write);
 
 $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
 
+$pagination = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
+$data_perhalaman = 5;
+$mulai_dari = ($pagination -1)* $data_perhalaman;
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -57,7 +61,7 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                      <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM pengeluaran ORDER BY id_kirim DESC");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM pengeluaran ORDER BY id_kirim DESC LIMIT $mulai_dari, $data_perhalaman");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -84,6 +88,12 @@ $id_barang = isset($_GET['id']) ? $_GET['id'] : false;
                                         <?php } ?>
                                     </tbody>
                                 </table>
+                                
+                                <?php 
+                                    $sqlPagination = mysqli_query($koneksi,"SELECT * FROM pengeluaran ORDER BY id_kirim DESC");
+                                    pagination($sqlPagination, $data_perhalaman, $pagination, "index.php?page=disbekal/pengeluaran.php")
+                                ?>
+
                             </div>
                         </div>
                     </div>

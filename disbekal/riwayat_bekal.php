@@ -26,39 +26,34 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
-                    <h1 text-align="center" style="margin:2% 0% 2% 0%;">List Barang</h1>
+                    <h1 text-align="center" style="margin:2% 0% 2% 0%;">Riwayat Bekal</h1>
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
                     
-                                <h4>Daftar barang di Gudang</h4>
-                                <p>Semua informasi data barang ter-tracking secara otomatis</p>
+                                <h4>Daftar riwayat bekal</h4>
+                                <p>Semua informasi data riwayat kelaur masuk bekal di gudang</p>
                                 
                                 <!-- Laman untuk melihat informasi menyeluruh barang yang ada digudang -->
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/kategori_bekal/databekal.php" ?>" class="btn btn-success" style="margin:5px 0px 15px 0px;color:white;">Jenis Kategori Bekal</a>
-                                <a href="<?php echo BASE_URL."index.php?page=disbekal/exp_bekal.php" ?>" class="btn btn-warning" style="margin:5px 0px 15px 0px;color:white;">Bekal Kadaluarsa</a>
                                 <table class="table mb-0 table-hover align-middle text-nowrap">
                                     <thead style="background-color:#1a9bfc;">
                                         <tr>
                                             <th style="color:white; text-align:center;">No.</th>
                                             <th style="color:white; text-align:center;">ID Barang</th>
                                             <th style="color:white; text-align:center;">Nama Penyedia</th>
-                                            <th style="color:white; text-align:center;">Gudang</th>
                                             <th style="color:white; text-align:center;">Jenis Bekal</th>
-                                            <!-- <th style="color:white; text-align:center;">Nama</th> -->
-                                            <th style="color:white; text-align:center;">Harga Satuan</th>
+                                            <th style="color:white; text-align:center;">Gudang</th>
                                             <th style="color:white; text-align:center;">Stok</th>
                                             <th style="color:white; text-align:center;">No.Kontrak</th>
                                             <th style="color:white; text-align:center;">Status</th>
                                             <th style="color:white; text-align:center;">Tanggal Persetujuan</th>
-                                            <th style="color:white; text-align:center;">Log</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             include 'database.php';
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia ORDER BY created_at DESC LIMIT $mulai_dari, $data_perhalaman");
+                                            $sql = mysqli_query($koneksi,"SELECT * FROM log");
                                             if (mysqli_num_rows($sql) > 0 ) {
                                             while ($row = mysqli_fetch_array($sql)){
                                         ?>
@@ -66,17 +61,12 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                                 <td style="text-align:center"><?php echo $no++ ?></td>
                                                 <td style="text-align:center"><?php echo $row['id_barang']?></td>
                                                 <td style="text-align:center"><?php echo $row['nama_penyedia']?></td>
+                                                <td style="text-align:center"><?php echo $row['jenis_bekal']?></td>
                                                 <td style="text-align:center"><?php echo $row['nama_gudang']?></td>
-                                                <td style="text-align:center"><?php echo $row['kelas_bekal']?></td>
-                                                <!-- <td style="text-align:center"><?php echo $row['nama_bekal']?></td> -->
-                                                <td style="text-align:center"><?php echo rupiah($row['harga_bekal'])?></td>
-                                                <td style="text-align:center"><?php echo $row['jumlah_bekal']?></td>
+                                                <td style="text-align:center"><?php echo $row['stok_bekal']?></td>
                                                 <td style="text-align:center"><?php echo $row['no_kontrak']?></td>
-                                                <td style="text-align:center"><?php echo ($row['status_barang'] == 0)?'Pending':'Approved'; ?></td>
-                                                <td style="text-align:center"><?php echo $row['created_at']?></td>
-                                                <td>
-                                                    <a href="<?php echo BASE_URL."index.php?page=disbekal/riwayat_bekal.php" ?>" class="btn btn-success">Riwayat Bekal</a>
-                                                </td>
+                                                <td style="text-align:center"><?php echo $row['riwayat_status']?></td>
+                                                <td style="text-align:center"><?php echo $row['tanggal_persetujuan']?></td>
                                             </tr>
                                         <?php }
                                         }else { ?>
@@ -87,13 +77,8 @@ $mulai_dari = ($pagination -1)* $data_perhalaman;
                                     </tbody>
                                 </table>
 
-                                <div style="margin:10px 0px 20px 0px;">
-                                    <a href="#" class="btn-excel">Laporan Excel</a>
-                                    <a href="#" class="btn-pdf">Laporan PDF</a>
-                                </div>
-
                                 <?php 
-                                    $sqlPagination = mysqli_query($koneksi,"SELECT * FROM barang LEFT JOIN penyedia_barang ON penyedia_barang.id_penyedia = barang.id_penyedia ORDER BY created_at DESC");
+                                    $sqlPagination = mysqli_query($koneksi,"SELECT * FROM log");
                                     pagination($sqlPagination, $data_perhalaman, $pagination, "index.php?page=disbekal/databarang.php")
                                 ?>
 
