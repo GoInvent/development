@@ -40,17 +40,19 @@
             $update_data = mysqli_query($koneksi, "UPDATE pemasukan SET status='Approved', status_request ='Approved',no_kontrak = $nokontrak WHERE id_request = '".$_GET['id_request']."'");
         
             if($update_data){
-                // $sql_barang = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_request = '".$_GET['id_request']."'");
-                // $row = mysqli_fetch_assoc($sql_barang);
+                include '../database.php';
+
+                $sql_barang = mysqli_query($koneksi, "SELECT * FROM barang WHERE id_request = $id_request");
+                $row = mysqli_fetch_assoc($sql_barang);
     
-                // $id_barang = $row['id_barang'];
-                // $id_penyedia = $row['id_penyedia'];
-                // $nama_gudang = $row['nama_gudang'];
-                // $kelas_bekal = $row['kelas_bekal'];
-                // $jumlah_bekal = $row['jumlah_bekal'];
-                // $nokontrak = $row['no_kontrak'];
-                // $riwayat = 'Pemasukan Bekal';
-                // $tanggal_approved = $row['created_at'];
+                $id_barang = $row['id_barang'];
+                $id_penyedia = $row['id_penyedia'];
+                $nama_gudang = $row['nama_gudang'];
+                $kelas_bekal = $row['kelas_bekal'];
+                $jumlah_bekal = $row['jumlah_bekal'];
+                $nokontrak = $row['no_kontrak'];
+                $riwayat = 'Pemasukan Bekal';
+                $tanggal_approved = $row['created_at'];
 
                 mysqli_query($koneksi, "INSERT INTO log (id_barang, nama_gudang, nama_penyedia, jenis_bekal, stok_bekal, no_kontrak, riwayat_status, tanggal_persetujuan) 
                             VALUES('$id_barang','$gudang', '$idpenyedia', ''$kelas_bekal', '$stok', '$nokontrak', '$riwayat', 'NOW()')");

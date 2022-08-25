@@ -76,7 +76,7 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="date" name="exp_date" class="form-control" id="floatingInput" placeholdder=" " required value = <?php echo $exp_date ?>>
+                                        <input type="date" name="exp_date" class="form-control" id="floatingInput" placeholdder=" " value = <?php echo $exp_date ?>>
                                         <label for="floatingInput">Tanggal Kadaluarsa</label>
                                     </div>
 
